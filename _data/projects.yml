@@ -1,0 +1,26 @@
+- project :
+    print : True # If 'False' is selected, it will not be displayed in 'home.html > aside > .proj-content'.
+    modal : True # If 'True' is selected, modal can open in 'portfolio.html'.
+    url : http://radio103fm.ru/ # Full URL
+    image : "radio103fm.png" # path: assets/project/
+    date : 2011.03.15 - 2015.03.21
+    title : FM radiostation local website
+    summary : That was fun!
+    description : My first web develop experience at radio with Wordpress, Icecast and Ubuntu Server
+    contents :
+        - title : 1. Online music chart
+          image : radio_music_charts.png
+          description : <li>Let user to vote his favorite song</li>
+            <li>Site admins can upload new tracks easily.</li>
+        - title : 2. Online broadcasting right from the FM-transmitter
+          image : icecast.png
+          description : Ubunutu Server 12.04 LTE with modified sound card <i>Creative SB Live</i>
+            IceCast2 and DarkIce.
+            <li>Server is till online from 2013!</li>
+            <li>You can listen it – just click <a href="http://radio103fm.ru/RadioNoyabrsk.m3u" target="_blank">play</a></li>
+        - title : 3. News / Programms schedule / Special Projects
+          image :
+          description : My first php code was a plugin for Wordpress to make Programms schedule allow by site.
+            Now you can listen an archive records of programms online –
+            for example <a href="http://radio103fm.ru/program/professiya-sever/" target="_blank">Proffession – North</a> <br />
+            Oh, yeah! The episode about booster compressor station – is my work too 🎧

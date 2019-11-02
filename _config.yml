@@ -1,0 +1,49 @@
+# Site Settings
+baseurl: ""
+url : "https://madmatvey.github.io"
+
+# Blog Settings
+theme_settings :
+  title : Eugene Leontev
+  favicon : assets/favicon.ico
+
+  # Profile Settings
+  profile :
+    image : assets/img/smile.png
+    username : Eugene Leontev
+    description : Ruby developer.
+    experience :
+      - start : 2011-03-15
+        end : 2015-03-21
+        experience : Radio Noyabrsk, Sound Engineer
+    skills :
+      - skill : PHP
+        value : 35  # Percent value
+      - skill : Ubuntu Server
+        value : 45
+      - skill : IceCast2
+        value : 65
+
+  # Icons
+  icons :
+    email: potehin@gmail.com # Full email address, e.g. "sample@google.com"
+    linkedin: https://www.linkedin.com/in/madmatvey/ # Full URL
+    github: madmatvey
+    twitter: EugeneLeontev
+    facebook: madmatvey
+    instagram: matvey_rl_zhook
+
+  # Disqus
+  disqus_shortname : evgeniyleontev
+
+# Pagination
+paginate: 5
+paginate_path: "blog/page:num"
+
+# Build Ssttings
+sass:
+  sass_dir: _sass
+  style: :compressed
+plugins: [jekyll-paginate]
+bootstrap:
+  assets: true
