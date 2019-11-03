@@ -1,15 +1,5 @@
 # Grape-Theme
 
-![home](./assets/img/home.png)
-
-블로그뿐만 아니라 포트폴리오 페이지도 지원하는 Grape-Theme를 자유롭게 사용하세요.
-
-Welcome to Grape Theme!  It is good for a portfolio as well as a blog.
-<br>
-Customize Grape-Theme and use it for free.
-
-[Demo](https://grape-theme.netlify.com)
-
 
 
 ## Installation
@@ -20,7 +10,7 @@ Customize Grape-Theme and use it for free.
    git clone https://github.com/naye0ng/Grape-Theme.git
    ```
 
-2. Install Jekyll 
+2. Install Jekyll
 
    ```
    gem install jekyll
@@ -40,7 +30,7 @@ Customize Grape-Theme and use it for free.
    bundle exec jekyll serve
    ```
 
-   
+
 
 ## Customizing
 
@@ -78,13 +68,13 @@ Profile is displayed on the index page, and also experience and skills are displ
 profile :
   image : assets/img/{prorile image}
     username : {username}
-    description : 
+    description :
     experience :
       - start :
-        end : 
+        end :
         experience : {company name}, {title}
-     skills : 
-      - skill : 
+     skills :
+      - skill :
         value : 85  # Percent value
 ```
 
@@ -106,9 +96,9 @@ paginate: 5
 
 [Disqus shortname](https://help.disqus.com/en/articles/1717111-what-s-a-shortname)을 설정하고, 포스팅 속성에 `comments : True` 를 추가하면 블로그 글에서 댓글을 사용할 수 있습니다.
 
-you can use the comments by following [document](https://help.disqus.com/en/articles/1717111-what-s-a-shortname) and adding a `comments : True` 
+you can use the comments by following [document](https://help.disqus.com/en/articles/1717111-what-s-a-shortname) and adding a `comments : True`
 
-``` 
+```
 disqus_shortname :
 ```
 
@@ -124,20 +114,20 @@ The Project configuration is available in `_data/projects.yml`.
 
 포트폴리오 페이지에서는 프로젝트 목록과 상세보기를 모달로 지원합니다. 물론 상세보기는 선택적이며, 상세값이 `modal : False`인 경우 모달 버튼은 생성되지 않습니다.
 
-The portfolio page provides projects and detailed views by modal.   If `modal : False` is selected, modal will not be displayed on site. 
+The portfolio page provides projects and detailed views by modal.   If `modal : False` is selected, modal will not be displayed on site.
 
-- **print** : 
-  
+- **print** :
+
   -  `print : True` 를 선택한다면, 블로그의 홈 화면에서도 프로젝트의 정보가 출력됩니다.
   - If `print : True` is selected, it will be displayed on landing page
-  
+
    ![print project](./assets/img/print-project.png)
-  
-- **modal** 
+
+- **modal**
   - `modal : True` 를 선택한다면 모달 버튼이 활성와 됩니다.
-  
+
   - If `modal : True` is selected, modal will be displayed on the Portfolio page
-  
+
     ![home](./assets/img/modal.png)
 
 ```
@@ -152,14 +142,14 @@ Add details(link, description) about your projects
 url : https://github.com/naye0ng/Grape-Theme # Full URL
 image : "portfolio.png" # path: assets/project/
 date : 2019.06.09 - 2019.07.11
-title : 
-summary : 
+title :
+summary :
 description :  
 # modal contents
 contents :
   - title :
     image :      	    
-    description : 
+    description :
 ```
 
 
@@ -194,8 +184,8 @@ You can confirm how to draw tags at [here](https://grape-theme.netlify.com/2019/
    title: title
    subtitle : subtitle
    tags: [tag1, tag2]
-   author: 
-   comments : 
+   author:
+   comments :
    ---
    ```
 
@@ -204,4 +194,3 @@ You can confirm how to draw tags at [here](https://grape-theme.netlify.com/2019/
 ## License
 
 The theme is available as open source under the terms of the [MIT License](https://opensource.org/licenses/MIT).
-

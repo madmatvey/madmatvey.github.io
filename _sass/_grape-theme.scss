@@ -1,19 +1,19 @@
 //Bootstrap
 @import 'bootstrap/bootstrap-grid';
 
-// Base 
+// Base
 @import 'base/variable';
 @import 'base/global';
 @import 'base/utility';
 @import 'base/highlight';
 
-// Layout 
-@import 'layouts/home';
+// Layout
+@import 'layouts/blog';
 @import 'layouts/post';
 @import 'layouts/tags';
 @import 'layouts/portfolio';
 
-// Include 
+// Include
 @import 'includes/header';
 @import 'includes/aside';
 @import 'includes/footer';

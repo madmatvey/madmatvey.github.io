@@ -3,3 +3,6 @@
 .sass-cache
 _site
 Gemfile.lock
+
+# Mac finder artifacts
+.DS_Store

@@ -8,6 +8,9 @@
       <p class="date">{{ project.date }}</p>
       <p class="title">{{ project.title }}</p>
       <p class="summary">{{ project.summary }}</p>
+      <a href="{{ project.url }}" target="_blank">
+        <p class="project_url">{{ project.url }}</p>
+      </a>
     </div>
     <div class="content">
       {% if project.image %}

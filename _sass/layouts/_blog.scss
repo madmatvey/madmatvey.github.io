@@ -1,4 +1,4 @@
-#home {
+#blog {
     #aside{
         display:block;
         @media (max-width: 991px) {
@@ -101,7 +101,7 @@
     }
 }
 
-// Pagination 
+// Pagination
 #pagination{
     margin-top : 60px;
     margin-bottom : 60px;
@@ -133,4 +133,4 @@
         border: 2px solid $theme-dark;
         color : #fff;
     }
-} 
+}

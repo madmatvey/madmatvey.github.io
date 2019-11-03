@@ -82,6 +82,17 @@
             .summary{
                 font-size: 0.95rem;
             }
+            .project_url{
+                padding:15px;
+                margin-top: 15px;
+                display: block;
+                background-color: $theme-dark;
+                border-radius: 25px;
+                text-align: center;
+                color: #ddd;
+                font-size: 20px;
+                font-weight: 500;
+            }
         }
         .content{
             margin: auto 2%;
@@ -100,7 +111,7 @@
                 .title{
                     position: relative;
                     margin: 10px auto;
-                    font-size: 1.05rem; 
+                    font-size: 1.05rem;
                     font-weight: 600;
                 }
                 .description{
@@ -113,4 +124,4 @@
             }
         }
     }
-}    
+}

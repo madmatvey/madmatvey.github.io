@@ -1,37 +1,45 @@
 {% assign _url = page.url | split: "/" %}
-{% assign current = _url[-1] | split: "." %}
+{% assign filetitle = _url[-1] | split: "." %}
+{% if include.this_is_blog_post %}
+  {% assign current = 'blog' %}
+{% else %}
+  {% assign current = filetitle[0] %}
+{% endif %}
 <header>
   <nav>
     <ul>
-      {% case current[0] %}
+      {% case current %}
       {% when 'tags'%}
       <!-- tags -->
       <a href="{{ site.url }}">
-        <li class="btn-nav">Blog</li>
+        <li class="btn-nav">Portfolio</li>
       </a>
       <li class="current">Tags</li>
-      <a href="{{ site.url }}/portfolio">
-        <li class="btn-nav">Portfolio</li>
-      </a>
-      <!-- portfolio -->
-      {% when 'portfolio'%}
-      <a href="{{ site.url }}">
+      <a href="{{ site.url }}/blog">
         <li class="btn-nav">Blog</li>
       </a>
-      <a href="{{ site.url }}/tags">
-        <li class="btn-nav">Tags</li>
-      </a>
-      <li class="current">Portfolio</li>
-      {% else %}
-      <!-- others -->
+      <!-- blog -->
+      {% when 'blog'%}
       <a href="{{ site.url }}">
-        <li class="current btn-nav">Blog</li>
+        <li class="btn-nav">Portfolio</li>
       </a>
       <a href="{{ site.url }}/tags">
         <li class="btn-nav">Tags</li>
       </a>
-      <a href="{{ site.url }}/portfolio">
-        <li class="btn-nav">Portfolio</li>
+      <a href="{{ site.url }}/blog">
+        <li class="current">Blog</li>
+      </a>
+
+      {% else %}
+      <!-- home -->
+      <a href="{{ site.url }}">
+        <li class="current btn-nav">Portfolio</li>
+      </a>
+      <a href="{{ site.url }}/tags">
+        <li class="btn-nav">Tags</li>
+      </a>
+      <a href="{{ site.url }}/blog">
+        <li class="btn-nav">Blog</li>
       </a>
       {% endcase %}
     </ul>
