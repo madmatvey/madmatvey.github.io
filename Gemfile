@@ -3,5 +3,5 @@
 source 'https://rubygems.org'
 gemspec
 
-gem 'github-pages'
-gem 'jekyll-paginate-v2'
+gem 'github-pages', group: :jekyll_plugins
+gem 'jekyll-paginate-v2', group: :jekyll_plugins
