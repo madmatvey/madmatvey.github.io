@@ -79,9 +79,9 @@ you can easy to change style in `_utility.html` and a sample of the formatting f
 
 <h2>5. image</h2>
 {% highlight html %}
-<!-- ![sample image]({{ site.baseurl }}/assets/img/koreaSunset.jpg) -->
+![sample image]({{ site.baseurl }}/assets/img/city_center_of_Noyabrsk.png)
 {% endhighlight %}
-<!-- ![sample image]({{ site.baseurl }}/assets/img/koreaSunset.jpg) -->
+![sample image]({{ site.baseurl }}/assets/img/city_center_of_Noyabrsk.png)
 
 <br>
 

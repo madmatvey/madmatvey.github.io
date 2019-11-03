@@ -11,7 +11,7 @@ theme_settings :
   profile :
     image : assets/img/smile.png
     username : Eugene Leontev
-    description : Ruby developer.
+    description : Ruby developer. Tech entrepreneur.
     experience :
       - start : 2018-08-20
         experience : Appbooster, Ruby developer
@@ -39,8 +39,12 @@ theme_settings :
         value : 85
       - skill : Git/Github
         value : 77
+      - skill : Continuous Integration
+        value : 69
       - skill : Telegram bot
         value : 68
+      - skill : PostGIS
+        value : 23
       - skill : Sidekiq
         value : 75
       - skill : Javascript
@@ -73,7 +77,7 @@ pagination:
   # Site-wide kill switch, disabled here it doesn't run at all
   enabled: true
   # Set to 'true' to enable pagination debugging. This can be enabled in the site config or only for individual pagination pages
-  debug: true
+  debug: false
   # The default document collection to paginate if nothing is specified ('posts' is default)
   collection: 'posts'
   # How many objects per paginated page, used to be `paginate` (default: 0, means all)
