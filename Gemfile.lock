@@ -133,8 +133,6 @@ GEM
     jekyll-optional-front-matter (0.3.0)
       jekyll (~> 3.0)
     jekyll-paginate (1.1.0)
-    jekyll-paginate-v2 (2.0.0)
-      jekyll (~> 3.0)
     jekyll-readme-index (0.2.0)
       jekyll (~> 3.0)
     jekyll-redirect-from (0.14.0)
@@ -255,7 +253,7 @@ DEPENDENCIES
   bundler (~> 2.0)
   github-pages
   grape-theme!
-  jekyll-paginate-v2
+  jekyll-paginate
   rake (~> 12.0)
 
 BUNDLED WITH
