@@ -1,7 +1,7 @@
 ---
 layout: post
 title: How to staying alive if you are an ENTP?
-subtitle : Long and boring story.
+subtitle : This post about how to staying alive and even enjoy life in such circumstances :)
 tags: [self-knowledge]
 author: Eugene Leontev
 comments : True
@@ -9,7 +9,6 @@ comments : True
 
 ​Hi! My name is Eugene. I'm an ENTP.
 This post about how to staying alive and even enjoy life in such circumstances :)
-
 Well, what is ENTP?
 
 ![ENTP]({{ site.baseurl }}/assets/img/entp.jpeg)
