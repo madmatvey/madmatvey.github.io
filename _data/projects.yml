@@ -24,3 +24,22 @@
             Now you can listen an archive records of programms online –
             for example <a href="http://radio103fm.ru/program/professiya-sever/" target="_blank">Proffession – North</a> <br />
             Oh, yeah! The episode about booster compressor station – is my work too 🎧
+- project :
+    print : True # If 'False' is selected, it will not be displayed in 'home.html > aside > .proj-content'.
+    modal : False # If 'True' is selected, modal can open in 'portfolio.html'.
+    url : https://lazybeat.ru/music-box/ # Full URL
+    image : "lazybeat.ru.png" # path: assets/project/
+    date : 2009.04.10 - 2018.03.21
+    title : Music Content Automation System
+    summary : B2B Service
+    description : My first experience with customers behavior driven development
+    contents :
+        - title : A lot of CDs
+          image : cd-collection.jpg
+          description : I found a restaurant whose staff used a lot of CDs. They had to manually change albums every time. It was not cool and distracted from the main business.
+        - title : Grab all CDs
+          image : audio-cd.jpg
+          description : I ripped all the CDs in mp3. I've arranged the actual clothing collection and came up with the playback schedule.
+        - title : Automation Playback
+          image : radio-dj-ro.png
+          description : I've founded <a href="https://www.radiodj.ro/" target="_blank">RadioDJ – free radio automation software</a> and start to use it for everyday music scheduling for my clients 🎧
