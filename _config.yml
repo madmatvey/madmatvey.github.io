@@ -9,12 +9,15 @@ theme_settings :
 
   # Profile Settings
   profile :
-    image : assets/img/smile.png
+    image : assets/img/square_avatar.png
     username : Eugene Leontev
-    description : Ruby developer. Tech entrepreneur.
+    description : Ruby developer. Tech entrepreneur. Sailor. DeeJay.
     experience :
+      - start : 2022-05-02
+        experience : Andersenlab, Ruby developer
       - start : 2018-08-20
-        experience : Appbooster, Ruby developer
+        end : 2022-04-15
+        experience : Appbooster, Ruby developer, team-lead
       - start : 2018-06-20
         end : 2018-01-18
         experience : Butupper, Ruby developer
@@ -32,33 +35,33 @@ theme_settings :
         experience : Lazy Beat, Music box founder and developer
     skills :
       - skill : Ruby
-        value : 89
+        value : 95
       - skill : PostgreSQL
-        value : 86
+        value : 91
       - skill : Ruby on Rails
-        value : 85
+        value : 95
+      - skill : AWS
+        value : 75
+      - skill : Rust
+        value : 35
       - skill : Git/Github
-        value : 77
+        value : 87
       - skill : Continuous Integration
-        value : 69
-      - skill : Telegram bot
-        value : 68
+        value : 79
+      - skill : Telegram bot API
+        value : 78
       - skill : PostGIS
         value : 23
       - skill : Sidekiq
-        value : 75
+        value : 85
       - skill : Javascript
-        value : 59
-      - skill : Vue.js
-        value : 47
+        value : 69
+      - skill : Vue.js/Nuxt.js
+        value : 57
       - skill : Ubuntu Server
-        value : 80
+        value : 90
       - skill : Bitcoin Protocols
-        value : 67
-      - skill : IceCast2
-        value : 55
-      - skill : PHP
-        value : 25
+        value : 77
 
   # Icons
   icons :

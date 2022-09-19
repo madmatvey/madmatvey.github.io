@@ -1,4 +1,50 @@
 - project :
+    print : True
+    modal : False
+    url : https://redash.io
+    image : "redash.png"
+    date : 2019.10.10 - 2022.04.15
+    title : Make Appbooster data driven
+    summary : Integration of different sources of business data to one system
+    description : Web-based dashboard tool that integrates external data source, aggregates and refines data, extracts information and displays it in a convenient modern interface for decision makers.
+    contents :
+        - title : Team
+          description : 2 specialists
+        - title : Position
+          description : ETL/Full-stack developer
+        - title: Responsibilities
+          description : <li>Developed new features and components</li>
+                        <li>Developed SPA using VueJS</li>
+                        <li>Worked in an agile environment</li>
+                        <li>Identified and addressed performance bottlenecks</li>
+                        <li>Created technical documentation for reference and reporting • Wrote unit tests</li>
+                        <li>Utilized good design practices, code reuse and wrote efficient source code</li>
+        - title : Technologies and tools
+          description : • Ruby, Ruby on Rails, JavaScript, VueJS, PostgreSQL, Redis, Sidekiq, Ansible, Circle CI, Redash, Ubuntu Server, Git
+- project :
+    print : True # If 'False' is selected, it will not be displayed in 'home.html > aside > .proj-content'.
+    modal : False # If 'True' is selected, modal can open in 'portfolio.html'.
+    url : https://www.appbonus.ru/r/EUGENE # Full URL
+    image : "appbonus.png" # path: assets/project/
+    date : 2018.08.15 - 2022.04.15
+    title : Mobile earnings through an app
+    summary : Hi-loaded backends written on Ruby and hosted with AWS
+    description : The mobile app rewards users for completing simple tasks, such as finding a special app in the AppStore or Google Play and installing it on their phone. The application has over 9 million users.
+    contents :
+        - title : Team
+          description : 14 specialists
+        - title : Position
+          description : Ruby developer, team-lead
+        - title: Responsibilities
+          description : <li>Led a research and development activities</li>
+                        <li>Decomposed business goals</li>
+                        <li>Developed new back-end features and components</li>
+                        <li>Worked in an agile environment</li>
+                        <li>Identified and addressed performance bottlenecks</li>
+                        <li>Created technical documentation for reference and reporting</li>
+                        <li>Wrote unit tests</li>
+                        <li>Utilized good design practices, code reuse and wrote efficient source code</li>
+- project :
     print : True # If 'False' is selected, it will not be displayed in 'home.html > aside > .proj-content'.
     modal : False # If 'True' is selected, modal can open in 'portfolio.html'.
     url : http://radio103fm.ru/ # Full URL
