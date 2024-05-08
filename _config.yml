@@ -14,11 +14,11 @@ theme_settings :
     description : Ruby developer. Tech entrepreneur. Sailor. DeeJay.
     experience :
       - start : 2023-01-04
-        experience : Wallarm, Senior Ruby developer
         end : 2024-03-01
+        experience : Wallarm, Senior Ruby developer
       - start : 2022-05-02
-        experience : Andersenlab, Senior Ruby developer
         end : 2022-12-30
+        experience : Andersenlab, Senior Ruby developer
       - start : 2018-08-20
         end : 2022-04-15
         experience : Appbooster, Ruby developer, team-lead
