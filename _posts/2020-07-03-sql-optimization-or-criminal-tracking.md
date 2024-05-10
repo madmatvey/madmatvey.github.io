@@ -2,15 +2,18 @@
 layout: post
 title: "Optimizing SQL Queries or Tracking Dangerous Criminals"
 subtitle : Case of Appbooster.com company.
-tags: [SQL, optimization, criminal-tracking, PostgreSQL, Mobile Apps Backend, Ruby on Rails]
-author: Eugene Leontev
+tags: [sql, optimization, criminal-tracking, postgres, mobile apps backend, ruby on rails]
+author: eugene
+categories: [Blogging, Tutorial]
 comments : True
+render_with_liquid: false
 ---
 
 
 I believe that virtually every project using Ruby on Rails and Postgres as its main backend tools is in a constant struggle between development speed, code readability/maintainability, and project performance in production. I will share my experience balancing these three pillars in a case where readability and performance suffered initially, but in the end, I managed to achieve what several talented engineers had unsuccessfully attempted before me.
 
-![SQL optimization article]({{ site.baseurl }}/assets/img/sql-optimization/sql-optimization-title.png)
+![SQL optimization article](/assets/img/sql-optimization/sql-optimization-title.png){: .normal }
+__SQL optimization article__
 
 The whole story will take several parts. This is the first one, where I'll talk about what PMDSC is for optimizing SQL queries, share useful tools for measuring query performance in Postgres, and remind you of one useful old cheat sheet that is still relevant.
 
@@ -24,7 +27,7 @@ The hero of this publication has been developed since the end of 2013—just aft
 
 This story began with the database instance, or more precisely, with its credit balance.
 
-![RDS Credit balance low]({{ site.baseurl }}/assets/img/sql-optimization/rds-credit-balance-low.png)
+![RDS Credit balance low](/assets/img/sql-optimization/rds-credit-balance-low.png){: .normal }
 
 How a "t" type Postgres instance works in Amazon RDS: if your database operates with an average CPU utilization below a certain threshold, credits accumulate in your account, which the instance can spend on CPU consumption during high-load hours—this allows you to avoid overpaying for server power and cope with high loads. More details on what and how much you pay using AWS can be found in [our CTO's article (RU)](https://medium.com/@kelion/%D0%BE%D0%BF%D1%82%D0%B8%D0%BC%D0%B8%D0%B7%D0%B8%D1%80%D1%83%D0%B5%D0%BC-%D1%80%D0%B0%D1%81%D1%85%D0%BE%D0%B4%D1%8B-%D0%BD%D0%B0-amazon-aws-81354d27dfaa).
 
@@ -34,7 +37,7 @@ One fine day, I wrote in the daily summary that I was very tired of extinguishin
 
 We use New Relic to track the overall response time over the course of a day. The picture looked like this:
 
-![Newrelic dashboard screenshoot]({{ site.baseurl }}/assets/img/sql-optimization/newrelic.png)
+![Newrelic dashboard screenshoot](/assets/img/sql-optimization/newrelic.png)
 
 The yellow highlighted part on the graph represents the response time taken by Postgres. As can be seen, sometimes the response time reached 1000 ms, and most of the time, it was the database that was pondering the response. This means we need to look at what's happening with the SQL queries.
 
@@ -52,17 +55,17 @@ Perhaps the most important part of the whole practice. When someone mentions "Op
 
 ### Measure It!
 
-![Measure it! PGhero]({{ site.baseurl }}/assets/img/sql-optimization/pghero_screenshoot_measure_it.png)
+![Measure it! PGhero](/assets/img/sql-optimization/pghero_screenshoot_measure_it.png)
 
 For analyzing query statistics, I installed [PgHero](https://github.com/ankane/pghero). This is a very convenient way to read data from the `pg_stat_statements` extension for Postgres. We go to `/queries` and look at the statistics of all queries for the last day. The default sorting of queries is by the `Total Time column` - the proportion of total time the database processes the query - a valuable source in the search for suspects. `Average Time` - how long, on average, a query takes to execute. `Calls` - how many queries were there in the selected time frame. PgHero considers slow queries those that were executed more than 100 times per day and took on average more than 20 milliseconds. The list of slow queries is on the first page, right after the list of duplicate indexes.
 
-![PGhero Queries]({{ site.baseurl }}/assets/img/sql-optimization/pghero_queries.png)
+![PGhero Queries](/assets/img/sql-optimization/pghero_queries.png)
 
 We take the first one in the list and look at the details of the query, where you can immediately see its explain analyze. If the planning time is significantly less than the execution time, it means there is something wrong with this query, and we focus our attention on this suspect.
 
 PgHero has its way of visualization, but I preferred using [explain.depesz.com](https://explain.depesz.com/) by copying the data from explain analyze there.
 
-![Explain Analyze]({{ site.baseurl }}/assets/img/sql-optimization/explain_analyze.png)
+![Explain Analyze](/assets/img/sql-optimization/explain_analyze.png)
 
 One of the suspect queries uses an Index Scan. The visualization shows that this index is not efficient and is a weak point—highlighted in red. Great! We have examined the suspect's tracks and found an important clue! Justice is inevitable!
 
@@ -72,7 +75,7 @@ Let's draw a set of data used in the problematic part of the query. It will be u
 
 A bit of context. We were testing one of the ways to retain users in the application—something like a lottery where you can win some internal currency. You place a bet, guess a number from 0 to 100, and take the whole bank if your number is closest to what the random number generator got. We called it the "Arena," and the draws were called "Battles."
 
-![Battles SQL visualisation]({{ site.baseurl }}/assets/img/sql-optimization/battles_sql_visialisation.png)
+![Battles SQL visualisation](/assets/img/sql-optimization/battles_sql_visialisation.png)
 
 In the database at the time of the investigation, there were about five hundred thousand records of battles. In the problematic part of the query, we are looking for battles where the bet does not exceed the user's balance and the status of the battle is "waiting for players." We see that the intersection of sets (highlighted in orange) is a very small number of records.
 
@@ -94,7 +97,7 @@ We make a hypothesis. What will help the database find forty records out of five
 
 We deploy a migration with a new index to production and observe how the response of the endpoint with battles changes.
 
-![Battles SQL visualisation]({{ site.baseurl }}/assets/img/sql-optimization/deploy_new_partial_index.png)
+![Battles SQL visualisation](/assets/img/sql-optimization/deploy_new_partial_index.png)
 
 The graph shows when we deployed the migration. In the evening of December 6, the response time decreased by about 10 times, from ~500 ms to ~50 ms. The suspect in the trial received the status of a prisoner and is now in jail. Excellent!
 
@@ -102,7 +105,7 @@ The graph shows when we deployed the migration. In the evening of December 6, th
 
 A few days later, we realized that we were celebrating too early. It seems the prisoner found accomplices, developed and executed an escape plan.
 
-![Battles SQL visualisation]({{ site.baseurl }}/assets/img/sql-optimization/prison_break.png)
+![Battles SQL visualisation](/assets/img/sql-optimization/prison_break.png)
 
 In the morning of December 11, the Postgres query planner decided that using the fresh partial index was no longer beneficial and started using the old one again.
 
@@ -140,20 +143,20 @@ NOT EXISTS (
 
 We are looking for a non-existent result of a subquery. Fetch the first field from the battle participation table, where the battle identifier matches and the participant's profile belongs to our player. I'll try to draw the set described in the subquery.
 
-![Subquery visualisation]({{ site.baseurl }}/assets/img/sql-optimization/subquery_visualisation.png)
+![Subquery visualisation](/assets/img/sql-optimization/subquery_visualisation.png)
 
 It's hard to make sense of, but in the end, this subquery was an attempt to exclude battles in which the player is already participating. We look at the overall explain of the query and see `Planning time: 0.180 ms`, `Execution time: 12.119 ms`. We found an accomplice!
 
 Now it's time for my favorite cheat sheet, which has been circulating on the internet since 2008. Here it is:
 
-![SQL Optimisation cheet sheet]({{ site.baseurl }}/assets/img/sql-optimization/SQL_optimisation_cheet_sheet.png)
+![SQL Optimisation cheet sheet](/assets/img/sql-optimization/SQL_optimisation_cheet_sheet.png)
 
 
 Yes! Whenever a query includes something that should exclude a certain number of records based on data from another table, this meme with a beard and curls should come to mind.
 
 Actually, here's what we need:
 
-![Actual SQL Optimisation cheet sheet]({{ site.baseurl }}/assets/img/sql-optimization/actual_sql_optimisation_cheet_sheet.jpeg)
+![Actual SQL Optimisation cheet sheet](/assets/img/sql-optimization/actual_sql_optimisation_cheet_sheet.jpeg)
 
 Save this picture for yourself, and even better, print it out and hang it in several places in the office.
 

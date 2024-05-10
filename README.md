@@ -1,196 +1,83 @@
-# Grape-Theme
+<!-- markdownlint-disable-next-line -->
+<div align="center">
 
+  <!-- markdownlint-disable-next-line -->
+  # Chirpy Jekyll Theme
 
+  A minimal, responsive, and feature-rich Jekyll theme for technical writing.
 
-## Installation
+  [![Gem Version](https://img.shields.io/gem/v/jekyll-theme-chirpy?color=brightgreen)][gem]&nbsp;
+  [![CI](https://github.com/cotes2020/jekyll-theme-chirpy/actions/workflows/ci.yml/badge.svg?branch=master&event=push)][ci]&nbsp;
+  [![Codacy Badge](https://app.codacy.com/project/badge/Grade/4e556876a3c54d5e8f2d2857c4f43894)][codacy]&nbsp;
+  [![GitHub license](https://img.shields.io/github/license/cotes2020/jekyll-theme-chirpy.svg)][license]&nbsp;
+  [![996.icu](https://img.shields.io/badge/link-996.icu-%23FF4D5B.svg)](https://996.icu)
 
-1. Fork and clone the Grape Theme repo
+  [**Live Demo** →][demo]
 
-   ```
-   git clone https://github.com/naye0ng/Grape-Theme.git
-   ```
+  [![Devices Mockup](https://chirpy-img.netlify.app/commons/devices-mockup.png)][demo]
 
-2. Install Jekyll
+</div>
 
-   ```
-   gem install jekyll
-   ```
+## Features
 
-3. Install the theme's dependencies
+- Dark Theme
+- Localized UI language
+- Pinned Posts on Home Page
+- Hierarchical Categories
+- Trending Tags
+- Table of Contents
+- Last Modified Date
+- Syntax Highlighting
+- Mathematical Expressions
+- Mermaid Diagrams & Flowcharts
+- Dark Mode Images
+- Embed Media
+- Comment Systems
+- Built-in Search
+- Atom Feeds
+- PWA
+- Web Analytics
+- SEO & Performance Optimization
 
-   ```
-   bundle install
-   ```
+## Documentation
 
-4. Update `_config.yml` and `projects.yml` with your own settings.
+To learn how to use, develop, and upgrade the project, please refer to the [Wiki][wiki].
 
-5. Run the Jekyll server
+## Contributing
 
-   ```
-   bundle exec jekyll serve
-   ```
+Contributions (_pull requests_, _issues_, and _discussions_) are what make the open-source community such an amazing place
+to learn, inspire, and create. Any contributions you make are greatly appreciated.
+For details, see the "[Contributing Guidelines][contribute-guide]".
 
+## Credits
 
+### Contributors
 
-## Customizing
+Thanks to [all the contributors][contributors] involved in the development of the project!
 
-Grape-Theme에서는 자랑할 만한 두 가지 기능을 제공합니다. 홈 화면의 프로필 섹션과 포트폴리오 페이지의 프로젝트, 상세 프로필 기능이 그것 입니다. 이 모든 기능들은  `_config.yml` 와 `projects.yml` 파일을 수정하는 것만으로도 충분합니다.
+[![all-contributors](https://contrib.rocks/image?repo=cotes2020/jekyll-theme-chirpy&columns=16)][contributors]
+<sub> — Made with [contrib.rocks](https://contrib.rocks)</sub>
 
-Grape-Theme has two great features: the profile section and the project section of the portfolio page. Just by changing  `_config.yml` and `projects.yml` , you can use all of these features.
+### Third-Party Assets
 
+This project is built on the [Jekyll][jekyllrb] ecosystem and some [great libraries][lib], and is developed using [VS Code][vscode] as well as tools provided by [JetBrains][jetbrains] under a non-commercial open-source software license.
 
-
-### Blog Settings
-
-기본적인 블로그 설정은 `config.yml` 에서 가능합니다.
-
-The blog configuration is available in `config.yml`.
-
-#### Site configuration
-
-```
-baseurl: "{subpath}"
-url : "https://{username}.github.io"
-
-theme_settings :
-  title : {blog title}
-```
-
-
-
-#### Profile Settings
-
-간단한 프로필 정보는 홈 화면에서 출력되며, experience 및 skills 부분은 포트폴리오 페이지에서 함께 보여집니다.
-
-Profile is displayed on the index page, and also experience and skills are displayed on the portfolio page.
-
-```
-profile :
-  image : assets/img/{prorile image}
-    username : {username}
-    description :
-    experience :
-      - start :
-        end :
-        experience : {company name}, {title}
-     skills :
-      - skill :
-        value : 85  # Percent value
-```
-
-
-
-#### Pagination
-
-한 페이지에서 보여질 포스팅 개수를 정의합니다.
-
-Defines the number of posts to be shown on one page.
-
-```
-paginate: 5
-```
-
-
-
-#### Disqus
-
-[Disqus shortname](https://help.disqus.com/en/articles/1717111-what-s-a-shortname)을 설정하고, 포스팅 속성에 `comments : True` 를 추가하면 블로그 글에서 댓글을 사용할 수 있습니다.
-
-you can use the comments by following [document](https://help.disqus.com/en/articles/1717111-what-s-a-shortname) and adding a `comments : True`
-
-```
-disqus_shortname :
-```
-
-
-
-### Portfolio Settings
-
-![home](./assets/img/portfolio.png)
-
-프로젝트 세팅은 `_data/projects.yml`에서 가능합니다.
-
-The Project configuration is available in `_data/projects.yml`.
-
-포트폴리오 페이지에서는 프로젝트 목록과 상세보기를 모달로 지원합니다. 물론 상세보기는 선택적이며, 상세값이 `modal : False`인 경우 모달 버튼은 생성되지 않습니다.
-
-The portfolio page provides projects and detailed views by modal.   If `modal : False` is selected, modal will not be displayed on site.
-
-- **print** :
-
-  -  `print : True` 를 선택한다면, 블로그의 홈 화면에서도 프로젝트의 정보가 출력됩니다.
-  - If `print : True` is selected, it will be displayed on landing page
-
-   ![print project](./assets/img/print-project.png)
-
-- **modal**
-  - `modal : True` 를 선택한다면 모달 버튼이 활성와 됩니다.
-
-  - If `modal : True` is selected, modal will be displayed on the Portfolio page
-
-    ![home](./assets/img/modal.png)
-
-```
-print : True
-modal : True  
-```
-당신의 프로젝트에 대한 링크와 상세 설명을 아래와 같이 추가하세요.
-
-Add details(link, description) about your projects
-
-```
-url : https://github.com/naye0ng/Grape-Theme # Full URL
-image : "portfolio.png" # path: assets/project/
-date : 2019.06.09 - 2019.07.11
-title :
-summary :
-description :  
-# modal contents
-contents :
-  - title :
-    image :      	    
-    description :
-```
-
-
-
-### Colors
-
-블로그의 컬러들은 `_sass/base/_variable.scss` 에서 한번에 변경이 가능합니다.
-
-You can change colors at once. colors are in `_sass/base/_variable.scss`
-
-
-
-## Posts in Grape theme
-
-이 블로그의 모든 포스팅 스타일은  `_sass/base/_utility.scss` 에 정의되어 있으며 [Demo page](https://grape-theme.netlify.com/2019/06/08/markdown-and-html.html)와 [Demo page](https://grape-theme.netlify.com/2019/06/09/grape-theme-style.html)에서 여러 태그들의 출력을 확인할 수 있습니다.
-
-You can confirm how to draw tags at [here](https://grape-theme.netlify.com/2019/06/08/markdown-and-html.html) and [here](https://grape-theme.netlify.com/2019/06/09/grape-theme-style.html)
-
-### Create a new post
-
-1. Create a `.md` inside `_posts` folder
-
-   ```
-   2019-07-11-grape-theme.md
-   ```
-   > 한글로 파일 이름을 만드는 경우, 구글 검색을 붙였을때 문제가 발생합니다. 되로록 영어를 사용해주세요:D
-2. Write the [Front Matter](https://jekyllrb.com/docs/front-matter/) and content in the file.
-
-   ```
-   ---
-   layout: post
-   title: title
-   subtitle : subtitle
-   tags: [tag1, tag2]
-   author:
-   comments :
-   ---
-   ```
-
-
+The avatar and favicon for the project's website are from [ClipartMAX][clipartmax].
 
 ## License
 
-The theme is available as open source under the terms of the [MIT License](https://opensource.org/licenses/MIT).
+This project is published under [MIT License][license].
+
+[gem]: https://rubygems.org/gems/jekyll-theme-chirpy
+[ci]: https://github.com/cotes2020/jekyll-theme-chirpy/actions/workflows/ci.yml?query=event%3Apush+branch%3Amaster
+[codacy]: https://app.codacy.com/gh/cotes2020/jekyll-theme-chirpy/dashboard?utm_source=gh&utm_medium=referral&utm_content=&utm_campaign=Badge_grade
+[license]: https://github.com/cotes2020/jekyll-theme-chirpy/blob/master/LICENSE
+[jekyllrb]: https://jekyllrb.com/
+[clipartmax]: https://www.clipartmax.com/middle/m2i8b1m2K9Z5m2K9_ant-clipart-childrens-ant-cute/
+[demo]: https://cotes2020.github.io/chirpy-demo/
+[wiki]: https://github.com/cotes2020/jekyll-theme-chirpy/wiki
+[contribute-guide]: https://github.com/cotes2020/jekyll-theme-chirpy/blob/master/docs/CONTRIBUTING.md
+[contributors]: https://github.com/cotes2020/jekyll-theme-chirpy/graphs/contributors
+[lib]: https://github.com/cotes2020/chirpy-static-assets
+[vscode]: https://code.visualstudio.com/
+[jetbrains]: https://www.jetbrains.com/?from=jekyll-theme-chirpy
