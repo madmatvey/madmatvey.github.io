@@ -42,12 +42,14 @@ jobs:
       - name: Setup Pages
         id: pages
         uses: actions/configure-pages@v5
-      - name: Build JS assets
-        id: nodejs
+      - name: install node.js
         uses: actions/setup-node@v4
         with:
           node-version: 18
-        run: npm install && npm run build
+      - name: Build JS assets
+        run: npm install
+      - name: Build JS assets 
+        run: npm run build
       - name: Build with Jekyll
         # Outputs to the './_site' directory by default
         run: bundle exec jekyll build --baseurl "${{ steps.pages.outputs.base_path }}"
