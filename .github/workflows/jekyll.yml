@@ -47,7 +47,7 @@ jobs:
       - name: Build JS assets
         run: npm install
       - name: Build JS assets 
-        run: npm run build
+        run: NODE_ENV=production npx rollup -c --bundleConfigAsCjs
       - name: Build with Jekyll
         # Outputs to the './_site' directory by default
         run: bundle exec jekyll build --baseurl "${{ steps.pages.outputs.base_path }}"
