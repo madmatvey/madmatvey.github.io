@@ -18,7 +18,7 @@ Male, originally from Siberia, Russia. Was a radio DJ, sound producer, musician 
 Moved to Samara in 2015 and to Georgia, Tbilisi in early 2022, where I am to this day. Gamarjoba, genatsvale! 
 მადლობა რომ კითხულობთ ამას! 
 
-I have a work permit as an individual entrepreneur in Georgia. I am considering Argentina as my next base camp
+I have a work permit as an individual entrepreneur in Georgia 🇬🇪. I am considering Argentina 🇦🇷 as my next base camp. 
 
 ## Hobbies
 
