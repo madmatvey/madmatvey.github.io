@@ -44,8 +44,10 @@ jobs:
         uses: actions/setup-node@v4
         with:
           node-version: 18.20.2
-      - name: Build JS assets
+      - name: Install JS dependencies
         run: npm install
+      - name: PreBuild JS assets
+        run: npx rimraf assets/js/dist
       - name: Build JS assets 
         run: NODE_ENV=production npx rollup -c --bundleConfigAsCjs
       - name: Build with Jekyll
