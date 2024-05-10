@@ -43,7 +43,7 @@ jobs:
       - name: install node.js
         uses: actions/setup-node@v4
         with:
-          node-version: 18 --lts
+          node-version: 18.20.2
       - name: Build JS assets
         run: npm install
       - name: Build JS assets 
