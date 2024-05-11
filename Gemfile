@@ -29,4 +29,5 @@ group :jekyll_plugins do
   gem "jekyll-sitemap", "~> 1.4"
   gem "jekyll-include-cache", "~> 0.2"
   gem "jekyll-theme-chirpy", "~> 6.5.5"
+  gem "jekyll-google-tag-manager", "~> 1.0"
 end
