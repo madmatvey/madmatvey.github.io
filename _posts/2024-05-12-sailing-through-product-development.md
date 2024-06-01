@@ -7,6 +7,8 @@ author: eugene
 categories: [Blogging, Product Development]
 comments : True
 render_with_liquid: false
+image:
+    path: assets/img/sailing-development/01-intro.png
 ---
 
 ## Parallels Between Steering a Sailboat and Leading a Small Team
@@ -14,8 +16,6 @@ render_with_liquid: false
 
 Brief Overview of My Background:
 I have a deep passion for both sailing and programming, with extensive experience in both fields. As a sailor, I have spent years navigating the seas, learning valuable lessons in decision-making, adaptability, and leadership. In my programming career, I have led small teams in developing innovative software solutions, using my technical expertise and strategic thinking to deliver successful projects.
-
-![Sailing background](/assets/img/sailing-development/01-intro.png){: .normal }
 
 In this blog post, I will explore the similarities between steering a sailboat and leading a small team in product development. Despite their apparent differences, both activities share fundamental principles of planning, execution, and teamwork. By drawing on my experiences in sailing and programming, I aim to provide valuable insights and practical tips for individuals involved in both fields, highlighting the universal lessons that can be learned from these experiences.
 

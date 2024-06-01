@@ -7,13 +7,12 @@ author: eugene
 categories: [Blogging, Tutorial]
 comments : True
 render_with_liquid: false
+image:
+    path: assets/img/sql-optimization/sql-optimization-title.png
 ---
 
 
 I believe that virtually every project using Ruby on Rails and Postgres as its main backend tools is in a constant struggle between development speed, code readability/maintainability, and project performance in production. I will share my experience balancing these three pillars in a case where readability and performance suffered initially, but in the end, I managed to achieve what several talented engineers had unsuccessfully attempted before me.
-
-![SQL optimization article](/assets/img/sql-optimization/sql-optimization-title.png){: .normal }
-__SQL optimization article__
 
 The whole story will take several parts. This is the first one, where I'll talk about what PMDSC is for optimizing SQL queries, share useful tools for measuring query performance in Postgres, and remind you of one useful old cheat sheet that is still relevant.
 
