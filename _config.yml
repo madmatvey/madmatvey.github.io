@@ -14,7 +14,7 @@ timezone: Asia/Tbilisi
 # jekyll-seo-tag settings › https://github.com/jekyll/jekyll-seo-tag/blob/master/docs/usage.md
 # ↓ --------------------------
 
-title: Eugene Leontev # the main title
+title: Eugene Leontev The&nbsp;Engineer # the main title
 
 tagline: Ruby developer. Tech entrepreneur. Sailor. DeeJay. # it will display as the sub-title
 
