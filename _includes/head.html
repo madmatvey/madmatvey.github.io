@@ -1,5 +1,4 @@
 <head>
-  {% gtm head %}
   <meta name="google-adsense-account" content="ca-pub-2496475199370121">
   <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
   <meta name="theme-color" media="(prefers-color-scheme: light)" content="#f7f7f7">
@@ -8,13 +7,19 @@
   <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
   <meta
     name="viewport"
-    content="width=device-width, user-scalable=no initial-scale=1, shrink-to-fit=no, viewport-fit=cover"
+    content="width=device-width, user-scalable=yes initial-scale=1, shrink-to-fit=no, viewport-fit=cover"
   >
-
+  <title>
+    {%- unless page.layout == 'home' -%}
+      {{ page.title | append: ' | ' }}
+    {%- endunless -%}
+    {{ site.title }}
+  </title>
   {%- capture seo_tags -%}
     {% seo title=false %}
   {%- endcapture -%}
 
+  {% gtm head %}
   <!-- Setup Open Graph image -->
 
   {% if page.image %}
@@ -51,13 +56,6 @@
   {% endif %}
 
   {{ seo_tags }}
-
-  <title>
-    {%- unless page.layout == 'home' -%}
-      {{ page.title | append: ' | ' }}
-    {%- endunless -%}
-    {{ site.title }}
-  </title>
 
   {% include_cached favicons.html %}
 
