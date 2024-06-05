@@ -2,11 +2,11 @@
 # -------------------------------------
 # {author_id}:
 #   name: {full name}
-#   twitter: {twitter_of_author}
+#   x: {x_of_author}
 #   url: {homepage_of_author}
 # -------------------------------------
 
 eugene:
   name: Eugene Leontev
-  twitter: EugeneLeontev
+  x: EugeneLeontev
   url: https://github.com/madmatvey/
