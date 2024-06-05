@@ -28,8 +28,8 @@ url: "https://madmatvey.github.io"
 github:
   username: madmatvey # change to your github username
 
-twitter:
-  username: EugeneLeontev # change to your twitter username
+x:
+  username: EugeneLeontev # change to your x username
 
 social:
   # Change to your full name.
@@ -38,7 +38,7 @@ social:
   email: potehin@gmail.com # change to your email address
   links:
     # The first element serves as the copyright owner's link
-    - https://twitter.com/EugeneLeontev # change to your twitter homepage
+    - https://x.com/EugeneLeontev # change to your x homepage
     - https://github.com/madmatvey # change to your github homepage
     # Uncomment below to add more social links
     # - https://www.facebook.com/username
