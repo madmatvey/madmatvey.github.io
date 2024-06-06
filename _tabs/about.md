@@ -8,6 +8,8 @@ order: 4
 
 ## Leader and Ruby Engineer
 
+{% crypto_donations %}
+
 I have over 8 years of experience as a self-driven engineering manager and programmer, specializing in Ruby, with some Golang and JavaScript thrown in. I take pride in owning the results of my product team. As an [ENTP](https://www.16personalities.com/entp-personality), I thrive in debates and love tackling challenges. I've broken things, fixed them, and turned big dreams into reality, all while honing my endurance and perseverance.
 In my work, I focus on solving real problems and delivering measurable value to users. As a leader, I prioritize clean code, solid architecture, and clear communication skills to drive project success. I believe in simplicity and iterative development for building complex systems. I appreciate clear and transparent communication, which is key to project success.
 I'm looking for a long-term partnership with a company that values transparency and puts people first, including engineers, customers, and users.
