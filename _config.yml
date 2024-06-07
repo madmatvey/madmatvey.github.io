@@ -229,3 +229,7 @@ jekyll-archives:
   permalinks:
     tag: /tags/:name/
     category: /categories/:name/
+
+crypto_donations:
+  btc_address: "3FWnoeMEAvGYDCqKNMDpfAAc1LqPPwu5Bd"
+  usdt_address: "TQ7ew8mijfJoQ2qSAqSXmjUx1KbB96oMqc"

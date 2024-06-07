@@ -30,5 +30,5 @@ group :jekyll_plugins do
   gem "jekyll-include-cache", "~> 0.2"
   gem "jekyll-theme-chirpy", "~> 6.5.5"
   gem "jekyll-google-tag-manager", "~> 1.0"
-  gem "jekyll-crypto-donations", path: "../jekyll-crypto-donations"
+  gem "jekyll-crypto-donations", "~> 0.1.1" #, path: "../jekyll-crypto-donations"
 end
