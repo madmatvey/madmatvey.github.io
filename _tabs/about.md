@@ -31,5 +31,8 @@ I am considering 🇦🇷 Argentina as my next base camp.
 
 Feel free to [download my CV](/assets/CV_Eugene_Leontev.SeniorRuby_2024.pdf)
 
+## Donate me
+
+{% crypto_donations I'm on a mission to fulfill my lifelong dream of buying a sailboat and relocating to live in the ocean. Your support can make this dream a reality! Any contribution, big or small, is deeply appreciated and will bring me one step closer to my adventure on the open seas. Thank you for your generosity! %}
 
 
