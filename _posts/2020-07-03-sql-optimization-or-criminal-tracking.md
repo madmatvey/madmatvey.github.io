@@ -7,6 +7,8 @@ author: eugene
 categories: [Blogging, Tutorial]
 comments : True
 render_with_liquid: false
+redirect_from:
+  - /2020/07/03/sql-optimization-or-criminal-tracking.html
 image:
     path: assets/img/sql-optimization/sql-optimization-title.png
 ---
