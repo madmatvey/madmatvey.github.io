@@ -7,6 +7,8 @@ tags: [self-knowledge]
 author: eugene
 comments : True
 render_with_liquid: false
+redirect_from:
+  - /2018/01/18/what-is-entp-and-mbti.html
 image:
     path: assets/img/entp.jpeg
 ---
