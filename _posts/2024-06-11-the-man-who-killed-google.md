@@ -3,7 +3,7 @@ layout: post
 title: "The Man Who Killed Google Search: A Cautionary Tale"
 tags: [google, tech industry, corporate culture, business ethics, leadership, innovation,technology, business strategy, tech news, industry analysis, corporate principles, decision making, tech blog]
 author: eugene
-categories: [Blogging, Technology, Business, Leadership, Innovation, Corporate Culture,Ethics, Industry Analysis, Opinion, Strategy]
+categories: [Leadership, Opinion]
 comments : True
 render_with_liquid: false
 image:

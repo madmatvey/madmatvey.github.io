@@ -4,7 +4,7 @@ title: "Optimizing SQL Queries or Tracking Dangerous Criminals"
 subtitle : Case of Appbooster.com company.
 tags: [sql, optimization, criminal-tracking, postgres, mobile apps backend, ruby on rails]
 author: eugene
-categories: [Blogging, Tutorial]
+categories: [Coding, Tutorial]
 comments : True
 render_with_liquid: false
 redirect_from:

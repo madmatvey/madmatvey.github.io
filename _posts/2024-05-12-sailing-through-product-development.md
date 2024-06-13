@@ -4,7 +4,7 @@ title: "Sailing Through Product Development"
 subtitle : Parallels Between Steering a Sailboat and Leading a Small Team.
 tags: [sailing, leadership, product developing, team building, small team, agile, scrum, product management, product owner, product manager]
 author: eugene
-categories: [Blogging, Product Development]
+categories: [Leadership, Product Development]
 comments : True
 render_with_liquid: false
 image:

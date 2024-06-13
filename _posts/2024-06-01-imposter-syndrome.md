@@ -3,7 +3,7 @@ layout: post
 title: "Imposter Syndrome: How Employers Can Use It Against You"
 tags: [imposter syndrome, workplace culture, employee well-being, toxic work environment,psychological safety, fear-based management, career development, professional growth, mental health, employee empowerment, ethical employment practices, productivity and innovation, constructive feedback, overcoming self-doubt, personal experience in work сulture]
 author: eugene
-categories: [Self-Improvement, Mental Health, Personal Growth, Career Development, Relationships, Tutorial]
+categories: [Self-Knowledge, Mental Health]
 comments : True
 render_with_liquid: false
 image:
