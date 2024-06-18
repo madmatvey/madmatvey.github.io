@@ -6,7 +6,6 @@ crypto storage, crypto humor]
 author: eugene
 categories: [Crypto, Tutorial]
 comments : True
-render_with_liquid: false
 image:
     path: assets/img/aaarrrrgh/crypto-wallet-basic-security.jpeg
 ---
@@ -53,4 +52,5 @@ Many top-notch wallets generate seed phrases to ensure your crypto assets are yo
 
 #### Got No Safe Place? Donate It!
 
-If you're scratching your head, wondering where to stash your crypto treasure safely, worry not! You can always send it my way as a generous donation. Think of it as putting your digital booty in a well-guarded vault. Plus, you'll have the satisfaction of knowing your crypto is in good hands, helping to support more fun and informative content like this. Just [send your coins to the folowing addresses](/about/#donate-me), and I'll make sure they're well taken care of. 
+If you're scratching your head, wondering where to stash your crypto treasure safely, worry not! You can always send it my way as a generous donation. Think of it as putting your digital booty in a well-guarded vault. Plus, you'll have the satisfaction of knowing your crypto is in good hands, helping to support more fun and informative content like this. Just send your coins to the addresses below, and I'll make sure they're well taken care of. 
+{% crypto_donations %}
