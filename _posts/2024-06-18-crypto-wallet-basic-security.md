@@ -6,6 +6,7 @@ crypto storage, crypto humor]
 author: eugene
 categories: [Crypto, Tutorial]
 comments : True
+pin: true
 image:
     path: assets/img/aaarrrrgh/crypto-wallet-basic-security.jpeg
 ---

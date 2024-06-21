@@ -7,6 +7,7 @@ author: eugene
 categories: [Coding, Tutorial]
 comments : True
 render_with_liquid: false
+pin: true
 redirect_from:
   - /2020/07/03/sql-optimization-or-criminal-tracking.html
 image:
