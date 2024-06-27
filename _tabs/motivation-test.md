@@ -9,34 +9,86 @@ order: 5
             font-family: Arial, sans-serif;
             padding: 20px;
         }
-        .motivation-container {
+        #question {
+            font-size: 1.2em;
             margin-bottom: 20px;
         }
-        .motivation-container label {
-            display: block;
-            margin-bottom: 5px;
+        .label-container {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-between;
+            align-items: center;
+            align-content: center;
+            margin-bottom: 20px;
         }
-        .motivation-container input {
-            width: 80%;
+        #low {
+            width: 20%;
+            order: 1;
+            text-align: left;
         }
-        .result {
+        #high {
+            width: 20%;
+            order: 3;
+            text-align: right;
+        }
+        #circles-container {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            flex-wrap: nowrap;
+            width: 60%;
+            order: 2;
+        }
+        .answer-circle {
+            display: inline-block;
+            margin: 0 5px;
+            border-radius: 50%;
+            cursor: pointer;
+            flex-shrink: 0;
+        }
+        .answer-circle:hover {
+            opacity: 0.8;
+        }
+        #result {
             margin-top: 20px;
         }
+        @media (max-width: 768px) {
+            .label-container {
+                flex-direction: raw;
+            }
+            #low {
+                order: 2;
+                width: 40%;
+                margin-top: 15px;
+            }
+            #circles-container {
+                order: 1;
+                width: 100%;
+            }
+            #high {
+                order: 3;
+                width: 40%;
+                margin-top: 15px;
+            }
+        }   
     </style>
 </head>
 <body>
-    <p>Rate each parameter from 1 to 10 based on your motivation:</p>
-    <div class="motivation-container">
-        <p id="question"></p>
-        <input type="range" id="slider" min="1" max="10" value="1">
-    </div>
-    <button id="nextBtn">Next</button>
-    <div class="result" id="result"></div>
-    <button id="submitBtn">Submit</button>
-    <div class="result" id="result">
-        <canvas id="radarChart" width="400" height="400"></canvas>
+    <div id="container">
+        <span id="questions-part">
+            <p id="category"></p>
+            <p id="question"></p>
+            <div class="label-container">
+                <div id="circles-container"></div>
+                <div id="low"></div>
+                <div id="high"></div>
+            </div>
+            <button id="nextBtn" style="display:none;">Next</button>
+        </span>
+        <div id="result">
+            <canvas id="result-chart"></canvas>
+        </div>
     </div>
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
     <script src="/assets/js/motivation-test.js"></script>
 </body>
-</html>
