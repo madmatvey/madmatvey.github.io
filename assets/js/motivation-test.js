@@ -1,46 +1,76 @@
 "use strict";
-// document.addEventListener('DOMContentLoaded', () => {
-//     const parameters = [
-//         'Curiosity', 'Honor', 'Acceptance', 'Mastery', 'Power',
-//         'Freedom', 'Relatedness', 'Order', 'Goal', 'Status'
-//     ];
+var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, generator) {
+    function adopt(value) { return value instanceof P ? value : new P(function (resolve) { resolve(value); }); }
+    return new (P || (P = Promise))(function (resolve, reject) {
+        function fulfilled(value) { try { step(generator.next(value)); } catch (e) { reject(e); } }
+        function rejected(value) { try { step(generator["throw"](value)); } catch (e) { reject(e); } }
+        function step(result) { result.done ? resolve(result.value) : adopt(result.value).then(fulfilled, rejected); }
+        step((generator = generator.apply(thisArg, _arguments || [])).next());
+    });
+};
 let currentCategoryIndex = 0;
 let currentQuestionIndex = 0;
 let answers = {};
 let categories = [];
-document.addEventListener('DOMContentLoaded', () => {
+const secretKey = 'dont give up, keep trying, try it from the other side.';
+document.addEventListener('DOMContentLoaded', () => __awaiter(void 0, void 0, void 0, function* () {
     const questionElement = document.getElementById('question');
     const categoryElement = document.getElementById('category');
     const circlesContainer = document.getElementById('circles-container');
+    const testData = yield fetchTestData();
+    categories = Object.keys(testData).filter(key => key !== 'language');
+    categories.forEach(category => answers[category] = []);
     const lowLabel = document.getElementById('low');
     const highLabel = document.getElementById('high');
     const nextBtn = document.getElementById('nextBtn');
-    fetch('/assets/js/data/motivation-test.json')
-        .then(response => response.json())
-        .then(data => {
-        const testData = data[0];
-        categories = Object.keys(testData).filter(key => key !== 'language');
-        categories.forEach(category => answers[category] = []);
-        showQuestion(testData, categories[currentCategoryIndex], currentQuestionIndex);
-        nextBtn.addEventListener('click', () => {
-            const currentCategory = categories[currentCategoryIndex];
-            answers[currentCategory].push(parseInt(circlesContainer.dataset.selected || "0"));
-            currentQuestionIndex++;
-            if (currentQuestionIndex < testData[currentCategory].length) {
-                showQuestion(testData, currentCategory, currentQuestionIndex);
+    const urlParams = new URLSearchParams(window.location.search);
+    const encryptedResult = urlParams.get('result');
+    nextBtn.addEventListener('click', () => {
+        const currentCategory = categories[currentCategoryIndex];
+        answers[currentCategory].push(parseInt(circlesContainer.dataset.selected || "0"));
+        currentQuestionIndex++;
+        if (currentQuestionIndex < testData[currentCategory].length) {
+            showQuestion(testData, currentCategory, currentQuestionIndex);
+        }
+        else {
+            currentQuestionIndex = 0;
+            currentCategoryIndex++;
+            if (currentCategoryIndex < categories.length) {
+                showQuestion(testData, categories[currentCategoryIndex], currentQuestionIndex);
             }
             else {
-                currentQuestionIndex = 0;
-                currentCategoryIndex++;
-                if (currentCategoryIndex < categories.length) {
-                    showQuestion(testData, categories[currentCategoryIndex], currentQuestionIndex);
-                }
-                else {
-                    showResult();
-                }
+                submitResults();
             }
-        });
+        }
     });
+    if (encryptedResult) {
+        try {
+            const decryptedData = JSON.parse(decrypt(encryptedResult));
+            answers = decryptedData;
+            showResult();
+            return;
+        }
+        catch (error) {
+            console.error('Failed to decrypt data:', error);
+            startTest();
+        }
+    }
+    else {
+        startTest();
+    }
+    function fetchTestData() {
+        return __awaiter(this, void 0, void 0, function* () {
+            return fetch('/assets/js/data/motivation-test.json')
+                .then(response => response.json())
+                .then(data => {
+                let result = data[0];
+                return result;
+            });
+        });
+    }
+    function startTest() {
+        showQuestion(testData, categories[currentCategoryIndex], currentQuestionIndex);
+    }
     function showQuestion(testData, category, index) {
         const selected_question = testData[category][index];
         categoryElement.textContent = category;
@@ -62,14 +92,20 @@ document.addEventListener('DOMContentLoaded', () => {
     }
     function showResult() {
         const resultDiv = document.getElementById('result');
-        resultDiv.innerHTML = '<h2>Results:</h2><canvas id="result-chart"></canvas>';
+        const questionsSpan = document.getElementById('questions-part');
+        resultDiv.style.display = 'block';
+        questionsSpan.style.display = 'none';
         const scores = {};
         categories.forEach(category => {
             const categoryAnswers = answers[category];
             const average = categoryAnswers.reduce((acc, curr) => acc + curr, 0) / categoryAnswers.length;
-            scores[category] = average;
+            scores[category] = Number((Math.round(average * 100) / 100).toFixed(2));
         });
         renderChart(scores);
+        const hashSpan = document.getElementById('result-hash');
+        if (encryptedResult) {
+            hashSpan.innerHTML = encryptedResult;
+        }
         localStorage.setItem('motivationTestResult', JSON.stringify(answers));
     }
     function selectAnswer(value) {
@@ -90,6 +126,26 @@ document.addEventListener('DOMContentLoaded', () => {
         const green = (value - 1) * 28;
         return `rgb(${red}, ${green}, 0, 0.5)`;
     }
+    function submitResults() {
+        localStorage.setItem('motivationTestResult', JSON.stringify(answers));
+        const encryptedResult = encrypt(JSON.stringify(answers));
+        const newUrl = `${window.location.pathname}?result=${encryptedResult}`;
+        window.history.replaceState({}, '', newUrl);
+        showResult();
+    }
+    function encrypt(plainText) {
+        var b64 = CryptoJS.AES.encrypt(plainText, secretKey).toString();
+        var e64 = CryptoJS.enc.Base64.parse(b64);
+        var eHex = e64.toString(CryptoJS.enc.Hex);
+        return eHex;
+    }
+    function decrypt(cipherText) {
+        var reb64 = CryptoJS.enc.Hex.parse(cipherText);
+        var bytes = reb64.toString(CryptoJS.enc.Base64);
+        var decrypt = CryptoJS.AES.decrypt(bytes, secretKey);
+        var plain = decrypt.toString(CryptoJS.enc.Utf8);
+        return plain;
+    }
     function renderChart(scores) {
         const ctx = document.getElementById('result-chart');
         new Chart(ctx, {
@@ -107,38 +163,16 @@ document.addEventListener('DOMContentLoaded', () => {
             options: {
                 scales: {
                     r: {
-                        beginAtZero: true,
-                        max: 9
+                        max: 7,
+                        min: 0,
+                        ticks: {
+                            stepSize: 1
+                        }
                     }
                 }
             }
         });
     }
-    // function drawRadarChart(values: number[]) {
-    //     const data = {
-    //         labels: parameters,
-    //         datasets: [{
-    //             label: 'Motivation Level',
-    //             data: values,
-    //             backgroundColor: 'rgba(255, 99, 132, 0.2)',
-    //             borderColor: 'rgba(255, 99, 132, 1)',
-    //             borderWidth: 1
-    //         }]
-    //     };
-    //     const options = {
-    //         scale: {
-    //             ticks: { beginAtZero: true, max: 10 },
-    //             pointLabels: { fontSize: 14 }
-    //         }
-    //     };
-    //     if (ctx != null) {
-    //         new Chart(ctx, {
-    //             type: 'radar',
-    //             data: data,
-    //             options: options
-    //         });
-    //     }
-    // }
     /**
      * Recursively collects all values from an object.
      * @param obj - The object to collect values from.
@@ -159,4 +193,4 @@ document.addEventListener('DOMContentLoaded', () => {
         }
         return values;
     }
-});
+}));

@@ -1,53 +1,3 @@
-// document.addEventListener('DOMContentLoaded', () => {
-//     const parameters = [
-//         'Curiosity', 'Honor', 'Acceptance', 'Mastery', 'Power',
-//         'Freedom', 'Relatedness', 'Order', 'Goal', 'Status'
-//     ];
-
-//     const submitBtn = document.getElementById('submitBtn') as HTMLButtonElement;
-//     const radarChart = document.getElementById('radarChart') as HTMLCanvasElement;
-//     const ctx = radarChart.getContext('2d');
-
-//     submitBtn.addEventListener('click', () => {
-//         const values = parameters.map(param => {
-//             const input = document.getElementById(param.toLowerCase()) as HTMLInputElement;
-//             return parseInt(input.value);
-//         });
-
-//         drawRadarChart(values);
-//     });
-
-//     function drawRadarChart(values: number[]) {
-//         const data = {
-//             labels: parameters,
-//             datasets: [{
-//                 label: 'Motivation Level',
-//                 data: values,
-//                 backgroundColor: 'rgba(255, 99, 132, 0.2)',
-//                 borderColor: 'rgba(255, 99, 132, 1)',
-//                 borderWidth: 1
-//             }]
-//         };
-
-//         const options = {
-//             scale: {
-//                 ticks: { beginAtZero: true, max: 10 },
-//                 pointLabels: { fontSize: 14 }
-//             }
-//         };
-
-//         if (ctx != null) {
-//             new Chart(ctx, {
-//                 type: 'radar',
-//                 data: data,
-//                 options: options
-//             });
-//         }
-        
-//     }
-// });
-
-
 interface Question {
     question: string;
     low: string;
@@ -73,44 +23,71 @@ let currentCategoryIndex: number = 0;
 let currentQuestionIndex: number = 0;
 let answers: { [category: string]: number[] } = {};
 let categories: string[] = [];
+const secretKey = 'dont give up, keep trying, try it from the other side.';
 
-document.addEventListener('DOMContentLoaded', () => {
+document.addEventListener('DOMContentLoaded', async () => {
     const questionElement = document.getElementById('question') as HTMLParagraphElement;
     const categoryElement = document.getElementById('category') as HTMLParagraphElement;
     const circlesContainer = document.getElementById('circles-container') as HTMLDivElement;
+    const testData: MotivationTest = await fetchTestData();
+    categories = Object.keys(testData).filter(key => key !== 'language');
+    categories.forEach(category => answers[category] = []);
 
     const lowLabel = document.getElementById('low') as HTMLSpanElement;
     const highLabel = document.getElementById('high') as HTMLSpanElement;
 
     const nextBtn = document.getElementById('nextBtn') as HTMLButtonElement;
 
-    fetch('/assets/js/data/motivation-test.json')
-        .then(response => response.json())
-        .then(data => {
-            const testData: MotivationTest = data[0];
-            categories = Object.keys(testData).filter(key => key !== 'language');
-            categories.forEach(category => answers[category] = []);
-            showQuestion(testData, categories[currentCategoryIndex], currentQuestionIndex);
+    const urlParams = new URLSearchParams(window.location.search);
+    const encryptedResult = urlParams.get('result');
 
-            nextBtn.addEventListener('click', () => {
-                const currentCategory = categories[currentCategoryIndex];
-                answers[currentCategory].push(parseInt(circlesContainer.dataset.selected || "0"));
-                currentQuestionIndex++;
+    nextBtn.addEventListener('click', () => {
+        const currentCategory = categories[currentCategoryIndex];
+        
+        answers[currentCategory].push(parseInt(circlesContainer.dataset.selected || "0"));
+        currentQuestionIndex++;
 
-                if (currentQuestionIndex < (testData[currentCategory] as Question[]).length) {
-                    showQuestion(testData, currentCategory, currentQuestionIndex);
-                } else {
-                    currentQuestionIndex = 0;
-                    currentCategoryIndex++;
+        if (currentQuestionIndex < (testData[currentCategory] as Question[]).length) {
+            showQuestion(testData, currentCategory, currentQuestionIndex);
+        } else {
+            currentQuestionIndex = 0;
+            currentCategoryIndex++;
 
-                    if (currentCategoryIndex < categories.length) {
-                        showQuestion(testData, categories[currentCategoryIndex], currentQuestionIndex);
-                    } else {
-                        showResult();
-                    }
-                }
+            if (currentCategoryIndex < categories.length) {
+                showQuestion(testData, categories[currentCategoryIndex], currentQuestionIndex);
+            } else {
+                submitResults();
+            }
+        }
+    });
+
+    if (encryptedResult) {
+        try {
+            const decryptedData = JSON.parse(decrypt(encryptedResult));
+            answers = decryptedData;
+            
+            showResult();
+            return;
+        } catch (error) {
+            console.error('Failed to decrypt data:', error);
+            startTest();
+        }
+    } else {
+        startTest();
+    } 
+
+    async function fetchTestData(): Promise<MotivationTest> {
+        return fetch('/assets/js/data/motivation-test.json')
+            .then(response => response.json())
+            .then(data => {
+                let result = data[0];
+                return result;
             });
-        });
+        }
+
+    function startTest() {
+        showQuestion(testData, categories[currentCategoryIndex], currentQuestionIndex);
+    }
 
     function showQuestion(testData: MotivationTest, category: string, index: number) {
         const selected_question = testData[category][index] as Question;
@@ -134,17 +111,24 @@ document.addEventListener('DOMContentLoaded', () => {
 
     function showResult() {
         const resultDiv = document.getElementById('result') as HTMLDivElement;
-        resultDiv.innerHTML = '<h2>Results:</h2><canvas id="result-chart"></canvas>';
+        const questionsSpan = document.getElementById('questions-part') as HTMLSpanElement;
+        resultDiv.style.display='block';
+        questionsSpan.style.display='none';
 
         const scores: { [category: string]: number } = {};
 
         categories.forEach(category => {
             const categoryAnswers = answers[category];
             const average = categoryAnswers.reduce((acc, curr) => acc + curr, 0) / categoryAnswers.length;
-            scores[category] = average;
+            scores[category] = Number((Math.round(average * 100) / 100).toFixed(2));
         });
-
+        
         renderChart(scores);
+
+        const hashSpan = document.getElementById('result-hash') as HTMLSpanElement;
+        if (encryptedResult) {
+            hashSpan.innerHTML = encryptedResult;
+        }
 
         localStorage.setItem('motivationTestResult', JSON.stringify(answers));
     }
@@ -168,6 +152,29 @@ document.addEventListener('DOMContentLoaded', () => {
         return `rgb(${red}, ${green}, 0, 0.5)`;
     }
 
+    function submitResults() {
+        localStorage.setItem('motivationTestResult', JSON.stringify(answers));
+        const encryptedResult = encrypt(JSON.stringify(answers));
+        const newUrl = `${window.location.pathname}?result=${encryptedResult}`;
+        window.history.replaceState({}, '', newUrl);
+        showResult();
+    }
+
+    function encrypt(plainText: string){
+        var b64 = CryptoJS.AES.encrypt(plainText, secretKey).toString();
+        var e64 = CryptoJS.enc.Base64.parse(b64);
+        var eHex = e64.toString(CryptoJS.enc.Hex);
+        return eHex;
+    }
+    
+    function decrypt(cipherText: string){
+       var reb64 = CryptoJS.enc.Hex.parse(cipherText);
+       var bytes = reb64.toString(CryptoJS.enc.Base64);
+       var decrypt = CryptoJS.AES.decrypt(bytes, secretKey);
+       var plain = decrypt.toString(CryptoJS.enc.Utf8);
+       return plain;
+    }
+
     function renderChart(scores: { [category: string]: number }) {
         const ctx = document.getElementById('result-chart') as HTMLCanvasElement;
         new Chart(ctx, {
@@ -185,8 +192,11 @@ document.addEventListener('DOMContentLoaded', () => {
             options: {
                 scales: {
                     r: {
-                        beginAtZero: true,
-                        max: 9
+                        max: 7,
+                        min: 0,
+                        ticks: {
+                            stepSize: 1
+                        }
                     }
                 }
             }
