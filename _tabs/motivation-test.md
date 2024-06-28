@@ -52,6 +52,15 @@ order: 5
         #result {
             margin-top: 20px;
         }
+        #result-hash {
+            font-family: monospace;
+            background:var(--background-color);
+            padding: 5px;
+            border-radius: 3px;
+            display: inline-block;
+            word-break: break-all;
+            word-wrap: break-word;
+        }
         @media (max-width: 768px) {
             .label-container {
                 flex-direction: raw;
@@ -85,10 +94,14 @@ order: 5
             </div>
             <button id="nextBtn" style="display:none;">Next</button>
         </span>
-        <div id="result">
+        <div id="result" style="display:none;">
+            <h3>Results:</h3>
             <canvas id="result-chart"></canvas>
+            <h3>Hash:</h3>
+            <span id="result-hash"></span>
         </div>
     </div>
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/crypto-js@4.1.1/crypto-js.js"></script>
     <script src="/assets/js/motivation-test.js"></script>
 </body>

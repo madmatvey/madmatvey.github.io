@@ -168,7 +168,9 @@
     ]
   },
   "dependencies": {
+    "@types/crypto-js": "^4.2.2",
     "chart.js": "^4.4.3",
+    "crypto-js": "^4.2.0",
     "typescript": "^5.5.2"
   }
 }
