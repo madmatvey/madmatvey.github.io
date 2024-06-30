@@ -47,7 +47,7 @@ order: 5
             flex-shrink: 0;
         }
         .answer-circle:hover {
-            opacity: 0.8;
+            opacity: 0.5;
         }
         #result {
             margin-top: 20px;
