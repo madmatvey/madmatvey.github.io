@@ -31,6 +31,7 @@
     "@semantic-release/changelog": "^6.0.3",
     "@semantic-release/exec": "^6.0.3",
     "@semantic-release/git": "^10.0.1",
+    "@types/chart.js": "^2.9.41",
     "conventional-changelog-conventionalcommits": "^7.0.2",
     "husky": "^9.0.11",
     "rimraf": "^5.0.5",
@@ -165,5 +166,11 @@
       ],
       "@semantic-release/github"
     ]
+  },
+  "dependencies": {
+    "@types/crypto-js": "^4.2.2",
+    "chart.js": "^4.4.3",
+    "crypto-js": "^4.2.0",
+    "typescript": "^5.5.2"
   }
 }
