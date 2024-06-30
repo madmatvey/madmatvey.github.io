@@ -12,11 +12,6 @@ swcache: true
         "high": "постоянно"
       },
       {
-        "question": "Как часто вы задаете вопросы, чтобы лучше понять окружающий мир?",
-        "low": "никогда",
-        "high": "всегда"
-      },
-      {
         "question": "Насколько вам интересно изучать новые темы, даже если они не связаны с вашей основной деятельностью?",
         "low": "совсем не интересно",
         "high": "очень интересно"
@@ -32,29 +27,9 @@ swcache: true
         "high": "очень готов"
       },
       {
-        "question": "Как вы относитесь к экспериментам и пробам новых методов работы или обучения?",
-        "low": "не люблю эксперименты",
-        "high": "очень люблю эксперименты"
-      },
-      {
         "question": "Как часто вы читаете книги, статьи или смотрите видео на темы, которые вам ранее не были знакомы?",
         "low": "никогда",
         "high": "очень часто"
-      },
-      {
-        "question": "Насколько вы открыты для новых идей и мнений, даже если они противоречат вашим текущим убеждениям?",
-        "low": "не открыт",
-        "high": "очень открыт"
-      },
-      {
-        "question": "Как часто вы ищете возможности для участия в семинарах, курсах или конференциях по темам, которые вас интересуют?",
-        "low": "никогда",
-        "high": "постоянно"
-      },
-      {
-        "question": "Насколько вам нравится обсуждать новые идеи и концепции с другими людьми?",
-        "low": "совсем не нравится",
-        "high": "очень нравится"
       }
     ],
     "honor": [
@@ -74,37 +49,12 @@ swcache: true
         "high": "очень важно"
       },
       {
-        "question": "Как вы относитесь к ситуациям, когда нужно принять трудное решение, но оно соответствует вашим моральным принципам?",
-        "low": "избегаю таких ситуаций",
-        "high": "принимаю такие решения"
-      },
-      {
         "question": "Насколько вам важно, чтобы другие люди воспринимали вас как честного и заслуживающего доверия человека?",
         "low": "не важно",
         "high": "очень важно"
       },
       {
-        "question": "Как часто вы готовы поступиться личными интересами ради соблюдения моральных принципов?",
-        "low": "никогда",
-        "high": "очень часто"
-      },
-      {
-        "question": "Насколько для вас важно получать признание и уважение от коллег и близких за ваши поступки и достижения?",
-        "low": "не важно",
-        "high": "очень важно"
-      },
-      {
         "question": "Как часто вы стремитесь поступать правильно, даже если это может быть неудобно или непопулярно?",
-        "low": "никогда",
-        "high": "всегда"
-      },
-      {
-        "question": "Насколько для вас важно быть честным с самим собой, даже если это может быть сложно?",
-        "low": "не важно",
-        "high": "очень важно"
-      },
-      {
-        "question": "Как часто вы ощущаете, что ваши действия и решения соответствуют вашим внутренним убеждениям и принципам?",
         "low": "никогда",
         "high": "всегда"
       }
@@ -126,39 +76,14 @@ swcache: true
         "high": "очень важно"
       },
       {
-        "question": "Как вы реагируете на критику и отрицательные отзывы в ваш адрес?",
-        "low": "совершенно не влияет",
-        "high": "очень сильно влияет"
-      },
-      {
         "question": "Насколько вам важно чувствовать себя частью команды и быть принятым в коллективе?",
         "low": "не важно",
         "high": "очень важно"
       },
       {
-        "question": "Как часто вы ищете подтверждения своих идей и решений у других людей?",
-        "low": "никогда",
-        "high": "всегда"
-      },
-      {
         "question": "Насколько для вас важно, чтобы ваше мнение учитывали при принятии коллективных решений?",
         "low": "не важно",
         "high": "очень важно"
-      },
-      {
-        "question": "Как вы относитесь к похвале и публичному признанию ваших заслуг?",
-        "low": "совершенно не важно",
-        "high": "очень важно"
-      },
-      {
-        "question": "Насколько для вас важно, чтобы ваша работа и вклад были признаны и отмечены формально, например, наградами или продвижением по службе?",
-        "low": "не важно",
-        "high": "очень важно"
-      },
-      {
-        "question": "Как часто вы ощущаете удовлетворение и мотивацию от того, что другие люди ценят и признают ваш вклад?",
-        "low": "никогда",
-        "high": "всегда"
       }
     ],
     "mastery": [
@@ -178,34 +103,9 @@ swcache: true
         "high": "очень важно"
       },
       {
-        "question": "Как вы реагируете на возможность получить новые знания или пройти дополнительное обучение?",
-        "low": "не интересно",
-        "high": "очень интересно"
-      },
-      {
         "question": "Насколько для вас важно справляться с трудными задачами и решать сложные проблемы в работе?",
         "low": "не важно",
         "high": "очень важно"
-      },
-      {
-        "question": "Как часто вы стремитесь превзойти собственные достижения и установить новые стандарты в своей работе?",
-        "low": "никогда",
-        "high": "очень часто"
-      },
-      {
-        "question": "Насколько для вас важно получать обратную связь, которая помогает вам становиться лучше в своей работе?",
-        "low": "не важно",
-        "high": "очень важно"
-      },
-      {
-        "question": "Как вы относитесь к критике, направленной на улучшение ваших навыков и компетентности?",
-        "low": "негативно",
-        "high": "очень позитивно"
-      },
-      {
-        "question": "Как часто вы чувствуете удовлетворение от того, что успешно освоили новый навык или метод работы?",
-        "low": "никогда",
-        "high": "очень часто"
       },
       {
         "question": "Насколько для вас важно достигать высокого уровня мастерства в своей профессиональной деятельности?",
@@ -213,7 +113,7 @@ swcache: true
         "high": "очень важно"
       }
     ],
-    "power": [
+    "leadership": [
       {
         "question": "Насколько для вас важно иметь возможность принимать решения, которые влияют на других людей или на компанию?",
         "low": "совсем не важно",
@@ -230,39 +130,14 @@ swcache: true
         "high": "очень важно"
       },
       {
-        "question": "Как вы реагируете на возможность взять на себя ответственность за важные решения и проекты?",
-        "low": "неинтересно",
-        "high": "очень интересно"
-      },
-      {
         "question": "Насколько для вас важно быть признанным лидером и иметь уважение со стороны коллег и подчиненных?",
         "low": "не важно",
         "high": "очень важно"
       },
       {
-        "question": "Как часто вы стремитесь к тому, чтобы ваши идеи и предложения были приняты и реализованы?",
-        "low": "никогда",
-        "high": "всегда"
-      },
-      {
-        "question": "Насколько вам важно контролировать выполнение задач и процессов, за которые вы отвечаете?",
+        "question": "Насколько вам важно иметь полномочия для внесения изменений и улучшений в рабочие процессы?",
         "low": "не важно",
         "high": "очень важно"
-      },
-      {
-        "question": "Как вы относитесь к возможности влиять на распределение ресурсов и определение приоритетов в работе?",
-        "low": "совершенно неинтересно",
-        "high": "очень интересно"
-      },
-      {
-        "question": "Насколько для вас важно иметь полномочия для внесения изменений и улучшений в рабочие процессы?",
-        "low": "не важно",
-        "high": "очень важно"
-      },
-      {
-        "question": "Как часто вы чувствуете удовлетворение от того, что можете руководить и направлять других людей?",
-        "low": "никогда",
-        "high": "очень часто"
       }
     ],
     "freedom": [
@@ -282,39 +157,14 @@ swcache: true
         "high": "очень важно"
       },
       {
-        "question": "Как вы реагируете на возможность выбирать проекты и задачи, которые вам интересны?",
-        "low": "неинтересно",
-        "high": "очень интересно"
-      },
-      {
         "question": "Насколько для вас важно иметь право принимать самостоятельные решения в рамках своей работы?",
         "low": "не важно",
         "high": "очень важно"
       },
       {
-        "question": "Как часто вы чувствуете удовлетворение от того, что можете самостоятельно решать, как выполнять свою работу?",
-        "low": "никогда",
-        "high": "очень часто"
-      },
-      {
         "question": "Насколько для вас важно иметь гибкий график работы и возможность работать удаленно?",
         "low": "не важно",
         "high": "очень важно"
-      },
-      {
-        "question": "Как вы относитесь к ответственности за свои решения и действия при наличии полной свободы в работе?",
-        "low": "не готов",
-        "high": "очень готов"
-      },
-      {
-        "question": "Насколько для вас важно иметь возможность экспериментировать и пробовать новые подходы в работе?",
-        "low": "не важно",
-        "high": "очень важно"
-      },
-      {
-        "question": "Как часто вы стремитесь к тому, чтобы ваши идеи и предложения были приняты и реализованы без внешнего вмешательства?",
-        "low": "никогда",
-        "high": "всегда"
       }
     ],
     "relatedness": [
@@ -334,37 +184,12 @@ swcache: true
         "high": "очень важно"
       },
       {
-        "question": "Как вы реагируете на возможность участвовать в командных мероприятиях и социальных активностях на работе?",
-        "low": "неинтересно",
-        "high": "очень интересно"
-      },
-      {
         "question": "Насколько для вас важно получать поддержку и понимание от коллег и руководства?",
         "low": "не важно",
         "high": "очень важно"
       },
       {
         "question": "Как часто вы ощущаете удовлетворение от того, что можете помочь коллегам или внести свой вклад в общее дело?",
-        "low": "никогда",
-        "high": "очень часто"
-      },
-      {
-        "question": "Насколько для вас важно обсуждать рабочие вопросы и делиться идеями с коллегами?",
-        "low": "не важно",
-        "high": "очень важно"
-      },
-      {
-        "question": "Как вы относитесь к возможности работать в коллективе, где все поддерживают друг друга?",
-        "low": "не важно",
-        "high": "очень важно"
-      },
-      {
-        "question": "Насколько для вас важно ощущать признание и одобрение со стороны команды?",
-        "low": "не важно",
-        "high": "очень важно"
-      },
-      {
-        "question": "Как часто вы чувствуете, что ваши коллеги и руководство понимают и ценят ваши усилия и вклад?",
         "low": "никогда",
         "high": "очень часто"
       }
@@ -386,39 +211,14 @@ swcache: true
         "high": "очень важно"
       },
       {
-        "question": "Как вы реагируете на непредвиденные изменения в рабочем графике или задачах?",
-        "low": "совершенно спокойно",
-        "high": "очень стрессово"
-      },
-      {
         "question": "Насколько для вас важно иметь четкое понимание своих обязанностей и задач?",
         "low": "не важно",
         "high": "очень важно"
       },
       {
-        "question": "Как часто вы чувствуете удовлетворение от того, что можете поддерживать порядок на рабочем месте и в документации?",
-        "low": "никогда",
-        "high": "очень часто"
-      },
-      {
         "question": "Насколько вам важно следовать плану и графику работы без отклонений?",
         "low": "не важно",
         "high": "очень важно"
-      },
-      {
-        "question": "Как вы относитесь к необходимости систематически организовывать информацию и ресурсы?",
-        "low": "неинтересно",
-        "high": "очень интересно"
-      },
-      {
-        "question": "Насколько для вас важно иметь предсказуемую и стабильную рабочую среду?",
-        "low": "не важно",
-        "high": "очень важно"
-      },
-      {
-        "question": "Как часто вы стремитесь к тому, чтобы все процессы и процедуры были упорядочены и стандартизированы?",
-        "low": "никогда",
-        "high": "очень часто"
       }
     ],
     "goal": [
@@ -438,39 +238,14 @@ swcache: true
         "high": "очень важно"
       },
       {
-        "question": "Как вы реагируете на возможность участвовать в проектах или задачах, которые имеют конкретные цели и задачи?",
-        "low": "неинтересно",
-        "high": "очень интересно"
-      },
-      {
         "question": "Насколько для вас важно иметь ощущение, что ваша работа имеет смысл и ведет к достижению целей?",
         "low": "не важно",
         "high": "очень важно"
       },
       {
-        "question": "Как часто вы переосмысливаете свои цели и стремитесь к их корректировке в соответствии с текущей ситуацией?",
-        "low": "никогда",
-        "high": "очень часто"
-      },
-      {
         "question": "Насколько для вас важно иметь четкий план действий для достижения ваших целей?",
         "low": "не важно",
         "high": "очень важно"
-      },
-      {
-        "question": "Как вы относитесь к тому, чтобы иметь долгосрочные и краткосрочные цели для саморазвития?",
-        "low": "неинтересно",
-        "high": "очень интересно"
-      },
-      {
-        "question": "Насколько для вас важно иметь внутреннюю мотивацию для достижения своих целей, а не только внешние стимулы?",
-        "low": "не важно",
-        "high": "очень важно"
-      },
-      {
-        "question": "Как часто вы чувствуете удовлетворение от того, что двигаетесь к достижению своих целей?",
-        "low": "никогда",
-        "high": "очень часто"
       }
     ],
     "status": [
@@ -490,39 +265,14 @@ swcache: true
         "high": "очень важно"
       },
       {
-        "question": "Как вы реагируете на возможность занимать высокие позиции или получать престижные награды?",
-        "low": "неинтересно",
-        "high": "очень интересно"
-      },
-      {
-        "question": "Насколько для вас важно иметь возможность демонстрировать свой статус через внешние показатели (материальные блага, социальное признание и т.д.)?",
-        "low": "не важно",
-        "high": "очень важно"
-      },
-      {
         "question": "Как часто вы чувствуете удовлетворение от того, что ваш статус признан и уважаем в вашем окружении?",
         "low": "никогда",
         "high": "очень часто"
       },
       {
-        "question": "Насколько для вас важно иметь возможность влиять на принятие решений и контролировать ресурсы?",
+        "question": "Насколько для вас важно иметь возможность демонстрировать свой статус через внешние показатели (материальные блага, социальное признание и т.д.)?",
         "low": "не важно",
         "high": "очень важно"
-      },
-      {
-        "question": "Как вы относитесь к тому, чтобы ваш статус был связан с вашими профессиональными достижениями и успехами?",
-        "low": "неинтересно",
-        "high": "очень интересно"
-      },
-      {
-        "question": "Насколько для вас важно иметь возможность общаться и взаимодействовать с людьми, которые имеют высокий статус?",
-        "low": "не важно",
-        "high": "очень важно"
-      },
-      {
-        "question": "Как часто вы стремитесь к тому, чтобы ваш статус был признан и уважаем как в профессиональной, так и в личной жизни?",
-        "low": "никогда",
-        "high": "очень часто"
       }
     ],
     "comfort": [
@@ -532,19 +282,9 @@ swcache: true
         "high": "очень важно"
       },
       {
-        "question": "Как часто вы стремитесь к тому, чтобы ваша жизнь была безопасной и предсказуемой?",
-        "low": "никогда",
-        "high": "всегда"
-      },
-      {
         "question": "Насколько вам важно избегать стрессовых ситуаций и неудобств в повседневной жизни?",
         "low": "не важно",
         "high": "очень важно"
-      },
-      {
-        "question": "Как вы реагируете на возможность иметь стабильный и предсказуемый доход?",
-        "low": "неинтересно",
-        "high": "очень интересно"
       },
       {
         "question": "Насколько для вас важно иметь удобные условия работы (комфортное рабочее место, хороший график и т.д.)?",
@@ -560,22 +300,307 @@ swcache: true
         "question": "Насколько для вас важно иметь возможность отдыхать и расслабляться после трудового дня?",
         "low": "не важно",
         "high": "очень важно"
-      },
-      {
-        "question": "Как вы относитесь к возможности иметь доступ к удобствам и развлечениям для отдыха и развлечений?",
-        "low": "неинтересно",
-        "high": "очень интересно"
-      },
-      {
-        "question": "Насколько для вас важно иметь возможность выбирать, как проводить свое свободное время и отдых?",
-        "low": "не важно",
-        "high": "очень важно"
-      },
-      {
-        "question": "Как часто вы стремитесь к тому, чтобы ваша жизнь была максимально комфортной и удобной?",
-        "low": "никогда",
-        "high": "очень часто"
       }
     ]
-  }
+  },
+  {
+    "language": "en",
+    "curiosity": [
+      {
+        "question": "How often do you find time to learn something new outside of work or study?",
+        "low": "never",
+        "high": "constantly"
+      },
+      {
+        "question": "How interested are you in learning new topics, even if they are not related to your main activity?",
+        "low": "not interested at all",
+        "high": "very interested"
+      },
+      {
+        "question": "How often do you participate in projects or events that go beyond your comfort zone?",
+        "low": "never",
+        "high": "always"
+      },
+      {
+        "question": "How willing are you to spend time and effort seeking information that you don't know yet?",
+        "low": "not willing",
+        "high": "very willing"
+      },
+      {
+        "question": "How often do you read books, articles, or watch videos on topics that were previously unfamiliar to you?",
+        "low": "never",
+        "high": "very often"
+      }
+    ],
+    "honor": [
+      {
+        "question": "How important is it for you to be honest and fair in your actions?",
+        "low": "not important at all",
+        "high": "very important"
+      },
+      {
+        "question": "How often do you feel pride in your achievements and actions?",
+        "low": "never",
+        "high": "always"
+      },
+      {
+        "question": "How important is it for you to keep your word and fulfill promises?",
+        "low": "not important",
+        "high": "very important"
+      },
+      {
+        "question": "How important is it for you that others perceive you as an honest and trustworthy person?",
+        "low": "not important",
+        "high": "very important"
+      },
+      {
+        "question": "How often do you strive to do the right thing, even if it may be inconvenient or unpopular?",
+        "low": "never",
+        "high": "always"
+      }
+    ],
+    "acceptance": [
+      {
+        "question": "How important is it for you that your achievements and efforts are noticed and appreciated by others?",
+        "low": "not important at all",
+        "high": "very important"
+      },
+      {
+        "question": "How often do you strive to be recognized and respected in your team?",
+        "low": "never",
+        "high": "always"
+      },
+      {
+        "question": "How important is it for you to receive positive feedback and approval from colleagues and management?",
+        "low": "not important",
+        "high": "very important"
+      },
+      {
+        "question": "How important is it for you to feel part of a team and be accepted by your peers?",
+        "low": "not important",
+        "high": "very important"
+      },
+      {
+        "question": "How important is it for you that your opinion is considered when making collective decisions?",
+        "low": "not important",
+        "high": "very important"
+      }
+    ],
+    "mastery": [
+      {
+        "question": "How important is it for you to constantly improve your professional skills and knowledge?",
+        "low": "not important at all",
+        "high": "very important"
+      },
+      {
+        "question": "How often do you set tasks and goals aimed at developing your competence?",
+        "low": "never",
+        "high": "always"
+      },
+      {
+        "question": "How important is it for you to be an expert in your field?",
+        "low": "not important",
+        "high": "very important"
+      },
+      {
+        "question": "How important is it for you to handle difficult tasks and solve complex problems at work?",
+        "low": "not important",
+        "high": "very important"
+      },
+      {
+        "question": "How important is it for you to achieve a high level of mastery in your professional activities?",
+        "low": "not important",
+        "high": "very important"
+      }
+    ],
+    "leadership": [
+      {
+        "question": "How important is it for you to have the ability to make decisions that affect other people or the company?",
+        "low": "not important at all",
+        "high": "very important"
+      },
+      {
+        "question": "How often do you strive to take on leadership positions and roles that allow you to manage a team?",
+        "low": "never",
+        "high": "always"
+      },
+      {
+        "question": "How important is it for you to have influence on the strategic development of the company or project?",
+        "low": "not important",
+        "high": "very important"
+      },
+      {
+        "question": "How important is it for you to be recognized as a leader and respected by colleagues and subordinates?",
+        "low": "not important",
+        "high": "very important"
+      },
+      {
+        "question": "How important is it for you to have the authority to make changes and improvements to work processes?",
+        "low": "not important",
+        "high": "very important"
+      }
+    ],
+    "freedom": [
+      {
+        "question": "How important is it for you to have the freedom to choose methods and approaches to your work?",
+        "low": "not important at all",
+        "high": "very important"
+      },
+      {
+        "question": "How often do you strive to independently plan your work time and tasks?",
+        "low": "never",
+        "high": "always"
+      },
+      {
+        "question": "How important is it for you to work autonomously, without constant supervision from management?",
+        "low": "not important",
+        "high": "very important"
+      },
+      {
+        "question": "How important is it for you to have the right to make independent decisions within your work?",
+        "low": "not important",
+        "high": "very important"
+      },
+      {
+        "question": "How important is it for you to have a flexible work schedule and the ability to work remotely?",
+        "low": "not important",
+        "high": "very important"
+      }
+    ],
+    "relatedness": [
+      {
+        "question": "How important is it for you to feel part of a team or collective?",
+        "low": "not important at all",
+        "high": "very important"
+      },
+      {
+        "question": "How often do you strive to establish and maintain good relationships with colleagues?",
+        "low": "never",
+        "high": "always"
+      },
+      {
+        "question": "How important is it for you that there is a friendly and supportive atmosphere in the team?",
+        "low": "not important",
+        "high": "very important"
+      },
+      {
+        "question": "How important is it for you to receive support and understanding from colleagues and management?",
+        "low": "not important",
+        "high": "very important"
+      },
+      {
+        "question": "How often do you feel satisfaction from being able to help colleagues or contribute to the common cause?",
+        "low": "never",
+        "high": "very often"
+      }
+    ],
+    "order": [
+      {
+        "question": "How important is it for you that your work process is clearly organized and structured?",
+        "low": "not important at all",
+        "high": "very important"
+      },
+      {
+        "question": "How often do you strive to have all tasks and projects thoroughly planned?",
+        "low": "never",
+        "high": "always"
+      },
+      {
+        "question": "How important is it for you to adhere to established rules and procedures at work?",
+        "low": "not important",
+        "high": "very important"
+      },
+      {
+        "question": "How important is it for you to have a clear understanding of your duties and tasks?",
+        "low": "not important",
+        "high": "very important"
+      },
+      {
+        "question": "How important is it for you to follow the work plan and schedule without deviations?",
+        "low": "not important",
+        "high": "very important"
+      }
+    ],
+    "goal": [
+      {
+        "question": "How important is it for you to have a clear understanding of your goals and direction in life?",
+        "low": "not important at all",
+        "high": "very important"
+      },
+      {
+        "question": "How often do you set specific goals for yourself and strive to achieve them?",
+        "low": "never",
+        "high": "always"
+      },
+      {
+        "question": "How important is it for you to have a clear understanding of what you are striving for in your career or personal life?",
+        "low": "not important",
+        "high": "very important"
+      },
+      {
+        "question": "How important is it for you to have a sense that your work has meaning and leads to the achievement of goals?",
+        "low": "not important",
+        "high": "very important"
+      },
+      {
+        "question": "How important is it for you to have a clear action plan to achieve your goals?",
+        "low": "not important",
+        "high": "very important"
+      }
+    ],
+    "status": [
+      {
+        "question": "How important is it for you to have a high status in society or in your professional field?",
+        "low": "not important at all",
+        "high": "very important"
+      },
+      {
+        "question": "How often do you strive to achieve a position or role that gives you a high status?",
+        "low": "never",
+        "high": "always"
+      },
+      {
+        "question": "How important is it for you that others perceive you as a successful and respected person?",
+        "low": "not important",
+        "high": "very important"
+      },
+      {
+        "question": "How important is it for you to achieve recognition and prestige in your field of activity?",
+        "low": "not important",
+        "high": "very important"
+      },
+      {
+        "question": "How important is it for you to have a high social or professional position?",
+        "low": "not important",
+        "high": "very important"
+      }
+    ],
+    "comfort": [
+      {
+        "question": "How important is it for you to feel comfortable and at ease in your surroundings?",
+        "low": "not important at all",
+        "high": "very important"
+      },
+      {
+        "question": "How important is it to you to avoid stressful situations and discomfort in your daily life?",
+        "low": "never",
+        "high": "always"
+      },
+      {
+        "question": "How important is it for you to have convenient working conditions (comfortable workplace, good schedule, etc.)?",
+        "low": "not important",
+        "high": "very important"
+      },
+      {
+        "question": "How often do you feel satisfied that your life and work bring you comfort and pleasure?",
+        "low": "never",
+        "high": "very often"
+      },
+      {
+        "question": "How important is it to you to be able to rest and relax after a day of work?",
+        "low": "not important",
+        "high": "very important"
+      }
+    ]
+  }  
 ]
