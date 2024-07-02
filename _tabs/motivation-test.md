@@ -61,6 +61,45 @@ order: 5
             word-break: break-all;
             word-wrap: break-word;
         }
+        .text-result {
+            margin: 0.5em;
+            display: inline-block;
+        }
+        .top-1 {
+            font-size: 2.5em;
+            color: rgba(255, 255, 255, 1.0); /* Полная насыщенность */
+            font-weight: bold;
+        }
+        .top-2 {
+            font-size: 2.3em;
+            color: rgba(255, 255, 255, 0.9); /* 90% насыщенности */
+            font-weight: bold;
+        }
+        .top-3 {
+            font-size: 2.1em;
+            color: rgba(255, 255, 255, 0.8); /* 80% насыщенности */
+            font-weight: bold;
+        }
+        .top-4 {
+            font-size: 1.9em;
+            color: rgba(255, 255, 255, 0.7); /* 70% насыщенности */
+            font-weight: bold;
+        }
+        .top-5 {
+            font-size: 1.7em;
+            color: rgba(255, 255, 255, 0.6); /* 60% насыщенности */
+            font-weight: bold;
+        }
+        .top-6 {
+            font-size: 1.5em;
+            color: rgba(255, 255, 255, 0.5); /* 50% насыщенности */
+            font-weight: normal;
+        }
+        .top-7 {
+            font-size: 1.3em;
+            color: rgba(255, 255, 255, 0.4); /* 40% насыщенности */
+            font-weight: normal;
+        }
         @media (max-width: 768px) {
             .label-container {
                 flex-direction: raw;
@@ -96,6 +135,8 @@ order: 5
         </span>
         <div id="result" style="display:none;">
             <h3>Results:</h3>
+            <span id="result-text"></span>
+            <h3>Chart:</h3>
             <canvas id="result-chart"></canvas>
             <h3>Hash:</h3>
             <span id="result-hash"></span>

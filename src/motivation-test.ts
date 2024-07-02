@@ -29,7 +29,8 @@ document.addEventListener('DOMContentLoaded', async () => {
     const questionElement = document.getElementById('question') as HTMLParagraphElement;
     const categoryElement = document.getElementById('category') as HTMLParagraphElement;
     const circlesContainer = document.getElementById('circles-container') as HTMLDivElement;
-    const testData: MotivationTest = await fetchTestData();
+    
+    let testData: MotivationTest = await fetchTestData();
     categories = Object.keys(testData).filter(key => key !== 'language');
     categories.forEach(category => answers[category] = []);
 
@@ -39,7 +40,22 @@ document.addEventListener('DOMContentLoaded', async () => {
     const nextBtn = document.getElementById('nextBtn') as HTMLButtonElement;
 
     const urlParams = new URLSearchParams(window.location.search);
-    const encryptedResult = urlParams.get('result');
+    let encryptedResult = urlParams.get('result');
+
+    if (encryptedResult) {
+        try {
+            const decryptedData = JSON.parse(decrypt(encryptedResult));
+            answers = decryptedData;
+            
+            showResult();
+            return;
+        } catch (error) {
+            console.error('Failed to decrypt data:', error);
+            startTest();
+        }
+    } else {
+        startTest();
+    }
 
     nextBtn.addEventListener('click', () => {
         const currentCategory = categories[currentCategoryIndex];
@@ -61,23 +77,8 @@ document.addEventListener('DOMContentLoaded', async () => {
         }
     });
 
-    if (encryptedResult) {
-        try {
-            const decryptedData = JSON.parse(decrypt(encryptedResult));
-            answers = decryptedData;
-            
-            showResult();
-            return;
-        } catch (error) {
-            console.error('Failed to decrypt data:', error);
-            startTest();
-        }
-    } else {
-        startTest();
-    } 
-
-    async function fetchTestData(): Promise<MotivationTest> {
-        return fetch('/assets/js/data/motivation-test.json')
+    async function fetchTestData(): Promise<MotivationTest> {        
+        return fetch(`/assets/js/data/motivation-test/motivation-test-questions-en.json`)
             .then(response => response.json())
             .then(data => {
                 let result = data[0];
@@ -91,7 +92,7 @@ document.addEventListener('DOMContentLoaded', async () => {
 
     function showQuestion(testData: MotivationTest, category: string, index: number) {
         const selected_question = testData[category][index] as Question;
-        categoryElement.textContent = category;
+        categoryElement.textContent = capitalizeFirstLetter(category);
         questionElement.textContent = selected_question.question;
         lowLabel.textContent = selected_question.low;
         highLabel.textContent = selected_question.high;
@@ -109,19 +110,31 @@ document.addEventListener('DOMContentLoaded', async () => {
         }
     }
 
-    function showResult() {
+    function showResult() {    
         const resultDiv = document.getElementById('result') as HTMLDivElement;
         const questionsSpan = document.getElementById('questions-part') as HTMLSpanElement;
+        const resultText = document.getElementById('result-text') as HTMLSpanElement;
+
         resultDiv.style.display='block';
         questionsSpan.style.display='none';
 
         const scores: { [category: string]: number } = {};
+        let htmlTextResutls: string = '';
 
         categories.forEach(category => {
             const categoryAnswers = answers[category];
             const average = categoryAnswers.reduce((acc, curr) => acc + curr, 0) / categoryAnswers.length;
             scores[category] = Number((Math.round(average * 100) / 100).toFixed(2));
         });
+        const categoriesSortedByResult = Object.keys(scores).sort(function(a,b){return scores[b]-scores[a]})
+        categoriesSortedByResult.forEach((category) => {
+            htmlTextResutls += `
+            <span class="text-result top-${8 - Math.round(scores[category])}">
+                ${capitalizeFirstLetter(category)}: ${Number(Math.round(100 * scores[category]) / 7).toFixed(0)}%
+            </span>`;
+        });
+        
+        resultText.innerHTML = htmlTextResutls;
         
         renderChart(scores);
 
@@ -152,9 +165,13 @@ document.addEventListener('DOMContentLoaded', async () => {
         return `rgb(${red}, ${green}, 0, 0.5)`;
     }
 
+    function capitalizeFirstLetter(string: string) {
+        return string.charAt(0).toUpperCase() + string.slice(1).toLowerCase();
+      }
+
     function submitResults() {
         localStorage.setItem('motivationTestResult', JSON.stringify(answers));
-        const encryptedResult = encrypt(JSON.stringify(answers));
+        encryptedResult = encrypt(JSON.stringify(answers));
         const newUrl = `${window.location.pathname}?result=${encryptedResult}`;
         window.history.replaceState({}, '', newUrl);
         showResult();
@@ -192,36 +209,20 @@ document.addEventListener('DOMContentLoaded', async () => {
             options: {
                 scales: {
                     r: {
+                        grid: {
+                            circular: true,
+                            color: "#003366",
+                            // drawTicks: false
+                        },
                         max: 7,
                         min: 0,
                         ticks: {
-                            stepSize: 1
-                        }
+                            display: false
+                        },
+                        
                     }
                 }
             }
         });
-    }
-
-    /**
-     * Recursively collects all values from an object.
-     * @param obj - The object to collect values from.
-     * @returns An array of values.
-     */
-    function getAllValues(obj: any): any[] {
-        let values: any[] = [];
-        
-        for (const key in obj) {
-            if (obj.hasOwnProperty(key)) {
-                const value = obj[key];
-                if (typeof value === 'object' && !Array.isArray(value)) {
-                    values = values.concat(getAllValues(value));
-                } else {
-                    values.push(value);
-                }
-            }
-        }
-
-        return values;
     }
 });

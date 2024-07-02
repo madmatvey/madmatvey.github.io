@@ -17,14 +17,29 @@ document.addEventListener('DOMContentLoaded', () => __awaiter(void 0, void 0, vo
     const questionElement = document.getElementById('question');
     const categoryElement = document.getElementById('category');
     const circlesContainer = document.getElementById('circles-container');
-    const testData = yield fetchTestData();
+    let testData = yield fetchTestData();
     categories = Object.keys(testData).filter(key => key !== 'language');
     categories.forEach(category => answers[category] = []);
     const lowLabel = document.getElementById('low');
     const highLabel = document.getElementById('high');
     const nextBtn = document.getElementById('nextBtn');
     const urlParams = new URLSearchParams(window.location.search);
-    const encryptedResult = urlParams.get('result');
+    let encryptedResult = urlParams.get('result');
+    if (encryptedResult) {
+        try {
+            const decryptedData = JSON.parse(decrypt(encryptedResult));
+            answers = decryptedData;
+            showResult();
+            return;
+        }
+        catch (error) {
+            console.error('Failed to decrypt data:', error);
+            startTest();
+        }
+    }
+    else {
+        startTest();
+    }
     nextBtn.addEventListener('click', () => {
         const currentCategory = categories[currentCategoryIndex];
         answers[currentCategory].push(parseInt(circlesContainer.dataset.selected || "0"));
@@ -43,24 +58,9 @@ document.addEventListener('DOMContentLoaded', () => __awaiter(void 0, void 0, vo
             }
         }
     });
-    if (encryptedResult) {
-        try {
-            const decryptedData = JSON.parse(decrypt(encryptedResult));
-            answers = decryptedData;
-            showResult();
-            return;
-        }
-        catch (error) {
-            console.error('Failed to decrypt data:', error);
-            startTest();
-        }
-    }
-    else {
-        startTest();
-    }
     function fetchTestData() {
         return __awaiter(this, void 0, void 0, function* () {
-            return fetch('/assets/js/data/motivation-test.json')
+            return fetch(`/assets/js/data/motivation-test/motivation-test-questions-en.json`)
                 .then(response => response.json())
                 .then(data => {
                 let result = data[0];
@@ -73,7 +73,7 @@ document.addEventListener('DOMContentLoaded', () => __awaiter(void 0, void 0, vo
     }
     function showQuestion(testData, category, index) {
         const selected_question = testData[category][index];
-        categoryElement.textContent = category;
+        categoryElement.textContent = capitalizeFirstLetter(category);
         questionElement.textContent = selected_question.question;
         lowLabel.textContent = selected_question.low;
         highLabel.textContent = selected_question.high;
@@ -93,14 +93,24 @@ document.addEventListener('DOMContentLoaded', () => __awaiter(void 0, void 0, vo
     function showResult() {
         const resultDiv = document.getElementById('result');
         const questionsSpan = document.getElementById('questions-part');
+        const resultText = document.getElementById('result-text');
         resultDiv.style.display = 'block';
         questionsSpan.style.display = 'none';
         const scores = {};
+        let htmlTextResutls = '';
         categories.forEach(category => {
             const categoryAnswers = answers[category];
             const average = categoryAnswers.reduce((acc, curr) => acc + curr, 0) / categoryAnswers.length;
             scores[category] = Number((Math.round(average * 100) / 100).toFixed(2));
         });
+        const categoriesSortedByResult = Object.keys(scores).sort(function (a, b) { return scores[b] - scores[a]; });
+        categoriesSortedByResult.forEach((category) => {
+            htmlTextResutls += `
+            <span class="text-result top-${8 - Math.round(scores[category])}">
+                ${capitalizeFirstLetter(category)}: ${Number(Math.round(100 * scores[category]) / 7).toFixed(0)}%
+            </span>`;
+        });
+        resultText.innerHTML = htmlTextResutls;
         renderChart(scores);
         const hashSpan = document.getElementById('result-hash');
         if (encryptedResult) {
@@ -126,9 +136,12 @@ document.addEventListener('DOMContentLoaded', () => __awaiter(void 0, void 0, vo
         const green = (value - 1) * 28;
         return `rgb(${red}, ${green}, 0, 0.5)`;
     }
+    function capitalizeFirstLetter(string) {
+        return string.charAt(0).toUpperCase() + string.slice(1).toLowerCase();
+    }
     function submitResults() {
         localStorage.setItem('motivationTestResult', JSON.stringify(answers));
-        const encryptedResult = encrypt(JSON.stringify(answers));
+        encryptedResult = encrypt(JSON.stringify(answers));
         const newUrl = `${window.location.pathname}?result=${encryptedResult}`;
         window.history.replaceState({}, '', newUrl);
         showResult();
@@ -163,34 +176,19 @@ document.addEventListener('DOMContentLoaded', () => __awaiter(void 0, void 0, vo
             options: {
                 scales: {
                     r: {
+                        grid: {
+                            circular: true,
+                            color: "#003366",
+                            // drawTicks: false
+                        },
                         max: 7,
                         min: 0,
                         ticks: {
-                            stepSize: 1
-                        }
+                            display: false
+                        },
                     }
                 }
             }
         });
-    }
-    /**
-     * Recursively collects all values from an object.
-     * @param obj - The object to collect values from.
-     * @returns An array of values.
-     */
-    function getAllValues(obj) {
-        let values = [];
-        for (const key in obj) {
-            if (obj.hasOwnProperty(key)) {
-                const value = obj[key];
-                if (typeof value === 'object' && !Array.isArray(value)) {
-                    values = values.concat(getAllValues(value));
-                }
-                else {
-                    values.push(value);
-                }
-            }
-        }
-        return values;
     }
 }));
