@@ -1,7 +1,11 @@
 ---
 # the default layout is 'page'
+titile: Discover Your Core Motivation - Take the Motivation Test Today!
+description: Uncover what drives you with our Motivation Test. Reveal your key motivators and gain insights into your growth. Start now!
 icon: fas fa-sun
 order: 5
+image:
+    path: assets/img/motivation-test.png
 ---
 <head>
     <style>
