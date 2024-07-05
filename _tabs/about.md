@@ -8,9 +8,11 @@ order: 4
 
 ## Leader and Ruby Engineer
 
-I have over 8 years of experience as a self-driven engineering manager and programmer, specializing in Ruby, with some Golang and JavaScript thrown in. I take pride in owning the results of my product team. As an [ENTP](https://www.16personalities.com/entp-personality), I thrive in debates and love tackling challenges. I've broken things, fixed them, and turned big dreams into reality, all while honing my endurance and perseverance.
-In my work, I focus on solving real problems and delivering measurable value to users. As a leader, I prioritize clean code, solid architecture, and clear communication skills to drive project success. I believe in simplicity and iterative development for building complex systems. I appreciate clear and transparent communication, which is key to project success.
-I'm looking for a long-term partnership with a company that values transparency and puts people first, including engineers, customers, and users.
+As an experienced Engineering Manager, I excel in leading teams to deliver clear, actionable insights on product developments and feature implementations. With a proven track record of effective communication and technical expertise, I ensure that within a year, I will be the go-to expert for understanding product status and providing straightforward guidance on new feature implementation. At the same time, I am confident that the team will be happy to do their job. I have a special strategy for connecting business goals with the personal goals of engineers, fostering a collaborative and efficient work environment.
+
+I have over 8 years of experience as a self-driven engineering manager and programmer, specializing in Ruby, with some Golang and JavaScript thrown in. I take pride in owning the results of my product team. As an [ENTP](https://www.16personalities.com/entp-personality), I thrive in debates and love tackling challenges. I've broken things, fixed them, and turned big dreams into reality, all while honing my endurance and perseverance. In my work, I focus on solving real problems and delivering measurable value to users. As a leader, I prioritize clean code, solid architecture, and clear communication skills to drive project success. I believe in simplicity and iterative development for building complex systems.
+
+I appreciate clear and transparent communication, which is key to project success. I'm seeking a long-term partnership with a company that values transparency and puts people first, including engineers, customers, and users.
 
 ## Personal Information
 
@@ -29,7 +31,7 @@ I am considering 🇦🇷 Argentina as my next base camp.
 
 ## CV
 
-Feel free to [download my CV](/assets/007_CV_Eugene_Leontev.pdf)
+Feel free to [download my CV](/assets/Eugene_Leontev_CV.pdf)
 
 ## Donate me
 
