@@ -5,7 +5,7 @@ tags: [humor, feedback, tech, coding, constructive feedback, teamwork, developme
 author: eugene
 categories: [Leadership, Mental Health]
 comments : True
-pin: true
+pin: false
 render_with_liquid: false
 image:
     path: assets/img/constructive-feedback/situation-at-the-office.jpeg
