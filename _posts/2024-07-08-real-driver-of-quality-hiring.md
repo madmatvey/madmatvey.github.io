@@ -6,7 +6,7 @@ tags: [quality hiring, true motivation, leadership, curiosity, freedom, goal ali
 author: eugene
 categories: [Leadership, Hiring]
 comments : True
-pin: true
+pin: false
 render_with_liquid: false
 image:
     path: /assets/img/hiring-quality/exhausted_recruiter.webp
