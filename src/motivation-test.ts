@@ -65,10 +65,10 @@ document.addEventListener('DOMContentLoaded', async () => {
         answers[currentCategory].push(parseInt(circlesContainer.dataset.selected || "0"));
         currentQuestionIndex++;
         overallQuestionsIndex++;
+        updateProgressBar(overallQuestionsIndex, totalQuestions);
 
         if (currentQuestionIndex < (testData[currentCategory] as Question[]).length) {
             showQuestion(testData, currentCategory, currentQuestionIndex);
-            updateProgressBar(overallQuestionsIndex, totalQuestions);
         } else {
             currentQuestionIndex = 0;
             currentCategoryIndex++;
