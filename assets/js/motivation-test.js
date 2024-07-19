@@ -1,25 +1,18 @@
 "use strict";
-var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, generator) {
-    function adopt(value) { return value instanceof P ? value : new P(function (resolve) { resolve(value); }); }
-    return new (P || (P = Promise))(function (resolve, reject) {
-        function fulfilled(value) { try { step(generator.next(value)); } catch (e) { reject(e); } }
-        function rejected(value) { try { step(generator["throw"](value)); } catch (e) { reject(e); } }
-        function step(result) { result.done ? resolve(result.value) : adopt(result.value).then(fulfilled, rejected); }
-        step((generator = generator.apply(thisArg, _arguments || [])).next());
-    });
-};
 let currentCategoryIndex = 0;
 let currentQuestionIndex = 0;
+let overallQuestionsIndex = 0;
 let answers = {};
 let categories = [];
 const secretKey = 'dont give up, keep trying, try it from the other side.';
-document.addEventListener('DOMContentLoaded', () => __awaiter(void 0, void 0, void 0, function* () {
+document.addEventListener('DOMContentLoaded', async () => {
     const questionElement = document.getElementById('question');
     const categoryElement = document.getElementById('category');
     const circlesContainer = document.getElementById('circles-container');
-    let testData = yield fetchTestData();
+    let testData = await fetchTestData();
     categories = Object.keys(testData).filter(key => key !== 'language');
     categories.forEach(category => answers[category] = []);
+    const totalQuestions = Object.values(testData).reduce((sum, questions) => sum + questions.length, 0);
     const lowLabel = document.getElementById('low');
     const highLabel = document.getElementById('high');
     const nextBtn = document.getElementById('nextBtn');
@@ -44,8 +37,10 @@ document.addEventListener('DOMContentLoaded', () => __awaiter(void 0, void 0, vo
         const currentCategory = categories[currentCategoryIndex];
         answers[currentCategory].push(parseInt(circlesContainer.dataset.selected || "0"));
         currentQuestionIndex++;
+        overallQuestionsIndex++;
         if (currentQuestionIndex < testData[currentCategory].length) {
             showQuestion(testData, currentCategory, currentQuestionIndex);
+            updateProgressBar(overallQuestionsIndex, totalQuestions);
         }
         else {
             currentQuestionIndex = 0;
@@ -58,18 +53,17 @@ document.addEventListener('DOMContentLoaded', () => __awaiter(void 0, void 0, vo
             }
         }
     });
-    function fetchTestData() {
-        return __awaiter(this, void 0, void 0, function* () {
-            return fetch(`/assets/js/data/motivation-test/motivation-test-questions-en.json`)
-                .then(response => response.json())
-                .then(data => {
-                let result = data[0];
-                return result;
-            });
+    async function fetchTestData() {
+        return fetch(`/assets/js/data/motivation-test/motivation-test-questions-en.json`)
+            .then(response => response.json())
+            .then(data => {
+            let result = data[0];
+            return result;
         });
     }
     function startTest() {
         showQuestion(testData, categories[currentCategoryIndex], currentQuestionIndex);
+        updateProgressBar(0, totalQuestions);
     }
     function showQuestion(testData, category, index) {
         const selected_question = testData[category][index];
@@ -89,6 +83,13 @@ document.addEventListener('DOMContentLoaded', () => __awaiter(void 0, void 0, vo
             circle.addEventListener('click', () => selectAnswer(i));
             circlesContainer.appendChild(circle);
         }
+    }
+    function updateProgressBar(currentQuestionIndex, totalQuestions) {
+        const progressBar = document.getElementById('progress-bar');
+        const progressText = document.getElementById('progress-text');
+        const progressPercentage = ((currentQuestionIndex / totalQuestions) * 100).toFixed(2);
+        progressBar.style.width = `${progressPercentage}%`;
+        progressText.textContent = `Questions Remaining: ${totalQuestions - currentQuestionIndex} / ${totalQuestions}`;
     }
     function showResult() {
         const resultDiv = document.getElementById('result');
@@ -191,4 +192,4 @@ document.addEventListener('DOMContentLoaded', () => __awaiter(void 0, void 0, vo
             }
         });
     }
-}));
+});
