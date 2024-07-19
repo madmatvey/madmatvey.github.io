@@ -21,6 +21,7 @@ interface MotivationTest {
 
 let currentCategoryIndex: number = 0;
 let currentQuestionIndex: number = 0;
+let overallQuestionsIndex: number = 0;
 let answers: { [category: string]: number[] } = {};
 let categories: string[] = [];
 const secretKey = 'dont give up, keep trying, try it from the other side.';
@@ -33,6 +34,7 @@ document.addEventListener('DOMContentLoaded', async () => {
     let testData: MotivationTest = await fetchTestData();
     categories = Object.keys(testData).filter(key => key !== 'language');
     categories.forEach(category => answers[category] = []);
+    const totalQuestions = Object.values(testData).reduce((sum, questions) => sum + questions.length, 0);
 
     const lowLabel = document.getElementById('low') as HTMLSpanElement;
     const highLabel = document.getElementById('high') as HTMLSpanElement;
@@ -62,9 +64,11 @@ document.addEventListener('DOMContentLoaded', async () => {
         
         answers[currentCategory].push(parseInt(circlesContainer.dataset.selected || "0"));
         currentQuestionIndex++;
+        overallQuestionsIndex++;
 
         if (currentQuestionIndex < (testData[currentCategory] as Question[]).length) {
             showQuestion(testData, currentCategory, currentQuestionIndex);
+            updateProgressBar(overallQuestionsIndex, totalQuestions);
         } else {
             currentQuestionIndex = 0;
             currentCategoryIndex++;
@@ -88,6 +92,7 @@ document.addEventListener('DOMContentLoaded', async () => {
 
     function startTest() {
         showQuestion(testData, categories[currentCategoryIndex], currentQuestionIndex);
+        updateProgressBar(0, totalQuestions);
     }
 
     function showQuestion(testData: MotivationTest, category: string, index: number) {
@@ -108,6 +113,15 @@ document.addEventListener('DOMContentLoaded', async () => {
             circle.addEventListener('click', () => selectAnswer(i));
             circlesContainer.appendChild(circle);
         }
+    }
+
+    function updateProgressBar(currentQuestionIndex: number, totalQuestions: number) {
+        const progressBar = document.getElementById('progress-bar') as HTMLDivElement;
+        const progressText = document.getElementById('progress-text') as HTMLParagraphElement;
+        const progressPercentage = ((currentQuestionIndex / totalQuestions) * 100).toFixed(2);
+        
+        progressBar.style.width = `${progressPercentage}%`;
+        progressText.textContent = `Questions Remaining: ${totalQuestions - currentQuestionIndex} / ${totalQuestions}`;
     }
 
     function showResult() {    

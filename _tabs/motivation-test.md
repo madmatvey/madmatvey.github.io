@@ -104,6 +104,22 @@ image:
             color: rgba(255, 255, 255, 0.4); /* 40% насыщенности */
             font-weight: normal;
         }
+        #progress-container {
+            width: 100%;
+            background-color: #f3f3f39c;
+            border-radius: 30px;
+            margin-top: 37px;
+        }
+        #progress-bar {
+            width: 0%;
+            height: 15px;
+            background-color: #198754;
+            border-radius: 25px;
+        }
+        #progress-text {
+            text-align: center;
+            margin-top: 10px;
+        }
         @media (max-width: 768px) {
             .label-container {
                 flex-direction: raw;
@@ -136,6 +152,10 @@ image:
                 <div id="high"></div>
             </div>
             <button id="nextBtn" style="display:none;">Next</button>
+            <div id="progress-container">
+                <div id="progress-bar"></div>
+            </div>
+            <p id="progress-text"></p>
         </span>
         <div id="result" style="display:none;">
             <h3>Results:</h3>
