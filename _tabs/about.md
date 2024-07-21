@@ -31,7 +31,7 @@ I am considering 🇦🇷 Argentina as my next base camp.
 
 ## CV
 
-Feel free to [download my CV](/assets/Eugene_Leontev_CV.pdf)
+Feel free to [download my CV](/assets/Eugene_Leontev_CV_space.pdf)
 
 ## Donate me
 
