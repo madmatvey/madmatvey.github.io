@@ -1,7 +1,7 @@
 ---
 # the default layout is 'page'
-titile: Discover Your Core Motivation - Take the Motivation Test Today!
-description: Uncover what drives you with our Motivation Test. Reveal your key motivators and gain insights into your growth. Start now!
+titile: Discover Your Core Motivation - Take the Motivation Test DApp Today!
+description: Uncover what drives you with our Motivation Test DApp. Reveal your key motivators and gain insights into your growth. Start now!
 icon: fas fa-sun
 order: 5
 image:
@@ -143,6 +143,7 @@ image:
 </head>
 <body>
     <div id="container">
+        <button id="connectWalletBtn">Connect Wallet</button>
         <span id="questions-part">
             <p id="category"></p>
             <p id="question"></p>
@@ -162,11 +163,16 @@ image:
             <span id="result-text"></span>
             <h3>Chart:</h3>
             <canvas id="result-chart"></canvas>
+            <input id="paymentAmount" type="number" step="0.0005" min="0.003" placeholder="Enter payment amount in ETH" value="0.003">
+            <button id="writeResultBtn">Write Test Result</button>
+            <button id="readResultBtn">Read Test Result</button>
+            <button id="withdrawFunds">Withdraw Funds</button>
             <h3>Hash:</h3>
             <span id="result-hash"></span>
         </div>
     </div>
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/crypto-js@4.1.1/crypto-js.js"></script>
-    <script src="/assets/js/motivation-test.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/ethers/6.13.1/ethers.umd.min.js" type="application/javascript"></script>
+    <script src="/assets/js/motivation-test.js" type="module"></script>
 </body>

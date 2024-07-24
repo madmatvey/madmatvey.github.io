@@ -1,3 +1,7 @@
+// import abi from "./motivation-test-contract-abi.json";
+// import { ethers } from "ethers";
+// import Chart from "chart.js/auto";
+
 interface Question {
     question: string;
     low: string;
@@ -26,7 +30,112 @@ let answers: { [category: string]: number[] } = {};
 let categories: string[] = [];
 const secretKey = 'dont give up, keep trying, try it from the other side.';
 
+const contractAddress = "0x438cFd691017711468fcE90c57907A7d637A5033";
+let userAddress: string | null = null;
+let abi: any = null;
+
+// Fetch the ABI dynamically
+async function fetchABI() {
+    try {
+        const response = await fetch('/assets/js/motivation-test-contract-abi.json');
+        abi = await response.json();
+    } catch (error) {
+        console.error('Error fetching ABI:', error);
+    }
+}
+
+async function connectWallet(): Promise<void> {
+    if ((window as any).ethereum) {
+        try {
+            await (window as any).ethereum.request({ method: 'eth_requestAccounts' });
+            const provider = new ethers.BrowserProvider((window as any).ethereum);
+            const signer = await provider.getSigner();
+            userAddress = await signer.getAddress();
+            console.log("Wallet connected, address:", userAddress);
+        } catch (error) {
+            console.error("Error connecting wallet:", error);
+        }
+    } else {
+        console.log("Please install MetaMask!");
+    }
+}
+
+async function writeTestResult(hash: string | null, amount: string | null): Promise<void> {
+    if (!userAddress) {
+        console.log("Please connect wallet first.");
+        return;
+    }
+
+    if (!hash) {
+        console.log("Can't write null result to blockchain");
+        return;
+    }
+
+    if (!amount) {
+        console.log("Can't write zero value, sorry! We need to develop motivation test dapp :)");
+        return;
+    }
+    console.log("writeTestResult.hash:", hash);
+    
+    try {
+        const provider = new ethers.BrowserProvider((window as any).ethereum);
+        const signer = await provider.getSigner();
+        const contract = new ethers.Contract(contractAddress, abi, signer);
+        const tx = await contract.writeTestResult(hash, {
+            value: ethers.parseEther(amount), // User specifies the amount of ETH to send
+        });
+        await tx.wait();
+        console.log('Test result written:', hash);
+    } catch (error) {
+        console.error('Error writing test result:', error);
+    }
+}
+
+async function readTestResults(address: string): Promise<string[]> {
+    try {
+        const provider = new ethers.BrowserProvider((window as any).ethereum);
+        const contract = new ethers.Contract(contractAddress, abi, provider);
+        const results = await contract.readTestResults(address);
+        console.log(`Test results for address ${address}:`, results);
+        return results;
+    } catch (error) {
+        console.error('Error reading test result:', error);
+        return [];
+    }
+}
+
+async function withdrawFunds(): Promise<void> {
+    await fetchABI();
+    const provider = new ethers.BrowserProvider((window as any).ethereum);
+    const signer = await provider.getSigner();
+    const contract = new ethers.Contract(contractAddress, abi, signer);
+    
+    try {
+        console.log('Contract:', contract);
+        const owner = await contract.owner(); // Прямой вызов метода owner
+        console.log('Owner:', owner);
+        const signerAddress = await signer.getAddress();
+        console.log('Signer Address:', signerAddress);
+    
+        if (signerAddress.toLowerCase() !== owner.toLowerCase()) {
+          throw new Error("Only the contract owner can withdraw funds");
+        }
+      const tx = await contract.withdrawFunds();
+      await tx.wait();
+      console.log('Funds withdrawn successfully');
+    } catch (error) {
+      console.error('Error withdrawing funds:', error);
+    }
+  }
+
+async function checkContractBalance(): Promise<void> {
+  const provider = new ethers.BrowserProvider((window as any).ethereum);
+  const balance = await provider.getBalance(contractAddress);
+  console.log(`Contract balance: ${ethers.formatEther(balance)} ETH`);
+}
+
 document.addEventListener('DOMContentLoaded', async () => {
+    await fetchABI();
     const questionElement = document.getElementById('question') as HTMLParagraphElement;
     const categoryElement = document.getElementById('category') as HTMLParagraphElement;
     const circlesContainer = document.getElementById('circles-container') as HTMLDivElement;
@@ -43,6 +152,53 @@ document.addEventListener('DOMContentLoaded', async () => {
 
     const urlParams = new URLSearchParams(window.location.search);
     let encryptedResult = urlParams.get('result');
+
+    const connectWalletBtn = document.getElementById('connectWalletBtn') as HTMLButtonElement;
+    connectWalletBtn.addEventListener('click', async () => {
+        await connectWallet();
+        console.log("connectWalletBtn.userAddress: ", userAddress);
+        
+        if (userAddress) {
+            try {
+                const results: string[] = await readTestResults(userAddress);
+                if (results.length > 0) {
+                    encryptedResult = results[results.length-1];
+                    console.log("encryptedResult:", encryptedResult);
+                    showResult();
+                    return;
+                }
+            } catch (error) {
+                console.error('Error reading test result:', error);
+            }
+        }
+        startTest();
+    });
+
+    const writeResultBtn = document.getElementById('writeResultBtn');
+    const readResultBtn = document.getElementById('readResultBtn');
+    const withdrawFundsBtn = document.getElementById('withdrawFunds');
+
+    writeResultBtn?.addEventListener('click', async () => {
+        const amount = (document.getElementById('paymentAmount') as HTMLInputElement).value;
+        if (encryptedResult && amount) {
+            await writeTestResult(encryptedResult, amount);
+        }
+    });
+    readResultBtn?.addEventListener('click', () => {
+        if (userAddress) {
+            readTestResults(userAddress);
+        } else {
+            console.log("Please connect wallet first.");
+        }
+    });
+
+    withdrawFundsBtn?.addEventListener('click', async () => {
+        if (userAddress) {
+            await withdrawFunds();
+        } else {
+            console.log("Please connect wallet first.");
+        }
+    });
 
     if (encryptedResult) {
         try {
@@ -186,6 +342,10 @@ document.addEventListener('DOMContentLoaded', async () => {
     function submitResults() {
         localStorage.setItem('motivationTestResult', JSON.stringify(answers));
         encryptedResult = encrypt(JSON.stringify(answers));
+        if (userAddress) {
+            console.log("userAddress: ", userAddress);
+    
+        }
         const newUrl = `${window.location.pathname}?result=${encryptedResult}`;
         window.history.replaceState({}, '', newUrl);
         showResult();
