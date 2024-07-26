@@ -26,7 +26,7 @@ interface MotivationTest {
 let currentCategoryIndex: number = 0;
 let currentQuestionIndex: number = 0;
 let overallQuestionsIndex: number = 0;
-let answers: { [category: string]: number[] } = {};
+let answers: { [category: string]: number[]  } = {};
 let categories: string[] = [];
 const secretKey = 'dont give up, keep trying, try it from the other side.';
 
@@ -34,7 +34,6 @@ const contractAddress = "0x438cFd691017711468fcE90c57907A7d637A5033";
 let userAddress: string | null = null;
 let abi: any = null;
 
-// Fetch the ABI dynamically
 async function fetchABI() {
     try {
         const response = await fetch('/assets/js/motivation-test-contract-abi.json');
@@ -162,9 +161,9 @@ document.addEventListener('DOMContentLoaded', async () => {
             try {
                 const results: string[] = await readTestResults(userAddress);
                 if (results.length > 0) {
-                    encryptedResult = results[results.length-1];
-                    console.log("encryptedResult:", encryptedResult);
-                    showResult();
+                    // encryptedResult = results[results.length-1];
+                    // console.log("encryptedResult:", encryptedResult);
+                    // showResult();
                     return;
                 }
             } catch (error) {
@@ -178,9 +177,10 @@ document.addEventListener('DOMContentLoaded', async () => {
     const readResultBtn = document.getElementById('readResultBtn');
     const withdrawFundsBtn = document.getElementById('withdrawFunds');
 
-    writeResultBtn?.addEventListener('click', async () => {
+    writeResultBtn?.addEventListener('click', async () => {        
         const amount = (document.getElementById('paymentAmount') as HTMLInputElement).value;
         if (encryptedResult && amount) {
+            console.log("writeTestResult.encryptedResult:", encryptedResult);
             await writeTestResult(encryptedResult, amount);
         }
     });
@@ -312,8 +312,6 @@ document.addEventListener('DOMContentLoaded', async () => {
         if (encryptedResult) {
             hashSpan.innerHTML = encryptedResult;
         }
-
-        localStorage.setItem('motivationTestResult', JSON.stringify(answers));
     }
 
     function selectAnswer(value: number) {
@@ -340,11 +338,12 @@ document.addEventListener('DOMContentLoaded', async () => {
       }
 
     function submitResults() {
-        localStorage.setItem('motivationTestResult', JSON.stringify(answers));
-        encryptedResult = encrypt(JSON.stringify(answers));
+        const time = { time:  Date.now() };
+        const answersWithTime = { ...time, ...answers }
+        localStorage.setItem('motivationTestResult', JSON.stringify(answersWithTime));
+        encryptedResult = encrypt(JSON.stringify(answersWithTime));
         if (userAddress) {
             console.log("userAddress: ", userAddress);
-    
         }
         const newUrl = `${window.location.pathname}?result=${encryptedResult}`;
         window.history.replaceState({}, '', newUrl);
