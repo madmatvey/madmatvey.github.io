@@ -11,7 +11,6 @@ const secretKey = 'dont give up, keep trying, try it from the other side.';
 const contractAddress = "0x438cFd691017711468fcE90c57907A7d637A5033";
 let userAddress = null;
 let abi = null;
-// Fetch the ABI dynamically
 async function fetchABI() {
     try {
         const response = await fetch('/assets/js/motivation-test-contract-abi.json');
@@ -128,9 +127,9 @@ document.addEventListener('DOMContentLoaded', async () => {
             try {
                 const results = await readTestResults(userAddress);
                 if (results.length > 0) {
-                    encryptedResult = results[results.length - 1];
-                    console.log("encryptedResult:", encryptedResult);
-                    showResult();
+                    // encryptedResult = results[results.length-1];
+                    // console.log("encryptedResult:", encryptedResult);
+                    // showResult();
                     return;
                 }
             }
@@ -146,6 +145,7 @@ document.addEventListener('DOMContentLoaded', async () => {
     writeResultBtn === null || writeResultBtn === void 0 ? void 0 : writeResultBtn.addEventListener('click', async () => {
         const amount = document.getElementById('paymentAmount').value;
         if (encryptedResult && amount) {
+            console.log("writeTestResult.encryptedResult:", encryptedResult);
             await writeTestResult(encryptedResult, amount);
         }
     });
@@ -264,7 +264,6 @@ document.addEventListener('DOMContentLoaded', async () => {
         if (encryptedResult) {
             hashSpan.innerHTML = encryptedResult;
         }
-        localStorage.setItem('motivationTestResult', JSON.stringify(answers));
     }
     function selectAnswer(value) {
         const circles = document.querySelectorAll('.answer-circle');
@@ -288,8 +287,10 @@ document.addEventListener('DOMContentLoaded', async () => {
         return string.charAt(0).toUpperCase() + string.slice(1).toLowerCase();
     }
     function submitResults() {
-        localStorage.setItem('motivationTestResult', JSON.stringify(answers));
-        encryptedResult = encrypt(JSON.stringify(answers));
+        const time = { time: Date.now() };
+        const answersWithTime = Object.assign(Object.assign({}, time), answers);
+        localStorage.setItem('motivationTestResult', JSON.stringify(answersWithTime));
+        encryptedResult = encrypt(JSON.stringify(answersWithTime));
         if (userAddress) {
             console.log("userAddress: ", userAddress);
         }
