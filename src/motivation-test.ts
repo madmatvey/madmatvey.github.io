@@ -1,33 +1,7 @@
 // import abi from "./motivation-test-contract-abi.json";
-// import { ethers } from "ethers";
-// import Chart from "chart.js/auto";
+import MotivationTest from './motivationTestQuestions.js'
+import { Question } from './question.js'
 
-interface Question {
-    question: string;
-    low: string;
-    high: string;
-}
-
-interface MotivationTest {
-    language: string;
-    curiosity: Question[];
-    honor: Question[];
-    acceptance: Question[];
-    mastery: Question[];
-    power: Question[];
-    freedom: Question[];
-    relatedness: Question[];
-    order: Question[];
-    goal: Question[];
-    status: Question[];
-    [key: string]: string | Question[];
-}
-
-let currentCategoryIndex: number = 0;
-let currentQuestionIndex: number = 0;
-let overallQuestionsIndex: number = 0;
-let answers: { [category: string]: number[]  } = {};
-let categories: string[] = [];
 const secretKey = 'dont give up, keep trying, try it from the other side.';
 
 const contractAddress = "0x438cFd691017711468fcE90c57907A7d637A5033";
@@ -111,7 +85,7 @@ async function withdrawFunds(): Promise<void> {
     
     try {
         console.log('Contract:', contract);
-        const owner = await contract.owner(); // Прямой вызов метода owner
+        const owner = await contract.owner();
         console.log('Owner:', owner);
         const signerAddress = await signer.getAddress();
         console.log('Signer Address:', signerAddress);
@@ -139,10 +113,9 @@ document.addEventListener('DOMContentLoaded', async () => {
     const categoryElement = document.getElementById('category') as HTMLParagraphElement;
     const circlesContainer = document.getElementById('circles-container') as HTMLDivElement;
     
-    let testData: MotivationTest = await fetchTestData();
-    categories = Object.keys(testData).filter(key => key !== 'language');
-    categories.forEach(category => answers[category] = []);
-    const totalQuestions = Object.values(testData).reduce((sum, questions) => sum + questions.length, 0);
+    let testData = new MotivationTest();
+    testData = await testData.createAsync('en');
+    const totalQuestions = testData.totalQuestions();
 
     const lowLabel = document.getElementById('low') as HTMLSpanElement;
     const highLabel = document.getElementById('high') as HTMLSpanElement;
@@ -203,7 +176,7 @@ document.addEventListener('DOMContentLoaded', async () => {
     if (encryptedResult) {
         try {
             const decryptedData = JSON.parse(decrypt(encryptedResult));
-            answers = decryptedData;
+            testData.answers = decryptedData;
             
             showResult();
             return;
@@ -216,44 +189,33 @@ document.addEventListener('DOMContentLoaded', async () => {
     }
 
     nextBtn.addEventListener('click', () => {
-        const currentCategory = categories[currentCategoryIndex];
-        
-        answers[currentCategory].push(parseInt(circlesContainer.dataset.selected || "0"));
-        currentQuestionIndex++;
-        overallQuestionsIndex++;
-        updateProgressBar(overallQuestionsIndex, totalQuestions);
-
-        if (currentQuestionIndex < (testData[currentCategory] as Question[]).length) {
-            showQuestion(testData, currentCategory, currentQuestionIndex);
+        testData.addAnswer(parseInt(circlesContainer.dataset.selected || "0"));
+        updateProgressBar(testData.overallQuestionsIndex, totalQuestions);
+        if (testData.currentCategoryIndex < testData.categories.length) {
+            showQuestion(testData);
         } else {
-            currentQuestionIndex = 0;
-            currentCategoryIndex++;
-
-            if (currentCategoryIndex < categories.length) {
-                showQuestion(testData, categories[currentCategoryIndex], currentQuestionIndex);
-            } else {
-                submitResults();
-            }
+            showResult()
         }
+
     });
 
-    async function fetchTestData(): Promise<MotivationTest> {        
-        return fetch(`/assets/js/data/motivation-test/motivation-test-questions-en.json`)
-            .then(response => response.json())
-            .then(data => {
-                let result = data[0];
-                return result;
-            });
-        }
+    // async function fetchTestData(): Promise<MotivationTestQuestions> {        
+    //     return fetch(`/assets/js/data/motivation-test/motivation-test-questions-en.json`)
+    //         .then(response => response.json())
+    //         .then(data => {
+    //             let result = data[0];
+    //             return result;
+    //         });
+    //     }
 
     function startTest() {
-        showQuestion(testData, categories[currentCategoryIndex], currentQuestionIndex);
+        showQuestion(testData);
         updateProgressBar(0, totalQuestions);
     }
 
-    function showQuestion(testData: MotivationTest, category: string, index: number) {
-        const selected_question = testData[category][index] as Question;
-        categoryElement.textContent = capitalizeFirstLetter(category);
+    function showQuestion(testData: MotivationTest) {
+        const selected_question = testData.currentQuestion() as Question;
+        categoryElement.textContent = capitalizeFirstLetter(testData.currentCategory());
         questionElement.textContent = selected_question.question;
         lowLabel.textContent = selected_question.low;
         highLabel.textContent = selected_question.high;
@@ -291,8 +253,8 @@ document.addEventListener('DOMContentLoaded', async () => {
         const scores: { [category: string]: number } = {};
         let htmlTextResutls: string = '';
 
-        categories.forEach(category => {
-            const categoryAnswers = answers[category];
+        testData.categories.forEach(category => {
+            const categoryAnswers = testData.answers[category];
             const average = categoryAnswers.reduce((acc, curr) => acc + curr, 0) / categoryAnswers.length;
             scores[category] = Number((Math.round(average * 100) / 100).toFixed(2));
         });
@@ -339,7 +301,7 @@ document.addEventListener('DOMContentLoaded', async () => {
 
     function submitResults() {
         const time = { time:  Date.now() };
-        const answersWithTime = { ...time, ...answers }
+        const answersWithTime = { ...time, ...testData.answers }
         localStorage.setItem('motivationTestResult', JSON.stringify(answersWithTime));
         encryptedResult = encrypt(JSON.stringify(answersWithTime));
         if (userAddress) {
