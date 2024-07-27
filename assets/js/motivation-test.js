@@ -1,12 +1,5 @@
-"use strict";
 // import abi from "./motivation-test-contract-abi.json";
-// import { ethers } from "ethers";
-// import Chart from "chart.js/auto";
-let currentCategoryIndex = 0;
-let currentQuestionIndex = 0;
-let overallQuestionsIndex = 0;
-let answers = {};
-let categories = [];
+import MotivationTest from './motivationTestQuestions.js';
 const secretKey = 'dont give up, keep trying, try it from the other side.';
 const contractAddress = "0x438cFd691017711468fcE90c57907A7d637A5033";
 let userAddress = null;
@@ -85,7 +78,7 @@ async function withdrawFunds() {
     const contract = new ethers.Contract(contractAddress, abi, signer);
     try {
         console.log('Contract:', contract);
-        const owner = await contract.owner(); // Прямой вызов метода owner
+        const owner = await contract.owner();
         console.log('Owner:', owner);
         const signerAddress = await signer.getAddress();
         console.log('Signer Address:', signerAddress);
@@ -110,10 +103,9 @@ document.addEventListener('DOMContentLoaded', async () => {
     const questionElement = document.getElementById('question');
     const categoryElement = document.getElementById('category');
     const circlesContainer = document.getElementById('circles-container');
-    let testData = await fetchTestData();
-    categories = Object.keys(testData).filter(key => key !== 'language');
-    categories.forEach(category => answers[category] = []);
-    const totalQuestions = Object.values(testData).reduce((sum, questions) => sum + questions.length, 0);
+    let testData = new MotivationTest();
+    testData = await testData.createAsync('en');
+    const totalQuestions = testData.totalQuestions();
     const lowLabel = document.getElementById('low');
     const highLabel = document.getElementById('high');
     const nextBtn = document.getElementById('nextBtn');
@@ -168,7 +160,7 @@ document.addEventListener('DOMContentLoaded', async () => {
     if (encryptedResult) {
         try {
             const decryptedData = JSON.parse(decrypt(encryptedResult));
-            answers = decryptedData;
+            testData.answers = decryptedData;
             showResult();
             return;
         }
@@ -181,40 +173,30 @@ document.addEventListener('DOMContentLoaded', async () => {
         startTest();
     }
     nextBtn.addEventListener('click', () => {
-        const currentCategory = categories[currentCategoryIndex];
-        answers[currentCategory].push(parseInt(circlesContainer.dataset.selected || "0"));
-        currentQuestionIndex++;
-        overallQuestionsIndex++;
-        updateProgressBar(overallQuestionsIndex, totalQuestions);
-        if (currentQuestionIndex < testData[currentCategory].length) {
-            showQuestion(testData, currentCategory, currentQuestionIndex);
+        testData.addAnswer(parseInt(circlesContainer.dataset.selected || "0"));
+        updateProgressBar(testData.overallQuestionsIndex, totalQuestions);
+        if (testData.currentCategoryIndex < testData.categories.length) {
+            showQuestion(testData);
         }
         else {
-            currentQuestionIndex = 0;
-            currentCategoryIndex++;
-            if (currentCategoryIndex < categories.length) {
-                showQuestion(testData, categories[currentCategoryIndex], currentQuestionIndex);
-            }
-            else {
-                submitResults();
-            }
+            showResult();
         }
     });
-    async function fetchTestData() {
-        return fetch(`/assets/js/data/motivation-test/motivation-test-questions-en.json`)
-            .then(response => response.json())
-            .then(data => {
-            let result = data[0];
-            return result;
-        });
-    }
+    // async function fetchTestData(): Promise<MotivationTestQuestions> {        
+    //     return fetch(`/assets/js/data/motivation-test/motivation-test-questions-en.json`)
+    //         .then(response => response.json())
+    //         .then(data => {
+    //             let result = data[0];
+    //             return result;
+    //         });
+    //     }
     function startTest() {
-        showQuestion(testData, categories[currentCategoryIndex], currentQuestionIndex);
+        showQuestion(testData);
         updateProgressBar(0, totalQuestions);
     }
-    function showQuestion(testData, category, index) {
-        const selected_question = testData[category][index];
-        categoryElement.textContent = capitalizeFirstLetter(category);
+    function showQuestion(testData) {
+        const selected_question = testData.currentQuestion();
+        categoryElement.textContent = capitalizeFirstLetter(testData.currentCategory());
         questionElement.textContent = selected_question.question;
         lowLabel.textContent = selected_question.low;
         highLabel.textContent = selected_question.high;
@@ -246,8 +228,8 @@ document.addEventListener('DOMContentLoaded', async () => {
         questionsSpan.style.display = 'none';
         const scores = {};
         let htmlTextResutls = '';
-        categories.forEach(category => {
-            const categoryAnswers = answers[category];
+        testData.categories.forEach(category => {
+            const categoryAnswers = testData.answers[category];
             const average = categoryAnswers.reduce((acc, curr) => acc + curr, 0) / categoryAnswers.length;
             scores[category] = Number((Math.round(average * 100) / 100).toFixed(2));
         });
@@ -288,7 +270,7 @@ document.addEventListener('DOMContentLoaded', async () => {
     }
     function submitResults() {
         const time = { time: Date.now() };
-        const answersWithTime = Object.assign(Object.assign({}, time), answers);
+        const answersWithTime = Object.assign(Object.assign({}, time), testData.answers);
         localStorage.setItem('motivationTestResult', JSON.stringify(answersWithTime));
         encryptedResult = encrypt(JSON.stringify(answersWithTime));
         if (userAddress) {
