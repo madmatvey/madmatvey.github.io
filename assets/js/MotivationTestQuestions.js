@@ -33,9 +33,6 @@ class MotivationTest {
     addAnswer(answer) {
         if (this.questions) {
             this.answers[this.currentCategory()].push(answer);
-            console.log("addAnswer.this.questions:", this.questions);
-            console.log("addAnswer.this.currentCategory():", this.currentCategory());
-            console.log("addAnswer.this.currentQuestionIndex:", this.currentQuestionIndex);
             if (this.currentQuestionIndex < (this.questions[this.currentCategory()]).length - 1) {
                 this.currentQuestionIndex++;
             }
@@ -48,10 +45,6 @@ class MotivationTest {
     }
     currentQuestion() {
         if (this.questions) {
-            console.log("currentQuestion.questions:", this.questions);
-            console.log("currentQuestion.currentCategory():", this.currentCategory());
-            console.log("currentQuestion.currentCategoryIndex:", this.currentCategoryIndex);
-            console.log("currentQuestion.currentQuestionIndex:", this.currentQuestionIndex);
             return this.questions[this.currentCategory()][this.currentQuestionIndex];
         }
         else {
@@ -62,7 +55,6 @@ class MotivationTest {
 export default MotivationTest;
 async function fetchTestData(language) {
     const dataUrl = `/assets/js/data/motivation-test/motivation-test-questions-${language}.json`;
-    console.log("dataUrl: ", dataUrl);
     return fetch(dataUrl)
         .then(response => response.json())
         .then(data => {
