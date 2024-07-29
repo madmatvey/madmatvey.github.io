@@ -1,6 +1,7 @@
 import MotivationTest from './motivationTestQuestions.js'
 import { CryptoUser } from './cryptoUser.js';
 import { Question } from './question.js'
+import { motivationTestAnswers } from './motivationTestAnswers.js';
 
 const notSoSecretKey = 'dont give up, keep trying, try it from the other side.';
 
@@ -30,7 +31,25 @@ document.addEventListener('DOMContentLoaded', async () => {
         try {
             connectWalletBtn.textContent = cryptoUser.address;
             if (cryptoUser.encryptedTestResults.length > 0) {
-                console.log("encryptedResults", cryptoUser.encryptedTestResults);
+                const resultsDivHtml = document.getElementById('results') as HTMLDivElement;
+                resultsDivHtml.style.display='block';
+                let htmlTextResutls: string = '';
+                cryptoUser.encryptedTestResults.forEach((encryptedResult, index) => {
+                    let testAnswers = new motivationTestAnswers;
+                    testAnswers.decrypt(encryptedResult);
+                    console.log(`answers#${index}`, testAnswers);
+                    htmlTextResutls += `<p>INDEX: ${index}`;
+
+                    testAnswers.result.forEach((category) => {
+                        htmlTextResutls += `
+                        <span>
+                            ${category}: ${Number(Math.round(100 * scores[category]) / 7).toFixed(0)}%
+                        </span>`;
+                    });
+
+                    htmlTextResutls += `</p>`;
+                });
+                resultsDivHtml.innerHTML = htmlTextResutls
             } else {
                 startTest();
             }
@@ -40,7 +59,6 @@ document.addEventListener('DOMContentLoaded', async () => {
     } 
   
     const writeResultBtn = document.getElementById('writeResultBtn');
-    const readResultBtn = document.getElementById('readResultBtn');
     const withdrawFundsBtn = document.getElementById('withdrawFunds');
 
     writeResultBtn?.addEventListener('click', async () => {        
@@ -61,8 +79,8 @@ document.addEventListener('DOMContentLoaded', async () => {
 
     if (encryptedResult) {
         try {
-            const decryptedData = JSON.parse(decrypt(encryptedResult));
-            testData.answers = decryptedData;
+            let testAnswers = new motivationTestAnswers;
+            testAnswers.decrypt(encryptedResult);
             
             showResult();
             return;
@@ -80,7 +98,8 @@ document.addEventListener('DOMContentLoaded', async () => {
         if (testData.currentCategoryIndex < testData.categories.length) {
             showQuestion(testData);
         } else {
-            showResult()
+            // showResult();
+            submitLocalResults();
         }
 
     });
@@ -131,7 +150,7 @@ document.addEventListener('DOMContentLoaded', async () => {
         let htmlTextResutls: string = '';
 
         testData.categories.forEach(category => {
-            const categoryAnswers = testData.answers[category];
+            const categoryAnswers = testData.answers.answers[category];
             const average = categoryAnswers.reduce((acc, curr) => acc + curr, 0) / categoryAnswers.length;
             scores[category] = Number((Math.round(average * 100) / 100).toFixed(2));
         });
@@ -176,11 +195,8 @@ document.addEventListener('DOMContentLoaded', async () => {
         return string.charAt(0).toUpperCase() + string.slice(1).toLowerCase();
       }
 
-    function submitResults() {
-        const time = { time:  Date.now() };
-        const answersWithTime = { ...time, ...testData.answers }
-        localStorage.setItem('motivationTestResult', JSON.stringify(answersWithTime));
-        encryptedResult = encrypt(JSON.stringify(answersWithTime));
+    function submitLocalResults() {
+        encryptedResult = testData.answers.encrypt();
         if (cryptoUser) {
             console.log("cryptoUser: ", cryptoUser);
         }
@@ -189,20 +205,6 @@ document.addEventListener('DOMContentLoaded', async () => {
         showResult();
     }
 
-    function encrypt(plainText: string){
-        var b64 = CryptoJS.AES.encrypt(plainText, notSoSecretKey).toString();
-        var e64 = CryptoJS.enc.Base64.parse(b64);
-        var eHex = e64.toString(CryptoJS.enc.Hex);
-        return eHex;
-    }
-    
-    function decrypt(cipherText: string){
-       var reb64 = CryptoJS.enc.Hex.parse(cipherText);
-       var bytes = reb64.toString(CryptoJS.enc.Base64);
-       var decrypt = CryptoJS.AES.decrypt(bytes, notSoSecretKey);
-       var plain = decrypt.toString(CryptoJS.enc.Utf8);
-       return plain;
-    }
 
     function renderChart(scores: { [category: string]: number }) {
         const ctx = document.getElementById('result-chart') as HTMLCanvasElement;
