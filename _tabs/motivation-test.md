@@ -12,6 +12,9 @@ image:
 </head>
 <body>
     <div id="container">
+        <div id="results" style="display:none;">
+            <h3>Results:</h3>
+        </div>
         <span id="questions-part">
             <div class="label-container">
                 <p id="category"></p>
@@ -30,7 +33,7 @@ image:
             <p id="progress-text"></p>
         </span>
         <div id="result" style="display:none;">
-            <h3>Results:</h3>
+            <h3>Result:</h3>
             <span id="result-text"></span>
             <h3>Chart:</h3>
             <canvas id="result-chart"></canvas>

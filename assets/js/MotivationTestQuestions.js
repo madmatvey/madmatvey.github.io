@@ -1,7 +1,23 @@
+import { motivationTestAnswers } from './motivationTestAnswers.js';
+class Questions {
+    constructor() {
+        this.curiosity = [];
+        this.honor = [];
+        this.acceptance = [];
+        this.mastery = [];
+        this.leadership = [];
+        this.freedom = [];
+        this.relatedness = [];
+        this.order = [];
+        this.goal = [];
+        this.status = [];
+        this.comfort = [];
+    }
+}
 class MotivationTest {
     constructor() {
-        this.questions = undefined;
-        this.answers = {};
+        this.questions = new Questions;
+        this.answers = new motivationTestAnswers;
         this.categories = [];
         this.currentCategoryIndex = 0;
         this.currentQuestionIndex = 0;
@@ -11,7 +27,6 @@ class MotivationTest {
         const motivationTest = new MotivationTest();
         motivationTest.questions = await fetchTestData(language);
         motivationTest.categories = Object.keys(motivationTest.questions);
-        motivationTest.categories.forEach(category => motivationTest.answers[category] = []);
         return motivationTest;
     }
     totalQuestions() {
@@ -32,7 +47,7 @@ class MotivationTest {
     }
     addAnswer(answer) {
         if (this.questions) {
-            this.answers[this.currentCategory()].push(answer);
+            this.answers.addAnswer(this.currentCategory(), answer);
             if (this.currentQuestionIndex < (this.questions[this.currentCategory()]).length - 1) {
                 this.currentQuestionIndex++;
             }
