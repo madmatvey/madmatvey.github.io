@@ -65,7 +65,6 @@ export class motivationTestAnswers {
         const decrypt = CryptoJS.AES.decrypt(bytes, notSoSecretKey);
         const plain = decrypt.toString(CryptoJS.enc.Utf8);
         const parsed_result = JSON.parse(plain);
-        console.log("decrypt.parsed_result", parsed_result);
         this.time = [parsed_result.time];
         const full_result = {
             curiosity: parsed_result.cur,
@@ -83,7 +82,6 @@ export class motivationTestAnswers {
         this.result = full_result;
     }
     calculateResults() {
-        console.log(`answers`, this.answers);
         let scores = {};
         Object.keys(this.answers).forEach(category => {
             const categoryAnswers = this.answers[category];
@@ -91,7 +89,6 @@ export class motivationTestAnswers {
             scores[category] = Number((Math.round(average * 100) / 100).toFixed(2));
         });
         const categoriesSortedByResult = Object.keys(scores).sort(function (a, b) { return scores[b] - scores[a]; });
-        console.log("calculateResults: ", scores);
         let percent_scores = {};
         categoriesSortedByResult.forEach((category) => {
             percent_scores[category] = Number((Math.round(100 * scores[category]) / numberOfAnswerChoises).toFixed(0));
@@ -114,11 +111,27 @@ export class motivationTestAnswers {
             sta: this.result.status,
             com: this.result.comfort
         };
-        console.log("blockchain_result: ", blockchain_result);
         const stringifyedOnject = JSON.stringify(blockchain_result);
         var b64 = CryptoJS.AES.encrypt(stringifyedOnject, notSoSecretKey).toString();
         var e64 = CryptoJS.enc.Base64.parse(b64);
         var eHex = e64.toString(CryptoJS.enc.Hex);
         return eHex;
+    }
+    sortedCategories() {
+        if (this.result) {
+            return Object.keys(this.result).sort((a, b) => { return this.result[b] - this.result[a]; });
+        }
+        else {
+            return [];
+        }
+    }
+    result7Score(category) {
+        if (this.result) {
+            const percent = this.result[category];
+            return Math.round(8 - (percent / 14.28));
+        }
+        else {
+            return -1;
+        }
     }
 }
