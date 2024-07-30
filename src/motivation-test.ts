@@ -1,40 +1,21 @@
-interface Question {
-    question: string;
-    low: string;
-    high: string;
-}
+import MotivationTest from './motivationTestQuestions.js'
+import { CryptoUser } from './cryptoUser.js';
+import { Question } from './question.js'
+import { motivationTestAnswers } from './motivationTestAnswers.js';
 
-interface MotivationTest {
-    language: string;
-    curiosity: Question[];
-    honor: Question[];
-    acceptance: Question[];
-    mastery: Question[];
-    power: Question[];
-    freedom: Question[];
-    relatedness: Question[];
-    order: Question[];
-    goal: Question[];
-    status: Question[];
-    [key: string]: string | Question[];
-}
+const notSoSecretKey = 'dont give up, keep trying, try it from the other side.';
 
-let currentCategoryIndex: number = 0;
-let currentQuestionIndex: number = 0;
-let overallQuestionsIndex: number = 0;
-let answers: { [category: string]: number[] } = {};
-let categories: string[] = [];
-const secretKey = 'dont give up, keep trying, try it from the other side.';
+let cryptoUser: CryptoUser = new CryptoUser;
 
 document.addEventListener('DOMContentLoaded', async () => {
+    await cryptoUser.createAsync();
     const questionElement = document.getElementById('question') as HTMLParagraphElement;
     const categoryElement = document.getElementById('category') as HTMLParagraphElement;
     const circlesContainer = document.getElementById('circles-container') as HTMLDivElement;
     
-    let testData: MotivationTest = await fetchTestData();
-    categories = Object.keys(testData).filter(key => key !== 'language');
-    categories.forEach(category => answers[category] = []);
-    const totalQuestions = Object.values(testData).reduce((sum, questions) => sum + questions.length, 0);
+    let testData = new MotivationTest();
+    testData = await testData.createAsync('en');
+    const totalQuestions = testData.totalQuestions();
 
     const lowLabel = document.getElementById('low') as HTMLSpanElement;
     const highLabel = document.getElementById('high') as HTMLSpanElement;
@@ -44,10 +25,61 @@ document.addEventListener('DOMContentLoaded', async () => {
     const urlParams = new URLSearchParams(window.location.search);
     let encryptedResult = urlParams.get('result');
 
+    const connectWalletBtn = document.getElementById('connectWalletBtn') as HTMLButtonElement;
+    
+    if (cryptoUser.address) {
+        try {
+            connectWalletBtn.textContent = cryptoUser.address;
+            if (cryptoUser.encryptedTestResults.length > 0) {
+                const resultsDivHtml = document.getElementById('results') as HTMLDivElement;
+                resultsDivHtml.style.display='block';
+                let htmlTextResutls: string = '';
+                cryptoUser.encryptedTestResults.forEach((encryptedResult, index) => {
+                    let testAnswers = new motivationTestAnswers;
+                    testAnswers.decrypt(encryptedResult);
+                    const categoriesSortedByResult = Object.keys(testAnswers.result).sort(function(a,b){return testAnswers.result[b]-testAnswers.result[a]})
+                    htmlTextResutls += `<p>INDEX: ${index}`;
+
+                    categoriesSortedByResult.forEach((category) => {
+                        htmlTextResutls += `
+                        <span>
+                            ${category}: ${testAnswers.result[category]}%
+                        </span>`;
+                    });
+
+                    htmlTextResutls += `</p>`;
+                });
+                resultsDivHtml.innerHTML = htmlTextResutls
+            } else {
+                startTest();
+            }
+        } catch (error) {
+            console.error('Error reading test result:', error);
+        }
+    } 
+  
+    const writeResultBtn = document.getElementById('writeResultBtn');
+    const withdrawFundsBtn = document.getElementById('withdrawFunds');
+
+    writeResultBtn?.addEventListener('click', async () => {        
+        const amount = (document.getElementById('paymentAmount') as HTMLInputElement).value;
+        if (encryptedResult && amount) {
+            await cryptoUser.writeTestResult(encryptedResult, amount);
+        }
+    });
+
+    withdrawFundsBtn?.addEventListener('click', async () => {
+        if (cryptoUser) {
+            await cryptoUser.withdrawFunds();
+        } else {
+            console.log("Please connect wallet first.");
+        }
+    });
+
     if (encryptedResult) {
         try {
-            const decryptedData = JSON.parse(decrypt(encryptedResult));
-            answers = decryptedData;
+            let testAnswers = new motivationTestAnswers;
+            testAnswers.decrypt(encryptedResult);
             
             showResult();
             return;
@@ -60,44 +92,25 @@ document.addEventListener('DOMContentLoaded', async () => {
     }
 
     nextBtn.addEventListener('click', () => {
-        const currentCategory = categories[currentCategoryIndex];
-        
-        answers[currentCategory].push(parseInt(circlesContainer.dataset.selected || "0"));
-        currentQuestionIndex++;
-        overallQuestionsIndex++;
-        updateProgressBar(overallQuestionsIndex, totalQuestions);
-
-        if (currentQuestionIndex < (testData[currentCategory] as Question[]).length) {
-            showQuestion(testData, currentCategory, currentQuestionIndex);
+        testData.addAnswer(parseInt(circlesContainer.dataset.selected || "0"));
+        updateProgressBar(testData.overallQuestionsIndex, totalQuestions);
+        if (testData.currentCategoryIndex < testData.categories.length) {
+            showQuestion(testData);
         } else {
-            currentQuestionIndex = 0;
-            currentCategoryIndex++;
-
-            if (currentCategoryIndex < categories.length) {
-                showQuestion(testData, categories[currentCategoryIndex], currentQuestionIndex);
-            } else {
-                submitResults();
-            }
+            // showResult();
+            submitLocalResults();
         }
+
     });
 
-    async function fetchTestData(): Promise<MotivationTest> {        
-        return fetch(`/assets/js/data/motivation-test/motivation-test-questions-en.json`)
-            .then(response => response.json())
-            .then(data => {
-                let result = data[0];
-                return result;
-            });
-        }
-
     function startTest() {
-        showQuestion(testData, categories[currentCategoryIndex], currentQuestionIndex);
+        showQuestion(testData);
         updateProgressBar(0, totalQuestions);
     }
 
-    function showQuestion(testData: MotivationTest, category: string, index: number) {
-        const selected_question = testData[category][index] as Question;
-        categoryElement.textContent = capitalizeFirstLetter(category);
+    function showQuestion(testData: MotivationTest) {
+        const selected_question = testData.currentQuestion() as Question;
+        categoryElement.textContent = capitalizeFirstLetter(testData.currentCategory());
         questionElement.textContent = selected_question.question;
         lowLabel.textContent = selected_question.low;
         highLabel.textContent = selected_question.high;
@@ -135,29 +148,25 @@ document.addEventListener('DOMContentLoaded', async () => {
         const scores: { [category: string]: number } = {};
         let htmlTextResutls: string = '';
 
-        categories.forEach(category => {
-            const categoryAnswers = answers[category];
-            const average = categoryAnswers.reduce((acc, curr) => acc + curr, 0) / categoryAnswers.length;
-            scores[category] = Number((Math.round(average * 100) / 100).toFixed(2));
-        });
-        const categoriesSortedByResult = Object.keys(scores).sort(function(a,b){return scores[b]-scores[a]})
-        categoriesSortedByResult.forEach((category) => {
-            htmlTextResutls += `
-            <span class="text-result top-${8 - Math.round(scores[category])}">
-                ${capitalizeFirstLetter(category)}: ${Number(Math.round(100 * scores[category]) / 7).toFixed(0)}%
-            </span>`;
-        });
+        let testAnswers = new motivationTestAnswers;
+        if(encryptedResult) {
+            testAnswers.decrypt(encryptedResult);
+            testAnswers.sortedCategories().forEach(category => {
+                htmlTextResutls += `
+                <span class="text-result top-${ testAnswers.result7Score(category) }">
+                    ${ capitalizeFirstLetter(category) }: ${ testAnswers.result[category] }%
+                </span>`;
+            });
+        }
         
         resultText.innerHTML = htmlTextResutls;
         
-        renderChart(scores);
+        renderChart(testAnswers.result);
 
         const hashSpan = document.getElementById('result-hash') as HTMLSpanElement;
         if (encryptedResult) {
             hashSpan.innerHTML = encryptedResult;
         }
-
-        localStorage.setItem('motivationTestResult', JSON.stringify(answers));
     }
 
     function selectAnswer(value: number) {
@@ -183,28 +192,16 @@ document.addEventListener('DOMContentLoaded', async () => {
         return string.charAt(0).toUpperCase() + string.slice(1).toLowerCase();
       }
 
-    function submitResults() {
-        localStorage.setItem('motivationTestResult', JSON.stringify(answers));
-        encryptedResult = encrypt(JSON.stringify(answers));
+    function submitLocalResults() {
+        encryptedResult = testData.answers.encrypt();
+        if (cryptoUser) {
+            console.log("cryptoUser: ", cryptoUser);
+        }
         const newUrl = `${window.location.pathname}?result=${encryptedResult}`;
         window.history.replaceState({}, '', newUrl);
         showResult();
     }
 
-    function encrypt(plainText: string){
-        var b64 = CryptoJS.AES.encrypt(plainText, secretKey).toString();
-        var e64 = CryptoJS.enc.Base64.parse(b64);
-        var eHex = e64.toString(CryptoJS.enc.Hex);
-        return eHex;
-    }
-    
-    function decrypt(cipherText: string){
-       var reb64 = CryptoJS.enc.Hex.parse(cipherText);
-       var bytes = reb64.toString(CryptoJS.enc.Base64);
-       var decrypt = CryptoJS.AES.decrypt(bytes, secretKey);
-       var plain = decrypt.toString(CryptoJS.enc.Utf8);
-       return plain;
-    }
 
     function renderChart(scores: { [category: string]: number }) {
         const ctx = document.getElementById('result-chart') as HTMLCanvasElement;
@@ -228,7 +225,7 @@ document.addEventListener('DOMContentLoaded', async () => {
                             color: "#003366",
                             // drawTicks: false
                         },
-                        max: 7,
+                        max: 100,
                         min: 0,
                         ticks: {
                             display: false
