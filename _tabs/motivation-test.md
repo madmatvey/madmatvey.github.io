@@ -1,6 +1,6 @@
 ---
 # the default layout is 'page'
-title: Discover Your Core Motivation - Take the Motivation Test DApp Today!
+title: Proof of Motivation
 description: Uncover what drives you with our Motivation Test DApp. Reveal your key motivators and gain insights into your growth. Start now!
 icon: fas fa-sun
 order: 5
@@ -12,6 +12,7 @@ image:
 </head>
 <body>
     <div id="container">
+        <h3>Discover Your Core Motivation - Take the Motivation Test DApp Today!</h3>
         <div id="results" style="display:none;">
             <h3>Results:</h3>
         </div>

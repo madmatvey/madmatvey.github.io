@@ -37,13 +37,13 @@ document.addEventListener('DOMContentLoaded', async () => {
                 cryptoUser.encryptedTestResults.forEach((encryptedResult, index) => {
                     let testAnswers = new motivationTestAnswers;
                     testAnswers.decrypt(encryptedResult);
-                    console.log(`answers#${index}`, testAnswers);
+                    const categoriesSortedByResult = Object.keys(testAnswers.result).sort(function(a,b){return testAnswers.result[b]-testAnswers.result[a]})
                     htmlTextResutls += `<p>INDEX: ${index}`;
 
-                    testAnswers.result.forEach((category) => {
+                    categoriesSortedByResult.forEach((category) => {
                         htmlTextResutls += `
                         <span>
-                            ${category}: ${Number(Math.round(100 * scores[category]) / 7).toFixed(0)}%
+                            ${category}: ${testAnswers.result[category]}%
                         </span>`;
                     });
 
@@ -64,7 +64,6 @@ document.addEventListener('DOMContentLoaded', async () => {
     writeResultBtn?.addEventListener('click', async () => {        
         const amount = (document.getElementById('paymentAmount') as HTMLInputElement).value;
         if (encryptedResult && amount) {
-            console.log("writeTestResult.encryptedResult:", encryptedResult);
             await cryptoUser.writeTestResult(encryptedResult, amount);
         }
     });
@@ -149,22 +148,20 @@ document.addEventListener('DOMContentLoaded', async () => {
         const scores: { [category: string]: number } = {};
         let htmlTextResutls: string = '';
 
-        testData.categories.forEach(category => {
-            const categoryAnswers = testData.answers.answers[category];
-            const average = categoryAnswers.reduce((acc, curr) => acc + curr, 0) / categoryAnswers.length;
-            scores[category] = Number((Math.round(average * 100) / 100).toFixed(2));
-        });
-        const categoriesSortedByResult = Object.keys(scores).sort(function(a,b){return scores[b]-scores[a]})
-        categoriesSortedByResult.forEach((category) => {
-            htmlTextResutls += `
-            <span class="text-result top-${8 - Math.round(scores[category])}">
-                ${capitalizeFirstLetter(category)}: ${Number(Math.round(100 * scores[category]) / 7).toFixed(0)}%
-            </span>`;
-        });
+        let testAnswers = new motivationTestAnswers;
+        if(encryptedResult) {
+            testAnswers.decrypt(encryptedResult);
+            testAnswers.sortedCategories().forEach(category => {
+                htmlTextResutls += `
+                <span class="text-result top-${ testAnswers.result7Score(category) }">
+                    ${ capitalizeFirstLetter(category) }: ${ testAnswers.result[category] }%
+                </span>`;
+            });
+        }
         
         resultText.innerHTML = htmlTextResutls;
         
-        renderChart(scores);
+        renderChart(testAnswers.result);
 
         const hashSpan = document.getElementById('result-hash') as HTMLSpanElement;
         if (encryptedResult) {
@@ -228,7 +225,7 @@ document.addEventListener('DOMContentLoaded', async () => {
                             color: "#003366",
                             // drawTicks: false
                         },
-                        max: 7,
+                        max: 100,
                         min: 0,
                         ticks: {
                             display: false

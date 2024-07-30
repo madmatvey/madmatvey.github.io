@@ -28,7 +28,6 @@ export class CryptoUser {
             console.log("Can't write zero value, sorry! We need to develop motivation test dapp :)");
             return;
         }
-        console.log("writeTestResult.hash:", hash);
         
         try {
             const provider = new ethers.BrowserProvider((window as any).ethereum);
@@ -49,7 +48,6 @@ export class CryptoUser {
             const provider = new ethers.BrowserProvider((window as any).ethereum);
             const contract = new ethers.Contract(this.contractAddress, this.abi, provider);
             this.encryptedTestResults = await contract.readTestResults(this.address);
-            console.log(`Test results for address ${this.address}:`, this.encryptedTestResults);
             return;
         } catch (error) {
             console.error('Error reading test result:', error);
@@ -64,11 +62,8 @@ export class CryptoUser {
         const contract = new ethers.Contract(this.contractAddress, this.abi, signer);
         
         try {
-            console.log('Contract:', contract);
             const owner = await contract.owner();
-            console.log('Owner:', owner);
             const signerAddress = await signer.getAddress();
-            console.log('Signer Address:', signerAddress);
         
             if (signerAddress.toLowerCase() !== owner.toLowerCase()) {
               throw new Error("Only the contract owner can withdraw funds");
