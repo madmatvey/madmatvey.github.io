@@ -16,10 +16,15 @@ image:
         <div id="results" style="display:none;">
             <h3>Results:</h3>
         </div>
+        <div id="web3actions">
+            <button id="connectWalletBtn" class="web3button">Login With Metamask</button>
+            <input id="paymentAmount" type="number" step="0.0005" min="0.003" placeholder="Enter payment amount in ETH" value="0.003"> ETH (0.003 ETH minimum contribution for recording test results in a blockchain)
+            <button id="writeResultBtn" class="web3button">Save Test Result</button>
+            <button id="withdrawFunds" class="web3button" style="display:none;">Withdraw Funds</button>
+        </div>
         <span id="questions-part">
             <div class="label-container">
                 <p id="category"></p>
-                <button id="connectWalletBtn" class="cryptoWalletButton">Connect Wallet</button>
             </div>
             <p id="question"></p>
             <div class="label-container">
@@ -38,9 +43,6 @@ image:
             <span id="result-text"></span>
             <h3>Chart:</h3>
             <canvas id="result-chart"></canvas>
-            <input id="paymentAmount" type="number" step="0.0005" min="0.003" placeholder="Enter payment amount in ETH" value="0.003">
-            <button id="writeResultBtn">Write Test Result</button>
-            <button id="withdrawFunds">Withdraw Funds</button>
             <h3>Hash:</h3>
             <span id="result-hash"></span>
         </div>

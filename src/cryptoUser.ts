@@ -43,11 +43,17 @@ export class CryptoUser {
         }
     }
 
-    async readTestResults(): Promise<void> {
+    async readTestResults(address?: string): Promise<void> {
         try {
-            const provider = new ethers.BrowserProvider((window as any).ethereum);
+            // Use a read-only provider (e.g., Infura or Alchemy)
+            const provider = new ethers.JsonRpcProvider('https://sepolia.infura.io/v3/d3e6fd8a7c33469cb6c3fe729eca9d3d');
+            
             const contract = new ethers.Contract(this.contractAddress, this.abi, provider);
-            this.encryptedTestResults = await contract.readTestResults(this.address);
+            const addressToUse = address || this.address;
+            if (!addressToUse) {
+                throw new Error('No address provided or available');
+            }
+            this.encryptedTestResults = await contract.readTestResults(addressToUse);
             return;
         } catch (error) {
             console.error('Error reading test result:', error);

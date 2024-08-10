@@ -125,6 +125,9 @@ export class motivationTestAnswers {
             return [];
         }
     }
+    isValid() {
+        return this.result.curiosity !== undefined && this.result.honor !== undefined && this.result.acceptance !== undefined && this.result.mastery !== undefined && this.result.leadership !== undefined && this.result.freedom !== undefined && this.result.relatedness !== undefined && this.result.order !== undefined && this.result.goal !== undefined && this.result.status !== undefined && this.result.comfort !== undefined;
+    }
     result7Score(category) {
         if (this.result) {
             const percent = this.result[category];

@@ -3,9 +3,8 @@ import { CryptoUser } from './cryptoUser.js';
 import { Question } from './question.js'
 import { motivationTestAnswers } from './motivationTestAnswers.js';
 
-const notSoSecretKey = 'dont give up, keep trying, try it from the other side.';
-
 let cryptoUser: CryptoUser = new CryptoUser;
+let cryptoUser2: CryptoUser = new CryptoUser;
 
 document.addEventListener('DOMContentLoaded', async () => {
     await cryptoUser.createAsync();
@@ -24,6 +23,8 @@ document.addEventListener('DOMContentLoaded', async () => {
 
     const urlParams = new URLSearchParams(window.location.search);
     let encryptedResult = urlParams.get('result');
+    const address = urlParams.get('address');
+    const index = parseInt(urlParams.get('index') || "-1");
 
     const connectWalletBtn = document.getElementById('connectWalletBtn') as HTMLButtonElement;
     
@@ -37,17 +38,16 @@ document.addEventListener('DOMContentLoaded', async () => {
                 cryptoUser.encryptedTestResults.forEach((encryptedResult, index) => {
                     let testAnswers = new motivationTestAnswers;
                     testAnswers.decrypt(encryptedResult);
-                    const categoriesSortedByResult = Object.keys(testAnswers.result).sort(function(a,b){return testAnswers.result[b]-testAnswers.result[a]})
-                    htmlTextResutls += `<p>INDEX: ${index}`;
-
-                    categoriesSortedByResult.forEach((category) => {
-                        htmlTextResutls += `
-                        <span>
-                            ${category}: ${testAnswers.result[category]}%
-                        </span>`;
-                    });
-
-                    htmlTextResutls += `</p>`;
+                    if (testAnswers.isValid()) {
+                        htmlTextResutls += `<p><a href="/motivation-test/?address=${cryptoUser.address}&index=${index}">`;
+                        testAnswers.sortedCategories().forEach(category => {
+                            htmlTextResutls += `
+                            <span>
+                                ${category}: ${testAnswers.result[category]}%
+                            </span>`;
+                        });
+                        htmlTextResutls += `</a></p>`;
+                    }
                 });
                 resultsDivHtml.innerHTML = htmlTextResutls
             } else {
@@ -56,7 +56,13 @@ document.addEventListener('DOMContentLoaded', async () => {
         } catch (error) {
             console.error('Error reading test result:', error);
         }
-    } 
+        return;
+    } else if (address && index >= 0) {
+        await cryptoUser2.createAsync();
+        await cryptoUser2.readTestResults(address);
+        encryptedResult = cryptoUser2.encryptedTestResults[index];
+        showResult();
+    }
   
     const writeResultBtn = document.getElementById('writeResultBtn');
     const withdrawFundsBtn = document.getElementById('withdrawFunds');
@@ -144,10 +150,7 @@ document.addEventListener('DOMContentLoaded', async () => {
 
         resultDiv.style.display='block';
         questionsSpan.style.display='none';
-
-        const scores: { [category: string]: number } = {};
         let htmlTextResutls: string = '';
-
         let testAnswers = new motivationTestAnswers;
         if(encryptedResult) {
             testAnswers.decrypt(encryptedResult);
@@ -205,6 +208,12 @@ document.addEventListener('DOMContentLoaded', async () => {
 
     function renderChart(scores: { [category: string]: number }) {
         const ctx = document.getElementById('result-chart') as HTMLCanvasElement;
+
+        const existingChart = Chart.getChart(ctx);
+        if (existingChart) {
+            existingChart.destroy();
+        }
+        
         new Chart(ctx, {
             type: 'radar',
             data: {
@@ -223,14 +232,12 @@ document.addEventListener('DOMContentLoaded', async () => {
                         grid: {
                             circular: true,
                             color: "#003366",
-                            // drawTicks: false
                         },
                         max: 100,
                         min: 0,
                         ticks: {
                             display: false
                         },
-                        
                     }
                 }
             }

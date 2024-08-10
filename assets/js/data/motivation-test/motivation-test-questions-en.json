@@ -4,142 +4,7 @@ swcache: true
 ---
 [
   {
-    "curiosity": [
-      {
-        "question": "How often do you find time to learn something new outside of work or study?",
-        "low": "never",
-        "high": "constantly"
-      },
-      {
-        "question": "How interested are you in learning new topics, even if they are not related to your main activity?",
-        "low": "not interested at all",
-        "high": "very interested"
-      },
-      {
-        "question": "How often do you participate in projects or events that go beyond your comfort zone?",
-        "low": "never",
-        "high": "always"
-      },
-      {
-        "question": "How willing are you to spend time and effort seeking information that you don't know yet?",
-        "low": "not willing",
-        "high": "very willing"
-      },
-      {
-        "question": "How often do you read books, articles, or watch videos on topics that were previously unfamiliar to you?",
-        "low": "never",
-        "high": "very often"
-      }
-    ],
-    "honor": [
-      {
-        "question": "How important is it for you to be honest and fair in your actions?",
-        "low": "not important at all",
-        "high": "very important"
-      },
-      {
-        "question": "How often do you feel pride in your achievements and actions?",
-        "low": "never",
-        "high": "always"
-      },
-      {
-        "question": "How important is it for you to keep your word and fulfill promises?",
-        "low": "not important",
-        "high": "very important"
-      },
-      {
-        "question": "How important is it for you that others perceive you as an honest and trustworthy person?",
-        "low": "not important",
-        "high": "very important"
-      },
-      {
-        "question": "How often do you strive to do the right thing, even if it may be inconvenient or unpopular?",
-        "low": "never",
-        "high": "always"
-      }
-    ],
-    "acceptance": [
-      {
-        "question": "How important is it for you that your achievements and efforts are noticed and appreciated by others?",
-        "low": "not important at all",
-        "high": "very important"
-      },
-      {
-        "question": "How often do you strive to be recognized and respected in your team?",
-        "low": "never",
-        "high": "always"
-      },
-      {
-        "question": "How important is it for you to receive positive feedback and approval from colleagues and management?",
-        "low": "not important",
-        "high": "very important"
-      },
-      {
-        "question": "How important is it for you to feel part of a team and be accepted by your peers?",
-        "low": "not important",
-        "high": "very important"
-      },
-      {
-        "question": "How important is it for you that your opinion is considered when making collective decisions?",
-        "low": "not important",
-        "high": "very important"
-      }
-    ],
-    "mastery": [
-      {
-        "question": "How important is it for you to constantly improve your professional skills and knowledge?",
-        "low": "not important at all",
-        "high": "very important"
-      },
-      {
-        "question": "How often do you set tasks and goals aimed at developing your competence?",
-        "low": "never",
-        "high": "always"
-      },
-      {
-        "question": "How important is it for you to be an expert in your field?",
-        "low": "not important",
-        "high": "very important"
-      },
-      {
-        "question": "How important is it for you to handle difficult tasks and solve complex problems at work?",
-        "low": "not important",
-        "high": "very important"
-      },
-      {
-        "question": "How important is it for you to achieve a high level of mastery in your professional activities?",
-        "low": "not important",
-        "high": "very important"
-      }
-    ],
-    "leadership": [
-      {
-        "question": "How important is it for you to have the ability to make decisions that affect other people or the company?",
-        "low": "not important at all",
-        "high": "very important"
-      },
-      {
-        "question": "How often do you strive to take on leadership positions and roles that allow you to manage a team?",
-        "low": "never",
-        "high": "always"
-      },
-      {
-        "question": "How important is it for you to have influence on the strategic development of the company or project?",
-        "low": "not important",
-        "high": "very important"
-      },
-      {
-        "question": "How important is it for you to be recognized as a leader and respected by colleagues and subordinates?",
-        "low": "not important",
-        "high": "very important"
-      },
-      {
-        "question": "How important is it for you to have the authority to make changes and improvements to work processes?",
-        "low": "not important",
-        "high": "very important"
-      }
-    ],
-    "freedom": [
+    "autonomy": [
       {
         "question": "How important is it for you to have the freedom to choose methods and approaches to your work?",
         "low": "not important at all",
@@ -156,12 +21,39 @@ swcache: true
         "high": "very important"
       },
       {
-        "question": "How important is it for you to have the right to make independent decisions within your work?",
+        "question": "How important is it to you to have the freedom and independence to make decisions at work?",
         "low": "not important",
         "high": "very important"
       },
       {
-        "question": "How important is it for you to have a flexible work schedule and the ability to work remotely?",
+        "question": "How important is it to you to be able to determine your own ways of doing your work?",
+        "low": "not important",
+        "high": "very important"
+      }
+    ],
+    "competence": [
+      {
+        "question": "How important is it for you to constantly improve your professional skills and knowledge?",
+        "low": "not important at all",
+        "high": "very important"
+      },
+      {
+        "question": "How often do you set tasks and goals aimed at developing your competence?",
+        "low": "never",
+        "high": "always"
+      },
+      {
+        "question": "How important is it for you to be an expert in your field?",
+        "low": "not important",
+        "high": "very important"
+      },
+      {
+        "question": "How important is it to you that the job allows you to utilize your skills and abilities to the fullest?",
+        "low": "not important",
+        "high": "very important"
+      },
+      {
+        "question": "How important is it to you to feel capable and confident in doing your job?",
         "low": "not important",
         "high": "very important"
       }
@@ -188,15 +80,106 @@ swcache: true
         "high": "very important"
       },
       {
-        "question": "How often do you feel satisfaction from being able to help colleagues or contribute to the common cause?",
-        "low": "never",
-        "high": "very often"
+        "question": "How important is it to you to be able to establish and maintain meaningful relationships with coworkers?",
+        "low": "not important",
+        "high": "very important"
       }
     ],
-    "order": [
+    "diversity_of_skills": [
       {
-        "question": "How important is it for you that your work process is clearly organized and structured?",
+        "question": "How important is it to you that your job requires you to use a variety of skills and abilities?",
         "low": "not important at all",
+        "high": "very important"
+      },
+      {
+        "question": "How important is it to you that the job involves a variety of tasks?",
+        "low": "not important",
+        "high": "very important"
+      },
+      {
+        "question": "How important is it to you that the job allows you to develop new skills and abilities?",
+        "low": "not important",
+        "high": "very important"
+      },
+      {
+        "question": "How often do you participate in projects or events that go beyond your comfort zone?",
+        "low": "never",
+        "high": "always"
+      },
+      {
+        "question": "How willing are you to spend time and effort seeking information that you don't know yet?",
+        "low": "not willing",
+        "high": "very willing"
+      }
+    ],
+    "significance_of_the_task": [
+      {
+        "question": "How important is it for you that the work has a significant impact on the organization and society?",
+        "low": "not important at all",
+        "high": "very important"
+      },
+      {
+        "question": "How important is it for you that work is meaningful and satisfying?",
+        "low": "not important",
+        "high": "very important"
+      },
+      {
+        "question": "How important is it for you to know that your work contributes to important goals?",
+        "low": "not important",
+        "high": "very important"
+      },
+      {
+        "question": "How important is it for you to achieve a high level of mastery in your professional activities?",
+        "low": "not important",
+        "high": "very important"
+      },
+      {
+        "question": "How important is it for you to handle difficult tasks and solve complex problems at work?",
+        "low": "not important",
+        "high": "very important"
+      }
+    ],
+    "feedback": [
+      {
+        "question": "How important is it to you to receive regular constructive feedback about your work?",
+        "low": "not important at all",
+        "high": "very important"
+      },
+      {
+        "question": "How important is it to you to know how well you are doing your job?",
+        "low": "not important",
+        "high": "very important"
+      },
+      {
+        "question": "How important is it to you that management provides you with timely and understandable feedback?",
+        "low": "not important",
+        "high": "very important"
+      },
+      {
+        "question": "How important is it for you to be recognized and respected in your team?",
+        "low": "not important",
+        "high": "very important"
+      },
+      {
+        "question": "How important is it for you to receive positive feedback and approval from colleagues and management?",
+        "low": "not important",
+        "high": "very important"
+      }
+    ],
+    "task_identification": [
+      {
+        "question": "How important is it to you that your job involves completing entire tasks rather than individual small parts?",
+        "low": "not important at all",
+        "high": "very important"
+      },
+      {
+        "question": "How important is it to you to see the end result of your efforts?",
+        "low": "not important",
+        "high": "very important"
+      },
+      {
+        "question": "How important is it to you to complete your work from start to finish?",
+        "low": "not important",
         "high": "very important"
       },
       {
@@ -205,24 +188,14 @@ swcache: true
         "high": "always"
       },
       {
-        "question": "How important is it for you to adhere to established rules and procedures at work?",
-        "low": "not important",
-        "high": "very important"
-      },
-      {
         "question": "How important is it for you to have a clear understanding of your duties and tasks?",
-        "low": "not important",
-        "high": "very important"
-      },
-      {
-        "question": "How important is it for you to follow the work plan and schedule without deviations?",
         "low": "not important",
         "high": "very important"
       }
     ],
-    "goal": [
+    "goals_and_objectives": [
       {
-        "question": "How important is it for you to have a clear understanding of your goals and direction in life?",
+        "question": "How important is it to you that your goals at work are clear and specific?",
         "low": "not important at all",
         "high": "very important"
       },
@@ -242,64 +215,10 @@ swcache: true
         "high": "very important"
       },
       {
-        "question": "How important is it for you to have a clear action plan to achieve your goals?",
-        "low": "not important",
-        "high": "very important"
-      }
-    ],
-    "status": [
-      {
-        "question": "How important is it for you to have a high status in society or in your professional field?",
-        "low": "not important at all",
-        "high": "very important"
-      },
-      {
-        "question": "How often do you strive to achieve a position or role that gives you a high status?",
-        "low": "never",
-        "high": "always"
-      },
-      {
-        "question": "How important is it for you that others perceive you as a successful and respected person?",
-        "low": "not important",
-        "high": "very important"
-      },
-      {
-        "question": "How important is it for you to achieve recognition and prestige in your field of activity?",
-        "low": "not important",
-        "high": "very important"
-      },
-      {
-        "question": "How important is it for you to have a high social or professional position?",
-        "low": "not important",
-        "high": "very important"
-      }
-    ],
-    "comfort": [
-      {
-        "question": "How important is it for you to feel comfortable and at ease in your surroundings?",
-        "low": "not important at all",
-        "high": "very important"
-      },
-      {
-        "question": "How important is it to you to avoid stressful situations and discomfort in your daily life?",
-        "low": "never",
-        "high": "always"
-      },
-      {
-        "question": "How important is it for you to have convenient working conditions (comfortable workplace, good schedule, etc.)?",
-        "low": "not important",
-        "high": "very important"
-      },
-      {
-        "question": "How often do you feel satisfied that your life and work bring you comfort and pleasure?",
-        "low": "never",
-        "high": "very often"
-      },
-      {
-        "question": "How important is it to you to be able to rest and relax after a day of work?",
+        "question": "How important is it to you that your goals at work are challenging but achievable?",
         "low": "not important",
         "high": "very important"
       }
     ]
-  }  
+  }
 ]
