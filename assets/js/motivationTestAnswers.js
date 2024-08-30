@@ -2,49 +2,40 @@ const notSoSecretKey = 'dont give up, keep trying, try it from the other side.';
 const numberOfAnswerChoises = 7;
 class Answers {
     constructor() {
-        this.curiosity = [];
-        this.honor = [];
-        this.acceptance = [];
-        this.mastery = [];
-        this.leadership = [];
-        this.freedom = [];
+        this.autonomy = [];
+        this.competence = [];
         this.relatedness = [];
-        this.order = [];
-        this.goal = [];
-        this.status = [];
-        this.comfort = [];
+        this.diversity_of_skills = [];
+        this.significance_of_the_task = [];
+        this.feedback = [];
+        this.task_identification = [];
+        this.goals_and_objectives = [];
     }
 }
 class ResultForBlockchain {
     constructor() {
         this.time = 0;
-        this.cur = 0;
-        this.hon = 0;
-        this.acc = 0;
-        this.mas = 0;
-        this.lea = 0;
-        this.fre = 0;
-        this.rel = 0;
-        this.ord = 0;
-        this.goa = 0;
-        this.sta = 0;
+        this.aut = 0;
         this.com = 0;
+        this.rel = 0;
+        this.div = 0;
+        this.sig = 0;
+        this.fee = 0;
+        this.tas = 0;
+        this.goa = 0;
     }
 }
 class Result {
     constructor() {
         this.time = 0;
-        this.curiosity = 0;
-        this.honor = 0;
-        this.acceptance = 0;
-        this.mastery = 0;
-        this.leadership = 0;
-        this.freedom = 0;
+        this.autonomy = 0;
+        this.competence = 0;
         this.relatedness = 0;
-        this.order = 0;
-        this.goal = 0;
-        this.status = 0;
-        this.comfort = 0;
+        this.diversity_of_skills = 0;
+        this.significance_of_the_task = 0;
+        this.feedback = 0;
+        this.task_identification = 0;
+        this.goals_and_objectives = 0;
     }
 }
 export class motivationTestAnswers {
@@ -67,17 +58,14 @@ export class motivationTestAnswers {
         const parsed_result = JSON.parse(plain);
         this.time = [parsed_result.time];
         const full_result = {
-            curiosity: parsed_result.cur,
-            honor: parsed_result.hon,
-            acceptance: parsed_result.acc,
-            mastery: parsed_result.mas,
-            leadership: parsed_result.lea,
-            freedom: parsed_result.fre,
+            autonomy: parsed_result.aut,
+            competence: parsed_result.com,
             relatedness: parsed_result.rel,
-            order: parsed_result.ord,
-            goal: parsed_result.goa,
-            status: parsed_result.sta,
-            comfort: parsed_result.com
+            diversity_of_skills: parsed_result.div,
+            significance_of_the_task: parsed_result.sig,
+            feedback: parsed_result.fee,
+            task_identification: parsed_result.tas,
+            goals_and_objectives: parsed_result.goa
         };
         this.result = full_result;
     }
@@ -99,17 +87,14 @@ export class motivationTestAnswers {
         this.calculateResults();
         const blockchain_result = {
             time: this.time[this.time.length - 1],
-            cur: this.result.curiosity,
-            hon: this.result.honor,
-            acc: this.result.acceptance,
-            mas: this.result.mastery,
-            lea: this.result.leadership,
-            fre: this.result.freedom,
+            aut: this.result.autonomy,
+            com: this.result.competence,
             rel: this.result.relatedness,
-            ord: this.result.order,
-            goa: this.result.goal,
-            sta: this.result.status,
-            com: this.result.comfort
+            div: this.result.diversity_of_skills,
+            sig: this.result.significance_of_the_task,
+            fee: this.result.feedback,
+            tas: this.result.task_identification,
+            goa: this.result.goals_and_objectives
         };
         const stringifyedOnject = JSON.stringify(blockchain_result);
         var b64 = CryptoJS.AES.encrypt(stringifyedOnject, notSoSecretKey).toString();

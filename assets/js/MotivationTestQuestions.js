@@ -1,17 +1,14 @@
 import { motivationTestAnswers } from './motivationTestAnswers.js';
 class Questions {
     constructor() {
-        this.curiosity = [];
-        this.honor = [];
-        this.acceptance = [];
-        this.mastery = [];
-        this.leadership = [];
-        this.freedom = [];
+        this.autonomy = [];
+        this.competence = [];
         this.relatedness = [];
-        this.order = [];
-        this.goal = [];
-        this.status = [];
-        this.comfort = [];
+        this.diversity_of_skills = [];
+        this.significance_of_the_task = [];
+        this.feedback = [];
+        this.task_identification = [];
+        this.goals_and_objectives = [];
     }
 }
 class MotivationTest {

@@ -2,30 +2,24 @@ import { Question } from './question.js'
 import { motivationTestAnswers } from './motivationTestAnswers.js'
 
 class Questions {
-    curiosity: Question[];
-    honor: Question[];
-    acceptance: Question[];
-    mastery: Question[];
-    leadership: Question[];
-    freedom: Question[];
+    autonomy: Question[];
+    competence: Question[];
     relatedness: Question[];
-    order: Question[];
-    goal: Question[];
-    status: Question[];
-    comfort: Question[];
+    diversity_of_skills: Question[];
+    significance_of_the_task: Question[];
+    feedback: Question[];
+    task_identification: Question[];
+    goals_and_objectives: Question[];
     [key: string]: string | Question[];
     constructor() {
-        this.curiosity = [];
-        this.honor = [];
-        this.acceptance = [];
-        this.mastery = [];
-        this.leadership = [];
-        this.freedom = [];
+        this.autonomy = [];
+        this.competence = [];
         this.relatedness = [];
-        this.order = [];
-        this.goal = [];
-        this.status = [];
-        this.comfort = [];
+        this.diversity_of_skills = [];
+        this.significance_of_the_task = [];
+        this.feedback = [];
+        this.task_identification = [];
+        this.goals_and_objectives = [];
     }
 }
 

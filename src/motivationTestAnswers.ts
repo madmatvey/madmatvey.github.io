@@ -2,61 +2,49 @@ const notSoSecretKey = 'dont give up, keep trying, try it from the other side.';
 const numberOfAnswerChoises: number = 7;
 
 class Answers {
-    curiosity: number[];
-    honor: number[];
-    acceptance: number[];
-    mastery: number[];
-    leadership: number[];
-    freedom: number[];
-    relatedness: number[];
-    order: number[];
-    goal: number[];
-    status: number[];
-    comfort: number[];
+    autonomy:                 number[];
+    competence:               number[];
+    relatedness:              number[];
+    diversity_of_skills:      number[];
+    significance_of_the_task: number[];
+    feedback:                 number[];
+    task_identification:      number[];
+    goals_and_objectives:     number[];
     [key: string]: number[];
     constructor() {
-        this.curiosity = [];
-        this.honor = [];
-        this.acceptance = [];
-        this.mastery = [];
-        this.leadership = [];
-        this.freedom = [];
+        this.autonomy = [];
+        this.competence = [];
         this.relatedness = [];
-        this.order = [];
-        this.goal = [];
-        this.status = [];
-        this.comfort = [];
+        this.diversity_of_skills = [];
+        this.significance_of_the_task = [];
+        this.feedback = [];
+        this.task_identification = [];
+        this.goals_and_objectives = [];
     }
 }
 
 class ResultForBlockchain {
     time: number = 0;
-    cur: number = 0;
-    hon: number = 0;
-    acc: number = 0;
-    mas: number = 0;
-    lea: number = 0;
-    fre: number = 0;
-    rel: number = 0;
-    ord: number = 0;
-    goa: number = 0;
-    sta: number = 0;
+    aut: number = 0;
     com: number = 0;
+    rel: number = 0;
+    div: number = 0;
+    sig: number = 0;
+    fee: number = 0;
+    tas: number = 0;
+    goa: number = 0;
 }
 
 class Result {
-    time: number = 0;
-    curiosity: number = 0;
-    honor: number = 0;
-    acceptance: number = 0;
-    mastery: number = 0;
-    leadership: number = 0;
-    freedom: number = 0;
-    relatedness: number = 0;
-    order: number = 0;
-    goal: number = 0;
-    status: number = 0;
-    comfort: number = 0;
+    time:                     number = 0;
+    autonomy:                 number = 0;
+    competence:               number = 0;
+    relatedness:              number = 0;
+    diversity_of_skills:      number = 0;
+    significance_of_the_task: number = 0;
+    feedback:                 number = 0;
+    task_identification:      number = 0;
+    goals_and_objectives:     number = 0;
     [key: string]: number;
 }
 
@@ -86,17 +74,14 @@ export class motivationTestAnswers {
         
         this.time     = [parsed_result.time];
         const full_result = {
-            curiosity:   parsed_result.cur,
-            honor:       parsed_result.hon,
-            acceptance:  parsed_result.acc,
-            mastery:     parsed_result.mas,
-            leadership:  parsed_result.lea,
-            freedom:     parsed_result.fre,
-            relatedness: parsed_result.rel,
-            order:       parsed_result.ord,
-            goal:        parsed_result.goa,
-            status:      parsed_result.sta,
-            comfort:     parsed_result.com
+            autonomy:                 parsed_result.aut,
+            competence:               parsed_result.com,
+            relatedness:              parsed_result.rel,
+            diversity_of_skills:      parsed_result.div,
+            significance_of_the_task: parsed_result.sig,
+            feedback:                 parsed_result.fee,
+            task_identification:      parsed_result.tas,
+            goals_and_objectives:     parsed_result.goa
         } as Result;
         this.result = full_result
     }
@@ -122,17 +107,14 @@ export class motivationTestAnswers {
         this.calculateResults();
         const blockchain_result = {
             time: this.time[this.time.length-1],
-            cur: this.result.curiosity,
-            hon: this.result.honor,
-            acc: this.result.acceptance,
-            mas: this.result.mastery,
-            lea: this.result.leadership,
-            fre: this.result.freedom,
-            rel: this.result.relatedness,
-            ord: this.result.order,
-            goa: this.result.goal,
-            sta: this.result.status,
-            com: this.result.comfort
+            aut:  this.result.autonomy,
+            com:  this.result.competence,
+            rel:  this.result.relatedness,
+            div:  this.result.diversity_of_skills,
+            sig:  this.result.significance_of_the_task,
+            fee:  this.result.feedback,
+            tas:  this.result.task_identification,
+            goa:  this.result.goals_and_objectives
         } as ResultForBlockchain;
 
         const stringifyedOnject = JSON.stringify(blockchain_result);

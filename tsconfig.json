@@ -12,5 +12,8 @@
     "allowSyntheticDefaultImports": true,
     "moduleResolution": "node"
   },
+  "paths": {
+      "chart.js": ["node_modules/chart.js"]
+    },
   "include": ["src/*.ts"]
 }

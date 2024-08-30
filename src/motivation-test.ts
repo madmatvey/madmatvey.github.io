@@ -2,6 +2,7 @@ import MotivationTest from './motivationTestQuestions.js'
 import { CryptoUser } from './cryptoUser.js';
 import { Question } from './question.js'
 import { motivationTestAnswers } from './motivationTestAnswers.js';
+import { renderChart } from './renderChart.js';
 
 let cryptoUser: CryptoUser = new CryptoUser;
 let cryptoUser2: CryptoUser = new CryptoUser;
@@ -192,7 +193,7 @@ document.addEventListener('DOMContentLoaded', async () => {
     }
 
     function capitalizeFirstLetter(string: string) {
-        return string.charAt(0).toUpperCase() + string.slice(1).toLowerCase();
+        return string.charAt(0).toUpperCase() + string.slice(1).toLowerCase().replace(/_/g, " ");
       }
 
     function submitLocalResults() {
@@ -203,44 +204,5 @@ document.addEventListener('DOMContentLoaded', async () => {
         const newUrl = `${window.location.pathname}?result=${encryptedResult}`;
         window.history.replaceState({}, '', newUrl);
         showResult();
-    }
-
-
-    function renderChart(scores: { [category: string]: number }) {
-        const ctx = document.getElementById('result-chart') as HTMLCanvasElement;
-
-        const existingChart = Chart.getChart(ctx);
-        if (existingChart) {
-            existingChart.destroy();
-        }
-        
-        new Chart(ctx, {
-            type: 'radar',
-            data: {
-                labels: Object.keys(scores),
-                datasets: [{
-                    label: 'Motivation Scores',
-                    data: Object.values(scores),
-                    backgroundColor: 'rgba(54, 162, 235, 0.2)',
-                    borderColor: 'rgba(54, 162, 235, 1)',
-                    borderWidth: 1
-                }]
-            },
-            options: {
-                scales: {
-                    r: {
-                        grid: {
-                            circular: true,
-                            color: "#003366",
-                        },
-                        max: 100,
-                        min: 0,
-                        ticks: {
-                            display: false
-                        },
-                    }
-                }
-            }
-        });
     }
 });
