@@ -55,7 +55,7 @@ We may update our privacy policy from time to time. We will notify you of any ch
 **10. Contact Us**
 
 If you have any questions about this privacy policy, please contact us:
-- By LinkedIn: [Eugene Leontev](https://www.linkedin.com/in/madmatvey/)
+- By LinkedIn: [Eugene Leontev](https://www.linkedin.com/in/eugeneleontev/)
 - By X: [Eugene Leontev](https://x.com/EugeneLeontev)
 
 ---
