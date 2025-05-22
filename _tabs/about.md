@@ -29,9 +29,11 @@ I am considering 🇦🇷 Argentina as my next base camp.
 
 - Playing guitar can stimulate creativity and provide a relaxing break from work. Sometimes I make short videos of me playing guitar, [here's one of them](https://www.ultimate-guitar.com/shot/madmatvey/669363136).
 
+- Sometimes on the weekends I stream live, play deejay live mix on my YouTube channel [Lazy Beat](https://www.youtube.com/@lazybeatdjs). Subscribe, give me likes!.
+
 ## CV
 
-Feel free to [download my CV](/assets/Eugene_Leontev_CV_space.pdf)
+Feel free to [download my CV](/assets/Eugene_Leontev_CV_RoR_2025.pdf)
 
 ## Donate me
 
