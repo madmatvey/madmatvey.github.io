@@ -2,7 +2,7 @@
 layout: post
 title: "The Product-Minded Software Engineer: A Key Asset for High-Impact Teams"
 description: In todays tech industry, successful engineers are product-minded, deeply involved in product decisions, user behavior, and business success, enhancing their teams impact.
-tags: [career development, product management, productivity and innovation, engineering team management,problem-solving, product-minded engineer, product development strategies, engineering leadership,cross-functional collaboration, user-centric design]
+tags: [career development, product management, productivity and innovation, engineering team management, problem-solving, product-minded engineer, product development strategies, engineering leadership, cross-functional collaboration, user-centric design]
 author: eugene
 categories: [Leadership, Product Development]
 comments : True

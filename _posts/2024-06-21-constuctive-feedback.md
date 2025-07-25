@@ -1,7 +1,7 @@
 ---
 layout: post
 title: "Constructive Feedback: Why You Need It More Than You Need Coffee"
-tags: [humor, feedback, tech, coding, constructive feedback, teamwork, development, codinglife, coding, corporate culture, leadership, mental health, personal development, teamwork, workplace culture]
+tags: [humor, feedback, tech, coding, constructive feedback, teamwork, development, codinglife, corporate culture, leadership, mental health, personal development, workplace culture]
 author: eugene
 categories: [Leadership, Mental Health]
 comments : True

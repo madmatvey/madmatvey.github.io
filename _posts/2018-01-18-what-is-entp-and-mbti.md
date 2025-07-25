@@ -3,7 +3,7 @@ layout: post
 title: How to staying alive if you are an ENTP?
 subtitle : Discover life as an ENTP. Learn about the Myers-Briggs Type Indicator (MBTI) and how understanding your personality type can improve your quality of life.
 categories: [Self-Knowledge, MBTI]
-tags: [ENTP, Eugene Leontev, MBTI, Myers-Briggs Type Indicator, personality type, self-knowledge, Paul Tieger, 16personalities, Keirsey Temperament Sorter, personal development]
+tags: [entp, eugene leontev, mbti, myers-briggs type indicator, personality type, self-knowledge, paul tieger, 16personalities, keirsey temperament sorter, personal development]
 author: eugene
 comments : True
 render_with_liquid: false
