@@ -1,8 +1,7 @@
 ---
 layout: post
 title: "Protecting Your Treasure: The Hilarious Guide to Seed Phrases"
-tags: [crypto wallet, seed phrase, kraken wallet, crypto security, digital treasure, crypto safety, blockchain, cryptocurrency, crypto guide, cyber security, crypto tips, secure crypto,
-crypto storage, crypto humor]
+tags: [crypto wallet, seed phrase, kraken wallet, crypto security, digital treasure, crypto safety, blockchain, cryptocurrency, crypto guide, cyber security, crypto tips, secure crypto, crypto storage, crypto humor]
 author: eugene
 categories: [Tutorial, Crypto]
 comments : True
