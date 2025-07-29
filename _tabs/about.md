@@ -4,15 +4,63 @@ icon: fas fa-info-circle
 order: 4
 ---
 
-# Eugene Leontev
+# Eugene Leontev - Lead Ruby Engineer
 
-## Leader and Ruby Engineer
+**Location:** Tbilisi, Georgia  
+**LinkedIn:** [linkedin.com/in/eugeneleontev](https://www.linkedin.com/in/eugeneleontev/)  
+**GitHub:** [github.com/madmatvey](https://github.com/madmatvey)  
+**Blog:** [madmatvey.github.io](https://madmatvey.github.io/)  
 
-As an experienced Engineering Manager, I excel in leading teams to deliver clear, actionable insights on product developments and feature implementations. With a proven track record of effective communication and technical expertise, I ensure that within a year, I will be the go-to expert for understanding product status and providing straightforward guidance on new feature implementation. At the same time, I am confident that the team will be happy to do their job. I have a special strategy for connecting business goals with the personal goals of engineers, fostering a collaborative and efficient work environment.
+## Professional Summary
 
-I have over 8 years of experience as a self-driven engineering manager and programmer, specializing in Ruby, with some Golang and JavaScript thrown in. I take pride in owning the results of my product team. As an [ENTP](https://www.16personalities.com/entp-personality), I thrive in debates and love tackling challenges. I've broken things, fixed them, and turned big dreams into reality, all while honing my endurance and perseverance. In my work, I focus on solving real problems and delivering measurable value to users. As a leader, I prioritize clean code, solid architecture, and clear communication skills to drive project success. I believe in simplicity and iterative development for building complex systems.
+Lead Ruby engineer with 8+ years specializing in high-load backends, microservices, and fintech solutions. Proven track record of delivering 92% performance improvements, scaling systems to handle 5,000+ daily transactions, and leading cross-functional teams of up to 12 engineers.
 
-I appreciate clear and transparent communication, which is key to project success. I'm seeking a long-term partnership with a company that values transparency and puts people first, including engineers, customers, and users.
+## Key Achievements
+
+- **Performance Optimization:** Reduced database query latency from 250ms to 20ms, achieving 92% system throughput improvement
+- **Scalability:** Architected USDT wallet processing 5,000+ daily transactions with 300+ deposits in first week
+- **Team Leadership:** Led 12-engineer teams, delivering features 2 weeks ahead of schedule
+- **Growth:** Drove 12x user growth through referral programs generating 50,000+ invites
+- **API Optimization:** Slashed wallet API response time from 35-45s to 5-7s
+
+## Core Competencies
+
+**Backend Development:** Ruby on Rails, PostgreSQL, Microservices Architecture  
+**Cloud & DevOps:** AWS, Kubernetes, CI/CD, Docker  
+**Performance & Security:** Query Optimization, OAuth, TRC20/ERC20 Integration  
+**Leadership:** Technical Team Management, Cross-functional Collaboration, Remote Team Coordination  
+
+## Recent Experience
+
+**Principal Ruby Engineer** | Fintech Startup (TRC20 USDT Wallet) | Sep 2024–May 2025
+- Sole backend architect for Series A fintech startup
+- Built secure USDT deposit system scaling to 5,000+ daily transactions
+- Designed referral engine driving 12x user growth
+
+**Lead Ruby Developer** | Wallarm (API Security) | Jan 2023–Mar 2024
+- Led MySQL→PostgreSQL migration achieving 30% query performance improvement
+- Implemented OAuth-based IAM supporting 100k+ daily API calls
+
+**Lead Ruby Developer** | Eleving Group (Fintech) | May 2022–Dec 2022
+- Redesigned core architecture for 92% throughput improvement
+- Implemented PostgreSQL materialized views reducing query times by 80%
+
+**Team Lead / Senior Ruby Developer** | Appbooster | Aug 2018–Apr 2022
+- Managed 12-engineer team delivering releases ahead of schedule
+- Integrated monitoring tools reducing average query time from 250ms to 20ms
+
+## Education & Training
+
+- **B.Sc. Computer Science in Economics** | Urals State University (2005-2007)
+- **Computing Machines & Networks** | Novosibirsk State Technical University (2001-2004)
+- **AI Tools Workshop** | Delivered to 60 engineers with 75% adoption rate (2025)
+- **Remote Team Management** | Coursera & GitLab Certification (2024)
+
+## Languages & Availability
+
+- **Languages:** English (B2+), Russian (Native)
+- **Availability:** 9am-5pm EST / 2pm-10pm GMT for live collaboration
+- **Work Authorization:** No sponsorship required 
 
 ## Personal Information
 
@@ -33,7 +81,7 @@ I am considering 🇦🇷 Argentina as my next base camp.
 
 ## CV
 
-Feel free to [download my CV](/assets/Eugene_Leontev_CV_RoR_2025.pdf)
+Feel free to [download my CV](/assets/Eugene_Leontev_CV_RoR.25.pdf)
 
 ## Donate me
 
