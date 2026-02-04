@@ -18,7 +18,8 @@
     "prewatch": "npx rimraf assets/js/dist",
     "watch": "npx rollup -c --bundleConfigAsCjs -w",
     "test": "npx stylelint _sass/**/*.scss",
-    "fixlint": "npm run test -- --fix"
+    "fixlint": "npm run test -- --fix",
+    "postinstall": "node scripts/patch-npm-deps.js"
   },
   "devDependencies": {
     "@babel/core": "^7.24.4",
@@ -29,15 +30,17 @@
     "@rollup/plugin-babel": "^6.0.4",
     "@rollup/plugin-terser": "^0.4.4",
     "@semantic-release/changelog": "^6.0.3",
-    "@semantic-release/exec": "^6.0.3",
+    "@semantic-release/exec": "^7.1.0",
     "@semantic-release/git": "^10.0.1",
     "@types/chart.js": "^2.9.41",
     "conventional-changelog-conventionalcommits": "^7.0.2",
     "husky": "^9.0.11",
+    "patch-package": "^8.0.1",
     "rimraf": "^5.0.5",
     "rollup": "^4.22.4",
     "rollup-plugin-license": "^3.3.1",
-    "semantic-release": "^23.0.8",
+    "semantic-release": "^25.0.3",
+    "semantic-release-plugin-update-version-in-files": "^2.0.1",
     "stylelint": "^16.3.1",
     "stylelint-config-standard-scss": "^13.1.0"
   },
@@ -141,9 +144,12 @@
         }
       ],
       [
-        "@semantic-release/npm",
+        "semantic-release-plugin-update-version-in-files",
         {
-          "npmPublish": false
+          "files": [
+            "package.json"
+          ],
+          "placeholder": "0.0.0-development"
         }
       ],
       [
@@ -172,5 +178,17 @@
     "chart.js": "^4.4.3",
     "crypto-js": "^4.2.0",
     "typescript": "^5.5.2"
+  },
+  "overrides": {
+    "npm": {
+      "@isaacs/brace-expansion": "^5.0.1",
+      "tar": "^7.5.7"
+    },
+    "@semantic-release/npm": {
+      "npm": false
+    },
+    "semantic-release": {
+      "@semantic-release/npm": false
+    }
   }
 }
