@@ -12,10 +12,11 @@
     content="width=device-width, user-scalable=yes initial-scale=1, shrink-to-fit=no, viewport-fit=cover"
   >
   <title>
-    {%- unless page.layout == 'home' -%}
-      {{ page.title | append: ' | ' }}
-    {%- endunless -%}
-    {{ site.title }}
+    {%- if page.layout == 'home' -%}
+      {{ site.title }}
+    {%- else -%}
+      {{ page.title | smart_title }}
+    {%- endif -%}
   </title>
   {%- capture seo_tags -%}
     {% seo title=false %}
