@@ -1,0 +1,81 @@
+{%- comment -%}
+  BlogPosting Schema.org structured data for blog posts
+  Based on: https://schema.org/BlogPosting
+{%- endcomment -%}
+
+{% if page.layout == 'post' %}
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BlogPosting",
+  "headline": {{ page.title | jsonify }},
+  "description": {{ page.description | default: page.excerpt | strip_html | strip | jsonify }},
+  {% if page.author and site.data.authors[page.author] %}
+  "author": {
+    "@type": "Person",
+    "name": {{ site.data.authors[page.author].name | jsonify }}{% if site.data.authors[page.author].url %},
+    "url": {{ site.data.authors[page.author].url | jsonify }}{% endif %}
+  },
+  {% else %}
+  "author": {
+    "@type": "Person",
+    "name": {{ site.social.name | jsonify }},
+    "url": {{ site.social.links[0] | jsonify }}
+  },
+  {% endif %}
+  "datePublished": "{{ page.date | date_to_xmlschema }}",
+  "dateModified": "{{ page.last_modified_at | date_to_xmlschema | default: page.date | date_to_xmlschema }}",
+  {% if page.image %}
+  {%- capture img_url -%}
+    {% include media-url.html src=page.image.path subpath=page.media_subpath absolute=true %}
+  {%- endcapture -%}
+  "image": {
+    "@type": "ImageObject",
+    "url": {{ img_url | strip | jsonify }},
+    {% if page.image.width %}
+    "width": {{ page.image.width }},
+    {% else %}
+    "width": 1200,
+    {% endif %}
+    {% if page.image.height %}
+    "height": {{ page.image.height }},
+    {% else %}
+    "height": 630
+    {% endif %}
+  },
+  {% elsif site.social_preview_image %}
+  {%- capture img_url -%}
+    {% include media-url.html src=site.social_preview_image absolute=true %}
+  {%- endcapture -%}
+  "image": {
+    "@type": "ImageObject",
+    "url": {{ img_url | strip | jsonify }}
+  },
+  {% endif %}
+  "publisher": {
+    "@type": "Organization",
+    "name": {{ site.title | jsonify }},
+    {% if site.social_preview_image %}
+    {%- capture logo_url -%}
+      {% include media-url.html src=site.social_preview_image absolute=true %}
+    {%- endcapture -%}
+    "logo": {
+      "@type": "ImageObject",
+      "url": {{ logo_url | strip | jsonify }}
+    }
+    {% endif %}
+  },
+  "mainEntityOfPage": {
+    "@type": "WebPage",
+    "@id": {{ page.url | absolute_url | jsonify }}
+  },
+  {% if page.categories.size > 0 %}
+  "articleSection": {{ page.categories | join: ', ' | jsonify }},
+  {% endif %}
+  {% if page.tags.size > 0 %}
+  "keywords": {{ page.tags | join: ', ' | jsonify }},
+  {% endif %}
+  "inLanguage": {{ site.lang | default: 'en' | jsonify }}
+}
+</script>
+{% endif %}

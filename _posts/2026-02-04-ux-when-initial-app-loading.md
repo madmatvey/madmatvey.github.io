@@ -1,7 +1,7 @@
 ---
 layout: post
 title: "When “Just Load the Data” Isn’t Simple: Making Decisions Under Uncertainty in Initial App Load"
-description: "How we eliminated UI flicker and reduced load time in a Telegram Mini App by loading all user data in a single PostgreSQL query."
+description: "Learn how we eliminated UI flicker and reduced load time in a Telegram Mini App by loading all user data in a single PostgreSQL query. Read the full case study!"
 tags: [software development, programming, optimization, postgres, sql, mobile apps backend, product-minded engineer, user-centric design, problem-solving, decision making, heuristics, engineering leadership, innovation, tech blog, mental health, product developing, product development strategies]
 author: eugene
 categories: [Product, UX]
@@ -10,6 +10,7 @@ pin: false
 render_with_liquid: false
 image:
     path: /assets/img/just_load_the_data.png
+    alt: "Diagram showing data loading optimization in Telegram Mini App"
 ---
 
 We were working on a **mental health support app for men**, delivered as a **Telegram Mini App**.  

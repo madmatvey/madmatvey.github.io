@@ -1,7 +1,7 @@
 ---
 layout: post
 title: "Introducing ruby gem 'gasfree_sdk' – Send USDT without TRX or Energy on TRON"
-description: "Learn how to send USDT TRC-20 on the TRON blockchain without needing TRX or energy using the Ruby gem gasfree_sdk. Discover how to build gasless transactions and simplify your Web3 dApp UX."
+description: "Learn how to send USDT TRC-20 on TRON without needing TRX or energy using Ruby gem gasfree_sdk. Build gasless transactions and simplify Web3 UX."
 tags: [ruby developer, blockchain, crypto guide, cryptocurrency, secure crypto, crypto tips, crypto wallet, tech, tech blog, software development, development, programming, productivity, innovation, tron, usdt, trc20, gasless transactions, meta-transactions, crypto development, web3 ux, tron development, usdt trc20, ruby gem, smart contract tools, blockchain backend]
 author: eugene
 categories: [Tutorial, Crypto]
@@ -10,6 +10,7 @@ pin: false
 render_with_liquid: false
 image:
     path: /assets/img/gasless/gasless.png
+    alt: "Gasless USDT transactions on TRON blockchain using Ruby SDK"
 ---
 
 If you're building Web3 applications on **TRON**, and especially dealing with USDT TRC‑20, you know the hassle: you need **TRX** to pay for **bandwidth** and **energy**, or buy and burn it—even for free transfers! With **`gasfree_sdk`**, you can use your own USDT to cover those fees, and your users **don't need to buy or rent TRX** at all.

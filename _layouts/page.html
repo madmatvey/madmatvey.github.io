@@ -4,6 +4,10 @@ layout: default
 
 {% include lang.html %}
 
+{% if page.title == 'About' or page.title contains 'About' %}
+{% include schema-org-person.html %}
+{% endif %}
+
 <article class="px-1">
   {% if page.layout == 'page' or page.collection == 'tabs' %}
     {% assign tab_key = page.title | downcase %}

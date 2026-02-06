@@ -1,7 +1,7 @@
 ---
 layout: post
 title: "Top 5 Leadership Hats for Engineering Managers: Which One Fits You?"
-description: "Discover 5 unique leadership styles for Engineering Managers, from scientist to pirate captain. Learn how versatile leadership drives innovation, team cohesion, and technical excellence."
+description: "Discover 5 unique leadership styles for Engineering Managers, from scientist to pirate captain. Learn how versatile leadership drives innovation."
 tags: [engineering manager leadership styles, dynamic leadership in engineering, versatile engineering management, transformational leadership, technical nerd perfectionist, empathic inspirational leader, detective investigator leadership, pirate captain leadership, creative engineering management, innovative team leadership, effective engineering leadership, flexible management approaches, leadership hats for engineers, engineering team management, leadership in tech]
 author: eugene
 categories: [Leadership, Blog]
@@ -10,6 +10,7 @@ pin: false
 render_with_liquid: false
 image:
     path: /assets/img/5-hats/01-leadership-hats.jpg
+    alt: "Five leadership hats for engineering managers illustration"
 ---
 When considering possible leadership styles for an Engineering Manager, it's essential to recognize that different situations and team dynamics may call for different approaches. Here are several leadership styles, described using my top 5 hats, each combining multiple styles to fit the role:
 

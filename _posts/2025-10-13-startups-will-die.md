@@ -10,6 +10,7 @@ pin: false
 render_with_liquid: false
 image:
     path: /assets/img/90-startups-will-die.jpg
+    alt: "Illustration showing startup failure statistics and customer pain validation"
 ---
 
 Every month, thousands of new ideas emerge around the world. People quit their jobs, find partners, hunt for investments, open Figma and Notion, order logos and domains.  

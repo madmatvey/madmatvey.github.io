@@ -1,6 +1,7 @@
 ---
 layout: post
 title: "Constructive Feedback: Why You Need It More Than You Need Coffee"
+description: "Discover why constructive feedback is essential for developers. Learn how specific, actionable feedback transforms code quality and team performance."
 tags: [humor, feedback, tech, coding, constructive feedback, teamwork, development, codinglife, corporate culture, leadership, mental health, personal development, workplace culture]
 author: eugene
 categories: [Leadership, Mental Health]
@@ -9,6 +10,7 @@ pin: false
 render_with_liquid: false
 image:
     path: assets/img/constructive-feedback/situation-at-the-office.jpeg
+    alt: "Office situation illustration about constructive feedback importance"
 ---
 ### The Constructive Feedback
 

@@ -11,6 +11,7 @@ redirect_from:
   - /2018/01/18/what-is-entp-and-mbti.html
 image:
     path: assets/img/entp.jpeg
+    alt: "ENTP personality type illustration from Myers-Briggs Type Indicator"
 ---
 
 ​Hi! My name is Eugene. I'm an ENTP.
