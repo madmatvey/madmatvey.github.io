@@ -85,14 +85,16 @@ layout: page
             href="#{{ LIST_PREFIX }}{{ group_index }}"
             data-bs-toggle="collapse"
             aria-expanded="true"
-            aria-label="{{ HEAD_PREFIX }}{{ group_index }}-trigger"
+            aria-label="Toggle subcategories for {{ category_name }}"
             class="category-trigger hide-border-bottom"
           >
-            <i class="fas fa-fw fa-angle-down"></i>
+            <span class="visually-hidden">Toggle subcategories for {{ category_name }}</span>
+            <span style="position: absolute; width: 1px; height: 1px; padding: 0; margin: -1px; overflow: hidden; clip: rect(0, 0, 0, 0); white-space: nowrap; border-width: 0;">Toggle subcategories for {{ category_name }}</span>
+            <i class="fas fa-fw fa-angle-down" aria-hidden="true"></i>
           </a>
         {% else %}
           <span data-bs-toggle="collapse" class="category-trigger hide-border-bottom disabled">
-            <i class="fas fa-fw fa-angle-right"></i>
+            <i class="fas fa-fw fa-angle-right" aria-hidden="true"></i>
           </span>
         {% endif %}
       </div>

@@ -67,6 +67,9 @@
     {% assign _src = null %}
     {% assign _lqip = null %}
     {% assign _class = null %}
+    {% assign _alt = null %}
+    {% assign _has_width = false %}
+    {% assign _has_height = false %}
 
     {% for _attr in _attrs %}
       {% unless _attr contains '=' %}
@@ -84,6 +87,12 @@
           {% assign _lqip = _value %}
         {% when 'class' %}
           {% assign _class = _value %}
+        {% when 'alt' %}
+          {% assign _alt = _value %}
+        {% when 'width' %}
+          {% assign _has_width = true %}
+        {% when 'height' %}
+          {% assign _has_height = true %}
       {% endcase %}
     {% endfor %}
 
@@ -124,6 +133,14 @@
       {% assign _class = _class | append: ' shimmer' %}
     {% endif %}
 
+    <!-- Add default width/height if missing -->
+    {% unless _has_width %}
+      {% assign _left = _left | append: ' width="1200"' %}
+    {% endunless %}
+    {% unless _has_height %}
+      {% assign _left = _left | append: ' height="630"' %}
+    {% endunless %}
+
     <!-- lazy-load images -->
     {% if _lazyload %}
       {% assign _left = _left | append: ' loading="lazy"' %}
@@ -141,21 +158,27 @@
       {% assign _parent = _right | slice: 1, 4 %}
 
       {% if _parent == '</a>' %}
-        <!-- add class to exist <a> tag -->
+        <!-- add class and aria-label to exist <a> tag -->
         {% assign _size = _img_content | size | minus: 1 %}
+        {% assign _alt_text = _alt | default: 'Image' %}
         {% capture _class %}
-          class="img-link{% unless _lqip %} shimmer{% endunless %}"
+          class="img-link{% unless _lqip %} shimmer{% endunless %}" aria-label="View image: {{ _alt_text }}"
         {% endcapture %}
         {% assign _img_content = _img_content | slice: 0, _size | append: _class | append: '>' %}
 
       {% else %}
         <!-- create the image wrapper -->
+        {% assign _alt_text = _alt | default: 'Image' %}
         {% assign _wrapper_start = _final_src
           | default: _src
           | prepend: '<a href="'
           | append: '" class="popup img-link '
           | append: _class
-          | append: '">'
+          | append: '" aria-label="View image: '
+          | append: _alt_text
+          | append: '"><span class="visually-hidden">View image: '
+          | append: _alt_text
+          | append: '</span>'
         %}
 
         {% assign _img_content = _img_content | append: _wrapper_start %}
@@ -233,9 +256,23 @@
       {% endif %}
 
       {% assign id = snippet | split: '"' | first %}
+      {% assign heading_full = snippet | split: mark_end | first %}
+      {% assign heading_text = heading_full | split: '">' | last | strip_html | strip %}
+      {% if heading_text == empty %}
+        {% assign heading_text = heading_full | split: '>' | last | split: '<' | first | strip %}
+      {% endif %}
+      {% if heading_text == empty %}
+        {% assign heading_text = 'this section' %}
+      {% endif %}
       {% assign anchor = '<a href="#'
         | append: id
-        | append: '" class="anchor text-muted"><i class="fas fa-hashtag"></i></a>'
+        | append: '" class="anchor text-muted" aria-label="Link to section: '
+        | append: heading_text
+        | append: '"><span class="visually-hidden">Link to section: '
+        | append: heading_text
+        | append: '</span><span style="position: absolute; width: 1px; height: 1px; padding: 0; margin: -1px; overflow: hidden; clip: rect(0, 0, 0, 0); white-space: nowrap; border-width: 0;">Link to section: '
+        | append: heading_text
+        | append: '</span><span aria-hidden="true" style="font-size: 0.8em;">#</span><i class="fas fa-hashtag" aria-hidden="true"></i></a>'
       %}
 
       {% assign left = snippet | split: mark_end | first %}

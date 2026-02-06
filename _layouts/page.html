@@ -11,10 +11,34 @@ layout: default
 <article class="px-1">
   {% if page.layout == 'page' or page.collection == 'tabs' %}
     {% assign tab_key = page.title | downcase %}
-    {% assign title = site.data.locales[lang].tabs[tab_key] | default: page.title %}
-    <h1 class="dynamic-title">
-      {{ title }}
-    </h1>
+    {% comment %} Extract tab key from URL if title doesn't match {% endcomment %}
+    {% if tab_key == '' or tab_key == nil %}
+      {% assign url_parts = page.url | split: '/' %}
+      {% assign tab_key = url_parts[1] | downcase %}
+    {% endif %}
+    {% assign base_title = site.data.locales[lang].tabs[tab_key] | default: page.title %}
+    {% comment %} Create descriptive titles for SEO (20-70 characters) {% endcomment %}
+    {% if tab_key == 'categories' or page.url contains '/categories/' %}
+      {% assign title = 'Browse All Blog Post Categories - Organized Topics' %}
+    {% elsif tab_key == 'tags' or page.url contains '/tags/' %}
+      {% assign title = 'Explore All Blog Tags - Find Posts by Topic' %}
+    {% elsif tab_key == 'archives' or page.url contains '/archives/' %}
+      {% assign title = 'Blog Archives - Browse Posts by Date and Year' %}
+    {% elsif tab_key contains 'motivation' or page.url contains '/motivation-test/' or page.title contains 'Motivation' %}
+      {% assign title = 'Motivation Test - Discover Your Work Motivation Style' %}
+    {% else %}
+      {% assign title = base_title %}
+    {% endif %}
+    {% comment %} Check if content already has h1 tag {% endcomment %}
+    {% if content contains '<h1' %}
+      <h2 class="dynamic-title">
+        {{ title }}
+      </h2>
+    {% else %}
+      <h1 class="dynamic-title">
+        {{ title }}
+      </h1>
+    {% endif %}
     <div class="content">
       {{ content }}
     </div>

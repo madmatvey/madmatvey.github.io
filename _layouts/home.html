@@ -56,6 +56,18 @@ refactor: true
 
           {% assign alt = post.image.alt | xml_escape | default: 'Preview Image' %}
 
+          {% if post.image.width %}
+            {% capture width %}width="{{ post.image.width }}"{% endcapture %}
+          {% else %}
+            {% capture width %}width="1200"{% endcapture %}
+          {% endif %}
+
+          {% if post.image.height %}
+            {% capture height %}height="{{ post.image.height }}"{% endcapture %}
+          {% else %}
+            {% capture height %}height="630"{% endcapture %}
+          {% endif %}
+
           {% assign lqip = null %}
 
           {% if post.image.lqip %}
@@ -63,7 +75,7 @@ refactor: true
           {% endif %}
 
           <div class="col-md-5">
-            <img src="{{ src }}" alt="{{ alt }}" {{ lqip }}>
+            <img src="{{ src }}" alt="{{ alt }}" {{ width }} {{ height }} {{ lqip }}>
           </div>
 
           {% assign card_body_col = '7' %}

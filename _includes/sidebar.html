@@ -2,18 +2,26 @@
 
 <aside aria-label="Sidebar" id="sidebar" class="d-flex flex-column align-items-end">
   <header class="profile-wrapper">
-    <a href="{{ '/' | relative_url }}" id="avatar" class="rounded-circle">
+    <a href="{{ '/' | relative_url }}" id="avatar" class="rounded-circle" aria-label="Go to homepage">
+      <span class="visually-hidden">Go to homepage</span>
+      <span style="position: absolute; width: 1px; height: 1px; padding: 0; margin: -1px; overflow: hidden; clip: rect(0, 0, 0, 0); white-space: nowrap; border-width: 0;">Go to homepage</span>
       {%- if site.avatar != empty and site.avatar -%}
         {%- capture avatar_url -%}
           {% include media-url.html src=site.avatar %}
         {%- endcapture -%}
-        <img src="{{- avatar_url -}}" width="112" height="112" alt="avatar" onerror="this.style.display='none'">
+        <img src="{{- avatar_url -}}" width="112" height="112" alt="avatar" aria-hidden="true" onerror="this.style.display='none'">
       {%- endif -%}
     </a>
 
-    <h1 class="site-title">
-      <a href="{{ '/' | relative_url }}">{{ site.title }}</a>
-    </h1>
+    {% if page.layout == 'home' %}
+      <h1 class="site-title">
+        <a href="{{ '/' | relative_url }}" aria-label="Go to homepage">{{ site.title }}</a>
+      </h1>
+    {% else %}
+      <h2 class="site-title">
+        <a href="{{ '/' | relative_url }}" aria-label="Go to homepage">{{ site.title }}</a>
+      </h2>
+    {% endif %}
     <p class="site-subtitle fst-italic mb-0">{{ site.tagline }}</p>
   </header>
   <!-- .profile-wrapper -->
@@ -22,7 +30,7 @@
     <ul class="nav">
       <!-- home -->
       <li class="nav-item{% if page.layout == 'home' %}{{ " active" }}{% endif %}">
-        <a href="{{ '/' | relative_url }}" class="nav-link">
+        <a href="{{ '/' | relative_url }}" class="nav-link" aria-label="Go to homepage">
           <i class="fa-fw fas fa-home"></i>
           <span>{{ site.data.locales[include.lang].tabs.home | upcase }}</span>
         </a>
@@ -30,11 +38,11 @@
       <!-- the real tabs -->
       {% for tab in site.tabs %}
         <li class="nav-item{% if tab.url == page.url %}{{ " active" }}{% endif %}">
-          <a href="{{ tab.url | relative_url }}" class="nav-link">
+          {% capture tab_name %}{{ tab.url | split: '/' }}{% endcapture %}
+          {% capture tab_title %}{{ site.data.locales[include.lang].tabs.[tab_name] | default: tab.title | upcase }}{% endcapture %}
+          <a href="{{ tab.url | relative_url }}" class="nav-link" aria-label="Go to {{ tab_title | strip }}">
             <i class="fa-fw {{ tab.icon }}"></i>
-            {% capture tab_name %}{{ tab.url | split: '/' }}{% endcapture %}
-
-            <span>{{ site.data.locales[include.lang].tabs.[tab_name] | default: tab.title | upcase }}</span>
+            <span>{{ tab_title }}</span>
           </a>
         </li>
         <!-- .nav-item -->
@@ -71,9 +79,25 @@
       {% endcase %}
 
       {% if url %}
+        {%- capture aria_label -%}
+          {%- case entry.type -%}
+            {%- when 'github' -%}
+              Visit GitHub profile
+            {%- when 'x' -%}
+              Visit X (Twitter) profile
+            {%- when 'email' -%}
+              Send email
+            {%- when 'rss' -%}
+              RSS feed
+            {%- when 'linkedin' -%}
+              Visit LinkedIn profile
+            {%- else -%}
+              {{ entry.type | capitalize }}
+          {%- endcase -%}
+        {%- endcapture -%}
         <a
           href="{{ url }}"
-          aria-label="{{ entry.type }}"
+          aria-label="{{ aria_label | strip }}"
           {% assign link_types = '' %}
 
           {% unless entry.noblank %}
@@ -89,7 +113,9 @@
             rel="{{ link_types }}"
           {% endunless %}
         >
-          <i class="{{ entry.icon }}"></i>
+          <span class="visually-hidden">{{ aria_label | strip }}</span>
+          <span style="position: absolute; width: 1px; height: 1px; padding: 0; margin: -1px; overflow: hidden; clip: rect(0, 0, 0, 0); white-space: nowrap; border-width: 0;">{{ aria_label | strip }}</span>
+          <i class="{{ entry.icon }}" aria-hidden="true"></i>
         </a>
       {% endif %}
     {% endfor %}
