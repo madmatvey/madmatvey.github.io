@@ -38,9 +38,12 @@
     "width": 1200,
     {% endif %}
     {% if page.image.height %}
-    "height": {{ page.image.height }},
+    "height": {{ page.image.height }}{% if page.image.alt %},{% else %}{% endif %}
     {% else %}
-    "height": 630
+    "height": 630{% if page.image.alt %},{% else %}{% endif %}
+    {% endif %}
+    {% if page.image.alt %}
+    "caption": {{ page.image.alt | jsonify }}
     {% endif %}
   },
   {% elsif site.social_preview_image %}
