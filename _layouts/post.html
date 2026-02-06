@@ -13,7 +13,7 @@ tail_includes:
 
 <article class="px-1">
   <header>
-    <h2 data-toc-skip>{{ page.title }}</h2>
+    <h1 data-toc-skip>{{ page.title }}</h1>
     {% if page.description %}
       <p class="post-desc fw-light mb-4">{{ page.description }}</p>
     {% endif %}
@@ -38,12 +38,24 @@ tail_includes:
         {% capture class %}class="preview-img{% if page.image.no_bg %}{{ ' no-bg' }}{% endif %}"{% endcapture %}
         {% capture alt %}alt="{{ page.image.alt | xml_escape | default: "Preview Image" }}"{% endcapture %}
 
+        {% if page.image.width %}
+          {% capture width %}width="{{ page.image.width }}"{% endcapture %}
+        {% else %}
+          {% capture width %}width="1200"{% endcapture %}
+        {% endif %}
+
+        {% if page.image.height %}
+          {% capture height %}height="{{ page.image.height }}"{% endcapture %}
+        {% else %}
+          {% capture height %}height="630"{% endcapture %}
+        {% endif %}
+
         {% if page.image.lqip %}
           {%- capture lqip -%}lqip="{{ page.image.lqip }}"{%- endcapture -%}
         {% endif %}
 
         <div class="mt-3 mb-3">
-          <img {{ src }} {{ class }} {{ alt }} w="1200" h="630" {{ lqip }}>
+          <img {{ src }} {{ class }} {{ alt }} {{ width }} {{ height }} {{ lqip }}>
           {%- if page.image.alt -%}
             <figcaption class="text-center pt-2 pb-2">{{ page.image.alt }}</figcaption>
           {%- endif -%}
@@ -65,14 +77,14 @@ tail_includes:
             {% if authors %}
               {% for author in authors %}
                 {% if site.data.authors[author].url -%}
-                  <a href="{{ site.data.authors[author].url }}">{{ site.data.authors[author].name }}</a>
+                  <a href="{{ site.data.authors[author].url }}" aria-label="Visit {{ site.data.authors[author].name }}'s profile">{{ site.data.authors[author].name }}</a>
                 {%- else -%}
                   {{ site.data.authors[author].name }}
                 {%- endif %}
                 {% unless forloop.last %}{{ '</em>, <em>' }}{% endunless %}
               {% endfor %}
             {% else %}
-              <a href="{{ site.social.links[0] }}">{{ site.social.name }}</a>
+              <a href="{{ site.social.links[0] }}" aria-label="Visit {{ site.social.name }}'s profile">{{ site.social.name }}</a>
             {% endif %}
           </em>
         </span>
@@ -105,7 +117,7 @@ tail_includes:
       <div class="post-meta mb-3">
         <i class="far fa-folder-open fa-fw me-1"></i>
         {% for category in page.categories %}
-          <a href="{{ site.baseurl }}/categories/{{ category | slugify | url_encode }}/">{{ category }}</a>
+          <a href="{{ site.baseurl }}/categories/{{ category | slugify | url_encode }}/" aria-label="View posts in category: {{ category }}">{{ category }}</a>
           {%- unless forloop.last -%},{%- endunless -%}
         {% endfor %}
       </div>
@@ -119,6 +131,7 @@ tail_includes:
           <a
             href="{{ site.baseurl }}/tags/{{ tag | slugify | url_encode }}/"
             class="post-tag no-text-decoration"
+            aria-label="View posts tagged: {{ tag }}"
           >
             {{- tag -}}
           </a>
