@@ -13,7 +13,7 @@ image:
     alt: "TARS technique diagram for formulating AI prompts in Cursor"
 ---
 
-# How to Formulate Prompts in Cursor: The TARS Technique (Task, Assumptions, Requirements, Specification)
+## How to Formulate Prompts in Cursor: The TARS Technique (Task, Assumptions, Requirements, Specification)
 
 > **TARS** is a simple yet powerful technique that helps developers accurately formulate requests to AI in the Cursor editor and get results that are actually helpful rather than needing rework.
 > TARS stands for **Task, Assumptions, Requirements, Specification**.
