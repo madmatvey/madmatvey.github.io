@@ -1,6 +1,6 @@
 ---
 layout: post
-title: "How to Formulate Prompts in Cursor: The TARS Technique (Task, Assumptions, Requirements, Specification)"
+title: "How to Formulate Prompts in Cursor: The TARS Technique"
 description: "Learn how to formulate prompts in Cursor using the TARS technique (Task, Assumptions, Requirements, Specification) to get more accurate and helpful results."
 tags: [ruby developer, ai, tars, prompting, cursor, development, programming, productivity, innovation, tech, tech blog, software development]
 author: eugene

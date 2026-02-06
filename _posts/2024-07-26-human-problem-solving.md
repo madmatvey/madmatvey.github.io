@@ -1,6 +1,6 @@
 ---
 layout: post
-title: "The Evolution of Problem Solving: How Newell and Simon's Book Influences Psychology and AI"
+title: "Evolution of Problem Solving: Newell and Simon's Impact"
 description: "Explore Human Problem Solving by Newell and Simon, a groundbreaking work in cognitive psychology about processes and strategies humans use."
 tags: [cognitive psychology, problem-solving, information processing, heuristics, problem space, memory in problem-solving, expertise, ai and problem-solving, human-computer analogy, experimental evidence, career development, computer and information systems, innovation, personal development, programming, software development]
 author: eugene
