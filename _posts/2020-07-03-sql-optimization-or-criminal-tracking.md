@@ -1,7 +1,7 @@
 ---
 layout: post
 title: "Optimizing SQL Queries or Tracking Dangerous Criminals"
-subtitle : Case of Appbooster.com company.
+description: "Learn SQL optimization techniques through a real case study from Appbooster.com. Discover how to balance development speed, code readability, and performance."
 tags: [sql, optimization, criminal-tracking, postgres, mobile apps backend, ruby on rails]
 author: eugene
 categories: [Tutorial, Coding]
@@ -12,6 +12,7 @@ redirect_from:
   - /2020/07/03/sql-optimization-or-criminal-tracking.html
 image:
     path: assets/img/sql-optimization/sql-optimization-title.png
+    alt: "SQL query optimization illustration showing database performance tuning"
 ---
 
 

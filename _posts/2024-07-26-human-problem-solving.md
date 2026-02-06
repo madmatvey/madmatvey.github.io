@@ -1,7 +1,7 @@
 ---
 layout: post
 title: "The Evolution of Problem Solving: How Newell and Simon's Book Influences Psychology and AI"
-description: 'Explore "Human Problem Solving" by Allen Newell and Herbert A. Simon, a groundbreaking work in cognitive psychology that delves into the processes and strategies humans use to solve problems.'
+description: "Explore Human Problem Solving by Newell and Simon, a groundbreaking work in cognitive psychology about processes and strategies humans use."
 tags: [cognitive psychology, problem-solving, information processing, heuristics, problem space, memory in problem-solving, expertise, ai and problem-solving, human-computer analogy, experimental evidence, career development, computer and information systems, innovation, personal development, programming, software development]
 author: eugene
 categories: [Read this, Problem Solving]
@@ -10,6 +10,7 @@ pin: false
 render_with_liquid: false
 image:
     path: /assets/img/human-problem-solving/01-human-problem-solving.jpg
+    alt: "Human Problem Solving book cover by Newell and Simon"
 ---
 ["Human Problem Solving" by Allen Newell and Herbert A. Simon](https://amzn.to/3yflZ04) is a seminal work in cognitive psychology that explores the processes humans use to solve problems. Here are some key ideas and conclusions from the book:
 

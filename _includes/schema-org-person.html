@@ -1,0 +1,23 @@
+{%- comment -%}
+  Person Schema.org structured data for author
+  Based on: https://schema.org/Person
+{%- endcomment -%}
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Person",
+  "name": {{ site.social.name | jsonify }},
+  "url": {{ site.url | jsonify }},
+  {% if site.social.email %}
+  "email": {{ site.social.email | jsonify }},
+  {% endif %}
+  {% if site.social.links.size > 0 %}
+  "sameAs": [
+    {% for link in site.social.links %}
+    {{ link | jsonify }}{% unless forloop.last %},{% endunless %}
+    {% endfor %}
+  ]
+  {% endif %}
+}
+</script>

@@ -1,6 +1,7 @@
 ---
 layout: post
 title: "Protecting Your Treasure: The Hilarious Guide to Seed Phrases"
+description: "Learn how to protect your crypto wallet seed phrases with this fun, pirate-themed guide. Essential security tips for Kraken wallet and cryptocurrency safety."
 tags: [crypto wallet, seed phrase, kraken wallet, crypto security, digital treasure, crypto safety, blockchain, cryptocurrency, crypto guide, cyber security, crypto tips, secure crypto, crypto storage, crypto humor]
 author: eugene
 categories: [Tutorial, Crypto]
@@ -8,6 +9,7 @@ comments : True
 pin: false
 image:
     path: assets/img/aaarrrrgh/crypto-wallet-basic-security.jpeg
+    alt: "Pirate-themed illustration about protecting crypto wallet seed phrases"
 ---
 ### Protecting Your Treasure: The Hilarious Guide to Seed Phrases
 

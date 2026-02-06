@@ -1,0 +1,33 @@
+{%- comment -%}
+  BreadcrumbList Schema.org structured data for navigation
+  Based on: https://schema.org/BreadcrumbList
+{%- endcomment -%}
+
+{% if page.layout == 'post' %}
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    {
+      "@type": "ListItem",
+      "position": 1,
+      "name": "Home",
+      "item": {{ site.url | jsonify }}
+    }{% if page.categories.size > 0 %},
+    {
+      "@type": "ListItem",
+      "position": 2,
+      "name": {{ page.categories[0] | jsonify }},
+      "item": {{ page.categories[0] | slugify | prepend: '/categories/' | append: '/' | prepend: site.baseurl | prepend: site.url | jsonify }}
+    }{% endif %},
+    {
+      "@type": "ListItem",
+      "position": {% if page.categories.size > 0 %}3{% else %}2{% endif %},
+      "name": {{ page.title | jsonify }},
+      "item": {{ page.url | absolute_url | jsonify }}
+    }
+  ]
+}
+</script>
+{% endif %}

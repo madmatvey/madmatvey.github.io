@@ -10,6 +10,7 @@ pin: false
 render_with_liquid: false
 image:
     path: /assets/img/tars/TARS-Technique-for-AI-Prompts.png
+    alt: "TARS technique diagram for formulating AI prompts in Cursor"
 ---
 
 # How to Formulate Prompts in Cursor: The TARS Technique (Task, Assumptions, Requirements, Specification)

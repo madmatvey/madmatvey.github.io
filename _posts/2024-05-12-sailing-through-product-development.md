@@ -1,7 +1,7 @@
 ---
 layout: post
 title: "Sailing Through Product Development"
-subtitle : Parallels Between Steering a Sailboat and Leading a Small Team.
+description: "Discover the parallels between sailing and product development leadership. Learn valuable lessons in decision-making, adaptability, and team management from both worlds."
 tags: [sailing, leadership, product developing, team building, small team, agile, scrum, product management, product owner, product manager]
 author: eugene
 categories: [Leadership, Product Development]
@@ -9,6 +9,7 @@ comments : True
 render_with_liquid: false
 image:
     path: assets/img/sailing-development/01-intro.png
+    alt: "Sailboat illustration showing parallels between sailing and product development leadership"
 ---
 
 ## Parallels Between Steering a Sailboat and Leading a Small Team

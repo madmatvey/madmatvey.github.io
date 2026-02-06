@@ -10,6 +10,7 @@ pin: false
 render_with_liquid: false
 image:
     path: /assets/img/2025-08-18-recruiter-hacker.jpg
+    alt: "Cybersecurity warning about fake recruiters and LinkedIn phishing attacks"
 ---
 
 ## **When a Job Interview Turned Into a Cybersecurity Investigation**

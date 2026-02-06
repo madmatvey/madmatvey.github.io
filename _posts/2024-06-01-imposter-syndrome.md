@@ -1,6 +1,7 @@
 ---
 layout: post
 title: "Imposter Syndrome: How Employers Can Use It Against You"
+description: "Discover how imposter syndrome affects tech workers and learn strategies to overcome self-doubt. A personal story of recognizing and overcoming workplace-induced imposter feelings."
 tags: [imposter syndrome, workplace culture, employee well-being, toxic work environment, psychological safety, fear-based management, career development, professional growth, mental health, employee empowerment, ethical employment practices, productivity and innovation, constructive feedback, overcoming self-doubt, personal experience in work сulture]
 author: eugene
 categories: [Self-Knowledge, Mental Health]
@@ -8,6 +9,7 @@ comments : True
 render_with_liquid: false
 image:
     path: assets/img/imposter-syndrome/01-imposter-syndrome.png
+    alt: "Imposter syndrome illustration showing self-doubt and workplace challenges"
 ---
 ### Introduction
 

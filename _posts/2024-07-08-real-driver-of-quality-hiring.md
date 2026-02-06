@@ -1,7 +1,7 @@
 ---
 layout: post
 title: "The Real Drivers of Quality Hiring: Beyond FAANG-Style Complexity"
-description: "Discover how true motivation factors like leadership, curiosity, and freedom improve hiring quality, while FAANG-style complexity wastes resources and falls short."
+description: "Discover how true motivation factors like leadership, curiosity, and freedom improve hiring quality, while FAANG-style complexity wastes resources."
 tags: [quality hiring, true motivation, leadership, curiosity, freedom, goal alignment, workplace comfort, honor in hiring, mastery, organizational order, team relatedness, workplace acceptance, employee status, faang hiring processes, effective recruitment, talent acquisition, innovative hiring strategies, sustainable hiring practices, workforce motivation]
 author: eugene
 categories: [Leadership, Hiring]
@@ -10,6 +10,7 @@ pin: false
 render_with_liquid: false
 image:
     path: /assets/img/hiring-quality/exhausted_recruiter.webp
+    alt: "Exhausted recruiter illustration showing quality hiring challenges"
 ---
 In the competitive landscape of talent acquisition, companies often find themselves caught in the allure of mimicking the hiring processes of tech giants like Facebook, Amazon, Apple, Netflix, and Google (FAANG). However, this cargo-cult approach—where companies adopt complex, resource-intensive hiring practices without understanding the underlying principles—often leads to wasted resources and missed opportunities. True motivation, aligned along key dimensions such as Leadership, Curiosity, Freedom, Goal, Comfort, Honor, Mastery, Order, Relatedness, Acceptance, and Status, offers a more effective path to quality hiring.
 
