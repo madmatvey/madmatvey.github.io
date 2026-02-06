@@ -1,6 +1,6 @@
 ---
 layout: post
-title: "A Russian Programmer's Journey: Starting Anew Amidst Struggles and Hope"
+title: "Russian Programmer's Journey: Starting Anew Amidst Struggles"
 description: "Follow a Russian programmer's journey of starting life anew. Discover valuable insights into transitioning to a new environment while pursuing a tech career."
 tags: [russian programmer, starting anew, life journey, tech career, emotional story, instructive tale, career transition, programmer struggles, hope and resilience, russian expatriate]
 author: eugene
