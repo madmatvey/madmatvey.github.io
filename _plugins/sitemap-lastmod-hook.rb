@@ -10,6 +10,19 @@ module Jekyll
     safe true
     priority :lowest # Run after jekyll-archives
 
+    def normalize_lastmod(value, fallback_time)
+      candidate = value || fallback_time
+
+      case candidate
+      when Time
+        candidate
+      when Date
+        candidate.to_time
+      else
+        fallback_time
+      end
+    end
+
     def generate(site)
       # Add lastmod to tag pages based on latest post date
       if site.respond_to?(:tags) && site.tags
@@ -18,7 +31,8 @@ module Jekyll
           
           # Find the most recent post date for this tag
           latest_date = posts.map do |post|
-            post.data['last_modified_at'] || post.date || site.time
+            fallback_time = post.date || site.time
+            normalize_lastmod(post.data['last_modified_at'], fallback_time)
           end.max
           
           # Find the tag page (jekyll-archives creates these)
@@ -37,7 +51,8 @@ module Jekyll
           
           # Find the most recent post date for this category
           latest_date = posts.map do |post|
-            post.data['last_modified_at'] || post.date || site.time
+            fallback_time = post.date || site.time
+            normalize_lastmod(post.data['last_modified_at'], fallback_time)
           end.max
           
           # Find the category page (jekyll-archives creates these)
