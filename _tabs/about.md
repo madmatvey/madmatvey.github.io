@@ -5,16 +5,20 @@ order: 4
 description: "Eugene Leontev - Ruby Engineer specializing in high-load backends, performance audits, and backend architecture from scratch. Based in Tbilisi, Georgia."
 ---
 
-# Eugene Leontev - Ruby Engineer
+# Eugene Leontev – Senior Ruby / Ruby on Rails Engineer
 
 **Location:** Tbilisi, Georgia  
+**Role:** Senior Ruby / Ruby on Rails Engineer  
+**Focus:** Scaling SaaS APIs (100K–1M+ requests/day), PostgreSQL performance, distributed backend systems  
 **LinkedIn:** [linkedin.com/in/eugeneleontev](https://www.linkedin.com/in/eugeneleontev/)  
 **GitHub:** [github.com/madmatvey](https://github.com/madmatvey)  
 **Blog:** [madmatvey.github.io](https://madmatvey.github.io/)  
 
 ## About Me
 
-Hello. My name is Eugene Leontev. I'm a Ruby engineer with a background in high-load systems, performance audits, and backend architecture from scratch. I consider myself an engineer not from my first commercial project, but much earlier—from the habit of understanding how systems work and bringing tasks to a working result, even if it means stepping outside the formal boundaries of a role.
+I'm a Senior Ruby on Rails Engineer with 9+ years of experience designing and operating scalable SaaS applications and distributed backend systems. I specialize in large-scale Ruby on Rails applications, REST API design, and database architecture for high-throughput production systems handling 100K+ API requests per day. I'm particularly interested in AI-assisted software development and intelligent content automation systems.
+
+I consider myself an engineer not from my first commercial project, but much earlier—from the habit of understanding how systems work and bringing tasks to a working result, even if it means stepping outside the formal boundaries of a role.
 
 Before commercial development, I worked as a sound engineer at a radio station and concert hall: I designed recordings, assembled multi-channel setups, negotiated with venues and teams, solved problems from idea to implementation, and did quite a bit of soldering :)) This experience strongly influenced my engineering style: taking full responsibility, not "piece by piece."
 
@@ -22,28 +26,29 @@ In commercial development, my main focus is complex backend systems where perfor
 
 ## Key Projects & Achievements
 
-### Performance Optimization: Mobile Backend
+- **Scaling SaaS APIs & PostgreSQL performance**
+  - Reduced core API endpoint latency from 400–500ms to 3–5ms through Ruby on Rails architecture improvements and PostgreSQL query optimization (indexes, denormalization, JOIN simplification).
+  - Operated and optimized production systems handling 100K+ API requests per day with 99.9% uptime.
+  - Designed event-driven architectures with Sidekiq-based background processing for financial and transactional workloads.
 
-One notable case is a mobile backend handling ~1 million requests per day on a key endpoint. Average response time was ~250ms, leading to UX degradation and additional infrastructure costs. I conducted a performance audit (New Relic, PgHero, EXPLAIN ANALYZE), identified bottlenecks in queries, added partial indexes, carefully denormalized data, and simplified JOIN chains. Results:
-- Average response time dropped to ~20ms
-- PostgreSQL load stabilized
-- The company stopped spending ~$600/month on excess resources
+- **Financial / fintech and API-driven platforms**
+  - Built auditable financial transaction workflows with idempotent processing patterns for safe state transitions.
+  - Reduced manual verification workload by ~67% via backend automation in lending and fintech domains.
+  - Led integrations with external APIs and CRM platforms, ensuring reliable data synchronization and resilience.
 
-I later documented this experience in an article: [Optimizing SQL Queries or Tracking Dangerous Criminals](https://madmatvey.github.io/posts/sql-optimization-or-criminal-tracking/) (~31k views on Habr).
-
-### Legacy Code & Uncertainty: Fintech Project
-
-Another important part of my experience is working with uncertainty and legacy code. In a fintech project, I dealt with code that generated legally incorrect calculations in documents. After refactoring and strengthening tests, the system became predictable, and lawyers stopped doing manual checks and trusted the automation.
-
-### TRC-20 USDT Wallet: Event-Driven Architecture
-
-I designed an event-driven architecture with background jobs (Sidekiq), accounted for strict external API limits (15 rps), and ensured processing of up to ~1 million transactions per day without system degradation. The project was launched from scratch in ~3 months and scaled without architectural rewrites.
+- **Leadership & remote collaboration**
+  - Led and mentored engineering teams (up to 12 engineers) in remote, distributed environments.
+  - Introduced testing standards, CI pipelines, and code review practices to improve engineering quality and maintainable Rails architecture.
+  - Collaborated closely with founders, product managers, and customer-facing teams to deliver features from inception to production.
 
 ## What I'm Passionate About
 
 I'm particularly drawn to:
-- **Backend architecture from scratch** — designing systems that scale and maintain
-- **Performance audits and PostgreSQL work** — finding bottlenecks and optimizing queries
+- **Ruby on Rails application architecture** — scalable web application and service-oriented architectures
+- **API design and integration** — designing REST APIs and integrating external services and CRMs
+- **PostgreSQL performance optimization** — query tuning, indexing strategies, and data modeling for high-throughput systems
+- **Asynchronous processing pipelines** — Sidekiq, background jobs, and distributed processing
+- **Production observability & reliability** — metrics, logging, debugging in live systems
 - **Reducing uncertainty** — through communication with business and users
 - **Stabilizing and "bringing to reason"** existing codebases
 
@@ -79,7 +84,7 @@ I have a work permit as an individual entrepreneur in 🇬🇪 Georgia.
 
 ## CV
 
-Feel free to [download my CV](/assets/Eugene_Leontev_CV_RoR.25.pdf)
+Feel free to [download my CV](/assets/Eugene_Leontev_Resume.pdf)
 
 ## Donate Me
 
