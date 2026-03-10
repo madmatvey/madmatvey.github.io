@@ -14,9 +14,9 @@
   "homepage": "https://github.com/cotes2020/jekyll-theme-chirpy/",
   "scripts": {
     "prebuild": "npx rimraf assets/js/dist",
-    "build": "NODE_ENV=production npx rollup -c --bundleConfigAsCjs",
+    "build": "NODE_ENV=production node -r ./scripts/crypto-polyfill.js node_modules/.bin/rollup -c --bundleConfigAsCjs",
     "prewatch": "npx rimraf assets/js/dist",
-    "watch": "npx rollup -c --bundleConfigAsCjs -w",
+    "watch": "node -r ./scripts/crypto-polyfill.js node_modules/.bin/rollup -c --bundleConfigAsCjs -w",
     "test": "npx stylelint _sass/**/*.scss",
     "fixlint": "npm run test -- --fix",
     "postinstall": "node scripts/patch-npm-deps.js"
