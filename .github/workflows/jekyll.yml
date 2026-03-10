@@ -46,10 +46,8 @@ jobs:
           node-version: 18.20.2
       - name: Install JS dependencies
         run: npm install
-      - name: PreBuild JS assets
-        run: npx rimraf assets/js/dist
       - name: Build JS assets 
-        run: NODE_ENV=production npx rollup -c --bundleConfigAsCjs
+        run: npm run build
       - name: Build with Jekyll
         # Outputs to the './_site' directory by default
         run: bundle exec jekyll build --baseurl "${{ steps.pages.outputs.base_path }}"
