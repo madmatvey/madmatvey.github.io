@@ -31,4 +31,5 @@ group :jekyll_plugins do
   gem "jekyll-theme-chirpy", "~> 6.5.5"
   gem "jekyll-google-tag-manager", "~> 1.0"
   gem "jekyll-crypto-donations", "~> 0.1.4" #, path: "../jekyll-crypto-donations"
+  gem "jekyll-ai-visible-content", "~> 0.4.6"
 end

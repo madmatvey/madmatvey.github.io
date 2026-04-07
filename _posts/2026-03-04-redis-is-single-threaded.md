@@ -1,13 +1,14 @@
 ---
 layout: post
 title: "Single-Threaded on the Outside, Multithreaded on the Inside"
+last_modified_at: 2026-03-04
 description: "Learn how Redis is single-threaded on the outside, but multithreaded on the inside. Read the full case study!"
 tags: [redis, software development, programming, optimization, postgres, sql, mobile apps backend, product-minded engineer, problem-solving, decision making, engineering leadership, innovation, tech blog, product developing, product development strategies]
 author: eugene
 categories: [Tutorial, Coding]
 comments : True
 pin: false
-render_with_liquid: false
+render_with_liquid: true
 image:
     path: /assets/img/redis-is-single-threaded.png
     alt: "Diagram showing Redis is single-threaded on the outside, but multithreaded on the inside"
