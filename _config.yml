@@ -178,6 +178,7 @@ defaults:
       path: "" # An empty string here means all files in the project
       type: posts
     values:
+      author: "Eugene Leontev"
       layout: post
       comments: true # Enable comments in posts.
       toc: true # Display TOC column in posts.
@@ -234,3 +235,86 @@ crypto_donations:
   btc_address: "3FWnoeMEAvGYDCqKNMDpfAAc1LqPPwu5Bd"
   usdt_address: "TQ7ew8mijfJoQ2qSAqSXmjUx1KbB96oMqc"
   eth_address: "0xd6b20B9Cd4055275272e43aA787b9c0a12CB8bbA"
+
+# jekyll-ai-visible-content settings
+ai_visible_content:
+  enabled: true
+  ai_resources:
+    enabled: true
+    auto_inject: true
+  entity:
+    type: Person
+    name: "Eugene Leontev"
+    alternate_names:                          # Other name forms (translations, etc.)
+      - "Evgenii Leontev"
+      - "Evheniy Leontyev"
+      - "Евгений Леонтев"
+      - "Евгений Леонтьев"
+    image: /assets/img/square_avatar_2026.png
+    job_title: "Fractional CTO & Lead Backend Engineer"
+    description: "I fix slow, expensive backends | 100× latency gains, 100K MAU in 3 months | Fintech · PostgreSQL · AWS | Remote | Empathetic engineer, pragmatic code and critical thinking. People-oriented approach to software development."
+    same_as:
+      - https://x.com/EugeneLeontev
+      - https://github.com/madmatvey
+      - https://www.linkedin.com/in/eugeneleontev
+    author_aliases:                            # Slugs that map to the canonical name
+      - eugene-leontev
+      - madmatvey
+      - eugeneleontev
+      - eugene
+    knows_about:                             # Skills/topics (used for entity linking too)
+      - Ruby on Rails
+      - PostgreSQL
+      - Redis
+      - AWS
+      - Fintech
+      - 100x latency gains
+      - 100K MAU in 3 months
+  json_ld:
+    auto_inject: true                        # Inject into <head> via hook (no manual tag needed)
+    include_website_schema: true             # WebSite + SearchAction on homepage
+    include_breadcrumbs: true                # BreadcrumbList on all pages
+    include_blog_posting: true               # BlogPosting on dated posts
+    include_faq: true                        # FAQPage when faq: in front matter
+    include_how_to: true                     # HowTo when how_to: in front matter
+    article_body: excerpt                    # none | excerpt | full
+    compact: false                           # Minify JSON-LD output
+
+  # --- AI Crawler Policies ---
+  crawlers:
+    allow_gptbot: true
+    allow_perplexitybot: true
+    allow_claudebot: true
+    allow_googlebot: true
+    allow_bingbot: true
+    custom_rules: []                         # [{user_agent: "Bot", directive: "Allow", path: "/"}]
+    generate_robots_txt: true
+
+  # --- llms.txt ---
+  llms_txt:
+    enabled: true
+    title: null                              # Defaults to site.title
+    description: null                        # Defaults to site.description
+    sections: []                             # [{heading: "Section", content: "text"}]
+    include_full_text: true                  # Also generate /llms-full.txt
+
+  # --- Internal Linking ---
+  linking:
+    enable_entity_links: true                # Auto-link known entities in post body
+    entity_definitions: {}                   # Custom: slug -> {name, url, description}
+    max_links_per_entity_per_post: 1
+    enable_related_posts: true
+    related_posts_limit: 3
+
+  # --- Validation ---
+  validation:
+    warn_name_inconsistency: true
+    warn_missing_same_as: true
+    warn_missing_dates: true
+    warn_orphan_pages: true
+    warn_missing_descriptions: true
+    fail_build_on_error: false               # true = exit 1 on validation failure
+    content_only: true                       # Only validate authored HTML content pages
+    exclude_paths: []                        # Glob patterns to skip: ["/custom/*", "/drafts/*"]
+    verbose: false                           # true = show every warning; false = grouped summary
+    max_examples: 3  
