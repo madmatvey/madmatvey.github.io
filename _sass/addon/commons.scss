@@ -316,7 +316,7 @@ sup {
 .preview-img {
   aspect-ratio: 40 / 21;
   width: 100%;
-  height: 100%;
+  height: auto;
   overflow: hidden;
 
   @extend %rounded;
@@ -326,6 +326,7 @@ sup {
   }
 
   img {
+    width: 100%;
     height: 100%;
     -o-object-fit: cover;
     object-fit: cover;
@@ -336,6 +337,11 @@ sup {
       width: 100%;
     }
   }
+}
+
+/* Backward-compatible guard for stale cached markup where class is on <img> */
+img.preview-img {
+  height: auto;
 }
 
 .post-preview {
