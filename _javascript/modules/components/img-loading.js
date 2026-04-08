@@ -19,6 +19,11 @@ function handleImage() {
     return;
   }
 
+  if (this.hasAttribute('data-hero')) {
+    this.parentElement.classList.remove(cover.BLUR, cover.SHIMMER);
+    return;
+  }
+
   if (this.hasAttribute(ATTR_DATA_LQIP)) {
     removeCover.call(this, cover.BLUR);
   } else {
@@ -50,6 +55,12 @@ export function loadImg() {
   document.querySelectorAll('article img[loading="lazy"]').forEach((img) => {
     if (img.complete) {
       removeCover.call(img, cover.SHIMMER);
+    }
+  });
+
+  document.querySelectorAll('article img[data-hero="true"]').forEach((img) => {
+    if (img.complete) {
+      img.parentElement.classList.remove(cover.BLUR, cover.SHIMMER);
     }
   });
 

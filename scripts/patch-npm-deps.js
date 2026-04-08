@@ -12,13 +12,18 @@ const { execSync } = require('child_process');
 const npmPath = path.join(process.cwd(), 'node_modules/npm');
 const patches = [
   {
-    name: '@isaacs/brace-expansion',
-    targetVersion: '5.0.1',
-    targetPath: path.join(npmPath, 'node_modules/@isaacs/brace-expansion')
+    name: 'brace-expansion',
+    targetVersion: '5.0.5',
+    targetPath: path.join(npmPath, 'node_modules/brace-expansion')
+  },
+  {
+    name: 'picomatch',
+    targetVersion: '4.0.4',
+    targetPath: path.join(npmPath, 'node_modules/tinyglobby/node_modules/picomatch')
   },
   {
     name: 'tar',
-    targetVersion: '7.5.7',
+    targetVersion: '7.5.13',
     targetPath: path.join(npmPath, 'node_modules/tar')
   }
 ];
@@ -61,14 +66,6 @@ patches.forEach(({ name, targetVersion, targetPath }) => {
         
         const extracted = path.join(tempDir, 'package');
         if (fs.existsSync(extracted)) {
-          // Backup original
-          if (fs.existsSync(targetPath)) {
-            const backup = targetPath + '.backup';
-            if (!fs.existsSync(backup)) {
-              execSync(`cp -r "${targetPath}" "${backup}"`, { stdio: 'ignore' });
-            }
-          }
-          
           // Replace with fixed version
           execSync(`rm -rf "${targetPath}"`, { stdio: 'ignore' });
           execSync(`cp -r "${extracted}" "${targetPath}"`, { stdio: 'ignore' });

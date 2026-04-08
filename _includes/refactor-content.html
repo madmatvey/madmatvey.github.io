@@ -46,6 +46,7 @@
 
 {% if _content contains IMG_TAG %}
   {% assign _img_content = null %}
+  {% assign _is_first_post_image = true %}
   {% assign _img_snippets = _content | split: IMG_TAG %}
 
   {% for _img_snippet in _img_snippets %}
@@ -119,7 +120,9 @@
 
     {% if _lqip %}
       {% assign _lazyload = false %}
-      {% assign _class = _class | append: ' blur' %}
+      {% unless page.layout == 'post' and _is_first_post_image %}
+        {% assign _class = _class | append: ' blur' %}
+      {% endunless %}
 
       {% unless _lqip contains 'data:' %}
         {% assign _lqip_alt = 'lqip="' | append: _path_prefix %}
@@ -130,7 +133,9 @@
       {% assign _left = _left | replace: 'src=', 'data-src=' | replace: ' lqip=', ' data-lqip="true" src=' %}
 
     {% else %}
-      {% assign _class = _class | append: ' shimmer' %}
+      {% unless page.layout == 'post' and _is_first_post_image %}
+        {% assign _class = _class | append: ' shimmer' %}
+      {% endunless %}
     {% endif %}
 
     <!-- Add default width/height if missing -->
@@ -143,7 +148,13 @@
 
     <!-- lazy-load images -->
     {% if _lazyload %}
-      {% assign _left = _left | append: ' loading="lazy"' %}
+      {% if page.layout == 'post' and _is_first_post_image %}
+        {% assign _left = _left | append: ' loading="eager" fetchpriority="high"' %}
+      {% else %}
+        {% assign _left = _left | append: ' loading="lazy"' %}
+      {% endif %}
+    {% elsif page.layout == 'post' and _is_first_post_image %}
+      {% assign _left = _left | append: ' loading="eager" fetchpriority="high"' %}
     {% endif %}
 
     {% if page.layout == 'home' %}
@@ -162,7 +173,7 @@
         {% assign _size = _img_content | size | minus: 1 %}
         {% assign _alt_text = _alt | default: 'Image' %}
         {% capture _class %}
-          class="img-link{% unless _lqip %} shimmer{% endunless %}" aria-label="View image: {{ _alt_text }}"
+          class="img-link{% unless _lqip or page.layout == 'post' and _is_first_post_image %} shimmer{% endunless %}" aria-label="View image: {{ _alt_text }}"
         {% endcapture %}
         {% assign _img_content = _img_content | slice: 0, _size | append: _class | append: '>' %}
 
@@ -188,6 +199,7 @@
 
     <!-- combine -->
     {% assign _img_content = _img_content | append: IMG_TAG | append: _left | append: _right %}
+    {% assign _is_first_post_image = false %}
   {% endfor %}
 
   {% if _img_content %}
