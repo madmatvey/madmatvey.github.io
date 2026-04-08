@@ -290,8 +290,13 @@ header {
      */
     .is-collapsible,
     .is-collapsible.is-collapsed {
+      display: block !important;
+      height: auto !important;
       max-height: none !important;
       overflow: visible !important;
+      opacity: 1 !important;
+      visibility: visible !important;
+      transform: none !important;
     }
 
     ul {
