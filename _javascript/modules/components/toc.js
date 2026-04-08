@@ -17,7 +17,8 @@ export function toc() {
     // see: https://github.com/tscanlin/tocbot#usage
     tocbot.init({
       tocSelector: '#toc',
-      contentSelector: '.content',
+      // Limit TOC source strictly to the post body, not sidebar/panel blocks.
+      contentSelector: 'main article .content',
       ignoreSelector: '[data-toc-skip]',
       headingSelector: 'h2, h3, h4',
       orderedList: false,
