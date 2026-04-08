@@ -56,19 +56,31 @@ export function toc() {
       }
     };
 
-    // see: https://github.com/tscanlin/tocbot#usage
-    tocbot.init({
-      tocSelector: '#toc',
-      // Limit TOC source strictly to the post body, not sidebar/panel blocks.
-      contentSelector,
-      ignoreSelector: '[data-toc-skip]',
-      headingSelector: 'h2, h3, h4',
-      orderedList: false,
-      scrollSmooth: false,
-      onClickCallback: function() {
-        addAriaLabelsToTocLinks();
-      }
-    });
+    if (typeof tocbot === 'undefined') {
+      buildFallbackToc();
+      addAriaLabelsToTocLinks();
+      return;
+    }
+
+    try {
+      // see: https://github.com/tscanlin/tocbot#usage
+      tocbot.init({
+        tocSelector: '#toc',
+        // Limit TOC source strictly to the post body, not sidebar/panel blocks.
+        contentSelector,
+        ignoreSelector: '[data-toc-skip]',
+        headingSelector: 'h2, h3, h4',
+        orderedList: false,
+        scrollSmooth: false,
+        onClickCallback: function() {
+          addAriaLabelsToTocLinks();
+        }
+      });
+    } catch (error) {
+      buildFallbackToc();
+      addAriaLabelsToTocLinks();
+      return;
+    }
 
     document.getElementById('toc-wrapper').classList.remove('d-none');
     

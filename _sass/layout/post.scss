@@ -284,6 +284,16 @@ header {
       }
     }
 
+    /*
+     * Keep TOC branches visible even if tocbot marks them as collapsed.
+     * Some browser/extension combinations can leave only the active branch visible.
+     */
+    .is-collapsible,
+    .is-collapsible.is-collapsed {
+      max-height: none !important;
+      overflow: visible !important;
+    }
+
     ul {
       padding-left: 0.75rem;
     }
