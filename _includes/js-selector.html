@@ -65,7 +65,8 @@
 {% endcase %}
 
 {% capture script %}{{ js_dist }}{{ js }}.min.js{% endcapture %}
-<script src="{{ script | relative_url }}"></script>
+{% assign build_version = site.time | date: '%s' %}
+<script src="{{ script | relative_url }}?v={{ build_version }}"></script>
 
 {% if page.math %}
   <!-- MathJax -->
