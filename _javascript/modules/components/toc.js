@@ -5,6 +5,8 @@ export function toc() {
 
   if (!tocElement || !tocWrapper) return;
 
+  if (tocElement.querySelector('.toc-list')) return;
+
   const headings = Array.from(
     document.querySelectorAll(`${contentSelector} h2, ${contentSelector} h3, ${contentSelector} h4`)
   ).filter((heading) => heading.id);
@@ -21,8 +23,18 @@ export function toc() {
     const link = document.createElement('a');
     link.className = `toc-link node-name--${heading.tagName}`;
     link.href = `#${heading.id}`;
-    link.textContent = heading.textContent.trim();
-    link.setAttribute('aria-label', `Go to section: ${heading.textContent.trim()}`);
+    
+    let textContent = heading.textContent;
+    while (textContent.includes('Link to section:')) {
+      textContent = textContent.replace('Link to section:', '');
+    }
+    textContent = textContent.replace(/#+$/, '').trim();
+    
+    const uniqueWords = textContent.split(' ').filter((word, index, arr) => arr.indexOf(word) === index);
+    textContent = uniqueWords.join(' ');
+    
+    link.textContent = textContent;
+    link.setAttribute('aria-label', `Go to section: ${textContent}`);
 
     item.appendChild(link);
     list.appendChild(item);

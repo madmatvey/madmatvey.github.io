@@ -237,6 +237,23 @@ header {
   -webkit-animation: fade-up 0.8s;
   animation: fade-up 0.8s;
 
+  .toc-list {
+    margin: 0;
+    padding: 0;
+    list-style: none;
+    display: block !important;
+    height: auto !important;
+    min-height: auto !important;
+  }
+
+  .toc-list-item {
+    display: block !important;
+    height: auto !important;
+    min-height: auto !important;
+    max-height: none !important;
+    margin: 0.4rem 0 !important;
+  }
+
   ul {
     list-style: none;
     font-size: 0.85rem;
@@ -256,10 +273,13 @@ header {
     /* Overwrite TOC plugin style */
 
     .toc-link {
-      display: block;
+      display: block !important;
       white-space: nowrap;
       overflow: hidden;
       text-overflow: ellipsis;
+      height: auto !important;
+      min-height: auto !important;
+      padding: 0.2rem 0 0.2rem 1.25rem;
 
       &:hover {
         color: var(--toc-highlight);
