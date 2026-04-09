@@ -252,6 +252,21 @@ header {
     min-height: auto !important;
     max-height: none !important;
     margin: 0.4rem 0 !important;
+    padding-left: 0 !important;
+  }
+
+  .toc-list-item > ul {
+    margin: 0;
+    padding-left: 0.5rem;
+    list-style: none;
+  }
+
+  .toc-list-item--h3 {
+    padding-left: 1rem !important;
+  }
+
+  .toc-hidden {
+    display: none !important;
   }
 
   ul {
