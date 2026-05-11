@@ -189,7 +189,7 @@
       "tar": "^7.5.13"
     },
     "@semantic-release/npm": {
-      "npm": false
+      "npm": "11.14.1"
     },
     "semantic-release": {
       "@semantic-release/npm": false
