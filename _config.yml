@@ -302,7 +302,18 @@ ai_visible_content:
   # --- Internal Linking ---
   linking:
     enable_entity_links: true                # Auto-link known entities in post body
-    entity_definitions: {}                   # Custom: slug -> {name, url, description}
+    # Slugs match Registry (lowercase, spaces -> hyphens). Overrides default /topics/slug/
+    # which this site does not generate (would 404); jekyll-archives serves /tags/:name/.
+    entity_definitions:
+      postgresql:
+        name: PostgreSQL
+        url: /tags/postgresql/
+      redis:
+        name: Redis
+        url: /tags/redis/
+      ruby-on-rails:
+        name: Ruby on Rails
+        url: /tags/ruby-on-rails/
     max_links_per_entity_per_post: 1
     enable_related_posts: true
     related_posts_limit: 3
