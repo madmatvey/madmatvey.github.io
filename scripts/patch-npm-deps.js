@@ -13,7 +13,7 @@ const npmPath = path.join(process.cwd(), 'node_modules/npm');
 const patches = [
   {
     name: 'brace-expansion',
-    targetVersion: '5.0.5',
+    targetVersion: '5.0.6',
     targetPath: path.join(npmPath, 'node_modules/brace-expansion')
   },
   {
