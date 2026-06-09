@@ -150,6 +150,7 @@ pwa:
       # - "/example"  # URLs match `<SITE_URL>/example/*` will not be cached by the PWA
 
 paginate: 10
+paginate_path: "/page:num/"
 
 # The base URL of your site
 # baseurl: "/"
@@ -315,6 +316,18 @@ ai_visible_content:
       ruby-on-rails:
         name: Ruby on Rails
         url: /tags/ruby-on-rails/
+      aws:
+        name: AWS
+        url: ""
+      fintech:
+        name: Fintech
+        url: ""
+      100x-latency-gains:
+        name: 100x latency gains
+        url: ""
+      100k-mau-in-3-months:
+        name: 100K MAU in 3 months
+        url: ""
     max_links_per_entity_per_post: 1
     enable_related_posts: true
     related_posts_limit: 3

@@ -5,6 +5,10 @@
     <!-- left arrow -->
     {% if paginator.previous_page %}
       {% assign prev_url = paginator.previous_page_path | relative_url %}
+      {% assign prev_last = prev_url | slice: -1, 1 %}
+      {% if prev_url != '/' and prev_last != '/' %}
+        {% assign prev_url = prev_url | append: '/' %}
+      {% endif %}
     {% else %}
       {% assign prev_url = '#' %}
     {% endif %}
@@ -47,9 +51,18 @@
       {% if show %}
         <!-- show number -->
         <li class="page-item {% if i == paginator.page %} active{% endif %}">
+          {% if i > 1 %}
+            {% assign page_url = site.paginate_path | replace: ':num', i | relative_url %}
+            {% assign page_last = page_url | slice: -1, 1 %}
+            {% if page_last != '/' %}
+              {% assign page_url = page_url | append: '/' %}
+            {% endif %}
+          {% else %}
+            {% assign page_url = '/' | relative_url %}
+          {% endif %}
           <a
             class="page-link"
-            href="{% if i > 1 %}{{ site.paginate_path | replace: ':num', i | relative_url }}{% else %}{{ '/' | relative_url }}{% endif %}"
+            href="{{ page_url }}"
             aria-label="Go to page {{ i }}"
           >
             {{- i -}}
@@ -80,6 +93,10 @@
     <!-- right arrow -->
     {% if paginator.next_page_path %}
       {% assign next_url = paginator.next_page_path | relative_url %}
+      {% assign next_last = next_url | slice: -1, 1 %}
+      {% if next_url != '/' and next_last != '/' %}
+        {% assign next_url = next_url | append: '/' %}
+      {% endif %}
     {% else %}
       {% assign next_url = '#' %}
     {% endif %}
