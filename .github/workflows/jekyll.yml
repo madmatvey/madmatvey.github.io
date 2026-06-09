@@ -19,7 +19,7 @@ on:
 
 env:
   FORCE_JAVASCRIPT_ACTIONS_TO_NODE24: true
-  INDEXNOW_KEY: 8b709accaaf69d7a46d588c3b76a3237
+  INDEXNOW_KEY: 981d750614024cc991d7768d5e500d5c
   INDEXNOW_HOST: madmatvey.github.io
   SITE_URL: https://madmatvey.github.io
 
