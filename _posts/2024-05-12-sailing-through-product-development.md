@@ -8,7 +8,7 @@ categories: [Leadership, Product Development]
 comments : True
 render_with_liquid: false
 image:
-    path: assets/img/sailing-development/01-intro.png
+    path: /assets/img/sailing-development/01-intro.png
     alt: "Sailboat illustration showing parallels between sailing and product development leadership"
 ---
 

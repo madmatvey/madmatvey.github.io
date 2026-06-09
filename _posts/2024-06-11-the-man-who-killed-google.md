@@ -8,7 +8,7 @@ categories: [Leadership, Opinion]
 comments : True
 render_with_liquid: false
 image:
-    path: assets/img/the-man-who-killed-google/01.jpeg
+    path: /assets/img/the-man-who-killed-google/01.jpeg
     alt: "Illustration about Google Search decline and corporate decision-making"
 ---
 ## The Man Who Killed Google Search: A Cautionary Tale
