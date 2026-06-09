@@ -2,7 +2,7 @@
 layout: post
 title: "The AI Model Is No Longer The Bottleneck"
 last_modified_at: 2026-06-04
-description: "Developers obsess over model benchmarks, but the real productivity gap is in workflows, agent design, and toolchain architecture. Why open systems and workflow-first thinking beat model-chasing."
+description: "Model benchmarks get the attention, but workflows, agent design, and toolchain architecture drive real AI coding productivity. Why workflow-first beats model-chasing."
 tags: [ai, developer tools, ai agents, workflow, opencode, engineering leadership, fractional cto, software architecture, open source, tech strategy, llm, productivity]
 author: eugene
 categories: [AI, Engineering]
