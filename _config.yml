@@ -263,6 +263,7 @@ ai_visible_content:
       - madmatvey
       - eugeneleontev
       - eugene
+      - nasuta
     knows_about:                             # Skills/topics (used for entity linking too)
       - Ruby on Rails
       - PostgreSQL
