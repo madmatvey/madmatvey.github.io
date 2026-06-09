@@ -11,7 +11,7 @@ pin: false
 redirect_from:
   - /2020/07/03/sql-optimization-or-criminal-tracking.html
 image:
-    path: assets/img/sql-optimization/sql-optimization-title.png
+    path: /assets/img/sql-optimization/sql-optimization-title.png
     alt: "SQL query optimization illustration showing database performance tuning"
 ---
 

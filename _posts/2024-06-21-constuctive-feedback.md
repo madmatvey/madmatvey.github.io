@@ -9,7 +9,7 @@ comments : True
 pin: false
 render_with_liquid: false
 image:
-    path: assets/img/constructive-feedback/situation-at-the-office.jpeg
+    path: /assets/img/constructive-feedback/situation-at-the-office.jpeg
     alt: "Office situation illustration about constructive feedback importance"
 ---
 ### The Constructive Feedback

@@ -8,7 +8,7 @@ categories: [Self-Knowledge, Mental Health]
 comments : True
 render_with_liquid: false
 image:
-    path: assets/img/imposter-syndrome/01-imposter-syndrome.png
+    path: /assets/img/imposter-syndrome/01-imposter-syndrome.png
     alt: "Imposter syndrome illustration showing self-doubt and workplace challenges"
 ---
 ### Introduction

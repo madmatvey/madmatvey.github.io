@@ -8,7 +8,7 @@ categories: [Tutorial, Crypto]
 comments : True
 pin: false
 image:
-    path: assets/img/aaarrrrgh/crypto-wallet-basic-security.jpeg
+    path: /assets/img/aaarrrrgh/crypto-wallet-basic-security.jpeg
     alt: "Pirate-themed illustration about protecting crypto wallet seed phrases"
 ---
 ### Protecting Your Treasure: The Hilarious Guide to Seed Phrases
