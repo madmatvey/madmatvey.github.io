@@ -9,6 +9,8 @@
       href="{{ site.baseurl }}{{ page.previous.url }}"
       class="btn btn-outline-primary"
       aria-label="{{ previous }}"
+      data-track-related="true"
+      data-destination-article="{{ page.previous.title | escape }}"
     >
       <p>{{ page.previous.title }}</p>
     </a>
@@ -23,6 +25,8 @@
       href="{{ site.baseurl }}{{page.next.url}}"
       class="btn btn-outline-primary"
       aria-label="{{ next }}"
+      data-track-related="true"
+      data-destination-article="{{ page.next.title | escape }}"
     >
       <p>{{ page.next.title }}</p>
     </a>
