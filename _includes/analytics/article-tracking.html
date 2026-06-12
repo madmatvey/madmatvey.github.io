@@ -1,0 +1,77 @@
+{% comment %}
+  GA4 article analytics: article_view + article_complete_read.
+  Complete read: scroll >= 90% AND time on page >= 70% of expected read time (220 WPM).
+{% endcomment %}
+
+{% assign word_count = include.content | strip_html | number_of_words: 'auto' %}
+{% assign min_read_seconds = word_count | times: 42 | divided_by: 220 %}
+{% if min_read_seconds < 30 %}
+  {% assign min_read_seconds = 30 %}
+{% endif %}
+{% assign article_category = include.category | default: '' %}
+{% assign article_tags = include.tags | join: ',' %}
+
+<script>
+  window.dataLayer = window.dataLayer || [];
+
+  window.dataLayer.push({
+    event: 'article_view',
+    article_title: {{ include.title | jsonify }},
+    article_category: {{ article_category | jsonify }},
+    article_tags: {{ article_tags | jsonify }},
+    publish_date: {{ include.date | jsonify }},
+    word_count: {{ word_count }},
+    min_read_seconds: {{ min_read_seconds }}
+  });
+</script>
+
+<script>
+  (function () {
+    var cfg = {
+      minScrollPercent: 90,
+      minReadSeconds: {{ min_read_seconds }},
+      articleTitle: {{ include.title | jsonify }},
+      articleCategory: {{ article_category | jsonify }},
+      wordCount: {{ word_count }}
+    };
+
+    var startTime = Date.now();
+    var maxScroll = 0;
+    var fired = false;
+
+    function getScrollPercent() {
+      var doc = document.documentElement;
+      var scrollTop = window.pageYOffset || doc.scrollTop;
+      var scrollHeight = doc.scrollHeight - doc.clientHeight;
+      if (scrollHeight <= 0) {
+        return 100;
+      }
+      return Math.round((scrollTop / scrollHeight) * 100);
+    }
+
+    function maybeFireCompleteRead() {
+      if (fired) {
+        return;
+      }
+
+      var timeOnPage = (Date.now() - startTime) / 1000;
+      maxScroll = Math.max(maxScroll, getScrollPercent());
+
+      if (maxScroll >= cfg.minScrollPercent && timeOnPage >= cfg.minReadSeconds) {
+        fired = true;
+        window.dataLayer = window.dataLayer || [];
+        window.dataLayer.push({
+          event: 'article_complete_read',
+          article_title: cfg.articleTitle,
+          article_category: cfg.articleCategory,
+          word_count: cfg.wordCount,
+          time_on_page_seconds: Math.round(timeOnPage),
+          scroll_percent: maxScroll
+        });
+      }
+    }
+
+    window.addEventListener('scroll', maybeFireCompleteRead, { passive: true });
+    setInterval(maybeFireCompleteRead, 5000);
+  })();
+</script>

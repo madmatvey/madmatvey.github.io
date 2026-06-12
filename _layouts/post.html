@@ -11,17 +11,8 @@ tail_includes:
 
 {% include lang.html %}
 
-<script>
-  window.dataLayer = window.dataLayer || [];
-
-  window.dataLayer.push({
-    event: 'article_view',
-    article_title: {{ page.title | jsonify }},
-    article_category: {{ page.categories[0] | default: '' | jsonify }},
-    article_tags: {{ page.tags | join: ',' | jsonify }},
-    publish_date: {{ page.date | jsonify }}
-  });
-</script>
+{% assign article_category = page.categories | first | default: '' %}
+{% include analytics/article-tracking.html content=content title=page.title category=article_category tags=page.tags date=page.date %}
 
 <article class="px-1">
   <header>
