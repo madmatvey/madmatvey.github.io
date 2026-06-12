@@ -1,6 +1,6 @@
 {% comment %}
-  GA4 article analytics: article_view + article_complete_read.
-  Complete read: scroll >= 90% AND time on page >= 70% of expected read time (220 WPM).
+  GA4 article analytics: article_view, article_complete_read,
+  outbound_click, related_article_click.
 {% endcomment %}
 
 {% assign word_count = include.content | strip_html | number_of_words: 'auto' %}
@@ -10,6 +10,7 @@
 {% endif %}
 {% assign article_category = include.category | default: '' %}
 {% assign article_tags = include.tags | join: ',' %}
+{% assign site_host = site.url | replace: 'https://', '' | replace: 'http://', '' %}
 
 <script>
   window.dataLayer = window.dataLayer || [];
@@ -32,8 +33,102 @@
       minReadSeconds: {{ min_read_seconds }},
       articleTitle: {{ include.title | jsonify }},
       articleCategory: {{ article_category | jsonify }},
-      wordCount: {{ word_count }}
+      wordCount: {{ word_count }},
+      siteHost: {{ site_host | jsonify }}
     };
+
+    function pushEvent(payload) {
+      window.dataLayer = window.dataLayer || [];
+      window.dataLayer.push(payload);
+    }
+
+    function getDestination(href) {
+      try {
+        var url = new URL(href, window.location.origin);
+        var host = url.hostname.replace(/^www\./, '');
+
+        if (host === 'github.com' || host.endsWith('.github.io')) {
+          return 'github';
+        }
+        if (host === 'linkedin.com') {
+          return 'linkedin';
+        }
+        if (host === 't.me' || host === 'telegram.me') {
+          return 'telegram';
+        }
+
+        return host;
+      } catch (e) {
+        return 'unknown';
+      }
+    }
+
+    function isOutbound(href) {
+      try {
+        var url = new URL(href, window.location.origin);
+        return url.hostname.replace(/^www\./, '') !== cfg.siteHost.replace(/^www\./, '');
+      } catch (e) {
+        return false;
+      }
+    }
+
+    function isInternalPostLink(href) {
+      try {
+        var url = new URL(href, window.location.origin);
+        if (url.hostname.replace(/^www\./, '') !== cfg.siteHost.replace(/^www\./, '')) {
+          return false;
+        }
+        return url.pathname.indexOf('/posts/') === 0;
+      } catch (e) {
+        return false;
+      }
+    }
+
+    document.addEventListener('click', function (event) {
+      var link = event.target.closest('a[href]');
+      if (!link) {
+        return;
+      }
+
+      var href = link.getAttribute('href');
+      if (!href || href.startsWith('#') || href.startsWith('mailto:') || href.startsWith('javascript:')) {
+        return;
+      }
+      if (link.closest('.share-wrapper')) {
+        return;
+      }
+
+      var relatedTarget = link.getAttribute('data-destination-article');
+      if (link.hasAttribute('data-track-related') && relatedTarget) {
+        pushEvent({
+          event: 'related_article_click',
+          source_article: cfg.articleTitle,
+          destination_article: relatedTarget,
+          destination_url: link.href
+        });
+        return;
+      }
+
+      if (link.closest('.content') && isInternalPostLink(href)) {
+        pushEvent({
+          event: 'related_article_click',
+          source_article: cfg.articleTitle,
+          destination_article: (link.textContent || '').trim().slice(0, 200),
+          destination_url: link.href
+        });
+        return;
+      }
+
+      if (isOutbound(href)) {
+        pushEvent({
+          event: 'outbound_click',
+          destination: getDestination(href),
+          source_article: cfg.articleTitle,
+          destination_url: link.href,
+          link_text: (link.textContent || '').trim().slice(0, 100)
+        });
+      }
+    }, true);
 
     var startTime = Date.now();
     var maxScroll = 0;
@@ -59,8 +154,7 @@
 
       if (maxScroll >= cfg.minScrollPercent && timeOnPage >= cfg.minReadSeconds) {
         fired = true;
-        window.dataLayer = window.dataLayer || [];
-        window.dataLayer.push({
+        pushEvent({
           event: 'article_complete_read',
           article_title: cfg.articleTitle,
           article_category: cfg.articleCategory,
