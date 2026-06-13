@@ -213,3 +213,13 @@ Jekyll::Hooks.register(:pages, :post_render) { |page| Jekyll::LlmVisibility::Alt
 Jekyll::Hooks.register(:documents, :post_render) { |doc| Jekyll::LlmVisibility::AlternateLinkInjector.process(doc) }
 Jekyll::Hooks.register(:pages, :post_render) { |page| Jekyll::LlmVisibility::VisuallyHiddenInjector.process(page) }
 Jekyll::Hooks.register(:documents, :post_render) { |doc| Jekyll::LlmVisibility::VisuallyHiddenInjector.process(doc) }
+
+# Ensure llms.txt and llms-full.txt are included in sitemap
+Jekyll::Hooks.register(:site, :post_render) do |site|
+  %w[llms.txt llms-full.txt].each do |name|
+    page = site.pages.find { |p| p.path == name || p.data['permalink'] == "/#{name}" }
+    next unless page
+    page.data['sitemap'] = true
+    page.data['last_modified_at'] = site.time if page.data['last_modified_at'].nil?
+  end
+end

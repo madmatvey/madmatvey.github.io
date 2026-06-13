@@ -2,7 +2,7 @@
 layout: post
 title: "The Level 3 Trap: Eight Levels of Product-Minded Engineering"
 last_modified_at: 2026-06-12
-description: "A fintech team shipped 40+ tickets a sprint while activation stayed flat for three quarters. An eight-level framework for assessing where engineers actually operate – and why Level 3 feels like mastery but isn't."
+description: "A fintech team shipped 40+ tickets a sprint while activation stayed flat. An eight-level framework for assessing where engineers operate and why Level 3 is not mastery."
 tags: [engineering leadership, product-minded engineer, fractional cto, team management, career development, product development, ai orchestration, engineering culture, fintech, senior engineer]
 author: eugene
 categories: [Leadership, Product Development]
