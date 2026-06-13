@@ -9,6 +9,10 @@ on:
   push:
     branches: ["master"]
 
+  # Daily rebuild at 14:00 Asia/Tbilisi (UTC+4) — Jekyll skips future-dated posts until their time passes
+  schedule:
+    - cron: '0 10 * * *'
+
   # Allows you to run this workflow manually from the Actions tab
   workflow_dispatch:
     inputs:
