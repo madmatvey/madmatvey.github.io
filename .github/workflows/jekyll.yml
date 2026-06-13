@@ -112,6 +112,25 @@ jobs:
             echo "${SITE_URL}/posts/${slug}/"
           }
 
+          post_is_published() {
+            local file="$1"
+            local post_date_line post_epoch now_epoch file_date
+
+            post_date_line=$(grep -m1 '^date:' "$file" 2>/dev/null | sed -E 's/^date:[[:space:]]*//' || true)
+            if [ -n "$post_date_line" ]; then
+              post_epoch=$(date -u -d "$post_date_line" +%s 2>/dev/null || echo "")
+            fi
+
+            if [ -z "${post_epoch:-}" ]; then
+              file_date=$(basename "$file" .md | grep -oE '^[0-9]{4}-[0-9]{2}-[0-9]{2}' || true)
+              [ -n "$file_date" ] || return 1
+              post_epoch=$(date -u -d "${file_date} 00:00:00" +%s)
+            fi
+
+            now_epoch=$(date -u +%s)
+            [ "$post_epoch" -le "$now_epoch" ]
+          }
+
           mapfile -t POST_FILES < <(
             if [ "$SUBMIT_ALL" = "true" ]; then
               find _posts -maxdepth 1 -name '*.md' -type f | sort
@@ -128,6 +147,10 @@ jobs:
           URLS=()
           for file in "${POST_FILES[@]}"; do
             [ -f "$file" ] || continue
+            if ! post_is_published "$file"; then
+              echo "Skipping unpublished (future-dated) post: $file"
+              continue
+            fi
             URLS+=("$(post_to_url "$file")")
           done
 
