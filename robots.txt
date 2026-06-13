@@ -1,0 +1,6 @@
+User-agent: *
+Allow: /
+Disallow: /norobots/
+Content-Signal: search=yes, ai-input=yes, ai-train=yes
+
+Sitemap: https://madmatvey.github.io/sitemap.xml
