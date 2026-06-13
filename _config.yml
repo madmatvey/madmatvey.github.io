@@ -291,7 +291,7 @@ ai_visible_content:
     allow_googlebot: true
     allow_bingbot: true
     custom_rules: []                         # [{user_agent: "Bot", directive: "Allow", path: "/"}]
-    generate_robots_txt: true
+    generate_robots_txt: false
 
   # --- llms.txt ---
   llms_txt:
@@ -341,6 +341,6 @@ ai_visible_content:
     warn_missing_descriptions: true
     fail_build_on_error: false               # true = exit 1 on validation failure
     content_only: true                       # Only validate authored HTML content pages
-    exclude_paths: []                        # Glob patterns to skip: ["/custom/*", "/drafts/*"]
+    exclude_paths: ["/*.md", "/**/*.md", "/*.md.txt", "/**/*.md.txt"]  # Skip generated Markdown files
     verbose: false                           # true = show every warning; false = grouped summary
     max_examples: 3  

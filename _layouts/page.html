@@ -9,7 +9,7 @@ layout: default
 {% endif %}
 
 <article class="px-1">
-  {% if page.layout == 'page' or page.collection == 'tabs' %}
+  {% if page.layout == 'page' or page.layout == 'tag' or page.layout == 'category' or page.collection == 'tabs' %}
     {% assign tab_key = page.title | downcase %}
     {% comment %} Extract tab key from URL if title doesn't match {% endcomment %}
     {% if tab_key == '' or tab_key == nil %}
@@ -18,14 +18,18 @@ layout: default
     {% endif %}
     {% assign base_title = site.data.locales[lang].tabs[tab_key] | default: page.title %}
     {% comment %} Create descriptive titles for SEO (20-70 characters) {% endcomment %}
-    {% if tab_key == 'categories' or page.url contains '/categories/' %}
+    {% if tab_key == 'categories' or page.url == '/categories/' or page.url == '/categories/index.html' %}
       {% assign title = 'Browse All Blog Post Categories - Organized Topics' %}
-    {% elsif tab_key == 'tags' or page.url contains '/tags/' %}
+    {% elsif tab_key == 'tags' or page.url == '/tags/' or page.url == '/tags/index.html' %}
       {% assign title = 'Explore All Blog Tags - Find Posts by Topic' %}
-    {% elsif tab_key == 'archives' or page.url contains '/archives/' %}
+    {% elsif tab_key == 'archives' or page.url == '/archives/' or page.url == '/archives/index.html' %}
       {% assign title = 'Blog Archives - Browse Posts by Date and Year' %}
     {% elsif tab_key contains 'motivation' or page.url contains '/motivation-test/' or page.title contains 'Motivation' %}
       {% assign title = 'Motivation Test - Discover Your Work Motivation Style' %}
+    {% elsif page.url contains '/categories/' %}
+      {% assign title = 'Category: ' | append: page.title %}
+    {% elsif page.url contains '/tags/' %}
+      {% assign title = 'Tag: ' | append: page.title %}
     {% else %}
       {% assign title = base_title %}
     {% endif %}
