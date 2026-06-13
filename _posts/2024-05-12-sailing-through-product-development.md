@@ -1,7 +1,7 @@
 ---
 layout: post
 title: "Sailing Through Product Development"
-description: "Discover the parallels between sailing and product development leadership. Learn valuable lessons in decision-making, adaptability, and team management from both worlds."
+description: "Discover the parallels between sailing and product development leadership. Learn valuable lessons in decision-making, adaptability, and team management."
 tags: [sailing, leadership, product developing, team building, small team, agile, scrum, product management, product owner, product manager]
 author: eugene
 categories: [Leadership, Product Development]
