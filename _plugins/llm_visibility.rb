@@ -134,6 +134,9 @@ module Jekyll
         link_tag = %(<link rel="alternate" type="text/markdown" href="#{md_path}">)
         if doc.output.include?('</head>')
           doc.output = doc.output.sub('</head>', "#{link_tag}\n</head>")
+        elsif doc.is_a?(Jekyll::Document)
+          # post_render for Documents runs before layout rendering; prepend to output
+          doc.output = "#{link_tag}\n#{doc.output}"
         end
       end
 
@@ -181,6 +184,9 @@ module Jekyll
 
         if doc.output.include?('</body>')
           doc.output = doc.output.sub('</body>', "#{pointer}\n</body>")
+        elsif doc.is_a?(Jekyll::Document)
+          # post_render for Documents runs before layout rendering; append to output
+          doc.output = "#{doc.output}#{pointer}\n"
         end
       end
 
