@@ -1,7 +1,7 @@
 ---
 layout: post
 title: "The Man Who Killed Google Search: A Cautionary Tale"
-description: "Explore how prioritizing revenue over user experience led to Google Search's decline. A cautionary tale about corporate decision-making and product integrity."
+description: "Explore how prioritizing revenue over user experience led to Google Search decline. A cautionary tale about corporate decision-making."
 tags: [google, tech industry, corporate culture, business ethics, leadership, innovation, technology, business strategy, tech news, industry analysis, corporate principles, decision making, tech blog]
 author: eugene
 categories: [Leadership, Opinion]
