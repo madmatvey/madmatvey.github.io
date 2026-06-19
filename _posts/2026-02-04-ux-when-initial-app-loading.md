@@ -9,7 +9,7 @@ comments : True
 pin: false
 render_with_liquid: false
 image:
-    path: /assets/img/just_load_the_data.png
+    path: /assets/img/just_load_the_data.webp
     alt: "Diagram showing data loading optimization in Telegram Mini App"
 ---
 

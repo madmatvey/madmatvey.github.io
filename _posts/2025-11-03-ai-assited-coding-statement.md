@@ -1,6 +1,6 @@
 ---
 layout: post
-title: "Why an AI Assistant Won’t Replace Your Architectural Thinking"
+title: "AI Won't Replace Your Architectural Thinking"
 description: "Learn why effective AI-powered development starts with your own architectural thinking and task decomposition. Discover how to think architecturally."
 tags: [ai, ai coding assistant, ai-powered development, ai developer tools, cursor, cursor ai, software development, programming, tech, innovation, problem-solving, product-minded engineer, personal development, effective engineering leadership, engineering leadership, creative engineering management, computer and information systems, future of coding, tech blog]
 author: eugene

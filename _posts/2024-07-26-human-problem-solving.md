@@ -9,7 +9,7 @@ comments : True
 pin: false
 render_with_liquid: false
 image:
-    path: /assets/img/human-problem-solving/01-human-problem-solving.jpg
+    path: /assets/img/human-problem-solving/01-human-problem-solving.webp
     alt: "Human Problem Solving book cover by Newell and Simon"
 ---
 ["Human Problem Solving" by Allen Newell and Herbert A. Simon](https://amzn.to/3yflZ04) is a seminal work in cognitive psychology that explores the processes humans use to solve problems. Here are some key ideas and conclusions from the book:

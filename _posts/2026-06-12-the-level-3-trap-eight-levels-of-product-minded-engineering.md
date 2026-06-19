@@ -204,4 +204,4 @@ If you can't tell where your team operates, that's the gap worth closing before 
 
 What level does your team actually operate at – and what broke because of it?
 
-<small>Scaling a technical team and can't tell where your senior engineers sit on this map? [Connect on LinkedIn](https://www.linkedin.com/in/eugeneleontev/). Fractional CTO engagements, limited to a few teams per quarter.</small>
+<small>Scaling a technical team and can't tell where your senior engineers sit on this map? [Connect on LinkedIn](https://www.linkedin.com/in/eugeneleontev). Fractional CTO engagements, limited to a few teams per quarter.</small>

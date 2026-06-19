@@ -209,4 +209,4 @@ We weren't surprised again.
 
 ---
 
-<small>First published on [Habr](https://habr.com/ru/articles/509406/) in 2020. An earlier version with the detective metaphor lives [here](/posts/sql-optimization-or-criminal-tracking/). Working on a Rails/Postgres system showing early signs of this pattern? [Connect on LinkedIn](https://www.linkedin.com/in/eugeneleontev/).</small>
+<small>First published on [Habr](https://habr.com/ru/articles/509406/) in 2020. An earlier version with the detective metaphor lives [here](/posts/sql-optimization-or-criminal-tracking/). Working on a Rails/Postgres system showing early signs of this pattern? [Connect on LinkedIn](https://www.linkedin.com/in/eugeneleontev).</small>

@@ -1,6 +1,6 @@
 ---
 # the default layout is 'page'
-title: Discover Your Core Motivation - Take the Motivation Test Today!
+title: Discover Your Core Motivation
 description: Uncover what drives you with our Motivation Test. Reveal your key motivators and gain insights into your growth. Start now!
 icon: fas fa-sun
 order: 5
@@ -26,11 +26,11 @@ image:
         <p id="progress-text"></p>
     </span>
     <div id="result" style="display:none;">
-        <h3>Results:</h3>
+        <h2>Results:</h2>
         <span id="result-text"></span>
-        <h3>Chart:</h3>
+        <h2>Chart:</h2>
         <canvas id="result-chart"></canvas>
-        <h3>Hash:</h3>
+        <h2>Hash:</h2>
         <span id="result-hash"></span>
     </div>
 </div>

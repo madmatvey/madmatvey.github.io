@@ -131,7 +131,7 @@ module Jekyll
         # Avoid duplicate injection
         return if doc.output.include?('rel="alternate" type="text/markdown"')
 
-        link_tag = %(<link rel="alternate" type="text/markdown" href="#{md_path}">)
+        link_tag = %(<link rel="alternate" type="text/markdown" href="#{site.config['url']}#{md_path}">)
         if doc.output.include?('</head>')
           doc.output = doc.output.sub('</head>', "#{link_tag}\n</head>")
         elsif doc.is_a?(Jekyll::Document)

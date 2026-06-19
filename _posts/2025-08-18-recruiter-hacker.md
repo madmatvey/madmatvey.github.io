@@ -1,6 +1,6 @@
 ---
 layout: post
-title: "When a Job Interview Turned Into a Cybersecurity Investigation"
+title: "Job Interview Turned Into Security Investigation"
 description: "Beware fake recruiters on LinkedIn. A real case of malware disguised as a job test, targeting crypto wallets and system data. Learn how to protect yourself."
 tags: [cyber security, crypto security, crypto safety, job hunting, effective recruitment, software development, developer safety, social engineering, phishing attack, linkedin scam, malware analysis, secure coding practices, tech blog, personal experience in work culture]
 author: eugene
