@@ -1,12 +1,14 @@
 ---
 # the default layout is 'page'
+title: Terms and Privacy Policy
+description: Privacy policy and terms of service for Eugene Leontev The Engineer — how we collect, use, and protect your information on this blog.
 icon: fa-solid fa-cookie-bite
 order: 5
 ---
 
-### Privacy Policy
+## Privacy Policy
 
-## Eugene Leontev The Engineer
+### Eugene Leontev The Engineer
 
 Last Updated: 05/06/2024
 
@@ -55,12 +57,12 @@ We may update our privacy policy from time to time. We will notify you of any ch
 **10. Contact Us**
 
 If you have any questions about this privacy policy, please contact us:
-- By LinkedIn: [Eugene Leontev](https://www.linkedin.com/in/eugeneleontev/)
+- By LinkedIn: [Eugene Leontev](https://www.linkedin.com/in/eugeneleontev)
 - By X: [Eugene Leontev](https://x.com/EugeneLeontev)
 
 ---
 
-### Terms of Service
+## Terms of Service
 
 **Eugene Leontev The Engineer**
 

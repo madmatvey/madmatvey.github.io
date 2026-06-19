@@ -10,7 +10,7 @@ description: "Eugene Leontev - Ruby Engineer specializing in high-load backends,
 **Location:** Tbilisi, Georgia  
 **Role:** Senior Ruby / Ruby on Rails Engineer  
 **Focus:** Scaling SaaS APIs (100K–1M+ requests/day), PostgreSQL performance, distributed backend systems  
-**LinkedIn:** [linkedin.com/in/eugeneleontev](https://www.linkedin.com/in/eugeneleontev/)  
+**LinkedIn:** [linkedin.com/in/eugeneleontev](https://www.linkedin.com/in/eugeneleontev)  
 **GitHub:** [github.com/madmatvey](https://github.com/madmatvey)  
 **Blog:** [eugenetheengineer.com](https://eugenetheengineer.com/)  
 

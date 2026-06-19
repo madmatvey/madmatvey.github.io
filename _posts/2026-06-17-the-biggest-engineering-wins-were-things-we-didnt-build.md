@@ -1,6 +1,6 @@
 ---
 layout: post
-title: "The Biggest Engineering Wins of My Career Were Things We Didn't Build"
+title: "Biggest Engineering Wins Were Things We Didn't Build"
 date: 2026-06-17 13:42:00 +0400
 last_modified_at: 2026-06-17
 description: "On decision economics, the Hypothetical Future, and why \"eventually\" is the most expensive word in engineering."

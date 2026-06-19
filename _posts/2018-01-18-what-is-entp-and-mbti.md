@@ -1,6 +1,6 @@
 ---
 layout: post
-title: How to staying alive if you are an ENTP?
+title: "How to Stay Alive as an ENTP"
 description: "A practical ENTP and MBTI guide with tests, resources, and personal insights on understanding your personality type."
 subtitle : Discover life as an ENTP. Learn about the Myers-Briggs Type Indicator (MBTI) and how understanding your personality type can improve your quality of life.
 categories: [Self-Knowledge, MBTI]
@@ -28,12 +28,12 @@ Well, what is ENTP?
 ![16 personalities](/assets/img/16personalities_entp.png)
 
 <p><h2>The Keirsey Temperament Sorter</h2> is designed to determine the type of temperament - one of the most stable personality characteristics. The technique was developed in 1956 by David Keirsey, a professor at the University of California, who has been teaching and psychotherapeutic practice for thirty years.
-<a href='http://psytests.org/temperament/keirsey.html'>ru</a>, <a href='https://me.keirsey.com/'>en</a>.
+<a href='https://psytests.org/temperament/keirsey.html'>ru</a>, <a href='https://me.keirsey.com/'>en</a>.
 For consolidation and understanding of brightness, there are forgiven and 70 questions in this test. The results of each test are saved, you can return to them if you remember the link. My results is – <a href='http://psytests.org/result?v=kei28hWsSo2r'>http://psytests.org/result?v=kei28hWsSo2r</a> (ru)
 </p>
 
 <p><h2>"Do What You Are" by Paul Tieger</h2>
-<a href='https://psy.wikireading.ru/69120'>ru</a>, <a href='http://www.cazenovia.edu/sites/files/docs/academics/career_services/majors_careers/ENTP.pdf'>en</a> chapter from Paul Tieger’s book, “Do What You Were Born.” ENTP here are called in general: "Entrepreneurs of life."
+<a href='https://psy.wikireading.ru/69120'>ru</a>, <a href='https://www.cazenovia.edu/sites/files/docs/academics/career_services/majors_careers/ENTP.pdf'>en</a> chapter from Paul Tieger’s book, “Do What You Were Born.” ENTP here are called in general: "Entrepreneurs of life."
 </p>
 
 ![Life as an ENTP](/assets/img/life_as_an_entp.jpeg)

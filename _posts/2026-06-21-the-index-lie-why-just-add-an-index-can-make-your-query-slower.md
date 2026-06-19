@@ -119,4 +119,4 @@ None of this is exotic. It's the difference between treating indexing as a one-t
 
 ---
 
-*If you're hitting query plans that don't match your intuition, or scaling decisions that worked at one order of magnitude and stopped working at the next, that's usually a sign the system has outgrown the assumptions it was designed under – not that something is broken. I work with engineering teams on exactly this kind of backend and database scaling decision-making. [Happy to talk through what you're seeing](https://www.linkedin.com/in/eugeneleontev/).*
+*If you're hitting query plans that don't match your intuition, or scaling decisions that worked at one order of magnitude and stopped working at the next, that's usually a sign the system has outgrown the assumptions it was designed under – not that something is broken. I work with engineering teams on exactly this kind of backend and database scaling decision-making. [Happy to talk through what you're seeing](https://www.linkedin.com/in/eugeneleontev).*

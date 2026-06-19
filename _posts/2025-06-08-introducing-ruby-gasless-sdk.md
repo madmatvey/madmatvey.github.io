@@ -9,7 +9,7 @@ comments : True
 pin: false
 render_with_liquid: false
 image:
-    path: /assets/img/gasless/gasless.png
+    path: /assets/img/gasless/gasless.webp
     alt: "Gasless USDT transactions on TRON blockchain using Ruby SDK"
 ---
 

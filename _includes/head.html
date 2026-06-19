@@ -13,11 +13,23 @@
   >
   <title>
     {%- if page.layout == 'home' -%}
-      {{ site.title }}
+      {%- if paginator and paginator.page > 1 -%}
+        {{ site.title }} - Page {{ paginator.page }}
+      {%- else -%}
+        {{ site.title }}
+      {%- endif -%}
+    {%- elsif page.layout == 'tag' -%}
+      {{ 'Tag: ' | append: page.title | smart_title }}
+    {%- elsif page.layout == 'category' -%}
+      {{ 'Category: ' | append: page.title | smart_title }}
     {%- else -%}
       {{ page.title | smart_title }}
     {%- endif -%}
   </title>
+  {% assign _noindex = page.noindex %}
+  {% if page.layout == 'tag' or page.layout == 'category' or page.layout == 'tags' or page.layout == 'categories' or page.layout == 'archives' %}{% assign _noindex = true %}{% endif %}
+  {% if paginator and paginator.page > 1 %}{% assign _noindex = true %}{% endif %}
+  {% if _noindex %}<meta name="robots" content="noindex, follow">{% endif %}
   {%- capture seo_tags -%}
     {% seo title=false %}
   {%- endcapture -%}
