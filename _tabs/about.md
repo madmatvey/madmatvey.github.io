@@ -12,7 +12,7 @@ description: "Eugene Leontev - Ruby Engineer specializing in high-load backends,
 **Focus:** Scaling SaaS APIs (100K–1M+ requests/day), PostgreSQL performance, distributed backend systems  
 **LinkedIn:** [linkedin.com/in/eugeneleontev](https://www.linkedin.com/in/eugeneleontev/)  
 **GitHub:** [github.com/madmatvey](https://github.com/madmatvey)  
-**Blog:** [madmatvey.github.io](https://madmatvey.github.io/)  
+**Blog:** [eugenetheengineer.com](https://eugenetheengineer.com/)  
 
 ## About Me
 
@@ -60,7 +60,7 @@ I'm a proponent of "be your own manager": documenting important decisions in tex
 
 - **Gasfree SDK** — Ruby library for gasless TRC-20 transactions: [github.com/madmatvey/gasfree_sdk](https://github.com/madmatvey/gasfree_sdk)
 - **Jekyll Crypto Donations** — Jekyll plugin for crypto donations: [github.com/madmatvey/jekyll-crypto-donations](https://github.com/madmatvey/jekyll-crypto-donations)
-- **Technical Articles** — [madmatvey.github.io](https://madmatvey.github.io/) (including the SQL optimization article with ~31k views)
+- **Technical Articles** — [eugenetheengineer.com](https://eugenetheengineer.com/) (including the SQL optimization article with ~31k views)
 - [**Menhausen App**](https://t.me/menhausen_app_bot/app) — Telegram Mini App for mental health support: [github.com/imfineapp/menhausen_app](https://github.com/imfineapp/menhausen_app)
 - **Workshops & Talks** — Internal and public presentations (Thinknetica workshop: [github.com/thinknetica/workshop_ruby_dev_with_ai](https://github.com/thinknetica/workshop_ruby_dev_with_ai))
 
@@ -76,7 +76,7 @@ I have a work permit as an individual entrepreneur in 🇬🇪 Georgia.
 
 ## Hobbies
 
-- **Sailing** — Albert Einstein had a hobby of driving a sailboat. It [helped him to understand how the universe works](https://www.abc.net.au/news/2017-11-25/how-a-love-of-sailing-helped-einstien-explain-the-universe/9190970). I have a license to captain a sailboat for recreational purposes. [Here is the sailing school](https://www.seanation.com/school) I chose and warmly recommend to those who want to really learn how to sail a sailboat, not just get a captain's license. I've also written about [parallels between sailing and product development](https://madmatvey.github.io/posts/sailing-through-product-development/).
+- **Sailing** — Albert Einstein had a hobby of driving a sailboat. It [helped him to understand how the universe works](https://www.abc.net.au/news/2017-11-25/how-a-love-of-sailing-helped-einstien-explain-the-universe/9190970). I have a license to captain a sailboat for recreational purposes. [Here is the sailing school](https://www.seanation.com/school) I chose and warmly recommend to those who want to really learn how to sail a sailboat, not just get a captain's license. I've also written about [parallels between sailing and product development](https://eugenetheengineer.com/posts/sailing-through-product-development/).
 
 - **Music** — Playing guitar can stimulate creativity and provide a relaxing break from work. Sometimes I make short videos of me playing guitar, [here's one of them](https://www.ultimate-guitar.com/shot/madmatvey/669363136).
 
