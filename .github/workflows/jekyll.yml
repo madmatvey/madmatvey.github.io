@@ -23,7 +23,7 @@ on:
 
 env:
   FORCE_JAVASCRIPT_ACTIONS_TO_NODE24: true
-  INDEXNOW_KEY: 47c733a0582246439108a394719c1940
+  INDEXNOW_KEY: 981d750614024cc991d7768d5e500d5c
   INDEXNOW_HOST: eugenetheengineer.com
   SITE_URL: https://eugenetheengineer.com
 
