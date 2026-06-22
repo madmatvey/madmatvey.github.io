@@ -7,7 +7,7 @@ tags: [engineering leadership, product-minded engineer, fractional cto, team man
 author: eugene
 categories: [Leadership, Product Development]
 comments : True
-pin: true
+pin: false
 render_with_liquid: false
 image:
     path: /assets/img/the-level-3-trap-eight-levels-of-product-minded-engineering.png
