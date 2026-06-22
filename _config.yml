@@ -319,16 +319,16 @@ ai_visible_content:
         url: /tags/ruby-on-rails/
       aws:
         name: AWS
-        url: ""
+        url:
       fintech:
         name: Fintech
-        url: ""
+        url: /tags/fintech/
       100x-latency-gains:
         name: 100x latency gains
-        url: ""
+        url:
       100k-mau-in-3-months:
         name: 100K MAU in 3 months
-        url: ""
+        url:
     max_links_per_entity_per_post: 1
     enable_related_posts: true
     related_posts_limit: 3
