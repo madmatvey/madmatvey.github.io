@@ -1,0 +1,283 @@
+/* About page — layout only; links inherit .content styles from Chirpy */
+
+.about-page {
+  display: grid;
+  gap: 2.5rem;
+}
+
+.about-section {
+  padding: 0;
+  border: 0;
+  background: none;
+}
+
+.about-section h2 {
+  margin-top: 0;
+  margin-bottom: 1rem;
+  padding-bottom: 0.35rem;
+  border-bottom: 1px solid var(--main-border-color);
+}
+
+.about-hero {
+  display: grid;
+  gap: 1rem;
+}
+
+.about-hero-head {
+  display: grid;
+  grid-template-columns: 88px 1fr;
+  gap: 1rem;
+  align-items: center;
+}
+
+.about-avatar {
+  width: 88px;
+  height: 88px;
+  border-radius: 50%;
+  object-fit: cover;
+  border: 2px solid var(--main-border-color);
+}
+
+.about-kicker {
+  margin: 0;
+  font-size: 0.9rem;
+  color: var(--text-muted-color);
+}
+
+.about-hero h1 {
+  margin: 0.25rem 0 0;
+}
+
+.about-lead {
+  margin: 0;
+  font-size: 1.08rem;
+}
+
+.about-subtle {
+  margin: 0;
+  color: var(--text-muted-color);
+}
+
+.about-links {
+  margin: 0.5rem 0 0;
+  padding-left: 0;
+  list-style: none;
+}
+
+.about-links li {
+  margin: 0.35rem 0;
+}
+
+.about-links li::before {
+  content: '→ ';
+  color: var(--text-muted-color);
+}
+
+.about-stats {
+  display: grid;
+  grid-template-columns: repeat(5, minmax(0, 1fr));
+  gap: 1rem 1.25rem;
+  margin: 0;
+}
+
+.about-stat {
+  padding: 0;
+  border: 0;
+}
+
+.about-stat strong {
+  display: block;
+  font-size: 1.15rem;
+  margin-bottom: 0.15rem;
+  color: var(--heading-color);
+}
+
+.about-stat span {
+  color: var(--text-muted-color);
+  font-size: 0.95rem;
+}
+
+.about-grid-2 {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 2rem;
+}
+
+.about-post-list {
+  margin: 0;
+  padding-left: 0;
+  list-style: none;
+}
+
+.about-post-list > li {
+  line-height: 1.5;
+  padding: 0.5rem 0;
+  border-bottom: 1px dotted var(--dash-color, var(--main-border-color));
+}
+
+.about-post-list > li:last-child {
+  border-bottom: 0;
+}
+
+.about-post-list > li::before {
+  background: var(--text-muted-color);
+  width: 5px;
+  height: 5px;
+  border-radius: 50%;
+  display: inline-block;
+  content: '';
+  margin-right: 0.5rem;
+  vertical-align: middle;
+}
+
+.about-post-list .about-post-desc {
+  display: block;
+  margin-top: 0.15rem;
+  padding-left: 0.85rem;
+  color: var(--text-muted-color);
+  font-size: 0.95rem;
+}
+
+.about-tags {
+  margin: 0.5rem 0 1.25rem;
+  line-height: 2.2rem;
+}
+
+.about-tags .tag {
+  white-space: nowrap;
+}
+
+.about-list-tight {
+  margin: 0;
+  padding-left: 1.75rem;
+}
+
+.about-list-tight li + li {
+  margin-top: 0.35rem;
+}
+
+.about-story-quote {
+  margin: 1rem 0;
+  padding-left: 1rem;
+  border-left: 3px solid var(--link-color);
+  font-style: italic;
+  color: var(--text-muted-color);
+}
+
+.about-audience {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 1.5rem 2rem;
+}
+
+.about-audience-item h3 {
+  margin: 0 0 0.35rem;
+  font-size: 1.1rem;
+}
+
+.about-audience-item p {
+  margin: 0 0 0.35rem;
+  color: var(--text-muted-color);
+}
+
+.about-center {
+  text-align: left;
+}
+
+@media (max-width: 900px) {
+  .about-stats {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+  }
+}
+
+@media (max-width: 700px) {
+  .about-grid-2,
+  .about-audience {
+    grid-template-columns: 1fr;
+  }
+
+  .about-stats {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
+@media (max-width: 460px) {
+  .about-hero-head {
+    grid-template-columns: 1fr;
+    justify-items: start;
+  }
+
+  .about-stats {
+    grid-template-columns: 1fr;
+  }
+}
+
+/* Crypto donations — center content inside each currency field */
+#support-my-work .jekyll-crypto-donations__item {
+  text-align: center;
+}
+
+#support-my-work .jekyll-crypto-donations__crypto-name {
+  display: block;
+}
+
+#support-my-work .jekyll-crypto-donations__crypto-code {
+  display: flex;
+  justify-content: center;
+}
+
+#support-my-work .jekyll-crypto-donations__crypto-code span {
+  text-align: center;
+}
+
+#support-my-work .jekyll-crypto-donations__crypto-buttons {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 0.25rem;
+}
+
+#support-my-work .jekyll-crypto-donations__crypto-total-received {
+  width: 100%;
+}
+
+#support-my-work .jekyll-crypto-donations__crypto-image-qr img {
+  display: block;
+  margin: 0.75rem auto 0;
+}
+
+/* Crypto donations — center content inside each currency field */
+#support-my-work .jekyll-crypto-donations__item {
+  text-align: center;
+}
+
+#support-my-work .jekyll-crypto-donations__crypto-name {
+  display: block;
+}
+
+#support-my-work .jekyll-crypto-donations__crypto-code {
+  display: flex;
+  justify-content: center;
+}
+
+#support-my-work .jekyll-crypto-donations__crypto-code span {
+  text-align: center;
+}
+
+#support-my-work .jekyll-crypto-donations__crypto-buttons {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 0.25rem;
+}
+
+#support-my-work .jekyll-crypto-donations__crypto-total-received {
+  width: 100%;
+}
+
+#support-my-work .jekyll-crypto-donations__crypto-image-qr img {
+  display: block;
+  margin: 0.75rem auto 0;
+}
