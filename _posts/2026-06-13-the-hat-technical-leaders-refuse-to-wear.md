@@ -86,7 +86,7 @@ They keep wearing the hat they're best at.
 
 The Architect Hat is comfortable. It's the hat that got them promoted. It's the hat where they feel competent and confident. And frankly, it's the hat their team often *wants* them to wear – because a technically strong lead who stays hands-on makes the team's daily work easier.
 
-So new leaders go deep on system design. They review architectures. They get into PRs. They become the senior-most technical executor on the team rather than the leader of the team.
+So new leaders go deep on system design. They review architectures. They get into PRs — often reviewing every line instead of the decisions those lines encode. I wrote about that distinction in [Most Engineers Review Code. Staff Engineers Review Decisions.](/posts/most-engineers-review-code-staff-engineers-review-decisions/). They become the senior-most technical executor on the team rather than the leader of the team.
 
 This isn't laziness or bad intent. It's a rational response to the incentive structure. Engineering culture rewards technical depth visibly and immediately. It rewards organizational influence slowly and indirectly.
 

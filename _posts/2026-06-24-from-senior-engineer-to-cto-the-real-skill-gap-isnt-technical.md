@@ -95,6 +95,8 @@ A staff engineer starts asking:
 
 > Why are we building this?
 
+The same shift shows up in code review — most engineers review the diff; staff engineers review the decision inside it. I wrote about that lens in [Most Engineers Review Code. Staff Engineers Review Decisions.](/posts/most-engineers-review-code-staff-engineers-review-decisions/).
+
 A CTO often asks:
 
 > What happens to the company if we don't?

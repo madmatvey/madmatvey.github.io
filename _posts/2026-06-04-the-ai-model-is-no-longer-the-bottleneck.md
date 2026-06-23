@@ -189,7 +189,7 @@ Meanwhile the real questions aren't getting asked:
 
 * How does context get assembled for your specific codebase?
 * How does the agent navigate large, messy, real-world repositories?
-* How do engineers review AI-generated changes at scale without losing oversight?
+* [How do engineers review AI-generated changes at scale without losing oversight?](/posts/most-engineers-review-code-staff-engineers-review-decisions/)
 * What happens when your primary provider has an outage or changes pricing?
 * How do you avoid lock-in as the model landscape continues to shift?
 

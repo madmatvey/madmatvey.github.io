@@ -107,5 +107,7 @@ Before you start coding with AI, take 10 minutes to:
 AI can write your code, but only **you** can decide what’s worth building and how it should fit together.  
 The clearer your decomposition, the smarter your assistant becomes.
 
+That judgment shows up most visibly in review — not in whether you can spot a naming nit, but in whether you can tell if a merge makes the codebase better or just makes the diff cleaner. I wrote about that split in [Most Engineers Review Code. Staff Engineers Review Decisions.](/posts/most-engineers-review-code-staff-engineers-review-decisions/).
+
 So next time you open your AI IDE, remember:  
 > **AI writes code, but the architect is still you.**
