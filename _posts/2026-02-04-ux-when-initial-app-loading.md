@@ -1,10 +1,13 @@
 ---
 layout: post
+redirect_from:
+  - /2026/02/04/ux-when-initial-app-loading/
+  - /2026/02/04/ux-when-initial-app-loading.html
 title: "When Loading Data Isn't Simple: Decisions Under Uncertainty"
 description: "Learn how we eliminated UI flicker and reduced load time in a Telegram Mini App by loading all user data in a single PostgreSQL query."
 tags: [software development, programming, optimization, postgres, sql, mobile apps backend, product-minded engineer, user-centric design, problem-solving, decision making, heuristics, engineering leadership, innovation, tech blog, mental health, product developing, product development strategies]
 author: eugene
-categories: [Product, UX]
+categories: [Architecture]
 comments : True
 pin: false
 render_with_liquid: false

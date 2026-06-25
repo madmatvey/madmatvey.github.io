@@ -1,12 +1,15 @@
 ---
 layout: post
+redirect_from:
+  - /2026/06/19/the-memory-problem-nobody-is-solving/
+  - /2026/06/19/the-memory-problem-nobody-is-solving.html
 title: "The AI Agent Memory Problem Nobody Is Solving"
 date: 2026-06-19 15:42:00 +0400
 last_modified_at: 2026-06-19
 description: "Production AI agents fail from amnesia, not hallucination. Four-layer memory, hybrid retrieval, and consolidation for agents that scale past six months."
 tags: [ai infrastructure, llm architecture, backend engineering, ai agents, vector search, rag, production systems, fractional cto, hybrid search, graphrag, episodic memory, semantic memory, memory consolidation, ai agent memory, qdrant, mem0, letta]
 author: eugene
-categories: [AI, Engineering]
+categories: [Backend Engineering]
 comments: true
 pin: false
 render_with_liquid: false

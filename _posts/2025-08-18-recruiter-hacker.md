@@ -1,10 +1,14 @@
 ---
 layout: post
+redirect_from:
+  - /2025/08/18/recruiter-hacker/
+  - /2025/08/18/recruiter-hacker.html
 title: "Job Interview Turned Into Security Investigation"
 description: "Beware fake recruiters on LinkedIn. A real case of malware disguised as a job test, targeting crypto wallets and system data. Learn how to protect yourself."
 tags: [cyber security, crypto security, crypto safety, job hunting, effective recruitment, software development, developer safety, social engineering, phishing attack, linkedin scam, malware analysis, secure coding practices, tech blog, personal experience in work culture]
 author: eugene
-categories: [Cybersecurity, Crypto]
+categories: [Personal]
+exclude_from_trending: true
 comments : True
 pin: false
 render_with_liquid: false

@@ -3,13 +3,15 @@ layout: post
 title: "How to Stay Alive as an ENTP"
 description: "A practical ENTP and MBTI guide with tests, resources, and personal insights on understanding your personality type."
 subtitle : Discover life as an ENTP. Learn about the Myers-Briggs Type Indicator (MBTI) and how understanding your personality type can improve your quality of life.
-categories: [Self-Knowledge, MBTI]
+categories: [Personal]
+exclude_from_trending: true
 tags: [entp, eugene leontev, mbti, myers-briggs type indicator, personality type, self-knowledge, paul tieger, 16personalities, keirsey temperament sorter, personal development]
 author: eugene
 comments : True
 render_with_liquid: false
 redirect_from:
   - /2018/01/18/what-is-entp-and-mbti.html
+  - /2018/01/18/what-is-entp-and-mbti/
 image:
     path: /assets/img/entp.jpeg
     alt: "ENTP personality type illustration from Myers-Briggs Type Indicator"

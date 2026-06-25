@@ -39,7 +39,7 @@ Strict-Transport-Security: max-age=31536000; includeSubDomains; preload
 
 ## 3. Add Content-Security-Policy (phased rollout)
 
-Start in report-only mode to avoid breaking ads, Disqus, fonts, or analytics.
+Start in report-only mode to avoid breaking Giscus, fonts, or analytics.
 
 ### Phase A — Report Only
 
@@ -49,7 +49,7 @@ Start in report-only mode to avoid breaking ads, Disqus, fonts, or analytics.
 4. Set header:
 
 ```text
-Content-Security-Policy-Report-Only: default-src 'self'; script-src 'self' 'unsafe-inline' https://www.googletagmanager.com https://www.google-analytics.com https://static.cloudflareinsights.com https://cdn.jsdelivr.net https://platform.twitter.com https://pagead2.googlesyndication.com https://*.disqus.com https://*.disquscdn.com; style-src 'self' 'unsafe-inline' https://cdn.jsdelivr.net https://fonts.googleapis.com; font-src 'self' https://fonts.gstatic.com https://cdn.jsdelivr.net; img-src 'self' data: https:; connect-src 'self' https://www.google-analytics.com https://cloudflareinsights.com https://*.disqus.com; frame-src https://googleads.g.doubleclick.net https://*.disqus.com; object-src 'none'; base-uri 'self'; form-action 'self'
+Content-Security-Policy-Report-Only: default-src 'self'; script-src 'self' 'unsafe-inline' https://www.googletagmanager.com https://www.google-analytics.com https://static.cloudflareinsights.com https://cdn.jsdelivr.net https://platform.twitter.com https://giscus.app; style-src 'self' 'unsafe-inline' https://cdn.jsdelivr.net https://fonts.googleapis.com; font-src 'self' https://fonts.gstatic.com https://cdn.jsdelivr.net; img-src 'self' data: https:; connect-src 'self' https://www.google-analytics.com https://cloudflareinsights.com https://giscus.app; frame-src https://giscus.app; object-src 'none'; base-uri 'self'; form-action 'self'
 ```
 
 5. Deploy and browse the site for 24–48 hours. Check browser console for CSP violations.

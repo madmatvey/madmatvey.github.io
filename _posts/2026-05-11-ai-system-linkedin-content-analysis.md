@@ -1,11 +1,14 @@
 ---
 layout: post
+redirect_from:
+  - /2026/05/11/ai-system-linkedin-content-analysis/
+  - /2026/05/11/ai-system-linkedin-content-analysis.html
 title: "I Built a Local AI Scorer for My LinkedIn Posts"
 last_modified_at: 2026-05-11
 description: "LinkedIn metrics lack signal. I built a local pipeline: scrape posts, score against a CTO goal, classify topics—Ruby, Postgres, Ollama, caching, RAG."
 tags: [ai, linkedin, content strategy, ruby, postgresql, postgres, pgvector, ollama, engineering leadership, fractional cto, data pipeline, llm, analytics, tech blog, software architecture, product-minded engineer]
 author: eugene
-categories: [AI, Problem Solving]
+categories: [Backend Engineering]
 comments : True
 pin: false
 render_with_liquid: false

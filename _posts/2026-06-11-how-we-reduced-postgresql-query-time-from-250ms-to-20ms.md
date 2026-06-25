@@ -1,11 +1,14 @@
 ---
 layout: post
+redirect_from:
+  - /2026/06/11/how-we-reduced-postgresql-query-time-from-250ms-to-20ms/
+  - /2026/06/11/how-we-reduced-postgresql-query-time-from-250ms-to-20ms.html
 title: "How We Reduced PostgreSQL Query Time from 250ms to 20ms"
 last_modified_at: 2026-06-11
 description: "A production story about wrong indexes, planner regressions, and the query rewrite nobody wanted to do. Rails, PostgreSQL, PgHero, partial indexes."
 tags: [postgres, sql, optimization, ruby on rails, performance, pghero, database, engineering leadership, fractional cto, backend, aws rds, query planner]
 author: eugene
-categories: [Tutorial, Coding]
+categories: [PostgreSQL Performance]
 comments : True
 pin: false
 render_with_liquid: false
@@ -206,6 +209,8 @@ The whole investigation took a few days. The fixes were small. The impact was im
 Most performance problems in Rails/Postgres applications aren't hard to fix. They're hard to find in time, before they become expensive enough to demand attention. Building the habit of looking — PgHero in production, `pg_stat_statements` always on, periodic slow query reviews — is what separates teams that are reactive from teams that aren't surprised.
 
 We weren't surprised again.
+
+For a follow-up on when indexes lose to sequential scans, see [The Index Lie: Why "Just Add an Index" Can Make Your Query Slower](/posts/the-index-lie-why-just-add-an-index-can-make-your-query-slower/). For reading `EXPLAIN ANALYZE` output under cross-examination rather than as gospel, see [Stop Reading EXPLAIN ANALYZE. Start Cross-Examining It.](/posts/stop-reading-explain-analyze-start-cross-examining-it/).
 
 ---
 

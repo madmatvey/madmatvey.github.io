@@ -1,10 +1,13 @@
 ---
 layout: post
+redirect_from:
+  - /2024/09/26/top-five-books-for-engineering-leaders/
+  - /2024/09/26/top-five-books-for-engineering-leaders.html
 title: "Top 5 Must-Read Books for Engineering Leaders"
 description: "Top 5 must-read books for engineering leaders to boost team dynamics, drive innovation, and master flexible leadership. Read more!"
 tags: [engineering leadership, leadership, dynamic leadership in engineering, effective engineering leadership, flexible management approaches, team building, cross-functional collaboration, personal development, problem-solving, psychological safety, corporate culture, leadership books, team dynamics, psychological safety in teams, agile leadership, engineering team growth, leadership development, innovative leadership, leadership for engineers, team empowerment]
 author: eugene
-categories: [Read this, Leadership]
+categories: [Engineering Leadership]
 comments : True
 pin: false
 render_with_liquid: false

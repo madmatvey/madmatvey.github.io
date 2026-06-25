@@ -1,12 +1,15 @@
 ---
 layout: post
+redirect_from:
+  - /2026/06/21/the-index-lie-why-just-add-an-index-can-make-your-query-slower/
+  - /2026/06/21/the-index-lie-why-just-add-an-index-can-make-your-query-slower.html
 title: "The Index Lie: Why \"Just Add an Index\" Can Make Your Query Slower"
 date: 2026-06-21 13:42:00 +0400
 last_modified_at: 2026-06-21
 description: "PostgreSQL doesn't ignore your index – it prices it. When index scans lose to sequential scans, what Heap Fetches, correlation, and write-side maintenance actually mean."
 tags: [postgres, sql, optimization, database, query planner, indexing, performance, backend engineering, fractional cto, sequential scan, index-only scan, brin, partial index, explain analyze]
 author: eugene
-categories: [Engineering, Coding]
+categories: [PostgreSQL Performance]
 comments: true
 pin: false
 render_with_liquid: false
@@ -116,6 +119,8 @@ In practice, this shifts where the work goes. Past a certain scale, the lever is
 - **Periodic re-validation** – pulling `EXPLAIN (ANALYZE, BUFFERS)` on your highest-traffic queries on a schedule, not just when something breaks, since the plan that was optimal six months ago is not guaranteed to still be optimal.
 
 None of this is exotic. It's the difference between treating indexing as a one-time tuning step and treating it as part of the system's ongoing operating model – something that gets revisited as the data shape changes, because it will.
+
+Related in this series: [How We Reduced PostgreSQL Query Time from 250ms to 20ms](/posts/how-we-reduced-postgresql-query-time-from-250ms-to-20ms/) and [Stop Reading EXPLAIN ANALYZE. Start Cross-Examining It.](/posts/stop-reading-explain-analyze-start-cross-examining-it/).
 
 ---
 

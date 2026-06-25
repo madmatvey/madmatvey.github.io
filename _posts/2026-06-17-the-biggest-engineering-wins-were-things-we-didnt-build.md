@@ -1,12 +1,15 @@
 ---
 layout: post
+redirect_from:
+  - /2026/06/17/the-biggest-engineering-wins-were-things-we-didnt-build/
+  - /2026/06/17/the-biggest-engineering-wins-were-things-we-didnt-build.html
 title: "Biggest Engineering Wins Were Things We Didn't Build"
 date: 2026-06-17 13:42:00 +0400
 last_modified_at: 2026-06-17
 description: "On decision economics, the Hypothetical Future, and why \"eventually\" is the most expensive word in engineering."
 tags: [engineering leadership, decision economics, product-minded engineer, technical debt, engineering productivity, fractional cto, product development, automation, architecture, team management, engineering culture, senior engineer]
 author: eugene
-categories: [Leadership, Product Development]
+categories: [Architecture]
 comments: true
 pin: false
 render_with_liquid: false

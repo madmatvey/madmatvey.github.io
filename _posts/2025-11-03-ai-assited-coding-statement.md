@@ -1,10 +1,13 @@
 ---
 layout: post
+redirect_from:
+  - /2025/11/03/ai-assited-coding-statement/
+  - /2025/11/03/ai-assited-coding-statement.html
 title: "AI Won't Replace Your Architectural Thinking"
 description: "Learn why effective AI-powered development starts with your own architectural thinking and task decomposition. Discover how to think architecturally."
 tags: [ai, ai coding assistant, ai-powered development, ai developer tools, cursor, cursor ai, software development, programming, tech, innovation, problem-solving, product-minded engineer, personal development, effective engineering leadership, engineering leadership, creative engineering management, computer and information systems, future of coding, tech blog]
 author: eugene
-categories: [AI, Problem Solving]
+categories: [Backend Engineering]
 comments : True
 pin: false
 render_with_liquid: false

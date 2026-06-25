@@ -1,11 +1,14 @@
 ---
 layout: post
+redirect_from:
+  - /2026/06/12/the-level-3-trap-eight-levels-of-product-minded-engineering/
+  - /2026/06/12/the-level-3-trap-eight-levels-of-product-minded-engineering.html
 title: "The Level 3 Trap: Eight Levels of Product-Minded Engineering"
 last_modified_at: 2026-06-12
 description: "A fintech team shipped 40+ tickets a sprint while activation stayed flat. An eight-level framework for assessing where engineers operate and why Level 3 is not mastery."
 tags: [engineering leadership, product-minded engineer, fractional cto, team management, career development, product development, ai orchestration, engineering culture, fintech, senior engineer]
 author: eugene
-categories: [Leadership, Product Development]
+categories: [Architecture]
 comments : True
 pin: false
 render_with_liquid: false

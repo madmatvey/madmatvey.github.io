@@ -1,12 +1,15 @@
 ---
 layout: post
+redirect_from:
+  - /2026/06/24/from-senior-engineer-to-cto-the-real-skill-gap-isnt-technical/
+  - /2026/06/24/from-senior-engineer-to-cto-the-real-skill-gap-isnt-technical.html
 title: "From Senior Engineer to CTO: The Real Skill Gap Isn't Technical"
 date: 2026-06-24 14:42:00 +0400
 last_modified_at: 2026-06-24
 description: "Most engineers don't hit a technical ceiling. They hit an ownership ceiling. Five hats for seniority – and why AI is widening the gap."
 tags: [engineering leadership, career development, staff engineer, cto, fractional cto, ownership, senior engineer, ai, product thinking, architecture, decision making, engineering culture]
 author: eugene
-categories: [Leadership, Career]
+categories: [Engineering Leadership]
 comments: true
 pin: false
 render_with_liquid: false

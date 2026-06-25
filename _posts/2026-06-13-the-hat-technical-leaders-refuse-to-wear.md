@@ -1,11 +1,14 @@
 ---
 layout: post
+redirect_from:
+  - /2026/06/13/the-hat-technical-leaders-refuse-to-wear/
+  - /2026/06/13/the-hat-technical-leaders-refuse-to-wear.html
 title: "The Hat Leaders Refuse to Wear"
 last_modified_at: 2026-06-13
 description: "After Staff level, technical depth stops being your bottleneck. The Ambassador Hat is the career ceiling most engineering leaders never see coming."
 tags: [engineering leadership, leadership hats, ambassador hat, organizational influence, career development, staff engineer, engineering manager, director of engineering, cto, fractional cto, stakeholder management, cross-functional leadership, engineering culture, team management]
 author: eugene
-categories: [Leadership]
+categories: [Engineering Leadership]
 comments : True
 pin: false
 render_with_liquid: false

@@ -1,10 +1,13 @@
 ---
 layout: post
+redirect_from:
+  - /2025/10/13/startups-will-die/
+  - /2025/10/13/startups-will-die.html
 title: "90% of Startups Die Because the Customer Doesn’t Feel Pain"
 description: "90% of startups fail because customers don’t feel real pain. Learn how to validate ideas, avoid AI chaos, and turn vision into a working product."
 tags: [startups, product development strategies, ai, ai productivity, ai-powered development, innovation, problem-solving, product management, software development, tech, business strategy, career development, pavel nasuta]
 author: nasuta
-categories: [Read this, Problem Solving]
+categories: [Engineering Leadership]
 comments : True
 pin: false
 render_with_liquid: false

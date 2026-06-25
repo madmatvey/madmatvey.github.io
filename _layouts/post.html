@@ -4,6 +4,7 @@ refactor: true
 panel_includes:
   - toc
 tail_includes:
+  - cluster-links
   - comments
   - related-posts
   - post-nav
@@ -12,7 +13,9 @@ tail_includes:
 {% include lang.html %}
 
 {% assign article_category = page.categories | first | default: '' %}
-{% include analytics/article-tracking.html content=content title=page.title category=article_category tags=page.tags date=page.date %}
+{% if jekyll.environment == 'production' %}
+  {% include analytics/article-tracking.html content=content title=page.title category=article_category tags=page.tags date=page.date %}
+{% endif %}
 
 <article class="px-1">
   <header>

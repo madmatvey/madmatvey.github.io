@@ -1,12 +1,15 @@
 ---
 layout: post
+redirect_from:
+  - /2026/06/22/looking-for-my-next-role/
+  - /2026/06/22/looking-for-my-next-role.html
 title: "Looking for My Next Role"
 date: 2026-06-22 14:01:18 +0400
 last_modified_at: 2026-06-22
 description: "Staff, Principal, and engineering leadership roles. Backend engineering, platform engineering, and technical leadership – open to remote and international teams."
 tags: [job search, staff engineer, principal engineer, engineering manager, technical lead, backend engineering, ruby on rails, postgresql, distributed systems, platform engineering, engineering leadership, remote work, career]
 author: eugene
-categories: [Career, Engineering]
+categories: [Engineering Leadership]
 comments: true
 pin: true
 render_with_liquid: false

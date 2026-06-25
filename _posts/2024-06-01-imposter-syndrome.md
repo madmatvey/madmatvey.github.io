@@ -1,10 +1,14 @@
 ---
 layout: post
+redirect_from:
+  - /2024/06/01/imposter-syndrome/
+  - /2024/06/01/imposter-syndrome.html
 title: "Imposter Syndrome: How Employers Can Use It Against You"
 description: "Discover how imposter syndrome affects tech workers and strategies to overcome self-doubt—a personal story of workplace-induced imposter feelings."
 tags: [imposter syndrome, workplace culture, employee well-being, toxic work environment, psychological safety, fear-based management, career development, professional growth, mental health, employee empowerment, ethical employment practices, productivity and innovation, constructive feedback, overcoming self-doubt, personal experience in work сulture]
 author: eugene
-categories: [Self-Knowledge, Mental Health]
+categories: [Personal]
+exclude_from_trending: true
 comments : True
 render_with_liquid: false
 image:

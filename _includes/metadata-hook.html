@@ -1,12 +1,1 @@
 <!-- A placeholder to allow defining custom metadata -->
-{% if page.url == '/motivation-test/' %}
-<script>
-  (function () {
-    if (!window.location.search.includes('result=')) return;
-    var robots = document.createElement('meta');
-    robots.name = 'robots';
-    robots.content = 'noindex, follow';
-    document.head.appendChild(robots);
-  })();
-</script>
-{% endif %}
