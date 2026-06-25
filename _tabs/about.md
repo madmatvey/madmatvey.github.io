@@ -23,7 +23,9 @@ description: "Hi, I am Eugene Leontev. I help engineering teams build backend sy
     </p>
     <ul class="about-links">
       <li><a href="#popular-articles">Start with my most popular articles</a></li>
+      <li><a href="/postgresql-performance-playbook/">PostgreSQL Performance Playbook</a></li>
       <li><a href="/feed.xml">Subscribe to new posts</a></li>
+      <li><a href="https://t.me/eugene_the_engineer">Follow on Telegram</a></li>
       <li><a href="#support-my-work">Support my work</a></li>
     </ul>
   </section>
@@ -50,16 +52,20 @@ description: "Hi, I am Eugene Leontev. I help engineering teams build backend sy
             <span class="about-post-desc">Deep SQL optimization case study. One of the most read articles on this blog.</span>
           </li>
           <li>
-            <a href="/posts/how-we-reduced-postgresql-query-time-from-250ms-to-20ms/">How We Reduced PostgreSQL Query Time from 250ms to 20ms</a>
+            <a href="/posts/how-we-reduced-postgresql-query-time-from-250ms-to-20ms/">How We Cut PostgreSQL Query Time from 250ms to 20ms</a>
             <span class="about-post-desc">A practical story of PostgreSQL tuning in a production environment.</span>
+          </li>
+          <li>
+            <a href="/posts/your-billing-system-probably-isnt-an-accounting-system/">Your Billing System Isn't an Accounting System</a>
+            <span class="about-post-desc">Wallet vs ledger, refunds, and the reconstruction test every billing audit needs.</span>
           </li>
           <li>
             <a href="/posts/the-index-lie-why-just-add-an-index-can-make-your-query-slower/">The Index Lie</a>
             <span class="about-post-desc">Why adding an index can make queries slower and how to avoid that trap.</span>
           </li>
           <li>
-            <a href="/posts/redis-is-single-threaded/">Redis Is Single-Threaded. So Why Is It So Fast?</a>
-            <span class="about-post-desc">A concise explanation of Redis architecture and practical implications.</span>
+            <a href="/posts/redis-is-single-threaded/">Redis Is Single-Threaded (On the Outside)</a>
+            <span class="about-post-desc">Sidekiq, I/O threads, and production Redis configuration for Rails.</span>
           </li>
         </ul>
       </div>
@@ -67,11 +73,11 @@ description: "Hi, I am Eugene Leontev. I help engineering teams build backend sy
         <h3>By Topic</h3>
         <p class="about-tags">
           <a class="tag" href="/tags/ruby-on-rails/">Ruby on Rails</a>
-          <a class="tag" href="/tags/postgresql/">PostgreSQL</a>
+          <a class="tag" href="/postgresql-performance-playbook/">PostgreSQL Playbook</a>
+          <a class="tag" href="/tags/billing/">Billing</a>
           <a class="tag" href="/tags/architecture/">Architecture</a>
           <a class="tag" href="/tags/ai/">AI Development</a>
           <a class="tag" href="/tags/performance/">Performance</a>
-          <a class="tag" href="/tags/engineering-leadership/">Engineering Leadership</a>
         </p>
 
         <h3>New Here?</h3>
@@ -135,7 +141,7 @@ description: "Hi, I am Eugene Leontev. I help engineering teams build backend sy
       <div class="about-audience-item">
         <h3>I enjoy the content</h3>
         <p>Stay in the loop and support future articles.</p>
-        <p><a href="/feed.xml">Subscribe via RSS</a></p>
+        <p><a href="/feed.xml">Subscribe via RSS</a> · <a href="https://t.me/eugene_the_engineer">Telegram</a></p>
       </div>
     </div>
   </section>
@@ -193,6 +199,7 @@ description: "Hi, I am Eugene Leontev. I help engineering teams build backend sy
     <ul class="about-links">
       <li><a href="#popular-articles">Read next article</a></li>
       <li><a href="/feed.xml">Subscribe via RSS</a></li>
+      <li><a href="https://t.me/eugene_the_engineer">Follow on Telegram</a></li>
       <li><a href="#support-my-work">Support my work</a></li>
     </ul>
   </section>

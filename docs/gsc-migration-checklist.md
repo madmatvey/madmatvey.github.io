@@ -32,6 +32,8 @@ curl -sI "https://eugenetheengineer.com/2024/07/16/leadership-hats/" | tr -d '\r
 
 If date URLs still 404, apply [cloudflare-redirect-rules.md](cloudflare-redirect-rules.md).
 
+Record results in [redirect-verification-results.md](redirect-verification-results.md). Re-run: `./tools/verify_redirects.sh`
+
 ## 3. Submit sitemap
 
 On **eugenetheengineer.com** property:

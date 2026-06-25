@@ -5,8 +5,8 @@ redirect_from:
   - /2026/06/21/the-index-lie-why-just-add-an-index-can-make-your-query-slower.html
 title: "The Index Lie: Why \"Just Add an Index\" Can Make Your Query Slower"
 date: 2026-06-21 13:42:00 +0400
-last_modified_at: 2026-06-21
-description: "PostgreSQL doesn't ignore your index – it prices it. When index scans lose to sequential scans, what Heap Fetches, correlation, and write-side maintenance actually mean."
+last_modified_at: 2026-06-27
+description: "PostgreSQL doesn't ignore your index — it prices it. Heap Fetches, selectivity thresholds, and write-side cost: when index scans lose to sequential scans."
 tags: [postgres, sql, optimization, database, query planner, indexing, performance, backend engineering, fractional cto, sequential scan, index-only scan, brin, partial index, explain analyze]
 author: eugene
 categories: [PostgreSQL Performance]
@@ -118,9 +118,36 @@ In practice, this shifts where the work goes. Past a certain scale, the lever is
 - **Partitioning and data locality** – at real scale, the question stops being "which index" and becomes "should this data even live in one table."
 - **Periodic re-validation** – pulling `EXPLAIN (ANALYZE, BUFFERS)` on your highest-traffic queries on a schedule, not just when something breaks, since the plan that was optimal six months ago is not guaranteed to still be optimal.
 
+### When to drop an index
+
+Before adding another index, check whether an existing one is net-negative:
+
+- [ ] `pg_stat_user_indexes.idx_scan` near zero for 30+ days (index unused)
+- [ ] Write-heavy table with many indexes and rising insert latency
+- [ ] `EXPLAIN` shows planner ignoring the index you added (wrong selectivity)
+- [ ] Partial index would cover the same filter with less write amplification
+
+See the full reading method in [Stop Reading EXPLAIN ANALYZE](/posts/stop-reading-explain-analyze-start-cross-examining-it/) and the [PostgreSQL Performance Playbook](/postgresql-performance-playbook/).
+
 None of this is exotic. It's the difference between treating indexing as a one-time tuning step and treating it as part of the system's ongoing operating model – something that gets revisited as the data shape changes, because it will.
 
-Related in this series: [How We Reduced PostgreSQL Query Time from 250ms to 20ms](/posts/how-we-reduced-postgresql-query-time-from-250ms-to-20ms/) and [Stop Reading EXPLAIN ANALYZE. Start Cross-Examining It.](/posts/stop-reading-explain-analyze-start-cross-examining-it/).
+Related in this series: [How We Reduced PostgreSQL Query Time from 250ms to 20ms](/posts/how-we-reduced-postgresql-query-time-from-250ms-to-20ms/), [Stop Reading EXPLAIN ANALYZE. Start Cross-Examining It.](/posts/stop-reading-explain-analyze-start-cross-examining-it/), [SQL optimization case study](/posts/sql-optimization-or-criminal-tracking/), and the [PostgreSQL Performance Playbook](/postgresql-performance-playbook/).
+
+---
+
+## FAQ: PostgreSQL indexes and sequential scans
+
+**Why does PostgreSQL ignore my index?**
+It usually doesn't — the planner estimated a sequential scan is cheaper. Check `Heap Fetches`, selectivity, and `pg_stats` correlation before forcing `enable_seqscan = off`.
+
+**What are Heap Fetches in EXPLAIN ANALYZE?**
+Trips from the index to the heap to read row data. High Heap Fetches on a large result set often mean the index scan loses to one sequential read of the table.
+
+**When should I use a partial index?**
+When queries filter a small, stable subset of rows (e.g. `status = 'active'`) on a large table — see [250ms → 20ms case study](/posts/how-we-reduced-postgresql-query-time-from-250ms-to-20ms/).
+
+**Can an index make writes slower?**
+Yes. Every index is maintained on insert/update/delete. Drop unused indexes before adding new ones.
 
 ---
 

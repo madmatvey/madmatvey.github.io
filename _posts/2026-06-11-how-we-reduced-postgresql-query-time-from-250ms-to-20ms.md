@@ -3,9 +3,9 @@ layout: post
 redirect_from:
   - /2026/06/11/how-we-reduced-postgresql-query-time-from-250ms-to-20ms/
   - /2026/06/11/how-we-reduced-postgresql-query-time-from-250ms-to-20ms.html
-title: "How We Reduced PostgreSQL Query Time from 250ms to 20ms"
-last_modified_at: 2026-06-11
-description: "A production story about wrong indexes, planner regressions, and the query rewrite nobody wanted to do. Rails, PostgreSQL, PgHero, partial indexes."
+title: "How We Cut PostgreSQL Query Time from 250ms to 20ms (Rails Production Story)"
+last_modified_at: 2026-06-27
+description: "Rails API on RDS: wrong indexes, planner regressions, partial indexes, and PgHero. Before/after metrics from a production PostgreSQL tuning case study."
 tags: [postgres, sql, optimization, ruby on rails, performance, pghero, database, engineering leadership, fractional cto, backend, aws rds, query planner]
 author: eugene
 categories: [PostgreSQL Performance]
@@ -40,6 +40,20 @@ For a while, we just topped it up. $20/month felt like a rounding error against 
 One day I wrote as much in our daily standup. Went to the project manager, explained the situation, and asked for dedicated time to actually investigate rather than patch. Got the green light. Opened New Relic.
 
 What I saw confirmed the suspicion.
+
+---
+
+## Before and after
+
+| Metric | Before | After |
+|--------|--------|-------|
+| Query avg time (PgHero) | ~250ms | ~20ms |
+| Endpoint response time | ~250ms | ~30ms (then ~20ms after query rewrite) |
+| Index size (partial vs full) | ~40 MB (`created_at`) | ~40 KB (partial on `status`) |
+| Rows scanned per query | ~500,000 | ~40 |
+| RDS CPU credit drain | Recurring top-ups | Stabilized |
+
+Tools: [New Relic](https://newrelic.com) for Postgres time vs app time, [PgHero](https://github.com/ankane/pghero) for `pg_stat_statements`, [explain.depesz.com](https://explain.depesz.com) for plan visualization. More in the [PostgreSQL Performance Playbook](/postgresql-performance-playbook/).
 
 ---
 

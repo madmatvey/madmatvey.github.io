@@ -1,0 +1,78 @@
+---
+description: Checklist for new blog posts — front matter, clusters, PostgreSQL Playbook hub, cross-links
+globs: _posts/**/*.md
+alwaysApply: false
+---
+
+# Blog post writing (eugenetheengineer.com)
+
+When creating or editing a post in `_posts/`, complete **all** applicable steps in the same change — before merge. Scheduled cron deploy will not add hub links for you.
+
+## Slug
+
+Derive from filename: `YYYY-MM-DD-<slug>.md` → `<slug>` (no date prefix).
+
+Permalink: `/posts/<slug>/`
+
+## Front matter (required)
+
+- `title`, `date`, `description`, `tags`, `categories`, `author: eugene`
+- `categories: [PostgreSQL Performance]` for PostgreSQL series pillars
+- `redirect_from` with legacy `/YYYY/MM/DD/<slug>/` paths
+- `render_with_liquid: false` unless the post body uses Liquid
+
+## PostgreSQL Performance series
+
+**Applies when** `categories` includes `PostgreSQL Performance`, or the post is a core chapter in the PG tuning series (indexing, EXPLAIN, query plans, RDS/Rails DB performance).
+
+### 1. Content cluster (peer links on post page)
+
+Add slug to `_data/content_clusters.yml` under `postgresql-performance`:
+
+```yaml
+postgresql-performance:
+  - <slug>   # append; keep reading order if curated
+```
+
+Powers `_includes/cluster-links.html` (“More in this series”).
+
+### 2. Playbook hub (auto on publish date)
+
+Add slug to `_data/postgresql_playbook.yml` in **every** section that fits:
+
+| Section | When |
+|---------|------|
+| `start_here` | Core reading-path chapter; add `blurb` (one sentence) |
+| `foundational` | Only one anchor post (usually `sql-optimization-or-criminal-tracking`) |
+| `problems` | Maps a symptom to the post; add `label`, `short_title`, optional `note` |
+| `related` | PG-adjacent (billing indexes, Redis, ledger queries) — not core series |
+
+Links render only after `date` passes (Jekyll + daily cron). No manual tab edits.
+
+### 3. In-post links
+
+- Link to [PostgreSQL Performance Playbook](/postgresql-performance-playbook/) at least once
+- Cross-link 2–3 peers from `postgresql-performance` cluster
+
+### 4. Verify
+
+```bash
+ruby tools/audit_playbook.rb
+bundle exec jekyll build
+```
+
+## Other clusters
+
+| Category | Cluster key in `_data/content_clusters.yml` |
+|----------|-----------------------------------------------|
+| Backend Engineering | `backend-engineering` |
+| Billing & Fintech | `billing-fintech` |
+| Architecture | `architecture` |
+| Engineering Leadership | `engineering-leadership` |
+
+Billing posts with heavy PostgreSQL index content may also belong in `postgresql_playbook.yml` → `problems` or `related` without joining `postgresql-performance` cluster.
+
+## Do not
+
+- Link to future-dated posts from published posts unless intentional preview
+- Hand-edit `_tabs/postgresql-performance-playbook.md` for new series entries — use `_data/postgresql_playbook.yml`

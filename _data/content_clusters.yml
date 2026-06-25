@@ -35,4 +35,6 @@ engineering-leadership:
 
 billing-fintech:
   - your-billing-system-probably-isnt-an-accounting-system
+  - billing-idempotency-webhooks-unique-indexes
+  - double-entry-ledger-in-rails-minimal-production-model
   - introducing-ruby-gasless-sdk
