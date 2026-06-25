@@ -1,10 +1,14 @@
 ---
 layout: post
+redirect_from:
+  - /2024/06/18/crypto-wallet-basic-security/
+  - /2024/06/18/crypto-wallet-basic-security.html
 title: "Protecting Your Crypto Seed Phrases"
 description: "Learn how to protect your crypto wallet seed phrases with this fun, pirate-themed guide. Essential security tips for cryptocurrency safety."
 tags: [crypto wallet, seed phrase, kraken wallet, crypto security, digital treasure, crypto safety, blockchain, cryptocurrency, crypto guide, cyber security, crypto tips, secure crypto, crypto storage, crypto humor]
 author: eugene
-categories: [Tutorial, Crypto]
+categories: [Personal]
+exclude_from_trending: true
 comments : True
 pin: false
 image:

@@ -1,10 +1,14 @@
 ---
 layout: post
+redirect_from:
+  - /2024/07/11/russian-programmer-way/
+  - /2024/07/11/russian-programmer-way.html
 title: "Russian Programmer's Journey: Starting Anew Amidst Struggles"
 description: "Follow a Russian programmer journey of starting life anew. Discover valuable insights into transitioning to a new environment while pursuing tech."
 tags: [russian programmer, starting anew, life journey, tech career, emotional story, instructive tale, career transition, programmer struggles, hope and resilience, russian expatriate]
 author: eugene
-categories: [Personal, Blog]
+categories: [Personal]
+exclude_from_trending: true
 comments : True
 pin: false
 render_with_liquid: false

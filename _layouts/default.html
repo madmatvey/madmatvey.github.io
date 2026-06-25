@@ -13,7 +13,9 @@ layout: compress
   {% include head.html %}
 
   <body>
-    {% gtm body %}
+    {% if jekyll.environment == 'production' %}
+      {% gtm body %}
+    {% endif %}
     {% include sidebar.html lang=lang %}
 
     <div id="main-wrapper" class="d-flex justify-content-center">

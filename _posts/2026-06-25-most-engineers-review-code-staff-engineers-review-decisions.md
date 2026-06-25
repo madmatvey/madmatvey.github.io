@@ -1,12 +1,15 @@
 ---
 layout: post
+redirect_from:
+  - /2026/06/25/most-engineers-review-code-staff-engineers-review-decisions/
+  - /2026/06/25/most-engineers-review-code-staff-engineers-review-decisions.html
 title: "Most Engineers Review Code. Staff Engineers Review Decisions."
 date: 2026-06-25 14:42:00 +0400
 last_modified_at: 2026-06-25
 description: "Code review isn't about polishing the diff. It's about what merging does to the codebase – five questions, fewer comments, and where AI fits the mechanical layer."
 tags: [code review, engineering leadership, staff engineer, fractional cto, software architecture, ai-assisted development, opencode, engineering culture, decision making, pull requests, technical leadership]
 author: eugene
-categories: [Engineering, Leadership]
+categories: [Backend Engineering]
 comments: true
 pin: false
 render_with_liquid: false

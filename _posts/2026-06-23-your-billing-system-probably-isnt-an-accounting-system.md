@@ -1,12 +1,15 @@
 ---
 layout: post
+redirect_from:
+  - /2026/06/23/your-billing-system-probably-isnt-an-accounting-system/
+  - /2026/06/23/your-billing-system-probably-isnt-an-accounting-system.html
 title: "Your Billing System Probably Isn't an Accounting System"
 date: 2026-06-23 13:42:00 +0400
 last_modified_at: 2026-06-23
 description: "Most teams build a wallet. They think they built a ledger. The difference shows up the day you need to explain where the money went."
 tags: [ruby, rails, postgresql, billing, architecture, fintech, double-entry accounting, wallet, ledger, backend engineering, fractional cto, webhooks, idempotency, financial systems]
 author: eugene
-categories: [Engineering, Fintech]
+categories: [Billing & Fintech]
 comments: true
 pin: false
 render_with_liquid: false

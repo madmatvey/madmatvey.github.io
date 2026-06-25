@@ -46,5 +46,8 @@ if $prod; then
   command="JEKYLL_ENV=production $command"
 fi
 
+# Development mode (default): GTM, Giscus, and article-tracking are disabled.
+# Use -p / --production to preview analytics and comments locally.
+
 echo -e "\n> $command\n"
 eval "$command"

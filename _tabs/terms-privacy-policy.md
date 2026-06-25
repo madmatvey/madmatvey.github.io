@@ -38,6 +38,9 @@ We use cookies and similar tracking technologies to track the activity on our bl
 
 We may employ third-party companies and individuals to facilitate our blog, provide the service on our behalf, or assist us in analyzing how our blog is used. These third parties have access to your personal information only to perform these tasks on our behalf and are obligated not to disclose or use it for any other purpose.
 
+- **Comments:** Powered by [Giscus](https://giscus.app). Comments are stored in GitHub Discussions on the site repository. Posting a comment requires a GitHub account. See the [GitHub Privacy Statement](https://docs.github.com/en/site-policy/privacy-policies/github-privacy-statement).
+- **Analytics:** Google Tag Manager and related analytics tools (loaded on the production site only).
+
 **6. Security**
 
 The security of your personal information is important to us, but remember that no method of transmission over the Internet or electronic storage is 100% secure. While we strive to use commercially acceptable means to protect your personal information, we cannot guarantee its absolute security.

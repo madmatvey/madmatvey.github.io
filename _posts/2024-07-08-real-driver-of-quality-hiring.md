@@ -1,10 +1,13 @@
 ---
 layout: post
+redirect_from:
+  - /2024/07/08/real-driver-of-quality-hiring/
+  - /2024/07/08/real-driver-of-quality-hiring.html
 title: "Real Drivers of Quality Hiring: Beyond FAANG Complexity"
 description: "Discover how true motivation factors like leadership, curiosity, and freedom improve hiring quality, while FAANG-style complexity wastes resources."
 tags: [quality hiring, true motivation, leadership, curiosity, freedom, goal alignment, workplace comfort, honor in hiring, mastery, organizational order, team relatedness, workplace acceptance, employee status, faang hiring processes, effective recruitment, talent acquisition, innovative hiring strategies, sustainable hiring practices, workforce motivation]
 author: eugene
-categories: [Leadership, Hiring]
+categories: [Engineering Leadership]
 comments : True
 pin: false
 render_with_liquid: false
@@ -67,7 +70,3 @@ Many companies fall into the trap of adopting FAANG-style hiring processes, char
 Instead of imitating the convoluted hiring practices of FAANG companies, organizations should focus on authentic, motivation-driven strategies that align with their unique values and goals. By emphasizing leadership, curiosity, freedom, goal alignment, comfort, honor, mastery, order, relatedness, acceptance, and status, companies can create a more effective and sustainable hiring process. This approach not only attracts high-quality candidates but also fosters a motivated, engaged, and high-performing workforce.
 
 In the end, true motivation and a deep understanding of what drives individuals will always trump superficial complexity. It’s time for organizations to break free from the FAANG imitation trap and embrace a more genuine, effective approach to hiring.
-
-## P.S.
-
-What's [your level of motivation](/motivation-test/)? My results are available at the [link](/motivation-test/?result=53616c7465645f5fa87e69043acfe62fcc5dcbf1c063ba7c406ed4a7760049c1ed1c858f097ca3ce582c51a6897de980758ab944770280a78b7593261fe935dfdd521ccaffdcda0c52753d969e5c813831a9f86ff4d51396c79e443d0568a1e6e6763b31dfce42b74bc76da6ed2be4f5cab0420922ac53b36aafbda4075383732ce4741909484a118c02b09a1e63e3d27bc93fbcaf5a6e577d75a91cec81a8f8e0aa9843ace270c99f3177918419b4776908a7907d32c997abbf338f59650e6d1f06d2cb3068db37b11d938309c8835df029c3efe1d6e98673e235008494612526c47abb7d56bea1ae691408e5edbc73c64e3d21180c24a4cbbda77f69b7721becc3c6fc62815b01877b887888ab6289)

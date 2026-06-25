@@ -1,11 +1,14 @@
 ---
 layout: post
+redirect_from:
+  - /2026/06/04/the-ai-model-is-no-longer-the-bottleneck/
+  - /2026/06/04/the-ai-model-is-no-longer-the-bottleneck.html
 title: "The AI Model Is No Longer The Bottleneck"
 last_modified_at: 2026-06-04
 description: "Model benchmarks get the attention, but workflows, agent design, and toolchain architecture drive real AI coding productivity. Why workflow-first beats model-chasing."
 tags: [ai, developer tools, ai agents, workflow, opencode, engineering leadership, fractional cto, software architecture, open source, tech strategy, llm, productivity]
 author: eugene
-categories: [AI, Engineering]
+categories: [Backend Engineering]
 comments : True
 pin: false
 render_with_liquid: false

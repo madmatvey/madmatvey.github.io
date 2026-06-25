@@ -1,10 +1,13 @@
 ---
 layout: post
+redirect_from:
+  - /2024/06/11/the-man-who-killed-google/
+  - /2024/06/11/the-man-who-killed-google.html
 title: "The Man Who Killed Google Search: A Cautionary Tale"
 description: "Explore how prioritizing revenue over user experience led to Google Search decline. A cautionary tale about corporate decision-making."
 tags: [google, tech industry, corporate culture, business ethics, leadership, innovation, technology, business strategy, tech news, industry analysis, corporate principles, decision making, tech blog]
 author: eugene
-categories: [Leadership, Opinion]
+categories: [Engineering Leadership]
 comments : True
 render_with_liquid: false
 image:
