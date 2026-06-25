@@ -3,10 +3,10 @@ layout: post
 redirect_from:
   - /2026/06/23/your-billing-system-probably-isnt-an-accounting-system/
   - /2026/06/23/your-billing-system-probably-isnt-an-accounting-system.html
-title: "Your Billing System Probably Isn't an Accounting System"
+title: "Your Billing System Isn't an Accounting System (And Why That Breaks on Refunds)"
 date: 2026-06-23 13:42:00 +0400
-last_modified_at: 2026-06-23
-description: "Most teams build a wallet. They think they built a ledger. The difference shows up the day you need to explain where the money went."
+last_modified_at: 2026-06-27
+description: "Most Rails billing apps mutate wallet.balance and call it done. Here's the reconstruction test that exposes the gap — and a migration path to a real ledger."
 tags: [ruby, rails, postgresql, billing, architecture, fintech, double-entry accounting, wallet, ledger, backend engineering, fractional cto, webhooks, idempotency, financial systems]
 author: eugene
 categories: [Billing & Fintech]
@@ -35,6 +35,13 @@ Most teams answer "yes" instinctively, then go quiet when they actually try it.
 That gap between "we have transaction records" and "our balance is *derived* from transaction records" – is the entire difference between a billing system and an accounting system. And it's invisible until the day you need it, which is usually the day a customer disputes a charge, finance asks for a reconciliation, or a chargeback shows up six weeks after the original transaction.
 
 ## The pattern that looks like accounting but isn't
+
+| | Mutable wallet | Double-entry ledger |
+|---|----------------|---------------------|
+| Source of truth | `balance` column | Sum of postings |
+| Duplicate event | Silent drift | Constraint or unbalanced entry |
+| Refunds | Special-case code | Journal entry |
+| Reconstruction test | Often fails | Passes by construction |
 
 Almost every billing system I've reviewed converges on the same four models:
 
@@ -208,6 +215,8 @@ This works fine. Right up until the refund webhook from your payment provider fi
 
 ### Idempotency isn't a nice-to-have here. It's the financial control
 
+Full treatment: [Billing Idempotency: Webhooks, Unique Indexes, and the Line Between](/posts/billing-idempotency-webhooks-unique-indexes/).
+
 ```ruby
 class ProcessRefundWebhookJob < ApplicationJob
   def perform(webhook_payload)
@@ -304,6 +313,24 @@ Strip away the code and this is the whole argument:
 Those are different engineering problems, and the second one only gets harder under exactly the conditions you'd expect. Refunds, retries, disputes, audits – none of which show up in a demo, all of which show up eventually in production.
 
 If your billing system has never been asked the reconstruction question, that's not evidence it would pass. It's evidence it hasn't been tested yet.
+
+**Next in this series:** [Billing Idempotency: Webhooks, Unique Indexes, and the Line Between](/posts/billing-idempotency-webhooks-unique-indexes/) · [Double-Entry Ledger in Rails](/posts/double-entry-ledger-in-rails-minimal-production-model/) · [Cross-Examining EXPLAIN for reconciliation queries](/posts/stop-reading-explain-analyze-start-cross-examining-it/)
+
+---
+
+## FAQ: Billing system vs accounting system
+
+**What is the difference between a billing system and an accounting system?**
+A billing system charges customers successfully. An accounting system can reconstruct every balance from transaction history alone — balance is derived, not mutated.
+
+**When do I need double-entry instead of a wallet table?**
+When real money, refunds, chargebacks, or audits require explaining where every cent went. Loyalty points with no cash-out can stay a mutable integer.
+
+**Does event sourcing replace a ledger?**
+Not automatically. If balance is still read from a column instead of replaying events, you have a mutable balance with good logging — see [idempotency patterns](/posts/billing-idempotency-webhooks-unique-indexes/) for the webhook side.
+
+**Can I migrate without rewriting everything?**
+Yes. Shadow-write ledger entries alongside `wallet.balance`, alert on drift, then cut over path by path. Details in [Double-Entry Ledger in Rails](/posts/double-entry-ledger-in-rails-minimal-production-model/).
 
 ---
 

@@ -9,6 +9,7 @@ tags: [imposter syndrome, workplace culture, employee well-being, toxic work env
 author: eugene
 categories: [Personal]
 exclude_from_trending: true
+noindex: true
 comments : True
 render_with_liquid: false
 image:

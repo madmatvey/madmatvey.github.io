@@ -3,10 +3,10 @@ layout: post
 redirect_from:
   - /2026/03/04/redis-is-single-threaded/
   - /2026/03/04/redis-is-single-threaded.html
-title: "Single-Threaded on the Outside, Multithreaded on the Inside"
-last_modified_at: 2026-03-04
-description: "Learn how this in-memory datastore is single-threaded on the outside, but multithreaded on the inside. Read the full case study!"
-tags: [redis, software development, programming, optimization, postgres, sql, mobile apps backend, product-minded engineer, problem-solving, decision making, engineering leadership, innovation, tech blog, product developing, product development strategies]
+title: "Redis Is Single-Threaded (On the Outside): What Rails Developers Get Wrong"
+last_modified_at: 2026-06-27
+description: "Redis serializes commands on one thread but uses I/O threads, persistence workers, and Sidekiq-aware config. Production Redis setup for Rails apps."
+tags: [redis, sidekiq, ruby on rails, software development, programming, optimization, cache, background jobs, backend engineering, performance]
 author: eugene
 categories: [Backend Engineering]
 comments : True

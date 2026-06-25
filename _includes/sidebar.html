@@ -15,11 +15,11 @@
 
     {% if page.layout == 'home' %}
       <h1 class="site-title">
-        <a href="{{ '/' | relative_url }}" aria-label="Go to homepage">{{ site.title }}</a>
+        <a href="{{ '/' | relative_url }}" aria-label="Go to homepage">{{ site.data.locales[include.lang].title | default: site.title }}</a>
       </h1>
     {% else %}
       <div class="site-title">
-        <a href="{{ '/' | relative_url }}" aria-label="Go to homepage">{{ site.title }}</a>
+        <a href="{{ '/' | relative_url }}" aria-label="Go to homepage">{{ site.data.locales[include.lang].title | default: site.title }}</a>
       </div>
     {% endif %}
     <p class="site-subtitle fst-italic mb-0">{{ site.tagline }}</p>

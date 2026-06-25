@@ -4,3 +4,24 @@
 @import 'main';
 
 /* append your custom style below */
+
+#sidebar .profile-wrapper {
+  padding-inline: 1.75rem;
+}
+
+@media (min-width: 1650px) {
+  #sidebar .profile-wrapper {
+    padding-inline: 2.25rem;
+  }
+}
+
+#sidebar .site-title {
+  font-size: 1.5rem;
+  line-height: 1.35;
+  text-wrap: balance;
+}
+
+#sidebar .site-subtitle {
+  line-height: 1.4;
+  text-wrap: balance;
+}

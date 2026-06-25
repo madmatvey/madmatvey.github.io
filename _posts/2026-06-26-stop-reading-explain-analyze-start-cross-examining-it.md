@@ -1,10 +1,7 @@
 ---
 layout: post
-redirect_from:
-  - /2026/06/26/stop-reading-explain-analyze-start-cross-examining-it/
-  - /2026/06/26/stop-reading-explain-analyze-start-cross-examining-it.html
 title: "Stop Reading EXPLAIN ANALYZE. Start Cross-Examining It."
-date: 2026-06-26 14:42:00 +0400
+date: 2026-06-26 13:42:00 +0400
 last_modified_at: 2026-06-26
 description: "Four numbers, four myths, and one rule for reading Postgres query plans as evidence, not vibes. Actual rows, loops, buffers, and the 10x cardinality rule."
 tags: [postgres, sql, optimization, database, query planner, explain analyze, performance, backend engineering, fractional cto, sequential scan, nested loop, buffers, cardinality]

@@ -2,6 +2,7 @@
 layout: post
 title: "Optimizing SQL Queries or Tracking Dangerous Criminals"
 description: "Learn SQL optimization techniques through a real case study. Discover how to balance development speed, code readability, and performance."
+last_modified_at: 2026-06-27
 tags: [sql, optimization, criminal-tracking, postgres, mobile apps backend, ruby on rails]
 author: eugene
 categories: [PostgreSQL Performance]
@@ -16,6 +17,8 @@ image:
     alt: "SQL query optimization illustration showing database performance tuning"
 ---
 
+
+> **2026 update:** This case study started the PostgreSQL series on this blog. Continue with the [PostgreSQL Performance Playbook](/postgresql-performance-playbook/) — especially [250ms → 20ms](/posts/how-we-reduced-postgresql-query-time-from-250ms-to-20ms/), [The Index Lie](/posts/the-index-lie-why-just-add-an-index-can-make-your-query-slower/), and [Cross-Examining EXPLAIN](/posts/stop-reading-explain-analyze-start-cross-examining-it/).
 
 I believe that virtually every project using Ruby on Rails and Postgres as its main backend tools is in a constant struggle between development speed, code readability/maintainability, and project performance in production. I will share my experience balancing these three pillars in a case where readability and performance suffered initially, but in the end, I managed to achieve what several talented engineers had unsuccessfully attempted before me.
 
