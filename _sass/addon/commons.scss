@@ -1536,3 +1536,16 @@ search {
     }
   }
 } /* min-width: 1650px */
+
+.not-found-figure {
+  max-width: 42rem;
+  margin: 0 auto 1.5rem;
+
+  img {
+    display: block;
+    width: 100%;
+    height: auto;
+
+    @extend %rounded;
+  }
+}
