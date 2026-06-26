@@ -3,7 +3,7 @@ layout: post
 redirect_from:
   - /2026/06/23/your-billing-system-probably-isnt-an-accounting-system/
   - /2026/06/23/your-billing-system-probably-isnt-an-accounting-system.html
-title: "Your Billing System Isn't an Accounting System (And Why That Breaks on Refunds)"
+title: "Your Billing System Isn't an Accounting System"
 date: 2026-06-23 13:42:00 +0400
 last_modified_at: 2026-06-27
 description: "Most Rails billing apps mutate wallet.balance and call it done. Here's the reconstruction test that exposes the gap — and a migration path to a real ledger."

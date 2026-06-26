@@ -20,6 +20,25 @@ Permalink: `/posts/<slug>/`
 - `redirect_from` with legacy `/YYYY/MM/DD/<slug>/` paths
 - `render_with_liquid: false` unless the post body uses Liquid
 
+## SEO length (required)
+
+Post `title` becomes the page `<title>` and `<h1>`. `description` becomes the meta description.
+
+| Field | Limit | Notes |
+|-------|-------|-------|
+| `title` | **20–70 characters** | Shorter or longer titles trigger SEO inspector warnings |
+| `description` | **≤170 characters** | Longer descriptions are truncated in search snippets |
+
+Before merge, check the draft:
+
+```bash
+ruby tools/audit_seo_front_matter.rb _posts/YYYY-MM-DD-your-slug.md
+```
+
+If a title is over 70 characters, trim the parenthetical subtitle first (e.g. drop `(Rails Production Story)`). Keep the core promise of the post.
+
+If a description is over 170 characters, cut filler (`Here's how`, `In this post`) before removing technical keywords.
+
 ## Cluster assignment (automatic)
 
 **Set exactly one primary cluster via `categories:`** — hub listing and "More in this series" cross-links update automatically on the scheduled build when `date` passes.
@@ -53,6 +72,7 @@ Full post lists are never hand-maintained in YAML.
 ## Verify
 
 ```bash
+ruby tools/audit_seo_front_matter.rb _posts/YYYY-MM-DD-your-slug.md
 ruby tools/audit_clusters.rb
 bundle exec jekyll build
 ```

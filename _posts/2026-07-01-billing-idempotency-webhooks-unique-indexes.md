@@ -3,7 +3,7 @@ layout: post
 title: "Billing Idempotency: Webhooks, Unique Indexes, and the Line Between"
 date: 2026-07-01 13:42:00 +0400
 last_modified_at: 2026-07-01
-description: "Stripe webhooks retry. Your billing job runs twice. Here's how unique indexes, idempotency keys, and the database – not your service object – keep money from moving twice."
+description: "Stripe webhooks retry. Your billing job runs twice. How unique indexes, idempotency keys, and the database – not your service object – keep money from moving twice."
 tags: [ruby, rails, postgresql, billing, fintech, idempotency, webhooks, stripe, backend engineering, fractional cto, financial systems, sidekiq, unique index]
 author: eugene
 categories: [Billing & Fintech]

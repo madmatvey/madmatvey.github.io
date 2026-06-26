@@ -89,6 +89,7 @@
 "Backend Engineering":
   slug: backend-engineering
   title: "Backend Engineering"
+  seo_h1: "Backend Engineering for Production Rails Systems"
   icon: fas fa-server
   order: 5
   tagline: "Rails, Redis, AI systems, and the production problems that survive the demo."
@@ -104,6 +105,7 @@
 "Architecture":
   slug: architecture
   title: "Architecture"
+  seo_h1: "Software Architecture & Product-Minded Engineering"
   icon: fas fa-project-diagram
   order: 6
   tagline: "Product-minded engineering, deliberate non-builds, and architecture decisions that compound."
