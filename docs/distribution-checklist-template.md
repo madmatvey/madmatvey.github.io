@@ -6,10 +6,10 @@
 
 ## Before merge (required for PostgreSQL series)
 
-- [ ] Slug added to `_data/content_clusters.yml` → `postgresql-performance`
-- [ ] Slug added to `_data/postgresql_playbook.yml` (`start_here` / `problems` / `related`)
-- [ ] Post links to [PostgreSQL Performance Playbook](/postgresql-performance-playbook/) + 2–3 cluster peers
-- [ ] `ruby tools/audit_playbook.rb` passes
+- [ ] `categories: [PostgreSQL Performance]` set in post front matter
+- [ ] Optional: slug in `_data/clusters.yml` → `PostgreSQL Performance` (`featured` / `problems` / `related`)
+- [ ] Post links to [PostgreSQL Performance Playbook](/postgresql-performance-playbook/) + 2–3 cluster peers (editorial)
+- [ ] `ruby tools/audit_clusters.rb` passes
 
 ## Within 24 hours
 

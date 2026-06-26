@@ -3,7 +3,7 @@
 title: Terms and Privacy Policy
 description: Privacy policy and terms of service for Eugene Leontev The Engineer — how we collect, use, and protect your information on this blog.
 icon: fa-solid fa-cookie-bite
-order: 5
+order: 11
 ---
 
 ## Privacy Policy

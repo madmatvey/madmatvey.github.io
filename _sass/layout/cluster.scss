@@ -1,0 +1,171 @@
+/*
+  Content cluster hub pages (PostgreSQL Playbook, Billing, etc.)
+*/
+
+.cluster-hub {
+  margin-top: 0.5rem;
+}
+
+.cluster-tagline {
+  font-size: 1.05rem;
+  line-height: 1.6;
+}
+
+.cluster-section {
+  margin-bottom: 2.5rem;
+  padding-bottom: 0.5rem;
+
+  &:not(:last-of-type) {
+    border-bottom: 1px solid var(--main-border-color);
+  }
+}
+
+.cluster-section-title {
+  color: var(--heading-color);
+  font-weight: 600;
+}
+
+.cluster-post-list {
+  margin-top: 1rem;
+
+  .card-wrapper {
+    &:hover {
+      text-decoration: none;
+    }
+
+    &:not(:last-child) {
+      margin-bottom: 1.25rem;
+    }
+  }
+
+  .card {
+    border: 0;
+    background: none;
+
+    %img-radius {
+      border-radius: $base-radius $base-radius 0 0;
+    }
+
+    .preview-img {
+      @extend %img-radius;
+
+      img {
+        @extend %img-radius;
+      }
+    }
+
+    img {
+      @extend %img-radius;
+      width: 100%;
+      height: auto;
+      object-fit: cover;
+    }
+
+    .card-body {
+      height: 100%;
+      padding: 1rem;
+
+      .card-title {
+        @extend %text-clip;
+        color: var(--heading-color) !important;
+        font-size: 1.25rem;
+      }
+
+      .card-text.content {
+        color: var(--text-muted-color) !important;
+
+        p {
+          @extend %text-clip;
+          line-height: 1.5;
+          margin: 0;
+        }
+      }
+
+      .post-meta {
+        color: var(--text-muted-color) !important;
+        font-size: 0.85rem;
+      }
+    }
+  }
+}
+
+.cluster-card-blurb {
+  margin-top: -0.75rem;
+  padding-left: 1rem;
+  border-left: 3px solid var(--link-color);
+}
+
+.cluster-problems-wrapper {
+  margin-bottom: 0;
+
+  > .cluster-problems-table {
+    min-width: 100%;
+    width: 100%;
+    border-spacing: 0;
+    color: var(--text-color);
+
+    thead {
+      border-bottom: solid 2px var(--main-border-color);
+
+      th {
+        @extend %table-cell;
+
+        color: var(--heading-color);
+        font-weight: 600;
+        white-space: nowrap;
+      }
+    }
+
+    tbody {
+      tr {
+        border-bottom: 1px solid var(--tb-border-color);
+
+        &:nth-child(2n) {
+          background-color: var(--tb-even-bg, var(--tb-odd-bg));
+        }
+
+        &:nth-child(2n + 1) {
+          background-color: var(--tb-odd-bg);
+        }
+
+        td {
+          @extend %table-cell;
+
+          vertical-align: top;
+          white-space: normal;
+          line-height: 1.5;
+
+          a {
+            @extend %link-color;
+            @extend %link-underline;
+
+            &:hover {
+              @extend %link-hover;
+            }
+          }
+
+          .text-muted {
+            color: var(--text-muted-color) !important;
+          }
+        }
+      }
+    }
+  }
+}
+
+.cluster-tools-list,
+.cluster-related-list {
+  li {
+    line-height: 1.6;
+  }
+}
+
+.cluster-footer {
+  border-color: var(--main-border-color) !important;
+}
+
+@media (min-width: 768px) {
+  .cluster-post-list .card .post-preview {
+    min-height: 10rem;
+  }
+}

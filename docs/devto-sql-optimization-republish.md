@@ -1,6 +1,6 @@
 # DEV.to republish: SQL optimization case study
 
-**Status:** Ready to publish manually on DEV.to  
+**Status:** Published — [dev.to/madmatvey/optimizing-sql-queries-or-tracking-dangerous-criminals-58k](https://dev.to/madmatvey/optimizing-sql-queries-or-tracking-dangerous-criminals-58k)  
 **Canonical URL:** `https://eugenetheengineer.com/posts/sql-optimization-or-criminal-tracking/`
 
 ## Steps
