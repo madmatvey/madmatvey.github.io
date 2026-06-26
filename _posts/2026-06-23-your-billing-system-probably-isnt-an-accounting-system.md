@@ -20,6 +20,8 @@ image:
 
 *Most teams build a wallet. They think they built a ledger. The difference shows up the day you need to explain where the money went.*
 
+Part of the [Billing Systems for Rails Engineers](/billing-systems-for-rails-engineers/) series.
+
 ---
 
 ## The question that breaks most billing systems

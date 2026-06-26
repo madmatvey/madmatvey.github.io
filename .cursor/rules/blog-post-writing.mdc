@@ -1,12 +1,12 @@
 ---
-description: Checklist for new blog posts — front matter, clusters, PostgreSQL Playbook hub, cross-links
+description: Checklist for new blog posts — front matter, category-driven clusters, optional hub curation
 globs: _posts/**/*.md
 alwaysApply: false
 ---
 
 # Blog post writing (eugenetheengineer.com)
 
-When creating or editing a post in `_posts/`, complete **all** applicable steps in the same change — before merge. Scheduled cron deploy will not add hub links for you.
+When creating or editing a post in `_posts/`, complete **all** applicable steps in the same change — before merge.
 
 ## Slug
 
@@ -17,62 +17,48 @@ Permalink: `/posts/<slug>/`
 ## Front matter (required)
 
 - `title`, `date`, `description`, `tags`, `categories`, `author: eugene`
-- `categories: [PostgreSQL Performance]` for PostgreSQL series pillars
 - `redirect_from` with legacy `/YYYY/MM/DD/<slug>/` paths
 - `render_with_liquid: false` unless the post body uses Liquid
 
-## PostgreSQL Performance series
+## Cluster assignment (automatic)
 
-**Applies when** `categories` includes `PostgreSQL Performance`, or the post is a core chapter in the PG tuning series (indexing, EXPLAIN, query plans, RDS/Rails DB performance).
+**Set exactly one primary cluster via `categories:`** — hub listing and "More in this series" cross-links update automatically on the scheduled build when `date` passes.
 
-### 1. Content cluster (peer links on post page)
+| Category | Hub page |
+|----------|----------|
+| PostgreSQL Performance | [/postgresql-performance-playbook/](/postgresql-performance-playbook/) |
+| Billing & Fintech | [/billing-systems-for-rails-engineers/](/billing-systems-for-rails-engineers/) |
+| Backend Engineering | [/backend-engineering/](/backend-engineering/) |
+| Architecture | [/architecture/](/architecture/) |
+| Engineering Leadership | [/engineering-leadership/](/engineering-leadership/) |
+| Personal | No hub (intentional) |
 
-Add slug to `_data/content_clusters.yml` under `postgresql-performance`:
+No manual slug lists. Jekyll `site.categories` + daily cron (`0 10 * * *` UTC) publish future-dated posts and add them to the hub on that day.
 
-```yaml
-postgresql-performance:
-  - <slug>   # append; keep reading order if curated
-```
+### Optional curation (`_data/clusters.yml`)
 
-Powers `_includes/cluster-links.html` (“More in this series”).
+Add or update entries only when you want curated **Start here**, **By problem**, **Tools**, or **Related** sections:
 
-### 2. Playbook hub (auto on publish date)
+- `featured` — reading-order slugs with blurbs
+- `problems` — symptom → post map
+- `tools` / `related` — external tools or cross-cluster links
 
-Add slug to `_data/postgresql_playbook.yml` in **every** section that fits:
+Full post lists are never hand-maintained in YAML.
 
-| Section | When |
-|---------|------|
-| `start_here` | Core reading-path chapter; add `blurb` (one sentence) |
-| `foundational` | Only one anchor post (usually `sql-optimization-or-criminal-tracking`) |
-| `problems` | Maps a symptom to the post; add `label`, `short_title`, optional `note` |
-| `related` | PG-adjacent (billing indexes, Redis, ledger queries) — not core series |
+### In-post links (recommended)
 
-Links render only after `date` passes (Jekyll + daily cron). No manual tab edits.
+- Link to your cluster hub at least once
+- Cross-link 2–3 peer posts in the body when editorially useful (widget links all peers automatically)
 
-### 3. In-post links
-
-- Link to [PostgreSQL Performance Playbook](/postgresql-performance-playbook/) at least once
-- Cross-link 2–3 peers from `postgresql-performance` cluster
-
-### 4. Verify
+## Verify
 
 ```bash
-ruby tools/audit_playbook.rb
+ruby tools/audit_clusters.rb
 bundle exec jekyll build
 ```
-
-## Other clusters
-
-| Category | Cluster key in `_data/content_clusters.yml` |
-|----------|-----------------------------------------------|
-| Backend Engineering | `backend-engineering` |
-| Billing & Fintech | `billing-fintech` |
-| Architecture | `architecture` |
-| Engineering Leadership | `engineering-leadership` |
-
-Billing posts with heavy PostgreSQL index content may also belong in `postgresql_playbook.yml` → `problems` or `related` without joining `postgresql-performance` cluster.
 
 ## Do not
 
 - Link to future-dated posts from published posts unless intentional preview
-- Hand-edit `_tabs/postgresql-performance-playbook.md` for new series entries — use `_data/postgresql_playbook.yml`
+- Hand-edit hub tab bodies — hubs render from `_layouts/cluster.html` + `_data/clusters.yml`
+- Use `categories: [Personal]` for SEO pillar content

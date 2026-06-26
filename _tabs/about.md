@@ -1,7 +1,7 @@
 ---
 # the default layout is 'page'
 icon: fas fa-info-circle
-order: 4
+order: 1
 description: "Hi, I am Eugene Leontev. I help engineering teams build backend systems that survive growth. Explore my best posts on Rails, PostgreSQL, architecture, and AI-assisted development."
 ---
 

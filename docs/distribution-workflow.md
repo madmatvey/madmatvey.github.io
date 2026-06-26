@@ -8,11 +8,12 @@ Copy [`docs/distribution-checklist-template.md`](distribution-checklist-template
 
 ### Before merge — PostgreSQL series posts
 
-Hub links are **not** added at deploy time; they must be in the repo before the scheduled publish date.
+Hub links are **automatic** from `categories: [PostgreSQL Performance]` on the scheduled publish date.
 
-- [ ] Slug in `_data/content_clusters.yml` → `postgresql-performance`
-- [ ] Slug in `_data/postgresql_playbook.yml` (see `.cursor/rules/blog-post-writing.mdc`)
-- [ ] `ruby tools/audit_playbook.rb`
+Optional curation only:
+
+- [ ] Slug in `_data/clusters.yml` → `PostgreSQL Performance` (`featured` / `problems` / `related` if applicable)
+- [ ] `ruby tools/audit_clusters.rb`
 
 Playbook and cluster links appear automatically on the first cron build **after** the post `date`.
 

@@ -1,0 +1,177 @@
+---
+layout: page
+---
+
+{% include lang.html %}
+
+{% assign cluster = site.data.clusters[page.category] %}
+{% assign cluster_posts = site.categories[page.category] | sort: 'date' | reverse %}
+{% assign shown_slugs = '' | split: '' %}
+
+<div id="cluster-hub" class="cluster-hub">
+  {% if cluster.tagline %}
+    <p class="cluster-tagline lead text-muted mb-4">{{ cluster.tagline }}</p>
+  {% endif %}
+
+  {% assign featured_count = 0 %}
+  {% if cluster.featured %}
+    {% for item in cluster.featured %}
+      {% assign feat_post = site.posts | where: 'slug', item.slug | first %}
+      {% if feat_post %}
+        {% assign featured_count = featured_count | plus: 1 %}
+      {% endif %}
+    {% endfor %}
+  {% endif %}
+
+  {% if featured_count > 0 %}
+    <section class="cluster-section cluster-featured" aria-labelledby="cluster-start-here">
+      <h2 id="cluster-start-here" class="cluster-section-title h4 mb-3">Start here</h2>
+      <div id="cluster-featured-list" class="cluster-post-list">
+        {% for item in cluster.featured %}
+          {% assign feat_post = site.posts | where: 'slug', item.slug | first %}
+          {% if feat_post %}
+            {% assign shown_slugs = shown_slugs | push: item.slug %}
+            {% assign post = feat_post %}
+            {% include post-card.html %}
+            {% if item.blurb %}
+              <p class="cluster-card-blurb text-muted small mb-4 ps-1">{{ item.blurb }}</p>
+            {% endif %}
+          {% endif %}
+        {% endfor %}
+      </div>
+    </section>
+  {% endif %}
+
+  {% if cluster.foundational %}
+    {% assign foundational_post = site.posts | where: 'slug', cluster.foundational.slug | first %}
+    {% if foundational_post %}
+      {% unless shown_slugs contains cluster.foundational.slug %}
+        {% assign shown_slugs = shown_slugs | push: cluster.foundational.slug %}
+      {% endunless %}
+      <section class="cluster-section cluster-foundational" aria-labelledby="cluster-foundational">
+        <h2 id="cluster-foundational" class="cluster-section-title h4 mb-3">Deep dive (foundational case study)</h2>
+        <p class="mb-2">
+          <strong><a href="{{ foundational_post.url | relative_url }}">{{ foundational_post.title }}</a></strong>
+          — {{ cluster.foundational.blurb }}
+        </p>
+        {% if cluster.foundational.footnote %}
+          <p class="text-muted small mb-0">{{ cluster.foundational.footnote }}</p>
+        {% endif %}
+      </section>
+    {% endif %}
+  {% endif %}
+
+  {% assign remaining_count = 0 %}
+  {% for post in cluster_posts %}
+    {% unless shown_slugs contains post.slug %}
+      {% assign remaining_count = remaining_count | plus: 1 %}
+    {% endunless %}
+  {% endfor %}
+
+  {% if remaining_count > 0 %}
+    <section class="cluster-section cluster-all" aria-labelledby="cluster-all-posts">
+      <h2 id="cluster-all-posts" class="cluster-section-title h4 mb-3">All in this cluster</h2>
+      <div id="cluster-post-list" class="cluster-post-list">
+        {% for post in cluster_posts %}
+          {% unless shown_slugs contains post.slug %}
+            {% include post-card.html %}
+          {% endunless %}
+        {% endfor %}
+      </div>
+    </section>
+  {% endif %}
+
+  {% assign problem_count = 0 %}
+  {% if cluster.problems %}
+    {% for item in cluster.problems %}
+      {% assign problem_post = site.posts | where: 'slug', item.slug | first %}
+      {% if problem_post %}
+        {% assign problem_count = problem_count | plus: 1 %}
+      {% endif %}
+    {% endfor %}
+  {% endif %}
+
+  {% if problem_count > 0 %}
+    <section class="cluster-section cluster-problems" aria-labelledby="cluster-by-problem">
+      <h2 id="cluster-by-problem" class="cluster-section-title h4 mb-3">By problem</h2>
+      <div class="table-wrapper cluster-problems-wrapper">
+        <table class="cluster-problems-table">
+          <thead>
+            <tr>
+              <th scope="col">Problem</th>
+              <th scope="col">Read</th>
+            </tr>
+          </thead>
+          <tbody>
+            {% for item in cluster.problems %}
+              {% assign problem_post = site.posts | where: 'slug', item.slug | first %}
+              {% if problem_post %}
+                <tr>
+                  <td>{{ item.label }}</td>
+                  <td>
+                    <a href="{{ problem_post.url | relative_url }}">{{ item.short_title }}</a>
+                    {% if item.note %}<span class="text-muted"> ({{ item.note }})</span>{% endif %}
+                  </td>
+                </tr>
+              {% endif %}
+            {% endfor %}
+          </tbody>
+        </table>
+      </div>
+    </section>
+  {% endif %}
+
+  {% if cluster.tools and cluster.tools.size > 0 %}
+    <section class="cluster-section cluster-tools" aria-labelledby="cluster-tools">
+      <h2 id="cluster-tools" class="cluster-section-title h4 mb-3">Tools referenced in this series</h2>
+      <ul class="cluster-tools-list ps-3 mb-0">
+        {% for tool in cluster.tools %}
+          <li class="mb-1">
+            <a href="{{ tool.url }}" rel="noopener noreferrer" target="_blank">{{ tool.name }}</a>
+            {% if tool.blurb != '' %} — {{ tool.blurb }}{% endif %}
+          </li>
+        {% endfor %}
+      </ul>
+    </section>
+  {% endif %}
+
+  {% assign related_count = 0 %}
+  {% if cluster.related %}
+    {% for item in cluster.related %}
+      {% assign related_post = site.posts | where: 'slug', item.slug | first %}
+      {% if related_post %}
+        {% assign related_count = related_count | plus: 1 %}
+      {% endif %}
+    {% endfor %}
+  {% endif %}
+
+  {% if related_count > 0 %}
+    <section class="cluster-section cluster-related" aria-labelledby="cluster-related">
+      <h2 id="cluster-related" class="cluster-section-title h4 mb-3">Related topics</h2>
+      <ul class="cluster-related-list ps-3 mb-0">
+        {% for item in cluster.related %}
+          {% assign related_post = site.posts | where: 'slug', item.slug | first %}
+          {% if related_post %}
+            <li class="mb-1">
+              <a href="{{ related_post.url | relative_url }}">{{ related_post.title }}</a>
+              {% if item.blurb %} — {{ item.blurb }}{% endif %}
+            </li>
+          {% endif %}
+        {% endfor %}
+      </ul>
+    </section>
+  {% endif %}
+
+  <footer class="cluster-footer text-muted small mt-4 pt-3 border-top">
+    <p class="mb-1">
+      <strong>Subscribe:</strong>
+      <a href="{{ '/feed.xml' | relative_url }}">RSS feed</a>
+      · <a href="https://t.me/eugene_the_engineer" rel="noopener noreferrer" target="_blank">Telegram</a>
+    </p>
+    <p class="mb-0">
+      <strong>Hiring or consulting:</strong>
+      <a href="{{ '/about/' | relative_url }}">About</a>
+      · <a href="{{ '/assets/Eugene_Leontev_Resume.pdf' | relative_url }}">CV</a>
+    </p>
+  </footer>
+</div>

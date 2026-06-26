@@ -266,6 +266,20 @@ The teams investing in these problems now are building infrastructure that will 
 
 ---
 
+## Memory in billing and fintech agents
+
+General-purpose agent memory gets the headlines. In billing and fintech, the constraints are sharper: **money must reconcile**, **webhooks retry**, and **audit trails are not optional**.
+
+A billing agent that "remembers" a customer's balance as a single scalar — without episodic payment events, idempotency keys, and a ledger you can reconstruct — will confidently repeat the same class of bug your Rails app had before you added proper financial infrastructure. The memory model has to mirror the domain:
+
+- **Episodic:** raw payment events, webhook payloads, job runs (with idempotency keys)
+- **Semantic:** customer billing profile, plan entitlements, reconciliation rules
+- **Consolidation:** distilled account state that still traces back to immutable entries
+
+If you're building agents on top of billing systems, start with the same reconstruction test you'd use for a Rails ledger: can you explain every balance from history alone? The [Billing Systems for Rails Engineers](/billing-systems-for-rails-engineers/) hub covers the ledger and idempotency patterns this memory layer should sit on top of.
+
+---
+
 ## FAQ: Production AI Agent Memory
 
 **What is AI agent memory?**

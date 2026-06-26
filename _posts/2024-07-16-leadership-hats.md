@@ -72,4 +72,6 @@ The team successfully met the project deadline, delivering high-quality results 
 ## Choosing the Right Style
 The best Engineering Managers often adopt a flexible approach, adapting their leadership style to fit the team's needs, the organization's culture, and the specific challenges at hand. Combining elements from multiple styles can also be effective. For example, a manager might use the enthusiastic scientist researcher approach to inspire innovation while applying the empathic and inspirational leader techniques to develop team members' skills.
 
+For a follow-up on the leadership hat most technical leaders avoid — and why it costs them — see [The Hat Technical Leaders Refuse to Wear](/posts/the-hat-technical-leaders-refuse-to-wear/). More in the [Engineering Leadership](/engineering-leadership/) hub.
+
 Which leadership style resonates most with your approach to management, and why? Feel free to write a comment below!

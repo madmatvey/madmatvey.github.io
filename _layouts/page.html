@@ -9,7 +9,7 @@ layout: default
 {% endif %}
 
 <article class="px-1">
-  {% if page.layout == 'page' or page.layout == 'tag' or page.layout == 'category' or page.collection == 'tabs' %}
+  {% if page.layout == 'page' or page.layout == 'cluster' or page.layout == 'tag' or page.layout == 'category' or page.collection == 'tabs' %}
     {% assign tab_key = page.title | downcase %}
     {% comment %} Extract tab key from URL if title doesn't match {% endcomment %}
     {% if tab_key == '' or tab_key == nil %}
@@ -30,6 +30,9 @@ layout: default
       {% assign title = 'Category: ' | append: page.title %}
     {% elsif page.url contains '/tags/' %}
       {% assign title = 'Tag: ' | append: page.title %}
+    {% elsif page.layout == 'cluster' %}
+      {% assign cluster_meta = site.data.clusters[page.category] %}
+      {% assign title = cluster_meta.title | default: page.title | default: base_title %}
     {% else %}
       {% assign title = base_title %}
     {% endif %}

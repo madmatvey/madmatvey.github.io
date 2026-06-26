@@ -1,0 +1,132 @@
+# Content cluster hubs — keyed by post category (categories: [<name>]).
+# Post lists are automatic from site.categories on each build (future-dated posts appear on publish day).
+# Only optional curation lives here: featured reading order, problems map, tools, cross-cluster related.
+
+"PostgreSQL Performance":
+  slug: postgresql-performance-playbook
+  title: "PostgreSQL Performance Playbook"
+  icon: fas fa-database
+  order: 3
+  tagline: "Production stories on indexing, query plans, and tuning Rails apps on PostgreSQL — in the order I'd read them."
+  seo_description: "PostgreSQL performance playbook: production case studies on indexing, EXPLAIN ANALYZE, query tuning, and Rails — curated path through Eugene Leontev's PostgreSQL series."
+  featured:
+    - slug: the-index-lie-why-just-add-an-index-can-make-your-query-slower
+      blurb: "When the planner chooses a sequential scan on purpose — Heap Fetches, selectivity, and write-side cost."
+    - slug: how-we-reduced-postgresql-query-time-from-250ms-to-20ms
+      blurb: "Partial indexes, planner regressions, and the query rewrite nobody wanted — Rails production case study."
+    - slug: stop-reading-explain-analyze-start-cross-examining-it
+      blurb: "Four numbers, four myths, and a reading method for every slow query on your desk."
+  foundational:
+    slug: sql-optimization-or-criminal-tracking
+    blurb: "Multi-part SQL optimization on a high-traffic Rails API (31K+ readers). PMDSC methodology, PgHero, New Relic, and the query that started it all."
+    footnote: "*Updated 2026: this series continues with the posts above — same database, sharper tooling.*"
+  problems:
+    - label: "Index added but query still slow / got slower"
+      slug: the-index-lie-why-just-add-an-index-can-make-your-query-slower
+      short_title: "Index Lie"
+    - label: "Endpoint slow, Postgres time high in APM"
+      slug: how-we-reduced-postgresql-query-time-from-250ms-to-20ms
+      short_title: "250ms → 20ms"
+    - label: "Don't trust EXPLAIN output"
+      slug: stop-reading-explain-analyze-start-cross-examining-it
+      short_title: "Cross-Examining EXPLAIN"
+    - label: "RDS CPU credits draining"
+      slug: sql-optimization-or-criminal-tracking
+      short_title: "SQL Criminal Tracking"
+    - label: "Billing / reconciliation queries slow"
+      slug: billing-idempotency-webhooks-unique-indexes
+      short_title: "Billing idempotency"
+      note: "indexes on ledger tables"
+  related:
+    - slug: redis-is-single-threaded
+      blurb: "Sidekiq, cache, and I/O threads"
+    - slug: your-billing-system-probably-isnt-an-accounting-system
+      blurb: "Ledger queries and reconciliation"
+  tools:
+    - name: PgHero
+      url: https://github.com/ankane/pghero
+      blurb: "`pg_stat_statements` dashboard for Rails"
+    - name: explain.depesz.com
+      url: https://explain.depesz.com
+      blurb: "visual EXPLAIN plans"
+    - name: New Relic
+      url: https://newrelic.com
+      blurb: "Postgres time vs app time"
+    - name: "PostgreSQL EXPLAIN (ANALYZE, BUFFERS)"
+      url: https://www.postgresql.org/docs/current/sql-explain.html
+      blurb: ""
+
+"Billing & Fintech":
+  slug: billing-systems-for-rails-engineers
+  title: "Billing Systems for Rails Engineers"
+  icon: fas fa-file-invoice-dollar
+  order: 4
+  tagline: "Ledgers, idempotency, reconciliation, and money that must never move twice — production patterns for Rails and PostgreSQL."
+  seo_description: "Billing systems for Rails engineers: double-entry ledgers, webhook idempotency, wallet vs accounting, and fintech backend patterns."
+  featured:
+    - slug: your-billing-system-probably-isnt-an-accounting-system
+      blurb: "The reconstruction test that exposes the gap between a wallet column and a real ledger."
+    - slug: double-entry-ledger-in-rails-minimal-production-model
+      blurb: "Accounts, postings, balance-as-query — a minimal production model without a big-bang rewrite."
+    - slug: billing-idempotency-webhooks-unique-indexes
+      blurb: "Stripe retries. Your job runs twice. Unique indexes keep money from moving twice."
+  problems:
+    - label: "Wallet balance but can't explain refunds"
+      slug: your-billing-system-probably-isnt-an-accounting-system
+      short_title: "Billing vs accounting"
+    - label: "Need a ledger without rewriting everything"
+      slug: double-entry-ledger-in-rails-minimal-production-model
+      short_title: "Double-entry ledger"
+    - label: "Webhooks / jobs run twice"
+      slug: billing-idempotency-webhooks-unique-indexes
+      short_title: "Billing idempotency"
+  related:
+    - slug: how-we-reduced-postgresql-query-time-from-250ms-to-20ms
+      blurb: "Index patterns for ledger tables"
+    - slug: introducing-ruby-gasless-sdk
+      blurb: "On-chain billing primitives in Ruby"
+
+"Backend Engineering":
+  slug: backend-engineering
+  title: "Backend Engineering"
+  icon: fas fa-server
+  order: 5
+  tagline: "Rails, Redis, AI systems, and the production problems that survive the demo."
+  seo_description: "Backend engineering on Rails: Redis, AI agents, staff-level code review, and production backend patterns."
+  featured:
+    - slug: redis-is-single-threaded
+      blurb: "Sidekiq, cache, and what single-threaded Redis actually means in production."
+    - slug: most-engineers-review-code-staff-engineers-review-decisions
+      blurb: "The review that happens before the PR — architecture, trade-offs, and irreversible choices."
+    - slug: the-memory-problem-nobody-is-solving
+      blurb: "Why AI agents forget — and what production memory actually requires."
+
+"Architecture":
+  slug: architecture
+  title: "Architecture"
+  icon: fas fa-project-diagram
+  order: 6
+  tagline: "Product-minded engineering, deliberate non-builds, and architecture decisions that compound."
+  seo_description: "Software architecture and product-minded engineering: what to build, what to skip, and how teams ship with intent."
+  featured:
+    - slug: product-minded-engineer
+      blurb: "The engineer who asks why before how — and why that changes what gets built."
+    - slug: the-biggest-engineering-wins-were-things-we-didnt-build
+      blurb: "The highest-leverage architectural decision is often restraint."
+    - slug: the-level-3-trap-eight-levels-of-product-minded-engineering
+      blurb: "Eight levels — and the trap most senior engineers fall into at level 3."
+
+"Engineering Leadership":
+  slug: engineering-leadership
+  title: "Engineering Leadership"
+  icon: fas fa-users
+  order: 7
+  tagline: "Leadership hats, hiring, feedback, and the skills that don't show up in a technical interview."
+  seo_description: "Engineering leadership: management styles, CTO skill gaps, hiring, feedback, and leading technical teams."
+  featured:
+    - slug: leadership-hats
+      blurb: "Five leadership styles for engineering managers — when each hat fits."
+    - slug: the-hat-technical-leaders-refuse-to-wear
+      blurb: "The leadership role most technical leaders avoid — and why it costs them."
+    - slug: from-senior-engineer-to-cto-the-real-skill-gap-isnt-technical
+      blurb: "The CTO gap isn't algorithms — it's judgment, communication, and organizational leverage."
