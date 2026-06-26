@@ -3,7 +3,7 @@ layout: post
 redirect_from:
   - /2026/06/11/how-we-reduced-postgresql-query-time-from-250ms-to-20ms/
   - /2026/06/11/how-we-reduced-postgresql-query-time-from-250ms-to-20ms.html
-title: "How We Cut PostgreSQL Query Time from 250ms to 20ms (Rails Production Story)"
+title: "How We Cut PostgreSQL Query Time from 250ms to 20ms"
 last_modified_at: 2026-06-27
 description: "Rails API on RDS: wrong indexes, planner regressions, partial indexes, and PgHero. Before/after metrics from a production PostgreSQL tuning case study."
 tags: [postgres, sql, optimization, ruby on rails, performance, pghero, database, engineering leadership, fractional cto, backend, aws rds, query planner]

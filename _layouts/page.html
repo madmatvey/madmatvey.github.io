@@ -32,7 +32,7 @@ layout: default
       {% assign title = 'Tag: ' | append: page.title %}
     {% elsif page.layout == 'cluster' %}
       {% assign cluster_meta = site.data.clusters[page.category] %}
-      {% assign title = cluster_meta.title | default: page.title | default: base_title %}
+      {% assign title = cluster_meta.seo_h1 | default: cluster_meta.title | default: page.title | default: base_title %}
     {% else %}
       {% assign title = base_title %}
     {% endif %}

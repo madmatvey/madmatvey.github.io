@@ -2,7 +2,7 @@
 # the default layout is 'page'
 icon: fas fa-info-circle
 order: 1
-description: "Hi, I am Eugene Leontev. I help engineering teams build backend systems that survive growth. Explore my best posts on Rails, PostgreSQL, architecture, and AI-assisted development."
+description: "I help engineering teams build backend systems that survive growth. Practical posts on Rails, PostgreSQL performance, architecture, and AI-assisted development."
 ---
 
 <link rel="stylesheet" href="/assets/css/about.css">
@@ -13,7 +13,7 @@ description: "Hi, I am Eugene Leontev. I help engineering teams build backend sy
       <img class="about-avatar" src="/assets/img/square_avatar_2026.webp" alt="Eugene Leontev">
       <div>
         <p class="about-kicker">Backend Engineer and technical writer</p>
-        <h1>Hi, I am Eugene.</h1>
+        <h1>Hi, I am Eugene Leontev — Backend Engineer &amp; Writer</h1>
       </div>
     </div>
     <p class="about-lead">I help engineering teams build backend systems that survive growth.</p>
