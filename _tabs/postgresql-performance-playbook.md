@@ -5,5 +5,5 @@ icon: fas fa-database
 order: 4
 title: PostgreSQL Performance Playbook
 permalink: /postgresql-performance-playbook/
-description: "PostgreSQL performance playbook: production case studies on indexing, EXPLAIN ANALYZE, query tuning, and Rails — curated path through Eugene Leontev's PostgreSQL series."
+description: "Production PostgreSQL tuning: indexing, EXPLAIN ANALYZE, query optimization, and Rails — Eugene Leontev's curated guide."
 ---
