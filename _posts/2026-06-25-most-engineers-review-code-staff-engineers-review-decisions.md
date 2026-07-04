@@ -28,7 +28,7 @@ Engineers don't appreciate a review because it's polite. They appreciate it beca
 
 The mechanism is where you point your attention.
 
-I learned this the hard way at [Appbooster](https://appbooster.com), on a high-load Rails product where I spent years being the person who could find the slow query and ship the patch. My reviews were thorough. They were detailed. Engineers read them carefully.
+I learned this the hard way at [Appbooster](https://appbooster.com?utm_source=eugenetheengineer.com&utm_medium=referral), on a high-load Rails product where I spent years being the person who could find the slow query and ship the patch. My reviews were thorough. They were detailed. Engineers read them carefully.
 
 And then we'd have an incident six months later on code I'd approved – because I'd optimized the diff in front of me while missing the decision buried inside it. I wrote about the same pattern-matching instinct in a different context in [Stop Reading EXPLAIN ANALYZE](/posts/stop-reading-explain-analyze-start-cross-examining-it/): I knew the vocabulary, I commented on the operators, and I missed what the evidence was actually saying. Code review had the same blind spot. I was reading lines. I wasn't reading consequences.
 
