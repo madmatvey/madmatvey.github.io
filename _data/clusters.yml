@@ -35,6 +35,9 @@
     - label: "Don't trust EXPLAIN output"
       slug: stop-reading-explain-analyze-start-cross-examining-it
       short_title: "Cross-Examining EXPLAIN"
+    - label: "Indexes huge, writes slow, table mostly historical rows"
+      slug: postgresql-partial-indexes-index-less-query-faster
+      short_title: "Partial Indexes"
     - label: "RDS CPU credits draining"
       slug: sql-optimization-or-criminal-tracking
       short_title: "SQL Criminal Tracking"
