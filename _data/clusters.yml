@@ -10,6 +10,8 @@
   tagline: "Production stories on indexing, query plans, and tuning Rails apps on PostgreSQL — in the order I'd read them."
   seo_description: "PostgreSQL performance playbook: production case studies on indexing, EXPLAIN ANALYZE, query tuning, and Rails — curated path through Eugene Leontev's PostgreSQL series."
   featured:
+    - slug: seven-postgresql-performance-mistakes-i-keep-seeing
+      blurb: "Seven mistakes I keep seeing in production audits — pg_stat_statements, ORM N+1s, lock waits, FK indexes, and the mental model underneath."
     - slug: the-index-lie-why-just-add-an-index-can-make-your-query-slower
       blurb: "When the planner chooses a sequential scan on purpose — Heap Fetches, selectivity, and write-side cost."
     - slug: how-we-reduced-postgresql-query-time-from-250ms-to-20ms
@@ -21,6 +23,9 @@
     blurb: "Multi-part SQL optimization on a high-traffic Rails API (31K+ readers). PMDSC methodology, PgHero, New Relic, and the query that started it all."
     footnote: "*Updated 2026: this series continues with the posts above — same database, sharper tooling.*"
   problems:
+    - label: "Everything feels slow, don't know where to start"
+      slug: seven-postgresql-performance-mistakes-i-keep-seeing
+      short_title: "7 Mistakes"
     - label: "Index added but query still slow / got slower"
       slug: the-index-lie-why-just-add-an-index-can-make-your-query-slower
       short_title: "Index Lie"
