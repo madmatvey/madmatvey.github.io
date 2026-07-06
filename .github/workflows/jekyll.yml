@@ -9,11 +9,13 @@ on:
   push:
     branches: ["master"]
 
-  # Daily rebuild at 14:00 Asia/Tbilisi (UTC+4) — Jekyll skips future-dated posts until their time passes
+  # Daily rebuild at 14:00 Asia/Tbilisi (UTC+4). The bump-rebuild-marker job commits
+  # .pages-rebuild first so the push-triggered build gets a fresh SHA (GitHub Pages
+  # may not swap artifacts when pages_build_version / GITHUB_SHA is unchanged).
   schedule:
     - cron: '0 10 * * *'
 
-  # Allows you to run this workflow manually from the Actions tab
+  # Manual rebuild: bumps .pages-rebuild and pushes; build/deploy runs on the push event.
   workflow_dispatch:
     inputs:
       submit_all_posts:
@@ -40,8 +42,33 @@ concurrency:
   cancel-in-progress: false
 
 jobs:
-  # Build job
+  bump-rebuild-marker:
+    if: github.event_name == 'schedule' || github.event_name == 'workflow_dispatch'
+    runs-on: ubuntu-24.04
+    permissions:
+      contents: write
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v6
+      - name: Bump rebuild marker and push
+        env:
+          SUBMIT_ALL: ${{ github.event_name == 'workflow_dispatch' && inputs.submit_all_posts || 'false' }}
+        run: |
+          set -euo pipefail
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          date -u +%Y-%m-%dT%H:%M:%SZ > .pages-rebuild
+          git add .pages-rebuild
+          msg="chore: trigger pages rebuild"
+          if [ "$SUBMIT_ALL" = "true" ]; then
+            msg="$msg [indexnow-all]"
+          fi
+          git commit -m "$msg"
+          git push
+
+  # Build job — push only (scheduled/manual runs deploy via bump-rebuild-marker → push)
   build:
+    if: github.event_name == 'push'
     env:
       FORCE_JAVASCRIPT_ACTIONS_TO_NODE24: "true"
     runs-on: ubuntu-24.04
@@ -100,10 +127,18 @@ jobs:
           fetch-depth: 2
 
       - name: Submit URLs to IndexNow
-        env:
-          SUBMIT_ALL: ${{ github.event_name == 'workflow_dispatch' && inputs.submit_all_posts || 'false' }}
         run: |
           set -euo pipefail
+
+          SUBMIT_ALL=false
+          if git log -1 --pretty=%B | grep -qF '[indexnow-all]'; then
+            SUBMIT_ALL=true
+          fi
+
+          REBUILD_COMMIT=false
+          if git log -1 --pretty=%B | grep -qF 'chore: trigger pages rebuild'; then
+            REBUILD_COMMIT=true
+          fi
 
           post_to_url() {
             local file="$1"
@@ -131,9 +166,36 @@ jobs:
             [ "$post_epoch" -le "$now_epoch" ]
           }
 
+          post_epoch_from_file() {
+            local file="$1"
+            local post_date_line file_date
+
+            post_date_line=$(grep -m1 '^date:' "$file" 2>/dev/null | sed -E 's/^date:[[:space:]]*//' || true)
+            if [ -n "$post_date_line" ]; then
+              date -u -d "$post_date_line" +%s 2>/dev/null || echo ""
+              return
+            fi
+
+            file_date=$(basename "$file" .md | grep -oE '^[0-9]{4}-[0-9]{2}-[0-9]{2}' || true)
+            [ -n "$file_date" ] || return 1
+            date -u -d "${file_date} 00:00:00" +%s
+          }
+
           mapfile -t POST_FILES < <(
             if [ "$SUBMIT_ALL" = "true" ]; then
               find _posts -maxdepth 1 -name '*.md' -type f | sort
+            elif [ "$REBUILD_COMMIT" = "true" ]; then
+              prev_marker=$(git show HEAD~1:.pages-rebuild 2>/dev/null | head -1 || echo "1970-01-01T00:00:00Z")
+              prev_epoch=$(date -u -d "$prev_marker" +%s 2>/dev/null || echo 0)
+              now_epoch=$(date -u +%s)
+              for file in _posts/*.md; do
+                [ -f "$file" ] || continue
+                post_epoch=$(post_epoch_from_file "$file" || echo "")
+                [ -n "${post_epoch:-}" ] || continue
+                if [ "$post_epoch" -gt "$prev_epoch" ] && [ "$post_epoch" -le "$now_epoch" ]; then
+                  echo "$file"
+                fi
+              done | sort -u
             else
               git diff --name-only --diff-filter=AM HEAD~1 HEAD -- '_posts/*.md' || true
             fi
