@@ -213,6 +213,7 @@ compress_html:
     envs: [development]
 
 exclude:
+  - ".pages-rebuild"
   - "*.gem"
   - "*.gemspec"
   - docs
