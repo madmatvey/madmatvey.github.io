@@ -78,6 +78,8 @@
       blurb: "Accounts, postings, balance-as-query — a minimal production model without a big-bang rewrite."
     - slug: billing-idempotency-webhooks-unique-indexes
       blurb: "Stripe retries. Your job runs twice. Unique indexes keep money from moving twice."
+    - slug: building-an-inventory-ledger-in-rails-8-why-quantity-columns-lie
+      blurb: "Append-only stock movements — why products.quantity lies and how to reconcile from the ledger."
   problems:
     - label: "Wallet balance but can't explain refunds"
       slug: your-billing-system-probably-isnt-an-accounting-system
@@ -88,6 +90,9 @@
     - label: "Webhooks / jobs run twice"
       slug: billing-idempotency-webhooks-unique-indexes
       short_title: "Billing idempotency"
+    - label: "Stock quantity races / inventory doesn't reconcile"
+      slug: building-an-inventory-ledger-in-rails-8-why-quantity-columns-lie
+      short_title: "Inventory ledger"
   related:
     - slug: how-we-reduced-postgresql-query-time-from-250ms-to-20ms
       blurb: "Index patterns for ledger tables"
