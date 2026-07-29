@@ -11,7 +11,7 @@ tags: [job search, staff engineer, principal engineer, engineering manager, tech
 author: eugene
 categories: [Engineering Leadership]
 comments: true
-pin: true
+pin: false
 render_with_liquid: false
 image:
     path: /assets/img/beyond-backend-engineering.png
