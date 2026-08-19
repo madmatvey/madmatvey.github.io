@@ -162,7 +162,7 @@ Stripe webhooks are at-least-once and **not ordered**. A `payment_intent.succeed
 
 ### Reconciliation
 
-The honesty layer. Nightly (or hourly) jobs compare provider settlement reports to ledger aggregates and projection caches. When they disagree, you have a ticket with evidence – not a `wallet.balance` that drifted for six months. Reconciliation does not *create* exactly-once semantics; it detects when the composition failed.
+The honesty layer. Nightly (or hourly) jobs compare provider settlement reports to ledger aggregates and projection caches. When they disagree, you have a ticket with evidence – not a `wallet.balance` that drifted for six months. Reconciliation does not *create* exactly-once semantics; it detects when the composition failed. The full operational pattern – taxonomy of comparisons, PENDING vs MISMATCHED, Stripe Balance Transactions and reports, correcting journal entries – is in [Billing Reconciliation](/posts/billing-reconciliation-in-rails-find-money-that-doesnt-match/).
 
 Outbox and inbox deserve their own posts in this series. Here they are named layers in the composition, not full implementations.
 
@@ -219,7 +219,7 @@ Exactly-once payment processing in Rails is not an `Idempotency-Key` header. It 
 3. **Separate command from proof.** Idempotency keys stop re-execution. Ledger postings are the proof. Link them with the same business key.
 4. **Use outbox for outbound provider calls.** Commit ledger + outbox together; drain with a worker that passes `idempotency_key:` in stripe-ruby opts.
 5. **Use inbox for webhooks.** Persist `evt_…` uniquely, return 2xx on duplicates, project from ledger – details in [Billing Idempotency](/posts/billing-idempotency-webhooks-unique-indexes/).
-6. **Reconcile on a schedule.** Compare Stripe (or PSP) totals to ledger aggregates; alert on drift before customers do.
+6. **Reconcile on a schedule.** Compare Stripe (or PSP) totals to ledger aggregates; alert on drift before customers do – details in [Billing Reconciliation](/posts/billing-reconciliation-in-rails-find-money-that-doesnt-match/).
 7. **Do not confuse job concurrency with financial correctness.** Solid Queue `limits_concurrency` and Sidekiq uniqueness middleware reduce duplicate work; they do not replace UNIQUE + ledger.
 
 ---
@@ -252,6 +252,6 @@ Add unique constraints on webhook/event and operation identities first ([Billing
 
 ---
 
-*More in this series: [Billing Systems for Rails Engineers](/billing-systems-for-rails-engineers/) · [Billing Idempotency](/posts/billing-idempotency-webhooks-unique-indexes/) · [Double-Entry Ledger](/posts/double-entry-ledger-in-rails-minimal-production-model/) · [Inventory Ledger](/posts/building-an-inventory-ledger-in-rails-8-why-quantity-columns-lie/)*
+*More in this series: [Billing Systems for Rails Engineers](/billing-systems-for-rails-engineers/) · [Billing Idempotency](/posts/billing-idempotency-webhooks-unique-indexes/) · [Double-Entry Ledger](/posts/double-entry-ledger-in-rails-minimal-production-model/) · [Billing Reconciliation](/posts/billing-reconciliation-in-rails-find-money-that-doesnt-match/) · [Inventory Ledger](/posts/building-an-inventory-ledger-in-rails-8-why-quantity-columns-lie/)*
 
 *I audit Rails billing paths for the gap between "we have idempotency keys" and money that can still move twice. If you're shipping payments this quarter, [happy to review the architecture](https://t.me/eugene_the_engineer?direct).*

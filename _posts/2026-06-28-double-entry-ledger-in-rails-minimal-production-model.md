@@ -318,8 +318,10 @@ Not on day one. Use `decimal` columns with explicit scale. Add money-rails when 
 No. It's double-entry bookkeeping. Events are journal entries; balance is derived from postings, not from an event stream projection framework.
 
 **How does this relate to Stripe?**
-Stripe is your payment rail. The ledger is your internal source of truth. Reconcile Stripe balance transactions to journal entries nightly – same discipline as [billing idempotency](/posts/billing-idempotency-webhooks-unique-indexes/).
+Stripe is your payment rail. The ledger is your internal source of truth. Reconcile Stripe balance transactions to journal entries nightly – same discipline as [billing idempotency](/posts/billing-idempotency-webhooks-unique-indexes/). The full pattern – runs, item states, PENDING vs MISMATCHED, correcting journal entries – is in [Billing Reconciliation](/posts/billing-reconciliation-in-rails-find-money-that-doesnt-match/).
 
 ---
+
+*More in this series: [Billing Systems for Rails Engineers](/billing-systems-for-rails-engineers/) · [Billing Idempotency](/posts/billing-idempotency-webhooks-unique-indexes/) · [Billing Reconciliation](/posts/billing-reconciliation-in-rails-find-money-that-doesnt-match/) · [Exactly-Once Is an Illusion](/posts/exactly-once-is-an-illusion-rails-payments/)*
 
 *I help teams migrate from wallet columns to ledgers without stopping releases – and audit existing billing layers before chargebacks force the question. [Reach out](https://t.me/eugene_the_engineer?direct) if you're planning this migration.*
