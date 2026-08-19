@@ -284,4 +284,6 @@ No. `lock_version` prevents lost updates on concurrent writes to the same row. I
 
 ---
 
+*More in this series: [Billing Systems for Rails Engineers](/billing-systems-for-rails-engineers/) · [Double-Entry Ledger](/posts/double-entry-ledger-in-rails-minimal-production-model/) · [Billing Reconciliation](/posts/billing-reconciliation-in-rails-find-money-that-doesnt-match/) · [Exactly-Once Is an Illusion](/posts/exactly-once-is-an-illusion-rails-payments/)*
+
 *I audit Rails billing systems for idempotency gaps, webhook races, and wallet/ledger drift before they become chargebacks. If you're shipping money movement this quarter, [happy to review the architecture](https://t.me/eugene_the_engineer?direct).*

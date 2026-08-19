@@ -416,4 +416,4 @@ Single writer, low concurrency, no audit or multi-warehouse needs. A locked `qua
 
 ---
 
-*More in this series: [Billing Systems for Rails Engineers](/billing-systems-for-rails-engineers/) · [Double-Entry Ledger](/posts/double-entry-ledger-in-rails-minimal-production-model/) · [Billing Idempotency](/posts/billing-idempotency-webhooks-unique-indexes/)*
+*More in this series: [Billing Systems for Rails Engineers](/billing-systems-for-rails-engineers/) · [Double-Entry Ledger](/posts/double-entry-ledger-in-rails-minimal-production-model/) · [Billing Idempotency](/posts/billing-idempotency-webhooks-unique-indexes/) · [Billing Reconciliation](/posts/billing-reconciliation-in-rails-find-money-that-doesnt-match/) — same independence rule for money as for stock*

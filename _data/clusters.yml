@@ -82,6 +82,8 @@
       blurb: "Append-only stock movements — why products.quantity lies and how to reconcile from the ledger."
     - slug: exactly-once-is-an-illusion-rails-payments
       blurb: "Idempotency ≠ exactly-once — the full payment path from API key to ledger, outbox, webhooks, and reconciliation."
+    - slug: billing-reconciliation-in-rails-find-money-that-doesnt-match
+      blurb: "Prove Stripe, ledger, and wallets agree — detect drift, classify PENDING vs MISMATCHED, correct with journal entries."
   problems:
     - label: "Wallet balance but can't explain refunds"
       slug: your-billing-system-probably-isnt-an-accounting-system
@@ -95,6 +97,9 @@
     - label: "Charged twice / 'we have idempotency'"
       slug: exactly-once-is-an-illusion-rails-payments
       short_title: "Exactly-once illusion"
+    - label: "Stripe total doesn't match our database"
+      slug: billing-reconciliation-in-rails-find-money-that-doesnt-match
+      short_title: "Reconciliation"
     - label: "Stock quantity races / inventory doesn't reconcile"
       slug: building-an-inventory-ledger-in-rails-8-why-quantity-columns-lie
       short_title: "Inventory ledger"
